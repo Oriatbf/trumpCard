@@ -6,14 +6,11 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
 
-    public enum CardType
-    {
-        Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, A
-    }
+  
 
     public float speed;
-    public CardStats cardSO;
-    public CardType cardType;
+   
+    
     private float angle;
     private Vector3 dir;
 
@@ -35,6 +32,8 @@ public class PlayerMove : MonoBehaviour
        
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
+        
+        MeleeAttack();
 
 
     }
@@ -45,6 +44,14 @@ public class PlayerMove : MonoBehaviour
         mousePosition.z = 0;
         dir = (mousePosition - transform.position).normalized;
         angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (Input.GetKeyDown(0))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + dir, 1.5f);
+            if (hit.collider!=null)
+            {
+                hit.transform.GetComponent<Health>().OnDamage(10f);
+            }
+        }
     }
 
     void RangeAttack()
@@ -69,6 +76,7 @@ public class PlayerMove : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position,transform.position + dir);
+        Gizmos.DrawLine(transform.position,transform.position + dir*1.5f);
+        Gizmos.DrawWireCube(transform.position + transform.forward,transform.forward);
     }
 }
