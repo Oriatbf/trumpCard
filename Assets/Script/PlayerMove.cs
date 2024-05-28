@@ -15,10 +15,12 @@ public class PlayerMove : MonoBehaviour
     private Vector3 dir;
 
     public GameObject test;
+
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -44,9 +46,11 @@ public class PlayerMove : MonoBehaviour
         mousePosition.z = 0;
         dir = (mousePosition - transform.position).normalized;
         angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if (Input.GetKeyDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + dir, 1.5f);
+            animator.SetTrigger("SwordAttack");
+            Debug.Log("Attack");
             if (hit.collider!=null)
             {
                 hit.transform.GetComponent<Health>().OnDamage(10f);
