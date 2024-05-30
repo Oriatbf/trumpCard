@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
-
-  
-
     public float speed;
-   
+    [SerializeField] float coolTime,curCoolTime;
+    [SerializeField] Image attackCoolImage;
+    [SerializeField] GameObject bullet;
+
     
     private float angle;
     private Vector3 dir;
@@ -34,9 +35,16 @@ public class PlayerMove : MonoBehaviour
        
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        
-        MeleeAttack();
 
+        RangeAttack();
+        
+       
+
+        if(curCoolTime> 0)
+        {
+            attackCoolImage.fillAmount = curCoolTime / coolTime;
+            curCoolTime-= Time.deltaTime;
+        }
 
     }
 
@@ -46,26 +54,35 @@ public class PlayerMove : MonoBehaviour
         mousePosition.z = 0;
         dir = (mousePosition - transform.position).normalized;
         angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&& curCoolTime <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + dir, 1.5f);
+            curCoolTime = coolTime;
+            attackCoolImage.fillAmount = 1;
             animator.SetTrigger("SwordAttack");
-            Debug.Log("Attack");
             if (hit.collider!=null)
             {
-                hit.transform.GetComponent<Health>().OnDamage(10f);
+                //hit.transform.GetComponent<Health>().OnDamage(10f);
             }
         }
     }
 
     void RangeAttack()
     {
-        if(Input.GetMouseButtonDown(0))
+       
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        dir = (mousePosition - transform.position).normalized;
+        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (Input.GetMouseButtonDown(0) && curCoolTime <= 0)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            dir = (mousePosition - transform.position).normalized;
-            //발사
-        }
+              
+            curCoolTime = coolTime;
+            attackCoolImage.fillAmount = 1;
+            animator.SetTrigger("GunAttack");
+            GameObject bulletP =  Instantiate(bullet,transform.position,transform.rotation);
+            bulletP.transform.GetChild(0).GetComponent<Bullet>().SetDir(dir);
+              
+        }        
         
     }
 
