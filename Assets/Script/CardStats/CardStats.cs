@@ -9,18 +9,21 @@ public class CardStats : ScriptableObject
         Two, Three, Four, Five,Six,Seven,Eight,Nine,Ten,Jack,Queen,King,A
     }
 
-
-    [Serializable]
-    public struct CardData
+    public enum AttackType
     {
-        public CardType cardType;
-        public float damage;
-        public float speed;
-
+        Range,Melee,Magic
     }
 
+    public CardType cardType;
+    public AttackType attackType;
+    public float damage;
+    public float coolTime;
+    public float speed;
 
-    public CardData[] cardData;
+    
+
+
+   
 
    
 

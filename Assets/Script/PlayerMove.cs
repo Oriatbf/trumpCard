@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class PlayerMove : MonoBehaviour
 {
     public float speed;
-    [SerializeField] float coolTime,curCoolTime;
+    public float coolTime,curCoolTime;
     [SerializeField] Image attackCoolImage;
     [SerializeField] GameObject bullet;
+
+    [SerializeField] Transform shootPoint;
 
     
     private float angle;
@@ -27,17 +29,18 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
 
-        transform.position = Vector2.MoveTowards(transform.position,new Vector2(transform.position.x+x, transform.position.y+y),speed*Time.deltaTime);
-
+        switch (PlayerTypeManager.Inst.attackType)
+        {
+            case PlayerTypeManager.AttackType.Melee:
+                MeleeAttack();
+                break;
+            case PlayerTypeManager.AttackType.Range:
+                RangeAttack();
+                break;
+        }
        
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
-
-        RangeAttack();
-        
+        Move();
        
 
         if(curCoolTime> 0)
@@ -48,12 +51,24 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-    void MeleeAttack()
+    private void Move()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
-        dir = (mousePosition - transform.position).normalized;
-        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        {
+            float x = Input.GetAxisRaw("Horizontal");
+            float y = Input.GetAxisRaw("Vertical");
+
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + x, transform.position.y + y), speed * Time.deltaTime);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+            dir = (mousePosition - transform.position).normalized;
+            angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+        }
+    }
+
+    void MeleeAttack()
+    { 
         if (Input.GetMouseButtonDown(0)&& curCoolTime <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + dir, 1.5f);
@@ -69,18 +84,13 @@ public class PlayerMove : MonoBehaviour
 
     void RangeAttack()
     {
-       
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        dir = (mousePosition - transform.position).normalized;
-        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         if (Input.GetMouseButtonDown(0) && curCoolTime <= 0)
         {
               
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
-            GameObject bulletP =  Instantiate(bullet,transform.position,transform.rotation);
-            bulletP.transform.GetChild(0).GetComponent<Bullet>().SetDir(dir);
+            ObjectPoolingManager.Inst.shootRevolver(dir);
               
         }        
         
