@@ -90,7 +90,8 @@ public class PlayerMove : MonoBehaviour
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
-            ObjectPoolingManager.Inst.shootRevolver(dir);
+            //ObjectPoolingManager.Inst.shootRevolver(dir,transform);
+            ObjectPoolingManager.Inst.shootShotgun(dir,transform);
               
         }        
         

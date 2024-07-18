@@ -28,12 +28,32 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    public void shootRevolver(Vector2 dir)
+    public void shootRevolver(Vector2 dir, Transform trans)
     {
         bulletPools[index].SetActive(true);
-        bulletPools[index].transform.position = shootPoint.position;       
+        bulletPools[index].transform.position = shootPoint.position;
+        bulletPools[index].transform.rotation = trans.rotation;
+
+        print(bulletPools[index].transform.rotation);
         bulletPools[index].transform.GetChild(0).GetComponent<Bullet>().SetDir(dir);
         index++;
+    }
+
+    public void shootShotgun(Vector2 dir, Transform trans)
+    {
+
+        for(int i = 0; i < 5; i++)
+        {
+            bulletPools[index].SetActive(true);
+            bulletPools[index].transform.position = shootPoint.position;
+            float angle = (120);
+            float angleRad1 = angle * Mathf.Deg2Rad;
+            Vector2 shootDir = new Vector2(Mathf.Cos(angleRad1), Mathf.Sin(angleRad1)).normalized;
+            bulletPools[index].transform.GetChild(0).GetComponent<Bullet>().SetDir(shootDir);
+            index++;
+        }
+;
+
     }
 
     

@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
     public void SetDir(Vector2 dir)
     {
         bulletDir = dir.normalized;
+        print(bulletDir);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
