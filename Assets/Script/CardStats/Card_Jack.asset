@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Card_Jack
   m_EditorClassIdentifier: 
   cardType: 9
-  attackType: 2
+  attackType: 0
   damage: 2
   coolTime: 1
   speed: 3

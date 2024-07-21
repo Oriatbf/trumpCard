@@ -11,7 +11,7 @@ public class CardStats : ScriptableObject
 
     public enum AttackType
     {
-        Range,Melee,Magic
+        Range,Melee,Magic,ShotGun
     }
 
     public CardType cardType;

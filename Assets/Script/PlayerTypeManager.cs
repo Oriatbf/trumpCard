@@ -6,13 +6,13 @@ public class PlayerTypeManager : MonoBehaviour
 {
     public static PlayerTypeManager Inst;
 
-    public GameObject player,sword,gun;
+    public GameObject player,sword,gun,shotGun,magicWand;
     public CardStats[] cardSO;
     public Sprite[] sprites;
 
     public enum AttackType
     {
-        Range, Melee, Magic
+        Range, Melee, Magic,ShotGun
     }
     public AttackType attackType;
 
@@ -20,14 +20,15 @@ public class PlayerTypeManager : MonoBehaviour
 
     private void Awake()
     {
+        playerStats = PlayerStats.Inst;
         Inst = this;
-       
+        
     }
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerStats = PlayerStats.Inst;
+        
     }
 
     // Update is called once per frame
@@ -43,10 +44,11 @@ public class PlayerTypeManager : MonoBehaviour
             if(index == i)
             {
                 player.GetComponent<SpriteRenderer>().sprite = sprites[i];
-                playerStats.coolTime = cardSO[i].coolTime;
-                playerStats.damage = cardSO[i].damage;
-                playerStats.speed = cardSO[i].speed;
-                playerStats.StatsApply();
+
+                PlayerStats.Inst.coolTime = cardSO[i].coolTime;
+                PlayerStats.Inst.damage = cardSO[i].damage;
+                PlayerStats.Inst.speed = cardSO[i].speed;
+                PlayerStats.Inst.StatsApply();
                 switch (cardSO[i].cardType) 
                 {
                     case CardStats.CardType.Two:
@@ -87,7 +89,7 @@ public class PlayerTypeManager : MonoBehaviour
                         break;
                     case CardStats.CardType.Jack:
                         Debug.Log("J");
-                        ChangeAttackType("Magic");
+                        ChangeAttackType("ShotGun");
                         break;
                     case CardStats.CardType.King:
                         Debug.Log("K");
@@ -115,14 +117,29 @@ public class PlayerTypeManager : MonoBehaviour
                 attackType = AttackType.Melee;
                 sword.SetActive(true);
                 gun.SetActive(false);
+                shotGun.SetActive(false);
+                magicWand.SetActive(false);
                 break;
             case "Range":
                 attackType = AttackType.Range;
                 sword.SetActive(false);
                 gun.SetActive(true);
+                shotGun.SetActive(false);
+                magicWand.SetActive(false);
+                break;
+            case "ShotGun":
+                attackType = AttackType.ShotGun;
+                sword.SetActive(false);
+                gun.SetActive(false);
+                shotGun.SetActive(true);
+                magicWand.SetActive(false);
                 break;
             case "Magic":
                 attackType = AttackType.Magic;
+                sword.SetActive(false);
+                gun.SetActive(false);
+                shotGun.SetActive(false);
+                magicWand.SetActive(true);
                 break;
         }
     }

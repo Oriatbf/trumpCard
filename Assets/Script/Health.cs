@@ -12,11 +12,14 @@ public class Health : MonoBehaviour
 
     public void OnDamage(float damage)
     {
-        curHp-= damage;
+        Debug.Log(damage);
+        curHp -= damage;
+        Debug.Log(curHp);
         HpBarIncrease();
         //받은 데미지의 10%초 만큼 갬블 게이지가 올라감 
         if (curHp <= 0)
         {
+            curHp = maxHp;
             //사망
         }
     }
@@ -31,6 +34,6 @@ public class Health : MonoBehaviour
 
     public void HpBarIncrease()
     {
-        hpBar.fillAmount = curHp;   
+        hpBar.fillAmount = curHp/maxHp;
     }
 }

@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class GambleManager : MonoBehaviour
 {
+    private void Start()
+    {
+        PlayerTypeManager.Inst.TypeChange(Gambling());
+    }
 
     private void Update()
     {

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 4
   attackType: 1
-  damage: 2
+  damage: 6
   coolTime: 1
   speed: 3

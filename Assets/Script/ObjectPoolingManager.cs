@@ -5,8 +5,9 @@ using UnityEngine;
 public class ObjectPoolingManager : MonoBehaviour
 {
     public static ObjectPoolingManager Inst;
-    public GameObject bulletP;
-    public GameObject[] bulletPools;
+    public GameObject bulletP,magicBallP;
+    public GameObject[] bulletPools,magicBallPools;
+
     public Transform shootPoint;
     int index = 0;
 
@@ -26,6 +27,16 @@ public class ObjectPoolingManager : MonoBehaviour
             bulletPools[i] = bullet;
             bullet.SetActive(false);
         }
+
+        GameObject magicBallParent = new GameObject("MBPoolingParent");
+        magicBallParent.transform.position = Vector3.zero;
+        magicBallPools = new GameObject[3];
+        for(int i = 0;i<magicBallPools.Length;i++)
+        {    
+            GameObject magicBall = Instantiate(magicBallP,magicBallParent.transform);
+            magicBallPools[i] = magicBall;
+            magicBall.SetActive(false);
+        }
     }
 
     public void shootRevolver(Vector2 dir, Transform trans)
@@ -34,7 +45,7 @@ public class ObjectPoolingManager : MonoBehaviour
         bulletPools[index].transform.position = shootPoint.position;
         bulletPools[index].transform.rotation = trans.rotation;
 
-        print(bulletPools[index].transform.rotation);
+
         bulletPools[index].transform.GetChild(0).GetComponent<Bullet>().SetDir(dir);
         index++;
     }
@@ -44,16 +55,31 @@ public class ObjectPoolingManager : MonoBehaviour
 
         for(int i = 0; i < 5; i++)
         {
+            float angle = 50 * ((float)i / (5) - 0.5f); // Spread bullets evenly within the spreadAngle
+            Vector2 spreadDir = Quaternion.Euler(0, 0, angle) * dir; // Apply the angle to the direction vector
+
+            // Activate and set up the bullet
             bulletPools[index].SetActive(true);
             bulletPools[index].transform.position = shootPoint.position;
-            float angle = (120);
-            float angleRad1 = angle * Mathf.Deg2Rad;
-            Vector2 shootDir = new Vector2(Mathf.Cos(angleRad1), Mathf.Sin(angleRad1)).normalized;
-            bulletPools[index].transform.GetChild(0).GetComponent<Bullet>().SetDir(shootDir);
+            bulletPools[index].transform.rotation = trans.rotation;
+
+ 
+            bulletPools[index].transform.GetChild(0).GetComponent<Bullet>().SetDir(spreadDir);
             index++;
         }
-;
 
+    }
+
+    public void QueenMagic()
+    {
+
+        for(int i = 0; i < magicBallPools.Length; i++)
+        {
+            
+            magicBallPools[i].transform.position = shootPoint.position;
+            magicBallPools[i].SetActive(true);
+        }
+      
     }
 
     

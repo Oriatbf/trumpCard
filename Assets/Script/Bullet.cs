@@ -14,18 +14,20 @@ public class Bullet : MonoBehaviour
 
         rigid= GetComponent<Rigidbody2D>();
         rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
+        damage = PlayerStats.Inst.damage;
 
     }
 
     public void SetDir(Vector2 dir)
     {
         bulletDir = dir.normalized;
-        print(bulletDir);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+  
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (collision.collider.tag)
+        switch (collision.tag)
         {
             case "Wall":
                 gameObject.SetActive(false);
@@ -36,7 +38,6 @@ public class Bullet : MonoBehaviour
                 break;
         }
 
-      
     }
 
     // Update is called once per frame

@@ -12,18 +12,21 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] GameObject bullet;
 
     [SerializeField] Transform shootPoint;
+    [SerializeField] LayerMask enemyMask;
 
     
     private float angle;
     private Vector3 dir;
 
-    public GameObject test;
 
     public Animator animator;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-       
+      
     }
 
     // Update is called once per frame
@@ -36,7 +39,13 @@ public class PlayerMove : MonoBehaviour
                 MeleeAttack();
                 break;
             case PlayerTypeManager.AttackType.Range:
-                RangeAttack();
+                RangeAttack(true);
+                break;
+            case PlayerTypeManager.AttackType.ShotGun:
+                RangeAttack(false);
+                break;
+            case PlayerTypeManager.AttackType.Magic:
+                MagicAttack();
                 break;
         }
        
@@ -82,7 +91,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void RangeAttack()
+    void RangeAttack(bool isRevolver)
     {
         if (Input.GetMouseButtonDown(0) && curCoolTime <= 0)
         {
@@ -90,18 +99,36 @@ public class PlayerMove : MonoBehaviour
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
-            //ObjectPoolingManager.Inst.shootRevolver(dir,transform);
-            ObjectPoolingManager.Inst.shootShotgun(dir,transform);
+            if (isRevolver)
+                ObjectPoolingManager.Inst.shootRevolver(dir,transform);
+            else
+                ObjectPoolingManager.Inst.shootShotgun(dir,transform);
               
         }        
         
     }
 
+    
+
     void MagicAttack()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && curCoolTime <= 0)
         {
+            curCoolTime = coolTime;
+            attackCoolImage.fillAmount = 1;
+            animator.SetTrigger("SwordAttack");
+            ObjectPoolingManager.Inst.QueenMagic();
+        }
+    }
 
+    public void MeleeDamage()
+    {
+        Debug.Log("시작");
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(transform.position, transform.right, 2f, enemyMask);
+        if(hit.collider != null)
+        {
+            hit.transform.GetComponent<Health>().OnDamage(PlayerStats.Inst.damage);
         }
     }
 
@@ -110,5 +137,6 @@ public class PlayerMove : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position,transform.position + dir*1.5f);
         Gizmos.DrawWireCube(transform.position + transform.forward,transform.forward);
+        Gizmos.DrawRay(transform.position, transform.right * 2);
     }
 }
