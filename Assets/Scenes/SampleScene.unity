@@ -1517,6 +1517,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3c256d62df8b1db4da9c8b9389c0c249, type: 2}
   - {fileID: 11400000, guid: a25000686df4ec04d9948dcf330f8c3a, type: 2}
   - {fileID: 11400000, guid: 0dde03a19e96fdc40b7bddba56f5d0c2, type: 2}
+  curSO: {fileID: 0}
   sprites:
   - {fileID: 21300000, guid: e754ca3edd4137b49b221227aa2975b3, type: 3}
   - {fileID: 21300000, guid: 9f9f024d4bfae7844a8d2a1750650aad, type: 3}
@@ -1531,8 +1532,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 89a0f567fb613e74b8a3730aa35cf33f, type: 3}
   - {fileID: 21300000, guid: 0c0558503a3097a49b762f9b71de6ae9, type: 3}
   - {fileID: 21300000, guid: 600b8be27f73c674e948d900f0823cc0, type: 3}
+  index: 0
   attackType: 0
-  playerStats: {fileID: 0}
 --- !u!114 &990318710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1582,6 +1583,7 @@ MonoBehaviour:
   damage: 0
   coolTime: 0
   speed: 0
+  hp: 0
 --- !u!1 &1041583606
 GameObject:
   m_ObjectHideFlags: 0
@@ -5212,6 +5214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1892181553}
   - component: {fileID: 1892181552}
+  - component: {fileID: 1892181556}
   - component: {fileID: 1892181551}
   - component: {fileID: 1892181554}
   - component: {fileID: 1892181555}
@@ -5386,6 +5389,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1892181556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892181550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e83bd1484e3ebe40993354246a2727f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHp: 100
+  maxHp: 100
+  hpBar: {fileID: 1311110776}
 --- !u!1 &1901540345
 GameObject:
   m_ObjectHideFlags: 0

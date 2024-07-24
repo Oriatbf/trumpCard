@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject player;
 
-    public float damage, coolTime,speed;
+    public float damage, coolTime,speed,hp;
 
     private void Awake()
     {
@@ -17,8 +17,11 @@ public class PlayerStats : MonoBehaviour
     
     public void StatsApply()
     {
+        Health health = player.GetComponent<Health>();
         PlayerMove playerMove =  player.GetComponent<PlayerMove>();
         playerMove.speed = speed;
         playerMove.coolTime= coolTime;
+        health.SetHp(hp);
+
     }
 }

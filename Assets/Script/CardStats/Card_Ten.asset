@@ -17,3 +17,5 @@ MonoBehaviour:
   damage: 10
   coolTime: 0.5
   speed: 10
+  hp: 100
+  cardName: 

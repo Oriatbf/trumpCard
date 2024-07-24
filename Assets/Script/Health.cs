@@ -10,11 +10,23 @@ public class Health : MonoBehaviour
     [SerializeField] Image hpBar;
 
 
+    public void SetHp(float statHp)
+    {
+        float overHp = 0; 
+        if(maxHp < statHp)
+        {
+            overHp  = statHp - maxHp;
+        }
+       
+        maxHp = statHp;
+        curHp += overHp;
+        if(curHp > maxHp) curHp= maxHp;
+
+    }
+
     public void OnDamage(float damage)
     {
-        Debug.Log(damage);
         curHp -= damage;
-        Debug.Log(curHp);
         HpBarIncrease();
         //받은 데미지의 10%초 만큼 갬블 게이지가 올라감 
         if (curHp <= 0)

@@ -8,7 +8,9 @@ public class PlayerTypeManager : MonoBehaviour
 
     public GameObject player,sword,gun,shotGun,magicWand;
     public CardStats[] cardSO;
+    public CardStats curSO;
     public Sprite[] sprites;
+    public int index;
 
     public enum AttackType
     {
@@ -16,11 +18,10 @@ public class PlayerTypeManager : MonoBehaviour
     }
     public AttackType attackType;
 
-    public PlayerStats playerStats;
 
     private void Awake()
     {
-        playerStats = PlayerStats.Inst;
+       
         Inst = this;
         
     }
@@ -31,114 +32,42 @@ public class PlayerTypeManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TypeChange(int num)
     {
+        index = num;
+        Debug.Log(index+2);
+     
+        player.GetComponent<SpriteRenderer>().sprite = sprites[index];
+
+        PlayerStats.Inst.coolTime = cardSO[index].coolTime;
+        PlayerStats.Inst.damage = cardSO[index].damage;
+        PlayerStats.Inst.speed = cardSO[index].speed;
+        PlayerStats.Inst.hp = cardSO[index].hp;
+        PlayerStats.Inst.StatsApply();
+        curSO = cardSO[index];
+        ChangeAttackType();
+     
         
     }
 
-    public void TypeChange(int index)
-    { 
-        for(int i = 0;i< sprites.Length;i++)
-        {
-            if(index == i)
-            {
-                player.GetComponent<SpriteRenderer>().sprite = sprites[i];
-
-                PlayerStats.Inst.coolTime = cardSO[i].coolTime;
-                PlayerStats.Inst.damage = cardSO[i].damage;
-                PlayerStats.Inst.speed = cardSO[i].speed;
-                PlayerStats.Inst.StatsApply();
-                switch (cardSO[i].cardType) 
-                {
-                    case CardStats.CardType.Two:
-                        Debug.Log("2");
-                        ChangeAttackType("Melee");
-                        break;
-                    case CardStats.CardType.Three:
-                        Debug.Log("3");
-                        ChangeAttackType("Range");
-                        break;
-                    case CardStats.CardType.Four:
-                        Debug.Log("4");
-                        ChangeAttackType("Melee");
-                        break;
-                    case CardStats.CardType.Five:
-                        Debug.Log("5");
-                        ChangeAttackType("Range");
-                        break;
-                    case CardStats.CardType.Six:
-                        Debug.Log("6");
-                        ChangeAttackType("Melee");
-                        break;
-                    case CardStats.CardType.Seven:
-                        Debug.Log("7");
-                        ChangeAttackType("Range");
-                        break;
-                    case CardStats.CardType.Eight:
-                        Debug.Log("8");
-                        ChangeAttackType("Melee");
-                        break;
-                    case CardStats.CardType.Nine:
-                        Debug.Log("9");
-                        ChangeAttackType("Range");
-                        break;
-                    case CardStats.CardType.Ten:
-                        Debug.Log("10");
-                        ChangeAttackType("Melee");
-                        break;
-                    case CardStats.CardType.Jack:
-                        Debug.Log("J");
-                        ChangeAttackType("ShotGun");
-                        break;
-                    case CardStats.CardType.King:
-                        Debug.Log("K");
-                        ChangeAttackType("Magic");
-                        break;
-                    case CardStats.CardType.Queen:
-                        Debug.Log("Q");
-                        ChangeAttackType("Magic");
-                        break;
-                    case CardStats.CardType.A:
-                        Debug.Log("A");
-                        ChangeAttackType("Magic");
-                        break;
-
-                }
-            }
-        }
-    }
-
-    void ChangeAttackType(string type)
+    void ChangeAttackType()
     {
-        switch(type)
+        sword.SetActive(false);
+        gun.SetActive(false);
+        shotGun.SetActive(false);
+        magicWand.SetActive(false);
+        switch (cardSO[index].attackType)
         {
-            case "Melee":
-                attackType = AttackType.Melee;
+            case CardStats.AttackType.Melee:  
                 sword.SetActive(true);
-                gun.SetActive(false);
-                shotGun.SetActive(false);
-                magicWand.SetActive(false);
                 break;
-            case "Range":
-                attackType = AttackType.Range;
-                sword.SetActive(false);
+            case CardStats.AttackType.Range:
                 gun.SetActive(true);
-                shotGun.SetActive(false);
-                magicWand.SetActive(false);
                 break;
-            case "ShotGun":
-                attackType = AttackType.ShotGun;
-                sword.SetActive(false);
-                gun.SetActive(false);
+            case CardStats.AttackType.ShotGun:
                 shotGun.SetActive(true);
-                magicWand.SetActive(false);
                 break;
-            case "Magic":
-                attackType = AttackType.Magic;
-                sword.SetActive(false);
-                gun.SetActive(false);
-                shotGun.SetActive(false);
+            case CardStats.AttackType.Magic:
                 magicWand.SetActive(true);
                 break;
         }

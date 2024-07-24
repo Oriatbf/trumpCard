@@ -33,18 +33,18 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
 
-        switch (PlayerTypeManager.Inst.attackType)
+        switch (PlayerTypeManager.Inst.curSO.attackType)
         {
-            case PlayerTypeManager.AttackType.Melee:
+            case CardStats.AttackType.Melee:
                 MeleeAttack();
                 break;
-            case PlayerTypeManager.AttackType.Range:
+            case CardStats.AttackType.Range:
                 RangeAttack(true);
                 break;
-            case PlayerTypeManager.AttackType.ShotGun:
+            case CardStats.AttackType.ShotGun:
                 RangeAttack(false);
                 break;
-            case PlayerTypeManager.AttackType.Magic:
+            case CardStats.AttackType.Magic:
                 MagicAttack();
                 break;
         }
@@ -84,31 +84,22 @@ public class PlayerMove : MonoBehaviour
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("SwordAttack");
-            if (hit.collider!=null)
-            {
-                //hit.transform.GetComponent<Health>().OnDamage(10f);
-            }
         }
     }
 
     void RangeAttack(bool isRevolver)
     {
         if (Input.GetMouseButtonDown(0) && curCoolTime <= 0)
-        {
-              
+        {          
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
             if (isRevolver)
                 ObjectPoolingManager.Inst.shootRevolver(dir,transform);
             else
-                ObjectPoolingManager.Inst.shootShotgun(dir,transform);
-              
-        }        
-        
+                ObjectPoolingManager.Inst.shootShotgun(dir,transform);             
+        }           
     }
-
-    
 
     void MagicAttack()
     {

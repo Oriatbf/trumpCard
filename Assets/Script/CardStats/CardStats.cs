@@ -19,6 +19,8 @@ public class CardStats : ScriptableObject
     public float damage;
     public float coolTime;
     public float speed;
+    public float hp;
+    public string cardName;
 
     
 
