@@ -5165,7 +5165,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   handle: {fileID: 1295291624}
-  card: {fileID: 11400000, guid: a25000686df4ec04d9948dcf330f8c3a, type: 2}
+  card: {fileID: 11400000, guid: 3c256d62df8b1db4da9c8b9389c0c249, type: 2}
 --- !u!212 &1892181552
 SpriteRenderer:
   m_ObjectHideFlags: 0
