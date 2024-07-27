@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb9d6f3c5a76504696d91719996c368, type: 3}
+  m_Name: Card_Three
+  m_EditorClassIdentifier: 
+  playerCardImage: {fileID: 21300000, guid: 9f9f024d4bfae7844a8d2a1750650aad, type: 3}
+  enemyCardImage: {fileID: 21300000, guid: 89aa3723b77c0654d93e51bdecf2da72, type: 3}
+  cardType: 1
+  attackType: 0
+  damage: 3
+  coolTime: 1.5
+  speed: 5
+  hp: 100
+  bulletCount: 1
+  cardNum: 1

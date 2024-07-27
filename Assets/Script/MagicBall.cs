@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class MagicBall : MonoBehaviour
+public class MagicBall : Projectile
 {
     RandomBezier randomBezier;
     [SerializeField] float setRad, getRad;
@@ -14,14 +14,21 @@ public class MagicBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        
     }
 
     private void OnEnable()
     {
+        
         target = GameObject.FindWithTag("Enemy").transform;
         randomBezier = new RandomBezier(transform.position, target.position, setRad, getRad);
         t = 0;
+    }
+
+    public void SetTarget(Transform transform)
+    {
+        target = transform;
+        ActiveFalse();
     }
 
     // Update is called once per frame

@@ -15,13 +15,17 @@ public class PlayerStats : MonoBehaviour
         Inst= this;
     }
     
-    public void StatsApply()
+    public void StatsApply(float speed,float hp,float coolTime)
     {
-        Health health = player.GetComponent<Health>();
+        Health health = null;
+        if (player.TryGetComponent<Health>(out Health _health))
+            health = _health;
         PlayerMove playerMove =  player.GetComponent<PlayerMove>();
         playerMove.speed = speed;
         playerMove.coolTime= coolTime;
-        health.SetHp(hp);
+        
+        if(health != null)
+           health.SetHp(hp);
 
     }
 }

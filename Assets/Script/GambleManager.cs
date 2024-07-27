@@ -1,29 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class GambleManager : MonoBehaviour
+public class GambleManager 
 {
-    private void Start()
+    public static int GambleIndex()
     {
-        PlayerTypeManager.Inst.TypeChange(Gambling());
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R) && UIManager.Inst.gambleAllow)
-        {
-            PlayerTypeManager.Inst.TypeChange(Gambling());
-        }
-    }
-
-    public int Gambling()
-    {
-        UIManager.Inst.gambleAllow = false;
-        int a = Random.Range(0,12);
+        int ramdomIndex = Random.Range(0,12);
         UIManager.Inst.EndGamble();
-        return a;
+        return ramdomIndex;
     }
 
 }

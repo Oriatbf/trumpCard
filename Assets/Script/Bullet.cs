@@ -2,24 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Projectile
 {
     public Rigidbody2D rigid;
     public float damage;
     Vector2 bulletDir;
-    
+
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+    }
     // Start is called before the first frame update
     void Start()
     {
 
-        rigid= GetComponent<Rigidbody2D>();
+        
+        rigid.velocity = Vector2.zero;
         rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
         damage = PlayerStats.Inst.damage;
 
     }
 
+    void OnEnable()
+    {
+        
+        rigid.velocity = Vector2.zero;
+        rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
+        damage = PlayerStats.Inst.damage;
+    }
+
     public void SetDir(Vector2 dir)
     {
+        ActiveFalse();
         bulletDir = dir.normalized;
     }
 

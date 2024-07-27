@@ -9,7 +9,7 @@ public class ObjectPoolingManager : MonoBehaviour
     public GameObject[] bulletPools,magicBallPools;
 
     public Transform shootPoint;
-    int index = 0;
+    public int bulletIndex = 0,magicIndex = 0;
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class ObjectPoolingManager : MonoBehaviour
 
         GameObject magicBallParent = new GameObject("MBPoolingParent");
         magicBallParent.transform.position = Vector3.zero;
-        magicBallPools = new GameObject[3];
+        magicBallPools = new GameObject[50];
         for(int i = 0;i<magicBallPools.Length;i++)
         {    
             GameObject magicBall = Instantiate(magicBallP,magicBallParent.transform);
@@ -39,48 +39,7 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    public void shootRevolver(Vector2 dir, Transform trans)
-    {
-        bulletPools[index].SetActive(true);
-        bulletPools[index].transform.position = shootPoint.position;
-        bulletPools[index].transform.rotation = trans.rotation;
-
-
-        bulletPools[index].transform.GetChild(0).GetComponent<Bullet>().SetDir(dir);
-        index++;
-    }
-
-    public void shootShotgun(Vector2 dir, Transform trans)
-    {
-
-        for(int i = 0; i < 5; i++)
-        {
-            float angle = 50 * ((float)i / (5) - 0.5f); // Spread bullets evenly within the spreadAngle
-            Vector2 spreadDir = Quaternion.Euler(0, 0, angle) * dir; // Apply the angle to the direction vector
-
-            // Activate and set up the bullet
-            bulletPools[index].SetActive(true);
-            bulletPools[index].transform.position = shootPoint.position;
-            bulletPools[index].transform.rotation = trans.rotation;
-
- 
-            bulletPools[index].transform.GetChild(0).GetComponent<Bullet>().SetDir(spreadDir);
-            index++;
-        }
-
-    }
-
-    public void QueenMagic()
-    {
-
-        for(int i = 0; i < magicBallPools.Length; i++)
-        {
-            
-            magicBallPools[i].transform.position = shootPoint.position;
-            magicBallPools[i].SetActive(true);
-        }
-      
-    }
+   
 
     
 }

@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Inst;
     public Image gambleGauge;
-    public bool gambleAllow, isInGame; //겜즐 가능한지 , 게임 중 인지 확인
+    public bool gambleAllow, isInGame; //겜블 가능한지 , 게임 중 인지 확인
     public float gamebleGauagePerSecond;
 
     private void Awake()
