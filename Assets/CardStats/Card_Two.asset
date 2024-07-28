@@ -16,9 +16,9 @@ MonoBehaviour:
   enemyCardImage: {fileID: 21300000, guid: fd25b45dfde302a4a912dae3ac4f0ed3, type: 3}
   cardType: 0
   attackType: 1
-  damage: 2
-  coolTime: 2
-  speed: 3
-  hp: 100
+  damage: 8
+  coolTime: 1
+  speed: 3.2
+  hp: 105
   bulletCount: 1
-  cardName: 
+  cardNum: 0
