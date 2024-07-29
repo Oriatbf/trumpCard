@@ -12,7 +12,7 @@ public class StatComparsion : MonoBehaviour
 
     public void Comparsion()
     {
-        switch (TypeManager.Inst.curSO.cardType)
+        switch (TypeManager.Inst.playerCurSO.cardType)
         {
             case CardStats.CardType.A:
 

@@ -6,9 +6,9 @@ public class TypeManager : MonoBehaviour
 {
     public static TypeManager Inst;
 
-    public GameObject player,sword,gun,shotGun,magicWand;
+    private GameObject player, enemy;
     public CardStats[] cardSO;
-    public CardStats curSO;
+    public CardStats playerCurSO,enemyCurSO;
     public Sprite[] sprites;
     public int index;
 
@@ -29,6 +29,7 @@ public class TypeManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
         
     }
 
@@ -36,39 +37,49 @@ public class TypeManager : MonoBehaviour
     {
         index = num;
         float coolTime, speed, hp, damage;
-        if (character.TryGetComponent<SpriteRenderer>(out SpriteRenderer sprite))
+        if (character.TryGetComponent(out SpriteRenderer sprite))
             sprite.sprite = isPlayer ? cardSO[index].playerCardImage : cardSO[index].enemyCardImage;
 
         coolTime = cardSO[index].coolTime;
-        PlayerStats.Inst.damage = cardSO[index].damage;
+        damage = cardSO[index].damage;
         speed = cardSO[index].speed;
         hp = cardSO[index].hp;
-        PlayerStats.Inst.StatsApply(speed,hp,coolTime);
-        curSO = cardSO[index];
-        ChangeAttackType();
+
+        CharacterStats.Inst.StatsApply(speed,hp,coolTime,damage,isPlayer);
+        switch (isPlayer)
+        {
+            case true:
+                playerCurSO = cardSO[index];
+                break;
+            case false:
+                enemyCurSO = cardSO[index];
+                break;
+        }
+       
+        ChangeAttackType(isPlayer);
      
         
     }
 
-    void ChangeAttackType()
+    void ChangeAttackType(bool isPlayer)
     {
-        sword.SetActive(false);
-        gun.SetActive(false);
-        shotGun.SetActive(false);
-        magicWand.SetActive(false);
+        GameObject curCharacter;
+        curCharacter = isPlayer ? player : enemy;
+        Character character = curCharacter.GetComponent<Character>();
+
         switch (cardSO[index].attackType)
         {
-            case CardStats.AttackType.Melee:  
-                sword.SetActive(true);
+            case CardStats.AttackType.Melee:
+                character.SetWeapon(0);
                 break;
             case CardStats.AttackType.Range:
-                gun.SetActive(true);
+                character.SetWeapon(1);
                 break;
             case CardStats.AttackType.ShotGun:
-                shotGun.SetActive(true);
+                character.SetWeapon(2);
                 break;
             case CardStats.AttackType.Magic:
-                magicWand.SetActive(true);
+                character.SetWeapon(3);
                 break;
         }
     }

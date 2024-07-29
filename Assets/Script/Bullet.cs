@@ -12,23 +12,21 @@ public class Bullet : Projectile
     {
         rigid = GetComponent<Rigidbody2D>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
-        
+    private void Start()
+    {
         rigid.velocity = Vector2.zero;
         rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
-        damage = PlayerStats.Inst.damage;
-
+        damage = CharacterStats.Inst.playerStat.finalDamage;
     }
+
 
     void OnEnable()
     {
         
         rigid.velocity = Vector2.zero;
         rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
-        damage = PlayerStats.Inst.damage;
+        damage = CharacterStats.Inst.playerStat.finalDamage;
     }
 
     public void SetDir(Vector2 dir)

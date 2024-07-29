@@ -3,14 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+public class EnemyMove : Character
 {
-    public float speed;
-    public float coolTime,curCoolTime;
-   // [SerializeField] private Image attackCoolImage;
-    [SerializeField] private GameObject bullet;
 
-    [SerializeField] private Transform shootPoint;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private Transform player;
      
@@ -51,4 +46,7 @@ public class EnemyMove : MonoBehaviour
         
         
     }
+
+    
+
 }

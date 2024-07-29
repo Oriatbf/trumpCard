@@ -46,7 +46,7 @@ public class MagicBall : Projectile
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Health>().OnDamage(PlayerStats.Inst.damage);
+            collision.GetComponent<Health>().OnDamage(CharacterStats.Inst.damage);
             gameObject.SetActive(false);
         }
     }

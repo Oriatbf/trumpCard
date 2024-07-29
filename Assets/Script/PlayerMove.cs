@@ -1,22 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Diagnostics.Contracts;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove : Character
 {
-    [HideInInspector] public float speed;
-    [HideInInspector]public float coolTime,curCoolTime;
-    [SerializeField] private Image attackCoolImage;
-    [SerializeField] private GameObject bullet;
-
-    [SerializeField] private Transform shootPoint;
+ 
     [SerializeField] private LayerMask enemyMask;
-
-    [SerializeField] private GameObject handle;
-    [SerializeField] private CardStats card; 
+    [SerializeField] private CardStats card;
     
     private float _angle;
     private Vector3 _dir;
@@ -27,19 +20,27 @@ public class PlayerMove : MonoBehaviour
 
     private Transform opponent;
 
+    private void Awake()
+    {
+  
+    }
+
     private void Start()
     {
+        
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
         TypeManager.Inst.TypeChange(card.cardNum,transform,true);
         animator = handle.GetComponent<Animator>();
+       // SetStat();
+      
     }
 
     // Update is called once per frame
     void Update()
     {
         // 이거 공통으로 바꾸기
-        switch (TypeManager.Inst.curSO.attackType)
+        switch (TypeManager.Inst.playerCurSO.attackType)
         {
             case CardStats.AttackType.Melee:
                 MeleeAttack();
@@ -54,9 +55,7 @@ public class PlayerMove : MonoBehaviour
                 MagicAttack();
                 break;
         }
-        
-        
-       
+           
         Move();
         Gambling();
 
@@ -117,9 +116,9 @@ public class PlayerMove : MonoBehaviour
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
             if (isRevolver)
-                Attack.Inst.shootRevolver(_dir,transform,shootPoint,TypeManager.Inst.curSO.bulletCount,true);
+                Attack.Inst.shootRevolver(_dir,transform,shootPoint,TypeManager.Inst.playerCurSO.bulletCount,true);
             else
-               Attack.Inst.shootShotgun(_dir, transform, shootPoint, TypeManager.Inst.curSO.bulletCount,true);             
+               Attack.Inst.shootShotgun(_dir, transform, shootPoint, TypeManager.Inst.playerCurSO.bulletCount,true);             
         }           
     }
 
@@ -130,7 +129,17 @@ public class PlayerMove : MonoBehaviour
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("SwordAttack");
-            Attack.Inst.QueenMagic(shootPoint, TypeManager.Inst.curSO.bulletCount, true,opponent);
+
+            switch (TypeManager.Inst.playerCurSO.cardType)
+            {
+                case CardStats.CardType.Queen:
+                    Attack.Inst.QueenMagic(shootPoint, TypeManager.Inst.playerCurSO.bulletCount, true, opponent);
+                    break;
+                case CardStats.CardType.King:
+                    Attack.Inst.KingMagic(_dir, transform, shootPoint, TypeManager.Inst.playerCurSO.bulletCount, true);
+                    break;
+            }
+            
         }
     }
 
@@ -141,7 +150,7 @@ public class PlayerMove : MonoBehaviour
         hit = Physics2D.Raycast(transform.position, transform.right, 2f, enemyMask);
         if(hit.collider != null)
         {
-            hit.transform.GetComponent<Health>().OnDamage(PlayerStats.Inst.damage);
+            hit.transform.GetComponent<Health>().OnDamage(CharacterStats.Inst.damage);
         }
     }
     private void OnDrawGizmos()
@@ -151,4 +160,10 @@ public class PlayerMove : MonoBehaviour
         Gizmos.DrawWireCube(transform.position + transform.forward,transform.forward);
         Gizmos.DrawRay(transform.position, transform.right * 2);
     }
+
+  
+
+    
+
+
 }

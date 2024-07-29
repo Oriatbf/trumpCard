@@ -70,4 +70,23 @@ public class Attack : MonoBehaviour
 
     }
 
+    public void KingMagic(Vector2 dir, Transform curTrans, Transform shootPoint, int bulletCount, bool isPlayer)
+    {
+        float delay = 0;
+        for (var i = 0; i < bulletCount; i++)
+        {
+            DOVirtual.DelayedCall(delay, () =>
+            {
+                pool.bulletPools[pool.bulletIndex].SetActive(true);
+                pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
+                pool.bulletPools[pool.bulletIndex].transform.rotation = curTrans.rotation;
+                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir);
+                pool.bulletIndex++;
+                if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
+            });
+            delay = 0.2f + ((float)i/10 - 0.1f);
+
+        }
+    }
+
 }
