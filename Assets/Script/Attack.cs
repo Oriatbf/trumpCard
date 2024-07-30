@@ -28,7 +28,7 @@ public class Attack : MonoBehaviour
                 pool.bulletIndex++;
                 if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
             });
-            delay = 0.2f;
+            delay = 0.2f + ((float)i / 10 - 0.1f);
 
         }
        

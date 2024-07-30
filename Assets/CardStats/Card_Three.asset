@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb9d6f3c5a76504696d91719996c368, type: 3}
   m_Name: Card_Three
   m_EditorClassIdentifier: 
-  playerCardImage: {fileID: 21300000, guid: 9f9f024d4bfae7844a8d2a1750650aad, type: 3}
+  playerCardImage: {fileID: 21300000, guid: 46dc084a00a5d3648a23f27ced07c816, type: 3}
   enemyCardImage: {fileID: 21300000, guid: 89aa3723b77c0654d93e51bdecf2da72, type: 3}
   cardType: 1
   attackType: 0

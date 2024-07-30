@@ -10,7 +10,6 @@ public class TypeManager : MonoBehaviour
     public CardStats[] cardSO;
     public CardStats playerCurSO,enemyCurSO;
     public Sprite[] sprites;
-    public int index;
 
     public enum AttackType
     {
@@ -35,39 +34,38 @@ public class TypeManager : MonoBehaviour
 
     public void TypeChange(int num,Transform character,bool isPlayer)
     {
-        index = num;
         float coolTime, speed, hp, damage;
         if (character.TryGetComponent(out SpriteRenderer sprite))
-            sprite.sprite = isPlayer ? cardSO[index].playerCardImage : cardSO[index].enemyCardImage;
+            sprite.sprite = isPlayer ? cardSO[num].playerCardImage : cardSO[num].enemyCardImage;
 
-        coolTime = cardSO[index].coolTime;
-        damage = cardSO[index].damage;
-        speed = cardSO[index].speed;
-        hp = cardSO[index].hp;
+        coolTime = cardSO[num].coolTime;
+        damage = cardSO[num].damage;
+        speed = cardSO[num].speed;
+        hp = cardSO[num].hp;
 
         CharacterStats.Inst.StatsApply(speed,hp,coolTime,damage,isPlayer);
         switch (isPlayer)
         {
             case true:
-                playerCurSO = cardSO[index];
+                playerCurSO = cardSO[num];
                 break;
             case false:
-                enemyCurSO = cardSO[index];
+                enemyCurSO = cardSO[num];
                 break;
         }
        
-        ChangeAttackType(isPlayer);
+        ChangeAttackType(isPlayer,num);
      
         
     }
 
-    void ChangeAttackType(bool isPlayer)
+    void ChangeAttackType(bool isPlayer,int num)
     {
         GameObject curCharacter;
         curCharacter = isPlayer ? player : enemy;
         Character character = curCharacter.GetComponent<Character>();
 
-        switch (cardSO[index].attackType)
+        switch (cardSO[num].attackType)
         {
             case CardStats.AttackType.Melee:
                 character.SetWeapon(0);

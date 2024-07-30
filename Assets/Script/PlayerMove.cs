@@ -12,26 +12,20 @@ public class PlayerMove : Character
     [SerializeField] private CardStats card;
     
     private float _angle;
-    private Vector3 _dir;
+    
 
 
-    private Animator animator;
     private Camera _camera;
 
-    private Transform opponent;
 
-    private void Awake()
-    {
-  
-    }
-
+   
     private void Start()
     {
         
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
         TypeManager.Inst.TypeChange(card.cardNum,transform,true);
-        animator = handle.GetComponent<Animator>();
+        
        // SetStat();
       
     }
@@ -40,30 +34,11 @@ public class PlayerMove : Character
     void Update()
     {
         // 이거 공통으로 바꾸기
-        switch (TypeManager.Inst.playerCurSO.attackType)
-        {
-            case CardStats.AttackType.Melee:
-                MeleeAttack();
-                break;
-            case CardStats.AttackType.Range:
-                RangeAttack(true);
-                break;
-            case CardStats.AttackType.ShotGun:
-                RangeAttack(false);
-                break;
-            case CardStats.AttackType.Magic:
-                MagicAttack();
-                break;
-        }
-           
+
         Move();
         Gambling();
 
-        if(curCoolTime> 0)
-        {
-            attackCoolImage.fillAmount = curCoolTime / coolTime;
-            curCoolTime-= Time.deltaTime;
-        }
+       CoolTime(TypeManager.Inst.playerCurSO);
 
     }
 
@@ -81,8 +56,10 @@ public class PlayerMove : Character
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-        float moveX = x * speed * Time.deltaTime;
-        float moveY = y * speed * Time.deltaTime;
+        Vector2 moveDir = new Vector2(x, y).normalized;
+
+        float moveX = moveDir.x * speed * Time.deltaTime;
+        float moveY = moveDir.y* speed * Time.deltaTime;
         transform.Translate(new Vector3(moveX,moveY,0),Space.World);
         
         //Rotation
@@ -96,52 +73,25 @@ public class PlayerMove : Character
        
     }
 
-    private void MeleeAttack()
-    { 
-        if (Input.GetMouseButtonDown(0)&& curCoolTime <= 0)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
-            curCoolTime = coolTime;
-            attackCoolImage.fillAmount = 1;
-            animator.SetTrigger("SwordAttack");
-        }
-    }
 
-    // ReSharper disable Unity.PerformanceAnalysis
-    private void RangeAttack(bool isRevolver)
+    public override void RangeAttack(bool isRevolver, CardStats curSO)
     {
-        if (Input.GetMouseButtonDown(0) && curCoolTime <= 0)
-        {          
-            curCoolTime = coolTime;
-            attackCoolImage.fillAmount = 1;
-            animator.SetTrigger("GunAttack");
-            if (isRevolver)
-                Attack.Inst.shootRevolver(_dir,transform,shootPoint,TypeManager.Inst.playerCurSO.bulletCount,true);
-            else
-               Attack.Inst.shootShotgun(_dir, transform, shootPoint, TypeManager.Inst.playerCurSO.bulletCount,true);             
-        }           
-    }
-
-    private void MagicAttack()
-    {
-        if (Input.GetMouseButtonDown(0) && curCoolTime <= 0)
+        if(Input.GetMouseButton(0))
         {
-            curCoolTime = coolTime;
-            attackCoolImage.fillAmount = 1;
-            animator.SetTrigger("SwordAttack");
-
-            switch (TypeManager.Inst.playerCurSO.cardType)
-            {
-                case CardStats.CardType.Queen:
-                    Attack.Inst.QueenMagic(shootPoint, TypeManager.Inst.playerCurSO.bulletCount, true, opponent);
-                    break;
-                case CardStats.CardType.King:
-                    Attack.Inst.KingMagic(_dir, transform, shootPoint, TypeManager.Inst.playerCurSO.bulletCount, true);
-                    break;
-            }
-            
+            base.RangeAttack(isRevolver, curSO);
         }
+       
     }
+
+    public override void MagicAttack(CardStats curSO)
+    {
+        if (Input.GetMouseButton(0))
+        {
+            base.MagicAttack(curSO);
+        }
+       
+    }
+
 
 
     public void MeleeDamage()
