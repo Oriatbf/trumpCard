@@ -5,11 +5,11 @@ using UnityEngine;
 public class ObjectPoolingManager : MonoBehaviour
 {
     public static ObjectPoolingManager Inst;
-    public GameObject bulletP,magicBallP;
-    public GameObject[] bulletPools,magicBallPools;
+    public GameObject bulletP,magicBallP,flooringBullet;
+    public GameObject[] bulletPools,magicBallPools,flooringBulletPools;
 
     public Transform shootPoint;
-    public int bulletIndex = 0,magicIndex = 0;
+    public int bulletIndex = 0,magicIndex = 0,f_bulletIndex = 0;
 
     private void Awake()
     {
@@ -36,6 +36,16 @@ public class ObjectPoolingManager : MonoBehaviour
             GameObject magicBall = Instantiate(magicBallP,magicBallParent.transform);
             magicBallPools[i] = magicBall;
             magicBall.SetActive(false);
+        }
+
+        GameObject f_bulletParent = new GameObject("fb_PoolingParent");
+        f_bulletParent.transform.position = Vector3.zero;
+        flooringBulletPools = new GameObject[50];
+        for (int i = 0; i < flooringBulletPools.Length; i++)
+        {
+            GameObject f_bullet = Instantiate(flooringBullet, f_bulletParent.transform);
+            flooringBulletPools[i] = f_bullet;
+            f_bullet.SetActive(false);
         }
     }
 

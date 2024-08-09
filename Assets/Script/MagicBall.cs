@@ -7,6 +7,7 @@ public class MagicBall : Projectile
 {
     RandomBezier randomBezier;
     [SerializeField] float setRad, getRad;
+    public float damage;
     [SerializeField] Transform target;
     [SerializeField] float speed;
     private float t;
@@ -25,8 +26,9 @@ public class MagicBall : Projectile
         t = 0;
     }
 
-    public void SetTarget(Transform transform)
+    public void SetTarget(Transform transform,float damage)
     {
+        this.damage= damage;
         target = transform;
         ActiveFalse();
     }
@@ -46,7 +48,7 @@ public class MagicBall : Projectile
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Health>().OnDamage(CharacterStats.Inst.damage);
+            collision.GetComponent<Health>().OnDamage(damage);
             gameObject.SetActive(false);
         }
     }

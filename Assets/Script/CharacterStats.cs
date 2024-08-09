@@ -66,7 +66,7 @@ public class CharacterStats : MonoBehaviour
                 break;
         }
 
-        curCharacter.GetComponent<Character>().SetStat(curStat);
+        curCharacter.GetComponent<Character>().SetStat();
 
         Health health = null;
       

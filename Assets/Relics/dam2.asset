@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff67ea010a81d34886ec4200701e439, type: 3}
+  m_Name: dam2
+  m_EditorClassIdentifier: 
+  relicName: Name
+  relicType:
+  - activeType: 0
+    sequenceType: 0
+    addtionType: 0
+    damageRelic: 0
+    coolTimeRelic: 0
+    hpRelic: 0
+    speedRelic: 0
+    projectileRelic: 0
+    addtionDamage: 0
+    addtionRatio: 0
+    addtionDamageRatio: 0
+    loseHp: 0
+    loseHpPerDam: 0
+    addtionCoolTime: 0
+    addtionMaxHp: 0
+    perValue: 0
+    addtionSpeed: 0
+    loseHp2: 0
+    loseHpPerSpeed: 0
+    pSize: 0
+    pCount: 0
+    floor: {fileID: 0}

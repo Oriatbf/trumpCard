@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb9d6f3c5a76504696d91719996c368, type: 3}
   m_Name: Card_Nine
   m_EditorClassIdentifier: 
-  playerCardImage: {fileID: 21300000, guid: 0bf8572b180a6d24589bb91fabc81eed, type: 3}
-  enemyCardImage: {fileID: 21300000, guid: 8965d98587a47234b8c0c418c1f98f7b, type: 3}
-  cardType: 7
-  attackType: 0
-  damage: 4.5
-  coolTime: 0.9
-  speed: 4
-  hp: 120
-  bulletCount: 2
-  cardNum: 7
+  infor:
+    playerCardImage: {fileID: 21300000, guid: 0bf8572b180a6d24589bb91fabc81eed, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: 8965d98587a47234b8c0c418c1f98f7b, type: 3}
+    cardType: 7
+    attackType: 0
+    damage: 4.5
+    coolTime: 0.9
+    speed: 4
+    hp: 120
+    bulletCount: 1
+    attackCount: 2
+    cardNum: 8

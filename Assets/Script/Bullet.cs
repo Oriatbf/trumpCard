@@ -6,6 +6,7 @@ public class Bullet : Projectile
 {
     public Rigidbody2D rigid;
     public float damage;
+    [SerializeField] bool isPlayerBullet,isReturn;
     Vector2 bulletDir;
 
     private void Awake()
@@ -17,7 +18,8 @@ public class Bullet : Projectile
     {
         rigid.velocity = Vector2.zero;
         rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
-        damage = CharacterStats.Inst.playerStat.finalDamage;
+       
+        Debug.Log(transform.gameObject.activeSelf);
     }
 
 
@@ -25,29 +27,51 @@ public class Bullet : Projectile
     {
         
         rigid.velocity = Vector2.zero;
-        rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
-        damage = CharacterStats.Inst.playerStat.finalDamage;
+       
+
+        
     }
 
-    public void SetDir(Vector2 dir)
+    public void SetDir(Vector2 dir,bool isPlayerBullet,bool isReturn,float damage,float scale)
     {
-        ActiveFalse();
+       transform.localScale *= scale;
+
         bulletDir = dir.normalized;
+        this.damage= damage;
+        this.isPlayerBullet = isPlayerBullet;
+        rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
+        if (!isReturn)
+            ActiveFalse();
+        else
+            Return(rigid);
     }
 
   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         switch (collision.tag)
         {
             case "Wall":
                 gameObject.SetActive(false);
                 break;
             case "Enemy":
-                collision.gameObject.GetComponent<Health>().OnDamage(damage);
-                gameObject.SetActive(false);
+                if (isPlayerBullet)
+                {
+                    collision.gameObject.GetComponent<Health>().OnDamage(damage);
+                    gameObject.SetActive(false);
+                }
                 break;
+            case "Player":
+                if (!isPlayerBullet)
+                {
+                    collision.gameObject.GetComponent<Health>().OnDamage(damage);
+                    gameObject.SetActive(false);
+                }
+                break;
+
+
         }
 
     }

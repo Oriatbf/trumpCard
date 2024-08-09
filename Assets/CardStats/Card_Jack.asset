@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb9d6f3c5a76504696d91719996c368, type: 3}
   m_Name: Card_Jack
   m_EditorClassIdentifier: 
-  playerCardImage: {fileID: 21300000, guid: fd78025338142ec47998081187deb162, type: 3}
-  enemyCardImage: {fileID: 21300000, guid: 9d517f50438a0aa4e8a4ba37e23dae2d, type: 3}
-  cardType: 9
-  attackType: 3
-  damage: 2.5
-  coolTime: 1.5
-  speed: 4
-  hp: 115
-  bulletCount: 5
-  cardNum: 9
+  infor:
+    playerCardImage: {fileID: 21300000, guid: fd78025338142ec47998081187deb162, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: 9d517f50438a0aa4e8a4ba37e23dae2d, type: 3}
+    cardType: 9
+    attackType: 3
+    damage: 2.5
+    coolTime: 1.5
+    speed: 4
+    hp: 115
+    bulletCount: 5
+    attackCount: 1
+    cardNum: 10

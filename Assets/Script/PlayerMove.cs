@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,38 +8,59 @@ using UnityEngine.UI;
 
 public class PlayerMove : Character
 {
- 
+    public RelicSkills relicSkills;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private CardStats card;
-    
-    private float _angle;
-    
+    [SerializeField] float maxCharging,dashSpeed;
+    private float _angle,_curCharging;
 
+    Rigidbody2D rigid;
+    DashEffect dashEffect;
 
     private Camera _camera;
 
+    [SerializeField] Vector3 angleVec;
 
-   
+    [Header ("모바일 조이스틱")]
+    [SerializeField] bool mobileVersion;
+    [SerializeField] VariableJoystick moveJoyStick;
+
     private void Start()
     {
-        
+        dashEffect= GetComponent<DashEffect>();
+        rigid = GetComponent<Rigidbody2D>();
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
-        TypeManager.Inst.TypeChange(card.cardNum,transform,true);
-        
-       // SetStat();
-      
+        TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
+        relicSkills = GetComponent<RelicSkills>();
+        relicSkills.StartSkill();
+        relicSkills.StartRatioSkill();
+
+        SetStat();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 이거 공통으로 바꾸기
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            health.OnDamage(10);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            DashMove();
+        }
+
+        relicSkills.MovingSkill();
 
         Move();
+
         Gambling();
 
-       CoolTime(TypeManager.Inst.playerCurSO);
+        if (isFlooring) FlooringDamage();
+
+       CoolTime(characterSO);
 
     }
 
@@ -46,20 +68,31 @@ public class PlayerMove : Character
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            TypeManager.Inst.TypeChange(GambleManager.GambleIndex(),transform,true);
+            TypeManager.Inst.TypeChange(GambleManager.GambleIndex(),transform,true,characterSO);
         }
     }
 
     private void Move()
     {
+        float x;
+        float y;
         //Move
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        if (mobileVersion)
+        {
+             x = moveJoyStick.Horizontal;
+             y = moveJoyStick.Vertical;
+        }
+        else
+        {
+             x = Input.GetAxisRaw("Horizontal");
+             y = Input.GetAxisRaw("Vertical");
+        }
+      
 
-        Vector2 moveDir = new Vector2(x, y).normalized;
+        angleVec = new Vector3(x, y,0).normalized;
 
-        float moveX = moveDir.x * speed * Time.deltaTime;
-        float moveY = moveDir.y* speed * Time.deltaTime;
+        float moveX = angleVec.x * speed * Time.deltaTime;
+        float moveY = angleVec.y* speed * Time.deltaTime;
         transform.Translate(new Vector3(moveX,moveY,0),Space.World);
         
         //Rotation
@@ -72,6 +105,29 @@ public class PlayerMove : Character
      
        
     }
+
+    public override void BowAttack()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            _curCharging += Time.deltaTime;
+            if (_curCharging >= maxCharging) _curCharging = maxCharging;
+            attackCoolImage.fillAmount = _curCharging / maxCharging;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            Shoot();
+        }
+    }
+
+    public void Shoot()
+    {
+        attackCoolImage.fillAmount = 0;
+        _curCharging = 0;
+        Attack.Inst.shootBow(_dir, transform, shootPoint, characterSO, true);
+    }
+
 
 
     public override void RangeAttack(bool isRevolver, CardStats curSO)
@@ -97,18 +153,28 @@ public class PlayerMove : Character
     public void MeleeDamage()
     {
         RaycastHit2D hit;
-        hit = Physics2D.Raycast(transform.position, transform.right, 2f, enemyMask);
+        hit = Physics2D.Raycast(transform.position,_dir, 2f, enemyMask);
         if(hit.collider != null)
         {
-            hit.transform.GetComponent<Health>().OnDamage(CharacterStats.Inst.damage);
+            hit.transform.GetComponent<Health>().OnDamage(characterSO.infor.damage);
         }
     }
+
+
+    public void DashMove()
+    {
+        rigid.velocity = new Vector2(angleVec.x,angleVec.y) *dashSpeed;
+        dashEffect.ActiveDashEffect(0.2f);
+        DOVirtual.DelayedCall(0.2f, () => rigid.velocity = Vector2.zero) ;
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position,transform.position + _dir*1.5f);
+        //Gizmos.DrawLine(transform.position,transform.position + _dir*1.5f);
         Gizmos.DrawWireCube(transform.position + transform.forward,transform.forward);
-        Gizmos.DrawRay(transform.position, transform.right * 2);
+        Gizmos.DrawRay(transform.position, _dir*2);
     }
 
   

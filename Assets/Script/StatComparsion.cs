@@ -8,11 +8,11 @@ public class StatComparsion : MonoBehaviour
 
     
 
-
+    /*
 
     public void Comparsion()
     {
-        switch (TypeManager.Inst.playerCurSO.cardType)
+        switch ()
         {
             case CardStats.CardType.A:
 
@@ -37,5 +37,5 @@ public class StatComparsion : MonoBehaviour
                 break;
         }
      
-    }
+    }*/
 }

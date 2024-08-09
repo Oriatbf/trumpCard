@@ -14,10 +14,17 @@ public class Character : MonoBehaviour
      public Vector3 _dir;
     [HideInInspector] public Transform opponent;
     public Transform shootPoint;
+    public bool isPlayer;
+    public CardStats characterSO;
+    [HideInInspector]public Health health;
+    public bool isFlooring;
+    public float flooringCool;
 
     private void Awake()
     {
         animator = handle.GetComponent<Animator>();
+        health= GetComponent<Health>();
+        characterSO.relicInfor.characterHealth= health;
     }
 
     // Start is called before the first frame update
@@ -32,10 +39,13 @@ public class Character : MonoBehaviour
         
     }
 
-    public void SetStat(CharacterStats.Stats selfStats)
+    public void SetStat()
     {
-        speed = selfStats.finalSpeed;
-        coolTime= selfStats.finalCoolTime;
+        speed = characterSO.infor.speed;
+        coolTime= characterSO.infor.coolTime;
+        curCoolTime= characterSO.infor.coolTime;
+        health.ResetHp(characterSO.infor.hp);
+        
     }
 
     public void SetWeapon(int index)
@@ -65,13 +75,16 @@ public class Character : MonoBehaviour
 
     public void ChangeType(CardStats curSO)
     {
-        switch (curSO.attackType)
+        switch (curSO.infor.attackType)
         {
             case CardStats.AttackType.Melee:
                 MeleeAttack();
                 break;
             case CardStats.AttackType.Range:
                 RangeAttack(true, curSO);
+                break;
+            case CardStats.AttackType.Bow:
+                BowAttack();
                 break;
             case CardStats.AttackType.ShotGun:
                 RangeAttack(false, curSO);
@@ -101,9 +114,9 @@ public class Character : MonoBehaviour
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
             if (isRevolver)
-                Attack.Inst.shootRevolver(_dir, transform, shootPoint, curSO.bulletCount, true);
+                Attack.Inst.shootRevolver(_dir, transform, shootPoint, curSO, isPlayer);
             else
-                Attack.Inst.shootShotgun(_dir, transform, shootPoint, curSO.bulletCount, true);
+                Attack.Inst.shootShotgun(_dir, transform, shootPoint, curSO, isPlayer);
         }
     }
 
@@ -115,16 +128,51 @@ public class Character : MonoBehaviour
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("SwordAttack");
 
-            switch (TypeManager.Inst.playerCurSO.cardType)
+            switch (curSO.infor.cardType)
             {
                 case CardStats.CardType.Queen:
-                    Attack.Inst.QueenMagic(shootPoint, curSO.bulletCount, true, opponent);
+                    Attack.Inst.QueenMagic(shootPoint, curSO, true, opponent);
                     break;
                 case CardStats.CardType.King:
-                    Attack.Inst.KingMagic(_dir, transform, shootPoint, curSO.bulletCount, true);
+                    Attack.Inst.KingMagic(_dir, transform, shootPoint, curSO, isPlayer);
                     break;
             }
 
+        }
+    }
+    /*
+    public virtual void BowCharge()
+    {
+        float curCharge = 0;
+        float damage = 0;
+        curCharge  += Time.deltaTime;
+        if(curCharge>=characterSO.infor.maxCharge) curCharge = characterSO.infor.maxCharge;
+        for(int i = 0; i < characterSO.infor.chargeStep.Count; i++)
+        {
+            if(curCharge < characterSO.infor.chargeStep[i])
+            {
+                damage = characterSO.infor.chargeDamage[i];
+                break;
+            }
+        }
+    }*/
+
+
+    public virtual void BowAttack()
+    {
+       
+    }
+
+    public void FlooringDamage()
+    {
+        if(flooringCool <= 0 && isFlooring)
+        {
+            health.OnDamage(2);
+            flooringCool = 5f;
+        }
+        else
+        {
+            flooringCool-=Time.deltaTime;
         }
     }
 }

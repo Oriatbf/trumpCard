@@ -21,7 +21,7 @@ public class EnemyMove : Character
         opponent = GameObject.FindGameObjectWithTag("Player").transform;
         _dir = (opponent.position - transform.position).normalized;
         _camera = Camera.main;
-        TypeManager.Inst.TypeChange(card.cardNum, transform, false);
+        TypeManager.Inst.TypeChange(card.infor.cardNum, transform, false,characterSO);
     }
 
     // Update is called once per frame
@@ -30,13 +30,13 @@ public class EnemyMove : Character
        
         Move();
         Gambling();
-        CoolTime(TypeManager.Inst.enemyCurSO);
+        //CoolTime(TypeManager.Inst.enemyCurSO);
     }
     private void Gambling()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            TypeManager.Inst.TypeChange(GambleManager.GambleIndex(), transform, false);
+            TypeManager.Inst.TypeChange(GambleManager.GambleIndex(), transform, false,characterSO);
         }
     }
 

@@ -12,13 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb9d6f3c5a76504696d91719996c368, type: 3}
   m_Name: Card_Queen
   m_EditorClassIdentifier: 
-  playerCardImage: {fileID: 21300000, guid: 0c0558503a3097a49b762f9b71de6ae9, type: 3}
-  enemyCardImage: {fileID: 21300000, guid: da2520e1f28917b4e9a75f09453d3e23, type: 3}
-  cardType: 10
-  attackType: 2
-  damage: 10
-  coolTime: 1.5
-  speed: 4
-  hp: 125
-  bulletCount: 1
-  cardNum: 10
+  character: 0
+  infor:
+    playerCardImage: {fileID: 21300000, guid: 47865087aa66a794894f58bea7b84d86, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: da2520e1f28917b4e9a75f09453d3e23, type: 3}
+    cardType: 10
+    attackType: 2
+    damage: 10
+    coolTime: 1.5
+    speed: 4
+    hp: 124
+    bulletCount: 3
+    attackCount: 1
+    cardNum: 11
+    maxCharge: 0
+    chargeStep: []
+    chargeDamage: []
+  relicInfor:
+    characterHealth: {fileID: 0}
+    size: 0

@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "CardSO", menuName ="Scriptable CardStats/Card",order = 1)]
+using static RelicSO.RelicType;
+
+[CreateAssetMenu(fileName = "CardSO", menuName ="Scriptable SO/Card",order = 1)]
 
 public class CardStats : ScriptableObject
 {
@@ -11,25 +14,56 @@ public class CardStats : ScriptableObject
 
     public enum AttackType
     {
-        Range,Melee,Magic,ShotGun
+        Range,Melee,Magic,ShotGun,Bow
     }
 
-    public Sprite playerCardImage,enemyCardImage;
-    public CardType cardType;
-    public AttackType attackType;
-    public float damage;
-    public float coolTime;
-    public float speed;
-    public float hp;
-    public int bulletCount;
-    public int cardNum;
+    public enum Character
+    {
+        card,playerAble
+    }
 
+    public Character character;
     
+   
+    [Serializable]
+    public struct Information
+    {
+        public Sprite playerCardImage, enemyCardImage;
+        public CardType cardType;
+        public AttackType attackType;
+        public float damage;
+        public float coolTime;
+        public float speed;
+        public float hp;
+        public int bulletCount;
+        public int attackCount;
+        public int cardNum;
+        [ShowIfEnum("attackType", (int)AttackType.Bow)] public float maxCharge;
+        public List<float> chargeStep;
+        public List<float> chargeDamage;
 
+    }
+    public Information infor;
 
+    [Serializable]
+    public struct RelicInfor
+    {
+        public Health characterHealth; 
+        public float size;
+        public bool isFlooring;
+    }
+    [ShowIfEnum("character", (int)Character.playerAble)] public RelicInfor relicInfor;
    
 
-   
+
+
+
+
+
+
+
+
+
 
 
 }

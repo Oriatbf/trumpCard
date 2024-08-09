@@ -22,27 +22,35 @@ public class TypeManager : MonoBehaviour
     {
        
         Inst = this;
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        
         
     }
 
-    public void TypeChange(int num,Transform character,bool isPlayer)
+    public void TypeChange(int num, Transform character, bool isPlayer,CardStats characterSO)
     {
+        if (isPlayer)
+        {
+            characterSO.infor = cardSO[num].infor;
+            Debug.Log(characterSO.infor.damage);
+        }
+       
+       
         float coolTime, speed, hp, damage;
         if (character.TryGetComponent(out SpriteRenderer sprite))
-            sprite.sprite = isPlayer ? cardSO[num].playerCardImage : cardSO[num].enemyCardImage;
+            sprite.sprite = isPlayer ? cardSO[num].infor.playerCardImage : cardSO[num].infor.enemyCardImage;
 
-        coolTime = cardSO[num].coolTime;
-        damage = cardSO[num].damage;
-        speed = cardSO[num].speed;
-        hp = cardSO[num].hp;
-
+        coolTime = cardSO[num].infor.coolTime;
+        damage = cardSO[num].infor.damage;
+        speed = cardSO[num].infor.speed;
+        hp = cardSO[num].infor.hp;
+       
         CharacterStats.Inst.StatsApply(speed,hp,coolTime,damage,isPlayer);
         switch (isPlayer)
         {
@@ -65,7 +73,7 @@ public class TypeManager : MonoBehaviour
         curCharacter = isPlayer ? player : enemy;
         Character character = curCharacter.GetComponent<Character>();
 
-        switch (cardSO[num].attackType)
+        switch (cardSO[num].infor.attackType)
         {
             case CardStats.AttackType.Melee:
                 character.SetWeapon(0);
