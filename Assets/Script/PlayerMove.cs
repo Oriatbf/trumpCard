@@ -23,7 +23,8 @@ public class PlayerMove : Character
 
     [Header ("모바일 조이스틱")]
     [SerializeField] bool mobileVersion;
-    [SerializeField] VariableJoystick moveJoyStick;
+    [SerializeField] VariableJoystick moveJoyStick,dirJoyStick;
+
 
     private void Start()
     {
@@ -98,7 +99,15 @@ public class PlayerMove : Character
         //Rotation
         Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
-        _dir = (mousePosition - transform.position).normalized;
+        if (mobileVersion)
+        {
+            _dir = new Vector3(dirJoyStick.Horizontal, dirJoyStick.Vertical, 0).normalized;
+        }
+        else
+        {
+            _dir = (mousePosition - transform.position).normalized;
+        }
+        
         _angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
         handle.transform.localScale = new Vector3(_dir.x<0?-1:1, 1);
