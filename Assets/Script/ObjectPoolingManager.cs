@@ -6,7 +6,7 @@ public class ObjectPoolingManager : MonoBehaviour
 {
     public static ObjectPoolingManager Inst;
     public GameObject bulletP,magicBallP,flooringBullet;
-    public GameObject[] bulletPools,magicBallPools,flooringBulletPools;
+    public GameObject[] bulletPools,magicBallPools,flooringPools;
 
     public Transform shootPoint;
     public int bulletIndex = 0,magicIndex = 0,f_bulletIndex = 0;
@@ -40,11 +40,12 @@ public class ObjectPoolingManager : MonoBehaviour
 
         GameObject f_bulletParent = new GameObject("fb_PoolingParent");
         f_bulletParent.transform.position = Vector3.zero;
-        flooringBulletPools = new GameObject[50];
-        for (int i = 0; i < flooringBulletPools.Length; i++)
+        flooringPools = new GameObject[100];
+        for (int i = 0; i < flooringPools.Length; i++)
         {
             GameObject f_bullet = Instantiate(flooringBullet, f_bulletParent.transform);
-            flooringBulletPools[i] = f_bullet;
+            f_bullet.transform.position = Vector3.zero;
+            flooringPools[i] = f_bullet;
             f_bullet.SetActive(false);
         }
     }

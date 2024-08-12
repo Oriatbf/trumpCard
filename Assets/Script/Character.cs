@@ -1,42 +1,67 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
+using VInspector;
 
 public class Character : MonoBehaviour
 {
-    [HideInInspector] public float coolTime, curCoolTime,speed;
+    [Tab("Input")]
     public Image attackCoolImage;
+    public float dashMaxCharging, dashSpeed,dashCool,dashInvTime;
+    [HideInInspector]public float curCharging,curDashCool;
     public GameObject[] weapons;
     public GameObject handle;
-    [HideInInspector] public Animator animator;
-     public Vector3 _dir;
-    [HideInInspector] public Transform opponent;
+    public CardStats characterSO;
+    public RelicSkills relicSkills;
+    public float flooringCool;
     public Transform shootPoint;
     public bool isPlayer;
-    public CardStats characterSO;
-    [HideInInspector]public Health health;
+
+    [Tab("Debug")]
+    public Vector3 _dir;
     public bool isFlooring;
-    public float flooringCool;
+
+     public float coolTime, curCoolTime,speed;
+    [HideInInspector] public Animator animator;
+     public Transform opponent;
+    [HideInInspector]public Health health;
+    [HideInInspector]public DashEffect dashEffect;
+    [HideInInspector] public bool isDashing;
+    Rigidbody2D rigid;
+
+
 
     private void Awake()
     {
+        rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();
         health= GetComponent<Health>();
+        dashEffect = GetComponent<DashEffect>();
+        relicSkills = GetComponent<RelicSkills>();
+        curCharging = dashMaxCharging;
+
         characterSO.relicInfor.characterHealth= health;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void StartRelicSkill()
     {
-        
+        relicSkills.StartSkill();
+        relicSkills.StartRatioSkill();
+    }
+
+    // Start is called before the first frame update
+    public virtual void Start()
+    {
+        StartRelicSkill();
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        
+        if(curDashCool> 0) curDashCool -= Time.deltaTime;
     }
 
     public void SetStat()
@@ -175,4 +200,21 @@ public class Character : MonoBehaviour
             flooringCool-=Time.deltaTime;
         }
     }
+
+    public void DashMove(Vector2 dir)
+    {
+        curCharging--;
+        isDashing = true;
+        curDashCool = dashCool;
+        health.InvTime(dashInvTime);
+        rigid.velocity = dir * dashSpeed;
+        dashEffect.ActiveDashEffect(0.2f);
+        DOVirtual.DelayedCall(0.2f, () =>
+        {
+            rigid.velocity = Vector2.zero;
+            isDashing= false;
+
+            });
+    }
+
 }

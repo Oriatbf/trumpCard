@@ -1,63 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using VInspector;
 
 public class RelicSkills : MonoBehaviour
 {
-    [SerializeField] List<RelicSO> relics= new List<RelicSO>();
+    [Tab ("Relic")]
+    public List<RelicSO> relics= new List<RelicSO>();
 
     public enum CharacterType {Player ,Enemy };
+    
+    [Tab ("Player")]
     public CharacterType characterType;
+    [SerializeField] GameObject relicImagePrefab;
+    [SerializeField] Transform iconCanvas;
+    private int curRelicCount;
 
-    PlayerMove playerMove;
+
+    Character character;
     private void Awake()
     {
-        playerMove= GetComponent<PlayerMove>();
+        character= GetComponent<Character>();
+    }
+
+    public void SetRelicIcon() 
+    {
+        for(int i = curRelicCount; i < relics.Count; i++)
+        {
+            GameObject icon = Instantiate(relicImagePrefab,iconCanvas);
+            icon.GetComponent<Image>().sprite = relics[i].relicIcon;
+        }
+        curRelicCount = relics.Count;
+     
     }
 
     public void StartSkill()
     {
-        foreach(RelicSO relic in relics)
+        if (relics.Count > 0)
         {
-            foreach(RelicSO.RelicType relicType in relic.relicType)
+            foreach (RelicSO relic in relics)
             {
-                if (relicType.activeType == RelicSO.RelicType.ActiveType.Start)
+                foreach (RelicSO.RelicType relicType in relic.relicType)
                 {
-                    relic.StartRelicActive(playerMove.characterSO,relicType);
+                    if (relicType.activeType == RelicSO.RelicType.ActiveType.Start)
+                    {
+                        relic.StartRelicActive(character.characterSO, relicType);
+                    }
                 }
+
             }
-           
-        }      
+        }
+       
     }
 
     public void StartRatioSkill()
     {
-        foreach (RelicSO relic in relics)
+        if(relics.Count > 0)
         {
-            foreach (RelicSO.RelicType relicType in relic.relicType)
+            foreach (RelicSO relic in relics)
             {
-                if (relicType.activeType == RelicSO.RelicType.ActiveType.Start)
+                foreach (RelicSO.RelicType relicType in relic.relicType)
                 {
-                    relic.StartRatioRelicActive(playerMove.characterSO, relicType);
+                    if (relicType.activeType == RelicSO.RelicType.ActiveType.Start)
+                    {
+                        relic.StartRatioRelicActive(character.characterSO, relicType);
+                    }
                 }
-            }
 
-        }
-    }
-    public void MovingSkill()
-    {
-        foreach (RelicSO relic in relics)
-        {
-            foreach (RelicSO.RelicType relicType in relic.relicType)
-            {
-                if (relicType.activeType == RelicSO.RelicType.ActiveType.Moving)
-                {
-                    relic.Flooring(transform, relicType);
-                }
             }
-
         }
+       
     }
+   
 
 
 

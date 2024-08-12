@@ -4,25 +4,28 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using static RelicSO.RelicType;
 
 [CreateAssetMenu(fileName = "RelicSO", menuName = "Scriptable SO/Relic", order = 1)]
 
 public class RelicSO : ScriptableObject
 {
     public string relicName;
+    public Sprite relicIcon;
+    public string relicInfor;
     [Serializable]
     public struct RelicType
     {
         public enum ActiveType { Start, Attack, Reload,Moving,Update };      
         public enum SequenceType { Immediately,Later };
-        public enum AddtionType { DamageType, CoolTimeType,SpeedType,HpType,ProjectileType};
-
-
-        public enum DamageRelic { Damage, RatioDamage, DamInPropotionToSpeed , LoseHpUpDam };
-        public enum CoolTimeRelic { CoolTime };
-        public enum HpRelic { AutoHeal , MaxHp };
-        public enum SpeedRelic { Speed, LoseHpUpSpeed };
-        public enum ProjectileRelic { projectileSize, projectileAdd };
+        public enum AddtionType 
+        {
+            Add_Dam,Add_Per_Dam,loseHp_Per_Dam,Flooring,Speed_Per_Dam,Critical_Value,
+            Add_Cool,
+            Add_MaxHp,AutoHeal,
+            Add_Speed,loseHp_Per_Speed,
+            P_Size,P_Count
+        };
 
         public ActiveType activeType;
         [ShowIfEnum("activeType", (int)ActiveType.Start)]
@@ -30,48 +33,43 @@ public class RelicSO : ScriptableObject
         public AddtionType addtionType;
         
 
-        [ShowIfEnum("addtionType", (int)AddtionType.DamageType)]
-        public DamageRelic damageRelic;
-        [ShowIfEnum("addtionType", (int)AddtionType.CoolTimeType)] 
-        public CoolTimeRelic coolTimeRelic;
-        [ShowIfEnum("addtionType", (int)AddtionType.HpType)] 
-        public HpRelic hpRelic;
-        [ShowIfEnum("addtionType", (int)AddtionType.SpeedType)] 
-        public SpeedRelic speedRelic;
-        [ShowIfEnum("addtionType", (int)AddtionType.ProjectileType)] 
-        public ProjectileRelic projectileRelic;
+
+        [ShowIfEnum("addtionType", (int)AddtionType.Add_Dam)]
+        public float add_Dam;
+        [ShowIfEnum("addtionType", (int)AddtionType.Add_Per_Dam)]
+        public float add_Per_Dam;
+        [ShowIfEnum("addtionType", (int)AddtionType.loseHp_Per_Dam)]
+        public float L_P_D_Hp, loseHp_Per_Dam;
+        [ShowIfEnum("addtionType", (int)AddtionType.Flooring)]
+        public float floorTickDamage;
+        [ShowIfEnum("addtionType", (int)AddtionType.Flooring)]
+        public bool isFloor;
+        [ShowIfEnum("addtionType", (int)AddtionType.Speed_Per_Dam)]
+        public float speed_Per_Dam;
+        [ShowIfEnum("addtionType", (int)AddtionType.Critical_Value)]
+        public int critical_Value;
 
 
-        [ShowIfEnum("addtionType", (int)AddtionType.DamageType)]
-        public float addtionDamage;
-        [ShowIfEnum("addtionType", (int)AddtionType.DamageType)]
-        public float addtionRatio;
-        [ShowIfEnum("addtionType", (int)AddtionType.DamageType)]
-        public float addtionDamageRatio;
-        [ShowIfEnum("addtionType", (int)AddtionType.DamageType)]
-        public float loseHp, loseHpPerDam;
+        [ShowIfEnum("addtionType", (int)AddtionType.Add_Cool)]
+        public float add_Cool;
 
+        [ShowIfEnum("addtionType", (int)AddtionType.Add_MaxHp)]
+        public float add_MaxHp;
+        [ShowIfEnum("addtionType", (int)AddtionType.AutoHeal)]
+        public bool isAutoHeal;
+        [ShowIfEnum("addtionType", (int)AddtionType.AutoHeal)]
+        public float autoHeal_perValue;
 
-        [ShowIfEnum("addtionType", (int)AddtionType.CoolTimeType)]
-        public float addtionCoolTime;
+        [ShowIfEnum("addtionType", (int)AddtionType.Add_Speed)]
+        public float add_Speed;
+        [ShowIfEnum("addtionType", (int)AddtionType.loseHp_Per_Speed)]
+        public float L_P_S_Hp, loseHp_Per_Speed;
 
-        [ShowIfEnum("addtionType", (int)AddtionType.HpType)]
-        public float addtionMaxHp;
-        [ShowIfEnum("addtionType", (int)AddtionType.HpType)]
-        public float perValue;
+        [ShowIfEnum("addtionType", (int)AddtionType.P_Size)]
+        public float p_Size;
+        [ShowIfEnum("addtionType", (int)AddtionType.P_Count)]
+        public int p_Count;
 
-        [ShowIfEnum("addtionType", (int)AddtionType.SpeedType)]
-        public float addtionSpeed;
-        [ShowIfEnum("addtionType", (int)AddtionType.SpeedType)]
-        public float loseHp2, loseHpPerSpeed;
-
-        [ShowIfEnum("addtionType", (int)AddtionType.ProjectileType)]
-        public float pSize;
-        [ShowIfEnum("addtionType", (int)AddtionType.ProjectileType)]
-        public int pCount;
-
-
-        public GameObject floor;
     }
 
     public RelicType[] relicType;
@@ -95,45 +93,36 @@ public class RelicSO : ScriptableObject
 
     public void Increase(CardStats so,RelicType relicType)
     {
-        switch (relicType.damageRelic)
+        switch (relicType.addtionType)
         {
-            case RelicType.DamageRelic.Damage:
-                so.infor.damage += relicType.addtionDamage;
+            case AddtionType.Add_Dam:
+                so.infor.damage += relicType.add_Dam;
                 break;
-        }
-
-        switch (relicType.coolTimeRelic)
-        {
-            case RelicType.CoolTimeRelic.CoolTime:
-                so.infor.coolTime += relicType.addtionCoolTime;
+            case AddtionType.Flooring:
+                so.relicInfor.isFlooring = relicType.isFloor;
+                so.relicInfor.floorTickDamage = relicType.floorTickDamage;
                 break;
-        }
-
-        switch (relicType.hpRelic)
-        {
-            case RelicType.HpRelic.MaxHp:
-                so.infor.hp += relicType.addtionMaxHp;
+            case AddtionType.Add_Cool:
+                so.infor.coolTime += relicType.add_Cool;
                 break;
-            case RelicType.HpRelic.AutoHeal:
-                so.relicInfor.characterHealth.autoHeal = true;
-                so.relicInfor.characterHealth.autoHealSpeed = relicType.perValue;
+            case AddtionType.Add_MaxHp:
+                so.infor.hp += relicType.add_MaxHp;
                 break;
-        }
-
-        switch (relicType.speedRelic)
-        {
-            case RelicType.SpeedRelic.Speed:
-                so.infor.speed += relicType.addtionSpeed;
+            case AddtionType.AutoHeal:
+                so.relicInfor.characterHealth.autoHeal = relicType.isAutoHeal;
+                so.relicInfor.characterHealth.autoHealSpeed = relicType.autoHeal_perValue;
                 break;
-        }
-
-        switch (relicType.projectileRelic)
-        {
-            case RelicType.ProjectileRelic.projectileSize:
-                so.relicInfor.size = relicType.pSize;
+            case AddtionType.Add_Speed:
+                so.infor.speed += relicType.add_Speed;
                 break;
-            case RelicType.ProjectileRelic.projectileAdd:
-                so.infor.attackCount += relicType.pCount;
+            case AddtionType.P_Size:
+                so.relicInfor.size = relicType.p_Size;
+                break;
+            case AddtionType.P_Count:
+                so.infor.attackCount += relicType.p_Count;
+                break;
+            case AddtionType.Critical_Value:
+                so.relicInfor.ciritical += relicType.critical_Value;
                 break;
         }
 
@@ -142,40 +131,34 @@ public class RelicSO : ScriptableObject
 
     public void UpdateRelic(CardStats so, RelicType relicType)
     {
-        switch (relicType.damageRelic)
+        switch (relicType.addtionType)
         {
-            case RelicType.DamageRelic.LoseHpUpDam:
-                so.infor.damage +=  Mathf.Floor((so.relicInfor.characterHealth.maxHp-so.relicInfor.characterHealth.curHp)/relicType.loseHp) * relicType.loseHpPerDam;
-                break;        
-        }
-
-        switch (relicType.speedRelic)
-        {
-            case RelicType.SpeedRelic.LoseHpUpSpeed:
-                so.infor.speed += Mathf.Floor((so.relicInfor.characterHealth.maxHp - so.relicInfor.characterHealth.curHp) / relicType.loseHp2) * relicType.loseHpPerSpeed;
+            case AddtionType.loseHp_Per_Dam:
+                so.infor.damage +=  Mathf.Floor((so.relicInfor.characterHealth.maxHp-so.relicInfor.characterHealth.curHp)/relicType.L_P_D_Hp) * relicType.loseHp_Per_Dam;
+                break;
+            case AddtionType.loseHp_Per_Speed:
+                so.infor.speed += Mathf.Floor((so.relicInfor.characterHealth.maxHp - so.relicInfor.characterHealth.curHp) / relicType.L_P_S_Hp) * relicType.loseHp_Per_Speed;
                 break;
         }
+
+     
 
     }
 
     public void RatioIncrease(CardStats so, RelicType relicType)
     {
-        switch (relicType.damageRelic)
+        switch (relicType.addtionType)
         {
-            case RelicType.DamageRelic.DamInPropotionToSpeed:
-                so.infor.damage += so.infor.speed * relicType.addtionRatio * 0.01f;
+            case AddtionType.Speed_Per_Dam:
+                so.infor.damage += so.infor.speed * relicType.speed_Per_Dam * 0.01f;
                 break;
-            case RelicType.DamageRelic.RatioDamage:
-                so.infor.damage += so.infor.damage * relicType.addtionDamageRatio * 0.01f;
+            case AddtionType.Add_Per_Dam:
+                so.infor.damage += so.infor.damage * relicType.add_Per_Dam * 0.01f;
                 break;
         }
    
     }
 
-    public void Flooring(Transform trans,RelicType relicType)
-    {
-        GameObject a= Instantiate(relicType.floor, trans.position, Quaternion.identity);
-        Destroy(a, 0.5f);
-    }
+   
 
 }

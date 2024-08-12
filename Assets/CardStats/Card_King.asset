@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb9d6f3c5a76504696d91719996c368, type: 3}
   m_Name: Card_King
   m_EditorClassIdentifier: 
+  character: 0
   infor:
-    playerCardImage: {fileID: 21300000, guid: 89a0f567fb613e74b8a3730aa35cf33f, type: 3}
-    enemyCardImage: {fileID: 21300000, guid: 36240474ad18d374080e4e9f69e037b1, type: 3}
+    playerCardImage: {fileID: 21300000, guid: dbced43107f803a42881ec9141105a3d, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: 9ce84196849d68c4381c5021eed4b0ec, type: 3}
     cardType: 11
     attackType: 2
     damage: 10
@@ -24,3 +25,10 @@ MonoBehaviour:
     bulletCount: 1
     attackCount: 1
     cardNum: 12
+    maxCharge: 0
+    chargeStep: []
+    chargeDamage: []
+  relicInfor:
+    characterHealth: {fileID: 0}
+    size: 0
+    isFlooring: 0

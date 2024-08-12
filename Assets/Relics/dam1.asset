@@ -13,26 +13,24 @@ MonoBehaviour:
   m_Name: dam1
   m_EditorClassIdentifier: 
   relicName: 
+  relicIcon: {fileID: 21300000, guid: 9d517f50438a0aa4e8a4ba37e23dae2d, type: 3}
   relicType:
   - activeType: 0
     sequenceType: 0
-    addtionType: 0
-    damageRelic: 0
-    coolTimeRelic: 0
-    hpRelic: 0
-    speedRelic: 0
-    projectileRelic: 0
-    addtionDamage: 10
-    addtionRatio: 0
-    addtionDamageRatio: 0
-    loseHp: 0
-    loseHpPerDam: 0
-    addtionCoolTime: 0
-    addtionMaxHp: 0
-    perValue: 0
-    addtionSpeed: 0
-    loseHp2: 0
-    loseHpPerSpeed: 0
-    pSize: 1
-    pCount: 0
-    floor: {fileID: 0}
+    addtionType: 3
+    add_Dam: 0
+    add_Per_Dam: 0
+    L_P_D_Hp: 0
+    loseHp_Per_Dam: 0
+    floorTickDamage: 3
+    isFloor: 1
+    speed_Per_Dam: 0
+    add_Cool: 0
+    add_MaxHp: 0
+    isAutoHeal: 0
+    autoHeal_perValue: 0
+    add_Speed: 0
+    L_P_S_Hp: 0
+    loseHp_Per_Speed: 0
+    p_Size: 0
+    p_Count: 0

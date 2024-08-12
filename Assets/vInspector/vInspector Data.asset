@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7915df4cd4da490ab52fc8fa9ee9127, type: 3}
+  m_Name: vInspector Data
+  m_EditorClassIdentifier: 
+  items:
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-ef530e6e81593284f90e4ec3ca24d4b7-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: ef530e6e81593284f90e4ec3ca24d4b7, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1056061794
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-059270d4a87d5774798fbc69475667c4-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: 059270d4a87d5774798fbc69475667c4, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1024921249
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-e2dd47e4918d5c642a219ddd17065b60-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: e2dd47e4918d5c642a219ddd17065b60, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1063706920
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-50163d393ffab1c4a93857f8b9feafab-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: 50163d393ffab1c4a93857f8b9feafab, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1058324695
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-8c8f0b0d7f3348841befa887b743d478-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: 8c8f0b0d7f3348841befa887b743d478, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1041319993
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-e5d290707b2fce14b81d3d4c1b012a4d-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: e5d290707b2fce14b81d3d4c1b012a4d, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1062038702
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-4989b637f8faabe46aeb1d6273b62c07-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: 4989b637f8faabe46aeb1d6273b62c07, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1062189000
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-a2b3156239933824f8130ada708b10b4-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: a2b3156239933824f8130ada708b10b4, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1050883461
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-bf5bc2cbf5c6bdc4983543584e6764af-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: bf5bc2cbf5c6bdc4983543584e6764af, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1047391530
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-b3158a39f9258e045b73d7f1a54ae6fe-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: b3158a39f9258e045b73d7f1a54ae6fe, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1052335577
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-a25000686df4ec04d9948dcf330f8c3a-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: a25000686df4ec04d9948dcf330f8c3a, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1032226625
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-3c256d62df8b1db4da9c8b9389c0c249-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: 3c256d62df8b1db4da9c8b9389c0c249, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1064495460
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-3-0dde03a19e96fdc40b7bddba56f5d0c2-11400000-0
+    _typeString: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: 0dde03a19e96fdc40b7bddba56f5d0c2, type: 2}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1062681438

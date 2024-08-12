@@ -5,55 +5,57 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
 using UnityEngine.UI;
+using VInspector;
 
 public class PlayerMove : Character
 {
-    public RelicSkills relicSkills;
+    [Tab("Input")]
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private CardStats card;
-    [SerializeField] float maxCharging,dashSpeed;
-    private float _angle,_curCharging;
+  
 
-    Rigidbody2D rigid;
-    DashEffect dashEffect;
-
-    private Camera _camera;
-
+    [Tab("Debug")]
     [SerializeField] Vector3 angleVec;
 
-    [Header ("모바일 조이스틱")]
+    private float _angle,_curCharging;
+
+    
+    private Camera _camera;
+
+   
+
+    [Tab("Mobile")]
     [SerializeField] bool mobileVersion;
     [SerializeField] VariableJoystick moveJoyStick,dirJoyStick;
 
 
-    private void Start()
+    public override void Start()
     {
-        dashEffect= GetComponent<DashEffect>();
-        rigid = GetComponent<Rigidbody2D>();
+      
+      
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
         TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
-        relicSkills = GetComponent<RelicSkills>();
-        relicSkills.StartSkill();
-        relicSkills.StartRatioSkill();
-
         SetStat();
+
+        base.Start();
+        relicSkills.SetRelicIcon();
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if(Input.GetKeyDown(KeyCode.N))
         {
             health.OnDamage(10);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift)&&curCharging>0 && curDashCool<=0)
         {
-            DashMove();
+            DashMove(angleVec);
         }
 
-        relicSkills.MovingSkill();
 
         Move();
 
@@ -120,8 +122,8 @@ public class PlayerMove : Character
         if (Input.GetMouseButton(0))
         {
             _curCharging += Time.deltaTime;
-            if (_curCharging >= maxCharging) _curCharging = maxCharging;
-            attackCoolImage.fillAmount = _curCharging / maxCharging;
+            if (_curCharging >= dashMaxCharging) _curCharging = dashMaxCharging;
+            attackCoolImage.fillAmount = _curCharging / dashMaxCharging;
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -170,13 +172,7 @@ public class PlayerMove : Character
     }
 
 
-    public void DashMove()
-    {
-        rigid.velocity = new Vector2(angleVec.x,angleVec.y) *dashSpeed;
-        dashEffect.ActiveDashEffect(0.2f);
-        DOVirtual.DelayedCall(0.2f, () => rigid.velocity = Vector2.zero) ;
-    }
-
+   
 
     private void OnDrawGizmos()
     {

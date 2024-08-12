@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 0
   infor:
-    playerCardImage: {fileID: 21300000, guid: 47865087aa66a794894f58bea7b84d86, type: 3}
-    enemyCardImage: {fileID: 21300000, guid: da2520e1f28917b4e9a75f09453d3e23, type: 3}
+    playerCardImage: {fileID: 21300000, guid: 815d9a85ae11d9d449d714be033990d3, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: f023624f699b67e4c8187f0e79138d95, type: 3}
     cardType: 10
     attackType: 2
     damage: 10
@@ -31,3 +31,4 @@ MonoBehaviour:
   relicInfor:
     characterHealth: {fileID: 0}
     size: 0
+    isFlooring: 0

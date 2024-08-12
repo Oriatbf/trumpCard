@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class Projectile : MonoBehaviour
 {
+    public bool isPlayerBullet;
    
     public void ActiveFalse()
     {
@@ -14,6 +15,7 @@ public class Projectile : MonoBehaviour
 
     public void Return(Rigidbody2D rigid)
     {
+        Debug.Log("true");
         DOVirtual.DelayedCall(2f, () =>
         {
             rigid.velocity = -rigid.velocity;

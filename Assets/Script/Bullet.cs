@@ -6,7 +6,7 @@ public class Bullet : Projectile
 {
     public Rigidbody2D rigid;
     public float damage;
-    [SerializeField] bool isPlayerBullet,isReturn;
+    public bool isReturn;
     Vector2 bulletDir;
 
     private void Awake()
@@ -19,7 +19,7 @@ public class Bullet : Projectile
         rigid.velocity = Vector2.zero;
         rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
        
-        Debug.Log(transform.gameObject.activeSelf);
+       
     }
 
 
@@ -27,19 +27,19 @@ public class Bullet : Projectile
     {
         
         rigid.velocity = Vector2.zero;
-       
 
-        
+        rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
+
     }
 
     public void SetDir(Vector2 dir,bool isPlayerBullet,bool isReturn,float damage,float scale)
     {
        transform.localScale *= scale;
-
         bulletDir = dir.normalized;
+        this.isReturn = isReturn;
         this.damage= damage;
         this.isPlayerBullet = isPlayerBullet;
-        rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
+       
         if (!isReturn)
             ActiveFalse();
         else
@@ -54,20 +54,20 @@ public class Bullet : Projectile
         switch (collision.tag)
         {
             case "Wall":
-                gameObject.SetActive(false);
+                gameObject.SetActive(isReturn);
                 break;
             case "Enemy":
                 if (isPlayerBullet)
                 {
                     collision.gameObject.GetComponent<Health>().OnDamage(damage);
-                    gameObject.SetActive(false);
+                    gameObject.SetActive(isReturn);
                 }
                 break;
             case "Player":
                 if (!isPlayerBullet)
                 {
                     collision.gameObject.GetComponent<Health>().OnDamage(damage);
-                    gameObject.SetActive(false);
+                    gameObject.SetActive(isReturn);
                 }
                 break;
 

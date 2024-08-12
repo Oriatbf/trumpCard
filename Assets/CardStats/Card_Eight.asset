@@ -12,15 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb9d6f3c5a76504696d91719996c368, type: 3}
   m_Name: Card_Eight
   m_EditorClassIdentifier: 
+  character: 0
   infor:
-    playerCardImage: {fileID: 21300000, guid: e93d9caa555b9804985dd609b4fbabd7, type: 3}
-    enemyCardImage: {fileID: 21300000, guid: a77e02a961c71e146842ca0e1292ac2a, type: 3}
+    playerCardImage: {fileID: 21300000, guid: fe54ee0361e831843bfade1b675a6355, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: d265873cd95b0134aa0da35ccd8cf17d, type: 3}
     cardType: 6
-    attackType: 1
-    damage: 9.5
-    coolTime: 0.7
-    speed: 4
-    hp: 120
+    attackType: 0
+    damage: 3.5
+    coolTime: 1
+    speed: 3.5
+    hp: 125
     bulletCount: 1
-    attackCount: 1
+    attackCount: 3
     cardNum: 7
+    maxCharge: 0
+    chargeStep: []
+    chargeDamage: []
+  relicInfor:
+    characterHealth: {fileID: 0}
+    size: 0
+    isFlooring: 0
+    floorTickDamage: 0
