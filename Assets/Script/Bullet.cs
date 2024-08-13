@@ -32,14 +32,18 @@ public class Bullet : Projectile
 
     }
 
-    public void SetDir(Vector2 dir,bool isPlayerBullet,bool isReturn,float damage,float scale)
+    public void SetDir(Vector2 dir,bool isPlayerBullet,bool isReturn,float damage,float scale,int bulletIndex)
     {
        transform.localScale *= scale;
         bulletDir = dir.normalized;
         this.isReturn = isReturn;
         this.damage= damage;
         this.isPlayerBullet = isPlayerBullet;
-       
+        for(int i = 0; i< transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+        transform.GetChild(bulletIndex).gameObject.SetActive(true);
         if (!isReturn)
             ActiveFalse();
         else

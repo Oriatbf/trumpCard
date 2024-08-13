@@ -32,6 +32,7 @@ public class CardStats : ScriptableObject
         public Sprite playerCardImage, enemyCardImage;
         public CardType cardType;
         public AttackType attackType;
+        public int bulletTypeIndex;
         public float damage;
         public float coolTime;
         public float speed;

@@ -100,7 +100,7 @@ public class EnemyMove : Character
             Collider2D projectTileCol = Physics2D.OverlapCircle(transform.position, dashRange);
             if (projectTileCol.transform.CompareTag("ProjectTile"))
             {
-                if (projectTileCol.GetComponent<Projectile>().isPlayerBullet)
+                if (projectTileCol.GetComponentInParent<Projectile>().isPlayerBullet)
                 {
                     Vector2 dir = transform.position - projectTileCol.transform.position;
                     if (curCharging > 0 && curDashCool <= 0)

@@ -32,4 +32,5 @@ public class RelicLoot : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<RelicSkills>().relics.Add(curRelic);
     }
+
 }

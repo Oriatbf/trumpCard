@@ -16,6 +16,7 @@ public class RelicSO : ScriptableObject
     [Serializable]
     public struct RelicType
     {
+        
         public enum ActiveType { Start, Attack, Reload,Moving,Update };      
         public enum SequenceType { Immediately,Later };
         public enum AddtionType 

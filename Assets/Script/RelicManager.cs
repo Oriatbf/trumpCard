@@ -6,11 +6,16 @@ using UnityEngine;
 public class RelicManager : MonoBehaviour
 {
     public List<RelicSO> relicSOs = new List<RelicSO>();
+    [SerializeField] private Transform relicLootsLayout;
     public List<GameObject> relicLoots = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
+        for(int i = 0;i< relicLootsLayout.childCount; i++)
+        {
+            relicLoots.Add(relicLootsLayout.GetChild(i).gameObject);
+        }
         RandomSO();
     }
 

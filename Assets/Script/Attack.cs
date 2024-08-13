@@ -22,7 +22,7 @@ public class Attack : MonoBehaviour
             DOVirtual.DelayedCall(delay, ()=>
             {
                 Transform bulletTrans = pool.bulletPools[pool.bulletIndex].transform;
-                bulletTrans.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical( charSO), charSO.relicInfor.size);
+                bulletTrans.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical( charSO), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
                 bulletTrans.gameObject.SetActive(true);
                 bulletTrans.position = shootPoint.position;
                 bulletTrans.rotation = curTrans.rotation;
@@ -53,7 +53,7 @@ public class Attack : MonoBehaviour
         {
             DOVirtual.DelayedCall(delay, () =>
             {
-                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO), charSO.relicInfor.size);
+                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO), charSO.relicInfor.size, charSO.infor.bulletTypeIndex);
                 pool.bulletPools[pool.bulletIndex].SetActive(true);
                 pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
                 pool.bulletPools[pool.bulletIndex].transform.rotation = curTrans.rotation;
@@ -79,7 +79,7 @@ public class Attack : MonoBehaviour
                     Vector2 spreadDir = Quaternion.Euler(0, 0, angle) * dir; // Apply the angle to the direction vector
 
                     // Activate and set up the bullet
-                    pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(spreadDir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO), charSO.relicInfor.size);
+                    pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(spreadDir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
 
                     pool.bulletPools[pool.bulletIndex].SetActive(true);
                     pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
@@ -122,7 +122,7 @@ public class Attack : MonoBehaviour
                 pool.bulletPools[pool.bulletIndex].SetActive(true);
                 pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
                 pool.bulletPools[pool.bulletIndex].transform.rotation = curTrans.rotation;
-                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO),1);
+                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO),1,0);
                 pool.bulletIndex++;
                 if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
             });

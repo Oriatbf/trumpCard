@@ -18,6 +18,7 @@ MonoBehaviour:
     enemyCardImage: {fileID: 21300000, guid: d265873cd95b0134aa0da35ccd8cf17d, type: 3}
     cardType: 6
     attackType: 0
+    bulletTypeIndex: 1
     damage: 3.5
     coolTime: 1
     speed: 3.5
@@ -25,6 +26,7 @@ MonoBehaviour:
     bulletCount: 1
     attackCount: 3
     cardNum: 7
+    projectileTurnback: 0
     maxCharge: 0
     chargeStep: []
     chargeDamage: []
@@ -33,3 +35,4 @@ MonoBehaviour:
     size: 0
     isFlooring: 0
     floorTickDamage: 0
+    ciritical: 0
