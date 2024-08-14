@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class EnemyMove : Character
 {
@@ -84,6 +85,7 @@ public class EnemyMove : Character
         }
       
     }
+   
 
 
     private void Move()

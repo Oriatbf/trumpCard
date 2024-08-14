@@ -18,7 +18,7 @@ MonoBehaviour:
   relicType:
   - activeType: 0
     sequenceType: 0
-    addtionType: 0
+    addtionType: 8
     add_Dam: 0
     add_Per_Dam: 0
     L_P_D_Hp: 0
@@ -29,8 +29,8 @@ MonoBehaviour:
     critical_Value: 0
     add_Cool: 0
     add_MaxHp: 0
-    isAutoHeal: 0
-    autoHeal_perValue: 0
+    isAutoHeal: 1
+    autoHeal_perValue: 0.1
     add_Speed: 0
     L_P_S_Hp: 0
     loseHp_Per_Speed: 0

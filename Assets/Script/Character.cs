@@ -63,6 +63,11 @@ public class Character : MonoBehaviour
     {
         if(curDashCool> 0) curDashCool -= Time.deltaTime;
     }
+    private void LateUpdate()
+    {
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -8, 8), Mathf.Clamp(transform.position.y, -4.2f, 3));
+    }
+
 
     public void SetStat()
     {
