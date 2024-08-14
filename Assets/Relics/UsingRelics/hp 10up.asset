@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ff67ea010a81d34886ec4200701e439, type: 3}
-  m_Name: DamageIncrease
+  m_Name: hp 10up
   m_EditorClassIdentifier: 
-  relicName: "\uC544\uB4DC\uB85C\uD540"
+  relicName: "\uAC74\uAC15\uC8FC\uC2A4"
   relicIcon: {fileID: 0}
-  relicInfor: "\uACF5\uACA9\uB825\uC774 3 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicInfor: "\uCD5C\uB300\uCCB4\uB825\uC774 10 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   relicType:
   - activeType: 0
     sequenceType: 0
-    addtionType: 0
-    add_Dam: 3
+    addtionType: 7
+    add_Dam: 0
     add_Per_Dam: 0
     L_P_D_Hp: 0
     loseHp_Per_Dam: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
     speed_Per_Dam: 0
     critical_Value: 0
     add_Cool: 0
-    add_MaxHp: 0
+    add_MaxHp: 10
     isAutoHeal: 0
     autoHeal_perValue: 0
     add_Speed: 0

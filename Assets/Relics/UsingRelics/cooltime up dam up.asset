@@ -10,16 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ff67ea010a81d34886ec4200701e439, type: 3}
-  m_Name: DamageIncrease
+  m_Name: cooltime up dam up
   m_EditorClassIdentifier: 
-  relicName: "\uC544\uB4DC\uB85C\uD540"
+  relicName: "\uBB35\uC9C1\uD55C \uD55C\uBC29"
   relicIcon: {fileID: 0}
-  relicInfor: "\uACF5\uACA9\uB825\uC774 3 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicInfor: "\uACF5\uACA9\uC18D\uB3C4\uAC00 1\uCD08 \uC99D\uAC00\uD558\uB294 \uB300\uC2E0
+    \uACF5\uACA9\uB825\uC774 4 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   relicType:
   - activeType: 0
     sequenceType: 0
+    addtionType: 6
+    add_Dam: 0
+    add_Per_Dam: 0
+    L_P_D_Hp: 0
+    loseHp_Per_Dam: 0
+    floorTickDamage: 0
+    isFloor: 0
+    speed_Per_Dam: 0
+    critical_Value: 0
+    add_Cool: 1
+    add_MaxHp: 0
+    isAutoHeal: 0
+    autoHeal_perValue: 0
+    add_Speed: 0
+    L_P_S_Hp: 0
+    loseHp_Per_Speed: 0
+    p_Size: 0
+    p_Count: 0
+  - activeType: 0
+    sequenceType: 0
     addtionType: 0
-    add_Dam: 3
+    add_Dam: 4
     add_Per_Dam: 0
     L_P_D_Hp: 0
     loseHp_Per_Dam: 0

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ff67ea010a81d34886ec4200701e439, type: 3}
-  m_Name: DamageIncrease
+  m_Name: cooltime down
   m_EditorClassIdentifier: 
-  relicName: "\uC544\uB4DC\uB85C\uD540"
+  relicName: "\uB354 \uBE60\uB974\uAC8C"
   relicIcon: {fileID: 0}
-  relicInfor: "\uACF5\uACA9\uB825\uC774 3 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicInfor: "\uACF5\uACA9\uC18D\uB3C4\uAC00 0.5\uAC00 \uAC10\uC18C\uD569\uB2C8\uB2E4"
   relicType:
   - activeType: 0
     sequenceType: 0
-    addtionType: 0
-    add_Dam: 3
+    addtionType: 6
+    add_Dam: 0
     add_Per_Dam: 0
     L_P_D_Hp: 0
     loseHp_Per_Dam: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
     isFloor: 0
     speed_Per_Dam: 0
     critical_Value: 0
-    add_Cool: 0
+    add_Cool: -0.5
     add_MaxHp: 0
     isAutoHeal: 0
     autoHeal_perValue: 0
