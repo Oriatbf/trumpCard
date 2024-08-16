@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlooringCol : MonoBehaviour
+public class FlooringCol : Flooring
 {
     LineRenderer lineRenderer;
     PolygonCollider2D polygonCollider;
@@ -11,11 +11,10 @@ public class FlooringCol : MonoBehaviour
     [SerializeField] float pointSpacing = 0.1f; // 두 점 사이의 최소 거리
     [SerializeField] float lineThickness = 0.1f; // 라인의 두께
     [SerializeField] float destroyTime; //사라지는 시간
-    [HideInInspector]public  float tickDamage;
+  
     private List<Vector2> points;
     private List<float> pointTimes;
     private Vector3 lastPoint;
-    [HideInInspector]public bool isPlayerOwner;
 
 
     void Start()

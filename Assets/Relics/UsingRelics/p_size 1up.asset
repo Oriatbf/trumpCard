@@ -18,7 +18,7 @@ MonoBehaviour:
   relicType:
   - activeType: 0
     sequenceType: 0
-    addtionType: 12
+    addtionType: 11
     add_Dam: 0
     add_Per_Dam: 0
     L_P_D_Hp: 0
@@ -34,5 +34,5 @@ MonoBehaviour:
     add_Speed: 0
     L_P_S_Hp: 0
     loseHp_Per_Speed: 0
-    p_Size: 0
+    p_Size: 2
     p_Count: 1

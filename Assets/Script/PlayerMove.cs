@@ -39,31 +39,36 @@ public class PlayerMove : Character
         SetStat();
 
         base.Start();
-        relicSkills.SetRelicIcon();
+
+        
     }
 
     // Update is called once per frame
     public override void Update()
     {
-        base.Update();
-        if(Input.GetKeyDown(KeyCode.N))
+        if (GameManager.Inst.isGameStart)
         {
-            health.OnDamage(10);
+            base.Update();
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                health.OnDamage(10);
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && curCharging > 0 && curDashCool <= 0)
+            {
+                DashMove(angleVec);
+            }
+
+
+            Move();
+
+            Gambling();
+
+            if (isFlooring) FlooringDamage();
+
+            CoolTime(characterSO);
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift)&&curCharging>0 && curDashCool<=0)
-        {
-            DashMove(angleVec);
-        }
-
-
-        Move();
-
-        Gambling();
-
-        if (isFlooring) FlooringDamage();
-
-       CoolTime(characterSO);
+       
 
     }
 
@@ -72,6 +77,7 @@ public class PlayerMove : Character
         if (Input.GetKeyDown(KeyCode.R))
         {
             TypeManager.Inst.TypeChange(GambleManager.GambleIndex(),transform,true,characterSO);
+            SetStat();
         }
     }
 

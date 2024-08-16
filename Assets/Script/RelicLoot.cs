@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class RelicLoot : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI relicName,relicInfor;
+    [SerializeField] Color[] rarityColor;
+    [SerializeField] Image rarityImage;
     RelicSO curRelic;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class RelicLoot : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<RelicSkills>().relics.Add(curRelic);
+        if (!GameManager.Inst.isGameEnd) GameManager.Inst.GameStart();
     }
 
 }

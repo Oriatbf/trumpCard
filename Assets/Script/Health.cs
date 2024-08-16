@@ -74,8 +74,9 @@ public class Health : MonoBehaviour
         {
             curHp -= damage;
             HpBarIncrease();
-            IncreaseGambleGauge(true);
-            character.opponent.GetComponent<Health>().IncreaseGambleGauge(false); // 적 캐릭터 공격 시 올라가는 갬블게이지
+            IncreaseGambleGauge(true); // 피격 게이지 올라가기
+            EnemyUp(damage);
+            
             DamageNumber damageNumber = numberPrefab.SpawnGUI(rectParent,transform.position,damage);
             if (curHp <= 0)
             {
@@ -84,6 +85,14 @@ public class Health : MonoBehaviour
             }
         }
        
+    }
+
+    void EnemyUp(float damage)
+    {
+        Health op_health =  character.opponent.GetComponent<Health>();
+        Character op_character= character.opponent.GetComponent<Character>();
+        op_health.IncreaseGambleGauge(false); // 적 캐릭터가 공격 시 올라가는 갬블게이지
+        if (op_character.characterSO.relicInfor.bloodSucking) op_health.OnHeal(damage *0.5f); // 적 캐릭터가 피흡 보유시 힐   
     }
 
     public void IncreaseGambleGauge(bool isHitted)
@@ -123,10 +132,10 @@ public class Health : MonoBehaviour
 
     void CheckFlooring(Collider2D collision)
     {
-        if (collision.CompareTag("Floor") && character.isPlayer != collision.GetComponent<FlooringCol>().isPlayerOwner && !isFloor)
+        if (collision.CompareTag("Floor") && character.isPlayer != collision.GetComponent<Flooring>().isPlayerOwner && !isFloor)
         {
             isFloor = true;
-            OnDamage( collision.GetComponent<FlooringCol>().tickDamage);
+            OnDamage( collision.GetComponent<Flooring>().tickDamage);
             DOVirtual.DelayedCall(floorTickTime, () => isFloor = false);
         }
     }

@@ -37,11 +37,15 @@ public class EnemyMove : Character
     // Update is called once per frame
     public override void Update()
     {
-        base.Update();
-        Rotation();
-        Move();
-        CoolTime(characterSO);
-        Gambling();
+        if (GameManager.Inst.isGameStart)
+        {
+            base.Update();
+            Rotation();
+            Move();
+            CoolTime(characterSO);
+            Gambling();
+        }
+           
     }
     private void Gambling()
     {

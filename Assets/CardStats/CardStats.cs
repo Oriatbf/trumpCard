@@ -15,7 +15,7 @@ public class CardStats : ScriptableObject
 
     public enum AttackType
     {
-        Range,Melee,Magic,ShotGun,Bow
+        Range,Melee,MeleeSting,Magic,ShotGun,Bow
     }
 
     public enum Character
@@ -56,6 +56,7 @@ public class CardStats : ScriptableObject
         public bool isFlooring;
         public float floorTickDamage;
         public int ciritical;
+        public bool bloodSucking;
     }
     [ShowIfEnum("character", (int)Character.playerAble)] public RelicInfor relicInfor;
    

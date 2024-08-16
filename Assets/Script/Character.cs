@@ -50,12 +50,13 @@ public class Character : MonoBehaviour
     {
         relicSkills.StartSkill();
         relicSkills.StartRatioSkill();
+       // relicSkills.SetRelicIcon();
     }
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        StartRelicSkill();
+        
     }
 
     // Update is called once per frame
@@ -77,6 +78,8 @@ public class Character : MonoBehaviour
         health.ResetHp(characterSO.infor.hp);
         
     }
+
+   
 
     public void SetWeapon(int index)
     {
@@ -108,7 +111,10 @@ public class Character : MonoBehaviour
         switch (curSO.infor.attackType)
         {
             case CardStats.AttackType.Melee:
-                MeleeAttack();
+                MeleeAttack(false);
+                break;
+            case CardStats.AttackType.MeleeSting:
+                MeleeAttack(true);
                 break;
             case CardStats.AttackType.Range:
                 RangeAttack(true, curSO);
@@ -125,14 +131,16 @@ public class Character : MonoBehaviour
         }
     }
 
-   public void MeleeAttack()
+   public void MeleeAttack(bool isSting)
     {
         if (Input.GetMouseButtonDown(0) && curCoolTime <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
-            animator.SetTrigger("SwordAttack");
+            if (!isSting) animator.SetTrigger("SwordAttack");
+            else animator.SetTrigger("StingAttack");
+
         }
     }
 

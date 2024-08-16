@@ -14,17 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 1
   infor:
-    playerCardImage: {fileID: 21300000, guid: 76af4f20f5ae6a345acc9ae5b46b3ce3, type: 3}
-    enemyCardImage: {fileID: 21300000, guid: c059592e6985c0d4884918c1559b3abe, type: 3}
-    cardType: 0
+    playerCardImage: {fileID: 21300000, guid: fe54ee0361e831843bfade1b675a6355, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: d265873cd95b0134aa0da35ccd8cf17d, type: 3}
+    cardType: 6
     attackType: 0
-    damage: 2
-    coolTime: 0.8
-    speed: 3.3
-    hp: 100
+    bulletTypeIndex: 1
+    damage: 86.11
+    coolTime: 1
+    speed: 3.5
+    hp: 125
     bulletCount: 1
-    attackCount: 2
-    cardNum: 1
+    attackCount: 3
+    cardNum: 7
     projectileTurnback: 0
     maxCharge: 0
     chargeStep: []
@@ -35,3 +36,4 @@ MonoBehaviour:
     isFlooring: 0
     floorTickDamage: 3
     ciritical: 10
+    bloodSucking: 0
