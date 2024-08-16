@@ -49,7 +49,7 @@ public class RelicManager : MonoBehaviour
             int random;
             do
             {
-                random = Random.Range(1, 10001);
+                random = Random.Range(1, 1001);
             }
             while (index.Contains(random));
             index.Add(random);
@@ -59,14 +59,13 @@ public class RelicManager : MonoBehaviour
         {
             int k = 0;
             List<RelicSO> curRarityRelics = new List<RelicSO>();
-            for(k = 0; k<rarityChance.Count; k++)
+            for (k = 0; k<rarityChance.Count; k++)
             {
-                if (index[j] <= rarityChance[k])
+                if (index[j] <= rarityChanceList[k])
                 {
                     break;
                 }
             }
-            Debug.Log(k);
             switch (k)
             {
                 case 0:
@@ -78,9 +77,6 @@ public class RelicManager : MonoBehaviour
             }
             
             int random = Random.Range(0,curRarityRelics.Count);
-            Debug.Log(random);
-            Debug.Log(curRarityRelics[0]);
-            Debug.Log(curRarityRelics[random]);
             relicLoots[j].GetComponent<RelicLoot>().SetCard(curRarityRelics[random]);
         }
 

@@ -13,7 +13,8 @@ public class RelicSO : ScriptableObject
     public string relicName;
     public Sprite relicIcon;
     public string relicInfor;
-    public int relicRarity; //희귀도 0~4 => common,uncommon,rare,epic,lengendary
+    public enum Rarity {Common,Rare,Epic };
+    public Rarity rarity;
     [Serializable]
     public struct RelicType
     {

@@ -15,6 +15,7 @@ MonoBehaviour:
   relicName: "\uB0A0\uAC1C \uC2E0\uBC1C"
   relicIcon: {fileID: 0}
   relicInfor: "\uC774\uB3D9\uC18D\uB3C4\uAC00 1 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  rarity: 2
   relicType:
   - activeType: 0
     sequenceType: 0

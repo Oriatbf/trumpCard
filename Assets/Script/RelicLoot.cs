@@ -27,6 +27,15 @@ public class RelicLoot : MonoBehaviour
         curRelic= relicSO;
         relicName.text = relicSO.relicName;
         relicInfor.text = relicSO.relicInfor;
+        int rarityIndex = 0;
+        switch (relicSO.rarity)
+        {
+            case RelicSO.Rarity.Common:  rarityIndex = 0; break;
+            case RelicSO.Rarity.Rare: rarityIndex = 1; break;
+            case RelicSO.Rarity.Epic: rarityIndex = 2; break;
+        }
+
+        rarityImage.color= rarityColor[rarityIndex];
     }
 
     public void SelectRelic()
