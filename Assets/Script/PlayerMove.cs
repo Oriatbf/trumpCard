@@ -148,19 +148,62 @@ public class PlayerMove : Character
 
     public override void RangeAttack(bool isRevolver, CardStats curSO)
     {
-        if(Input.GetMouseButton(0))
+        if (mobileVersion)
         {
-            base.RangeAttack(isRevolver, curSO);
+            if( dirJoyStick.Direction != Vector2.zero) 
+            {
+                base.RangeAttack(isRevolver, curSO);
+            }
         }
+        else
+        {
+            if (Input.GetMouseButton(0))
+            {
+                base.RangeAttack(isRevolver, curSO);
+            }
+        }
+      
        
+    }
+
+    public override void MeleeAttack(bool isSting)
+    {
+        if (mobileVersion)
+        {
+            if ( dirJoyStick.Direction != Vector2.zero)
+            {
+                base.MeleeAttack(isSting);
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButton(0))
+            {
+                base.MeleeAttack(isSting);
+            }
+        }
+
+
     }
 
     public override void MagicAttack(CardStats curSO)
     {
-        if (Input.GetMouseButton(0))
+
+        if (mobileVersion)
         {
-            base.MagicAttack(curSO);
+            if (dirJoyStick.Direction != Vector2.zero)
+            {
+                base.MagicAttack(curSO);
+            }
         }
+        else
+        {
+            if (Input.GetMouseButton(0))
+            {
+                base.MagicAttack(curSO);
+            }
+        }
+    
        
     }
 

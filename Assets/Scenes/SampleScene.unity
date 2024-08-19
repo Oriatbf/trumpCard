@@ -892,11 +892,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 960
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 645
+      value: 430
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_LocalPosition.x
@@ -928,7 +928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -960
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1255,11 +1255,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 960
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 645
+      value: 430
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3099,7 +3099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &759668914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -8928,8 +8928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6589ce0ea2e1914192f6774aedbf9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relics:
-  - {fileID: 11400000, guid: 59d8b9a096a2f794a871ae50ff64738c, type: 2}
+  relics: []
   characterType: 0
   relicImagePrefab: {fileID: 0}
   iconCanvas: {fileID: 0}
@@ -9113,7 +9112,7 @@ MonoBehaviour:
     m_Bits: 8
   card: {fileID: 11400000, guid: b3158a39f9258e045b73d7f1a54ae6fe, type: 2}
   angleVec: {x: 0, y: 0, z: 0}
-  mobileVersion: 0
+  mobileVersion: 1
   moveJoyStick: {fileID: 1299182435}
   dirJoyStick: {fileID: 1232440092}
 --- !u!212 &1892181552
@@ -9293,8 +9292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6589ce0ea2e1914192f6774aedbf9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relics:
-  - {fileID: 11400000, guid: 6c7f91274a0926c42a4f0f4158640632, type: 2}
+  relics: []
   characterType: 0
   relicImagePrefab: {fileID: 5890349769155904036, guid: d59936f0b0fa99844b2d88eab620b0a5, type: 3}
   iconCanvas: {fileID: 408452563}

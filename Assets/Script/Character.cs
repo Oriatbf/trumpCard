@@ -133,9 +133,9 @@ public class Character : MonoBehaviour
         }
     }
 
-   public void MeleeAttack(bool isSting)
+   public virtual void MeleeAttack(bool isSting)
     {
-        if (Input.GetMouseButtonDown(0) && curCoolTime <= 0)
+        if ( curCoolTime <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
             curCoolTime = coolTime;
