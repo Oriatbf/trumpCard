@@ -21,8 +21,7 @@ public class Health : MonoBehaviour
 
     //GambleGauge Value
     GambleGauge gambleGauge;
-    [SerializeField] float hittedValue,attackValue; //hitted : 맞았을 때 , attack : 공격했을 때 늘어날 값
-
+    private float hittedValue = 0.5f,attackValue = 0.5f; //hitted : 맞았을 때 , attack : 공격했을 때 늘어날 값
     Character character;
 
     private void Start()
@@ -74,7 +73,7 @@ public class Health : MonoBehaviour
         {
             curHp -= damage;
             HpBarIncrease();
-            IncreaseGambleGauge(true); // 피격 게이지 올라가기
+            IncreaseGambleGauge(true,damage); // 피격 게이지 올라가기
             EnemyUp(damage);
             
             DamageNumber damageNumber = numberPrefab.SpawnGUI(rectParent,transform.position,damage);
@@ -101,14 +100,14 @@ public class Health : MonoBehaviour
     {
         Health op_health =  character.opponent.GetComponent<Health>();
         Character op_character= character.opponent.GetComponent<Character>();
-        op_health.IncreaseGambleGauge(false); // 적 캐릭터가 공격 시 올라가는 갬블게이지
+        op_health.IncreaseGambleGauge(false,damage); // 적 캐릭터가 공격 시 올라가는 갬블게이지
         if (op_character.characterSO.relicInfor.bloodSucking) op_health.OnHeal(damage *0.5f); // 적 캐릭터가 피흡 보유시 힐   
     }
 
-    public void IncreaseGambleGauge(bool isHitted)
+    public void IncreaseGambleGauge(bool isHitted,float damage)
     {
-        if (isHitted) gambleGauge.IncreaseGambleGauge(hittedValue);
-        else gambleGauge.IncreaseGambleGauge(attackValue);
+        if (isHitted) gambleGauge.IncreaseGambleGauge(damage * hittedValue);
+        else gambleGauge.IncreaseGambleGauge(damage*attackValue);
     }
 
     public void OnHeal(float healAmount)

@@ -58,7 +58,6 @@ public class PlayerMove : Character
 
             Move();
 
-            Gambling();
 
             if (isFlooring) FlooringDamage();
 
@@ -68,14 +67,7 @@ public class PlayerMove : Character
 
     }
 
-    private void Gambling()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            TypeManager.Inst.TypeChange(GambleManager.GambleIndex(),transform,true,characterSO);
-            SetStat();
-        }
-    }
+  
 
     private void Move()
     {

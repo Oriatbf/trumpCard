@@ -29,6 +29,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public Animator animator;
      public Transform opponent;
     [HideInInspector]public Health health;
+    [HideInInspector] public GambleGauge gambleGauge;
     [HideInInspector]public DashEffect dashEffect;
     [HideInInspector] public bool isDashing;
     Rigidbody2D rigid;
@@ -43,9 +44,18 @@ public class Character : MonoBehaviour
         health= GetComponent<Health>();
         dashEffect = GetComponent<DashEffect>();
         relicSkills = GetComponent<RelicSkills>();
+        gambleGauge= GetComponent<GambleGauge>();
         curCharging = dashMaxCharging;
 
         characterSO.relicInfor.characterHealth= health;
+    }
+
+    public void Gambling()
+    {
+        gambleGauge._curGauge = 0;
+        TypeManager.Inst.TypeChange(GambleManager.GambleIndex(), transform, true, characterSO);
+        SetStat();
+        StartRelicSkill();
     }
 
     public void StartRelicSkill()
@@ -65,6 +75,7 @@ public class Character : MonoBehaviour
     public virtual void Update()
     {
         if(curDashCool> 0) curDashCool -= Time.deltaTime;
+        if (gambleGauge._curGauge >= gambleGauge.maxGauge) Gambling();
     }
     private void LateUpdate()
     {
