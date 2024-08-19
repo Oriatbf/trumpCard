@@ -80,8 +80,18 @@ public class Health : MonoBehaviour
             DamageNumber damageNumber = numberPrefab.SpawnGUI(rectParent,transform.position,damage);
             if (curHp <= 0)
             {
+                transform.gameObject.SetActive(false);
+                if (!character.isPlayer)
+                {
+                    UIManager.Inst.GoldCount(character.goldValue);
+                    GameManager.Inst.GameEnd(true);
+                }
+                else
+                {
+                    GameManager.Inst.GameEnd(false);
+                    //플레이어 사망 게임 끝
+                }
                 curHp = maxHp;
-                //사망
             }
         }
        

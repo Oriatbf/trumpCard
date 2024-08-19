@@ -37,6 +37,7 @@ public class RelicSkills : MonoBehaviour
 
     public void StartSkill()
     {
+        Debug.Log("ff");
         if (relics.Count > 0)
         {
             foreach (RelicSO relic in relics)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: speed up
   m_EditorClassIdentifier: 
   relicName: "\uB0A0\uAC1C \uC2E0\uBC1C"
-  relicIcon: {fileID: 0}
+  relicIcon: {fileID: -966000986, guid: 2a2b5347878785843922c074f90b617f, type: 3}
   relicInfor: "\uC774\uB3D9\uC18D\uB3C4\uAC00 1 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   rarity: 2
   relicType:
@@ -28,6 +28,7 @@ MonoBehaviour:
     isFloor: 0
     speed_Per_Dam: 0
     critical_Value: 0
+    criticalDamage: 0
     add_Cool: 0
     add_MaxHp: 0
     isAutoHeal: 0
@@ -37,3 +38,7 @@ MonoBehaviour:
     loseHp_Per_Speed: 0
     p_Size: 0
     p_Count: 0
+    slime: {fileID: 0}
+    melee_Add_Dam: 0
+    melee_Add_Cool: 0
+    melee_Add_MaxHp: 0

@@ -42,8 +42,8 @@ public class CardStats : ScriptableObject
         public int cardNum;
         public bool projectileTurnback;
         [ShowIfEnum("attackType", (int)AttackType.Bow)] public float maxCharge;
-        public List<float> chargeStep;
-        public List<float> chargeDamage;
+        [ShowIfEnum("attackType", (int)AttackType.Bow)] public float maxChargeDam;
+
 
     }
     public Information infor;
@@ -51,11 +51,13 @@ public class CardStats : ScriptableObject
     [Serializable]
     public struct RelicInfor
     {
+        public Transform characterTrans;
         public Health characterHealth; 
         public float size;
         public bool isFlooring;
         public float floorTickDamage;
-        public int ciritical;
+        public int criticalChance;
+        public float criticalDamage;
         public bool bloodSucking;
     }
     [ShowIfEnum("character", (int)Character.playerAble)] public RelicInfor relicInfor;

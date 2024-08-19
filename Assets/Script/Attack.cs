@@ -22,7 +22,7 @@ public class Attack : MonoBehaviour
             DOVirtual.DelayedCall(delay, ()=>
             {
                 Transform bulletTrans = pool.bulletPools[pool.bulletIndex].transform;
-                bulletTrans.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical( charSO), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
+                bulletTrans.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical( charSO, charSO.infor.damage), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
                 bulletTrans.gameObject.SetActive(true);
                 bulletTrans.position = shootPoint.position;
                 bulletTrans.rotation = curTrans.rotation;
@@ -46,14 +46,16 @@ public class Attack : MonoBehaviour
        
     }
 
-    public void shootBow(Vector2 dir, Transform curTrans, Transform shootPoint, CardStats charSO, bool isPlayer)
+    public void shootBow(Vector2 dir, Transform curTrans, Transform shootPoint, CardStats charSO, bool isPlayer,bool isMaxCharge)
     {
         float delay = 0;
+        float damage = isMaxCharge ?  charSO.infor.maxChargeDam :charSO.infor.damage;
+        Debug.Log(isMaxCharge);
         for (var i = 0; i < charSO.infor.attackCount; i++)
         {
             DOVirtual.DelayedCall(delay, () =>
             {
-                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO), charSO.relicInfor.size, charSO.infor.bulletTypeIndex);
+                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO, damage), charSO.relicInfor.size, charSO.infor.bulletTypeIndex);
                 pool.bulletPools[pool.bulletIndex].SetActive(true);
                 pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
                 pool.bulletPools[pool.bulletIndex].transform.rotation = curTrans.rotation;
@@ -79,7 +81,7 @@ public class Attack : MonoBehaviour
                     Vector2 spreadDir = Quaternion.Euler(0, 0, angle) * dir; // Apply the angle to the direction vector
 
                     // Activate and set up the bullet
-                    pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(spreadDir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
+                    pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(spreadDir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO, charSO.infor.damage), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
 
                     pool.bulletPools[pool.bulletIndex].SetActive(true);
                     pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
@@ -102,7 +104,7 @@ public class Attack : MonoBehaviour
     {
         for (int i = 0; i < charSO.infor.bulletCount; i++)
         {
-            pool.magicBallPools[pool.magicIndex].transform.GetComponent<MagicBall>().SetTarget(target, Critical(charSO));
+            pool.magicBallPools[pool.magicIndex].transform.GetComponent<MagicBall>().SetTarget(target, Critical(charSO,charSO.infor.damage));
             pool.magicBallPools[pool.magicIndex].transform.position = shootPoint.position;
             pool.magicBallPools[pool.magicIndex].SetActive(true);
             
@@ -122,7 +124,7 @@ public class Attack : MonoBehaviour
                 pool.bulletPools[pool.bulletIndex].SetActive(true);
                 pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
                 pool.bulletPools[pool.bulletIndex].transform.rotation = curTrans.rotation;
-                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO),1,0);
+                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO,charSO.infor.damage),1,0);
                 pool.bulletIndex++;
                 if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
             });
@@ -131,14 +133,14 @@ public class Attack : MonoBehaviour
         }
     }
 
-    public float Critical(CardStats charSO)
+    public float Critical(CardStats charSO,float damage)
     {
         int a = Random.Range(1, 101);
-        if(charSO.relicInfor.ciritical >= a)
+        if (charSO.relicInfor.criticalChance >= a)
         {
-            return charSO.infor.damage * 2;
+            return damage * charSO.relicInfor.criticalDamage;
         }
-        else return charSO.infor.damage;
+        else return damage;
     }
 
    

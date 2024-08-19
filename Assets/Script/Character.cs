@@ -19,6 +19,7 @@ public class Character : MonoBehaviour
     public float flooringCool;
     public Transform shootPoint;
     public bool isPlayer;
+    public float goldValue;
 
     [Tab("Debug")]
     public Vector3 _dir;
@@ -36,6 +37,7 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
+        characterSO.relicInfor.characterTrans = transform;
         rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();
         health= GetComponent<Health>();
@@ -50,7 +52,7 @@ public class Character : MonoBehaviour
     {
         relicSkills.StartSkill();
         relicSkills.StartRatioSkill();
-       // relicSkills.SetRelicIcon();
+        if(isPlayer) relicSkills.SetRelicIcon();
     }
 
     // Start is called before the first frame update
@@ -152,9 +154,9 @@ public class Character : MonoBehaviour
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
             if (isRevolver)
-                Attack.Inst.shootRevolver(_dir, transform, shootPoint, curSO, isPlayer);
+                Attack.Inst.shootRevolver(_dir, handle.transform.parent, shootPoint, curSO, isPlayer);
             else
-                Attack.Inst.shootShotgun(_dir, transform, shootPoint, curSO, isPlayer);
+                Attack.Inst.shootShotgun(_dir, handle.transform.parent, shootPoint, curSO, isPlayer);
         }
     }
 
@@ -172,7 +174,7 @@ public class Character : MonoBehaviour
                     Attack.Inst.QueenMagic(shootPoint, curSO, true, opponent);
                     break;
                 case CardStats.CardType.King:
-                    Attack.Inst.KingMagic(_dir, transform, shootPoint, curSO, isPlayer);
+                    Attack.Inst.KingMagic(_dir, handle.transform.parent, shootPoint, curSO, isPlayer);
                     break;
             }
 

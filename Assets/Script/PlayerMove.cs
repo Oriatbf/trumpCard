@@ -49,10 +49,6 @@ public class PlayerMove : Character
         if (GameManager.Inst.isGameStart)
         {
             base.Update();
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                health.OnDamage(10);
-            }
 
             if (Input.GetKeyDown(KeyCode.LeftShift) && curCharging > 0 && curDashCool <= 0)
             {
@@ -117,7 +113,8 @@ public class PlayerMove : Character
         }
         
         _angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
+    
+        handle.transform.parent.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
         handle.transform.localScale = new Vector3(_dir.x<0?-1:1, 1);
      
        
@@ -128,8 +125,8 @@ public class PlayerMove : Character
         if (Input.GetMouseButton(0))
         {
             _curCharging += Time.deltaTime;
-            if (_curCharging >= dashMaxCharging) _curCharging = dashMaxCharging;
-            attackCoolImage.fillAmount = _curCharging / dashMaxCharging;
+            if (_curCharging >= 1.5f) _curCharging = 1.5f;
+            attackCoolImage.fillAmount = _curCharging / 1.5f;
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -140,9 +137,11 @@ public class PlayerMove : Character
 
     public void Shoot()
     {
+        bool maxCharging = _curCharging >= 1.5f;
+        Attack.Inst.shootBow(_dir, handle.transform.parent, shootPoint, characterSO, true,maxCharging);
         attackCoolImage.fillAmount = 0;
         _curCharging = 0;
-        Attack.Inst.shootBow(_dir, transform, shootPoint, characterSO, true);
+       
     }
 
 

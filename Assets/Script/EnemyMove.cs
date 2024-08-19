@@ -13,6 +13,7 @@ public class EnemyMove : Character
     [SerializeField] private float Gunrange,dashRange;
     [SerializeField] private bool haveDash;
     [SerializeField] private float midDistanceMoveCool;
+  
     private float _angle;
     private Vector2 _dir2,finalDir;
 
@@ -59,7 +60,7 @@ public class EnemyMove : Character
     {
         //회전
         _angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
+        handle.transform.parent.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
         handle.transform.localScale = new Vector3(_dir.x < 0 ? -1 : 1, 1);
         _dir = (opponent.position - transform.position);
 

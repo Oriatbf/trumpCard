@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RelicLoot : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI relicName,relicInfor;
     [SerializeField] Color[] rarityColor;
-    [SerializeField] Image rarityImage;
+    [SerializeField] Image rarityImage,relicIcon;
     RelicSO curRelic;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class RelicLoot : MonoBehaviour
             case RelicSO.Rarity.Rare: rarityIndex = 1; break;
             case RelicSO.Rarity.Epic: rarityIndex = 2; break;
         }
-
+        this.relicIcon.sprite = relicSO.relicIcon;
         rarityImage.color= rarityColor[rarityIndex];
     }
 
@@ -43,6 +44,7 @@ public class RelicLoot : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<RelicSkills>().relics.Add(curRelic);
         if (!GameManager.Inst.isGameEnd) GameManager.Inst.GameStart();
+        else SceneManager.LoadScene("Map");
     }
 
 }

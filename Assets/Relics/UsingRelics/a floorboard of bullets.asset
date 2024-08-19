@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: a floorboard of bullets
   m_EditorClassIdentifier: 
   relicName: "\uC911\uB3C5 \uCD1D\uC54C"
-  relicIcon: {fileID: 0}
+  relicIcon: {fileID: -966000986, guid: 2a2b5347878785843922c074f90b617f, type: 3}
   relicInfor: "\uCD1D\uC54C\uC774 \uB0A0\uC544\uAC00\uBA74\uC11C \uB3C5 \uC7A5\uD310\uC744
     \uAE5D\uB2C8\uB2E4"
   rarity: 0
@@ -29,6 +29,7 @@ MonoBehaviour:
     isFloor: 1
     speed_Per_Dam: 0
     critical_Value: 0
+    criticalDamage: 0
     add_Cool: 0
     add_MaxHp: 0
     isAutoHeal: 0
@@ -38,3 +39,7 @@ MonoBehaviour:
     loseHp_Per_Speed: 0
     p_Size: 0
     p_Count: 0
+    slime: {fileID: 0}
+    melee_Add_Dam: 0
+    melee_Add_Cool: 0
+    melee_Add_MaxHp: 0

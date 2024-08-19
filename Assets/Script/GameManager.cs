@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Inst;
     public bool isGameStart,isGameEnd;
+    [SerializeField] GameObject RelicSelectCanvas;
     private Transform player, enemy;
 
     private void Awake()
@@ -31,5 +32,15 @@ public class GameManager : MonoBehaviour
         isGameStart = true;
         player.GetComponent<Character>().StartRelicSkill();
         enemy.GetComponent<Character>().StartRelicSkill();
+    }
+
+    public void GameEnd(bool isPlayerWin)
+    {
+        if (isPlayerWin)
+        {
+            isGameEnd= true;
+            RelicManager.Inst.RandomSO();
+            RelicSelectCanvas.SetActive(true);
+        }
     }
 }

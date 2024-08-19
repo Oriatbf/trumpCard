@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RelicManager : MonoBehaviour
 {
+    public static RelicManager Inst;
+
     public List<RelicSO> relicSOs = new List<RelicSO>();
 
     public List<RelicSO> commonRelicSOs = new List<RelicSO>();
@@ -17,6 +19,11 @@ public class RelicManager : MonoBehaviour
 
     [SerializeField] private Transform relicLootsLayout;
     public List<GameObject> relicLoots = new List<GameObject>();
+
+    private void Awake()
+    {
+        Inst = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -54,8 +61,9 @@ public class RelicManager : MonoBehaviour
             while (index.Contains(random));
             index.Add(random);
         }
+        List<int> index2 = new List<int>();
 
-        for(int j = 0; j < relicLoots.Count; j++)
+        for (int j = 0; j < relicLoots.Count; j++)
         {
             int k = 0;
             List<RelicSO> curRarityRelics = new List<RelicSO>();
@@ -75,8 +83,14 @@ public class RelicManager : MonoBehaviour
                 case 2:
                     curRarityRelics = rareRelicSOs; break;
             }
-            
-            int random = Random.Range(0,curRarityRelics.Count);
+            int random;
+            do
+            {
+                random = Random.Range(0,curRarityRelics.Count );
+            }
+            while (index2.Contains(random));
+            index2.Add(random);
+
             relicLoots[j].GetComponent<RelicLoot>().SetCard(curRarityRelics[random]);
         }
 

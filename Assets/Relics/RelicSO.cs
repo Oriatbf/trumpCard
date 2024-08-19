@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using static RelicSO.RelicType;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "RelicSO", menuName = "Scriptable SO/Relic", order = 1)]
 
@@ -23,11 +24,14 @@ public class RelicSO : ScriptableObject
         public enum SequenceType { Immediately,Later };
         public enum AddtionType 
         {
-            Add_Dam,Add_Per_Dam,loseHp_Per_Dam,Flooring,Speed_Per_Dam,Critical_Value,
+            Add_Dam,Add_Per_Dam,loseHp_Per_Dam,Flooring,Speed_Per_Dam,
             Add_Cool,
             Add_MaxHp,AutoHeal,
             Add_Speed,loseHp_Per_Speed,
-            P_Size,P_Count
+            P_Size,P_Count,
+            CriticalDamage, Critical_Value,
+            Slime,
+            Melee_Add_Dam,Melee_Add_Cool,Melee_Add_MaxHp
         };
 
         public ActiveType activeType;
@@ -51,6 +55,8 @@ public class RelicSO : ScriptableObject
         public float speed_Per_Dam;
         [ShowIfEnum("addtionType", (int)AddtionType.Critical_Value)]
         public int critical_Value;
+        [ShowIfEnum("addtionType", (int)AddtionType.CriticalDamage)]
+        public float criticalDamage;
 
 
         [ShowIfEnum("addtionType", (int)AddtionType.Add_Cool)]
@@ -73,6 +79,17 @@ public class RelicSO : ScriptableObject
         [ShowIfEnum("addtionType", (int)AddtionType.P_Count)]
         public int p_Count;
 
+        [ShowIfEnum("addtionType", (int)AddtionType.Slime)]
+        public GameObject slime;
+
+        [ShowIfEnum("addtionType", (int)AddtionType.Melee_Add_Dam)]
+        public float melee_Add_Dam;
+        [ShowIfEnum("addtionType", (int)AddtionType.Melee_Add_Cool)]
+        public float melee_Add_Cool;
+        [ShowIfEnum("addtionType", (int)AddtionType.Melee_Add_MaxHp)]
+        public float melee_Add_MaxHp;
+
+
     }
 
     public RelicType[] relicType;
@@ -82,7 +99,7 @@ public class RelicSO : ScriptableObject
     {
         Debug.Log(so);
         
-        Increase(so, relicType);   
+        StartRelic(so, relicType);   
     }
 
     public void StartRatioRelicActive(CardStats so, RelicType relicType)
@@ -94,10 +111,12 @@ public class RelicSO : ScriptableObject
 
 
 
-    public void Increase(CardStats so,RelicType relicType)
+    public void StartRelic(CardStats so,RelicType relicType)
     {
+        CardStats.AttackType attackType = so.infor.attackType;
+
         switch (relicType.addtionType)
-        {
+        {        
             case AddtionType.Add_Dam:
                 so.infor.damage += relicType.add_Dam;
                 break;
@@ -125,7 +144,25 @@ public class RelicSO : ScriptableObject
                 so.infor.attackCount += relicType.p_Count;
                 break;
             case AddtionType.Critical_Value:
-                so.relicInfor.ciritical += relicType.critical_Value;
+                so.relicInfor.criticalChance += relicType.critical_Value;
+                break;
+            case AddtionType.CriticalDamage:
+                so.relicInfor.criticalDamage = relicType.criticalDamage;
+                break;
+            case AddtionType.Slime:
+                Instantiate(relicType.slime,(so.relicInfor.characterTrans.position + (Vector3)(Random.insideUnitCircle)).normalized * 2f,Quaternion.identity);
+                break;
+            case AddtionType.Melee_Add_Dam:
+                if (attackType == CardStats.AttackType.Melee && attackType == CardStats.AttackType.MeleeSting)
+                    so.infor.damage += relicType.melee_Add_Dam;
+                break;
+            case AddtionType.Melee_Add_Cool:
+                if (attackType == CardStats.AttackType.Melee && attackType == CardStats.AttackType.MeleeSting)
+                    so.infor.coolTime += relicType.melee_Add_Cool;
+                break;
+            case AddtionType.Melee_Add_MaxHp:
+                if (attackType == CardStats.AttackType.Melee && attackType == CardStats.AttackType.MeleeSting)
+                    so.infor.hp += relicType.melee_Add_MaxHp;
                 break;
         }
 
