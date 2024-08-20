@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst;
     public bool isGameStart,isGameEnd;
     [SerializeField] GameObject RelicSelectCanvas;
+    public int stageNum;
     private Transform player, enemy;
 
     private void Awake()
@@ -32,6 +34,14 @@ public class GameManager : MonoBehaviour
         isGameStart = true;
         player.GetComponent<Character>().StartRelicSkill();
         enemy.GetComponent<Character>().StartRelicSkill();
+    }
+
+
+    public void NextStage(List<RelicSO> setEnemyRelic)
+    {
+        enemy.GetComponent<RelicSkills>().relics = setEnemyRelic;
+        stageNum++;
+        SceneManager.LoadScene("StageScene");
     }
 
     public void GameEnd(bool isPlayerWin)
