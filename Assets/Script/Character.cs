@@ -151,7 +151,13 @@ public class Character : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
-            if (!isSting) animator.SetTrigger("SwordAttack");
+
+            if (!isSting)
+            {
+                animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack");
+                
+             // 역방향 재생
+            }
             else animator.SetTrigger("StingAttack");
 
         }

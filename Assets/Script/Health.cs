@@ -4,9 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using VInspector;
 
 public class Health : MonoBehaviour
 {
+
+    [Tab("Hp")]
     //Hp Value
     public float curHp;
     public float maxHp;
@@ -18,6 +21,10 @@ public class Health : MonoBehaviour
     [HideInInspector] public float autoHealSpeed;
     [HideInInspector] public bool isFloor;
     bool isInv = false;
+
+    [Tab("Debuff")]
+    public bool inFireDebuff,inFreezeDebuff;
+    public float fireDotDam,freezeTime;
 
     //GambleGauge Value
     GambleGauge gambleGauge;
@@ -34,6 +41,7 @@ public class Health : MonoBehaviour
     private void Update()
     {
         if(autoHeal)AutoHeal();
+        FireDebuff();
     }
 
     public void SetHp(float statHp)
@@ -94,6 +102,27 @@ public class Health : MonoBehaviour
             }
         }
        
+    }
+
+    void FreezeDebuff()
+    {
+        if (inFreezeDebuff)
+        {
+            freezeTime -= Time.deltaTime;
+            if (freezeTime > 0)
+            {
+
+            }
+            else inFreezeDebuff= false;
+        }
+    }
+
+    void FireDebuff()
+    {
+        if (inFireDebuff)
+        {
+            OnDamage(fireDotDam*Time.deltaTime);
+        }
     }
 
     void EnemyUp(float damage)

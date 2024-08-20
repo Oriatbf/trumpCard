@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -31,8 +32,7 @@ public class PlayerMove : Character
 
     public override void Start()
     {
-      
-      
+
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
         TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
@@ -71,45 +71,47 @@ public class PlayerMove : Character
 
     private void Move()
     {
-        float x;
-        float y;
-        //Move
-        if (mobileVersion)
+        if (!health.inFreezeDebuff)
         {
-             x = moveJoyStick.Horizontal;
-             y = moveJoyStick.Vertical;
-        }
-        else
-        {
-             x = Input.GetAxisRaw("Horizontal");
-             y = Input.GetAxisRaw("Vertical");
-        }
-      
+            float x;
+            float y;
+            //Move
+            if (mobileVersion)
+            {
+                x = moveJoyStick.Horizontal;
+                y = moveJoyStick.Vertical;
+            }
+            else
+            {
+                x = Input.GetAxisRaw("Horizontal");
+                y = Input.GetAxisRaw("Vertical");
+            }
 
-        angleVec = new Vector3(x, y,0).normalized;
 
-        float moveX = angleVec.x * speed * Time.deltaTime;
-        float moveY = angleVec.y* speed * Time.deltaTime;
-        transform.Translate(new Vector3(moveX,moveY,0),Space.World);
-        
-        //Rotation
-        Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
-        if (mobileVersion)
-        {
-            _dir = new Vector3(dirJoyStick.Horizontal, dirJoyStick.Vertical, 0).normalized;
+            angleVec = new Vector3(x, y, 0).normalized;
+
+            float moveX = angleVec.x * speed * Time.deltaTime;
+            float moveY = angleVec.y * speed * Time.deltaTime;
+            transform.Translate(new Vector3(moveX, moveY, 0), Space.World);
+
+            //Rotation
+            Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+            if (mobileVersion)
+            {
+                _dir = new Vector3(dirJoyStick.Horizontal, dirJoyStick.Vertical, 0).normalized;
+            }
+            else
+            {
+                _dir = (mousePosition - transform.position).normalized;
+            }
+
+            _angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
+
+            handle.transform.parent.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
+            handle.transform.localScale = new Vector3(_dir.x < 0 ? -1 : 1, 1);
         }
-        else
-        {
-            _dir = (mousePosition - transform.position).normalized;
-        }
-        
-        _angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
-    
-        handle.transform.parent.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
-        handle.transform.localScale = new Vector3(_dir.x<0?-1:1, 1);
-     
-       
+
     }
 
     public override void BowAttack()
@@ -209,6 +211,7 @@ public class PlayerMove : Character
         {
             hit.transform.GetComponent<Health>().OnDamage(characterSO.infor.damage);
         }
+        AudioManager.Inst.AudioEffectPlay(characterSO.infor.cardNum);
     }
 
 

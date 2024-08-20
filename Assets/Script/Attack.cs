@@ -40,6 +40,8 @@ public class Attack : MonoBehaviour
                 if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
                
             });
+
+            AudioManager.Inst.AudioEffectPlay(charSO.infor.cardNum);
             delay = 0.2f + ((float)i / 10 - 0.1f);
 
         }
@@ -66,6 +68,7 @@ public class Attack : MonoBehaviour
             delay = 0.2f + ((float)i / 10 - 0.1f);
 
         }
+        AudioManager.Inst.AudioEffectPlay(charSO.infor.cardNum);
     }
 
     public void shootShotgun(Vector2 dir, Transform curTrans, Transform shootPoint,CardStats charSO,bool isPlayer)
@@ -94,7 +97,7 @@ public class Attack : MonoBehaviour
                 }
             });
             delay = 0.2f + ((float)j / 10 - 0.1f);
-
+            AudioManager.Inst.AudioEffectPlay(charSO.infor.cardNum);
         }
       
 

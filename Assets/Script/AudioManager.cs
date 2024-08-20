@@ -6,7 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Inst;
     AudioSource audioSource;
-    public AudioClip[] audioClip;
+    public AudioClip[] backGroundAudio;
+    public AudioClip[] effectAudioClip;
 
     private void Awake()
     {
@@ -16,14 +17,14 @@ public class AudioManager : MonoBehaviour
 
     public void AudioPlay(int index)
     {
-        AudioClip clip = audioClip[index];
+        audioSource.clip = backGroundAudio[index];
         audioSource.Play();
     }
 
     public void AudioEffectPlay(int index)
     {
-        AudioClip clip = audioClip[index];
-        audioSource.PlayOneShot(audioClip[index]);
+
+        audioSource.PlayOneShot(effectAudioClip[index]);
     }
 
 }
