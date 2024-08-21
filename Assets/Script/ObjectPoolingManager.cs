@@ -8,7 +8,6 @@ public class ObjectPoolingManager : MonoBehaviour
     public GameObject bulletP,magicBallP,flooringBullet;
     public GameObject[] bulletPools,magicBallPools,flooringPools;
 
-    public Transform shootPoint;
     public int bulletIndex = 0,magicIndex = 0,f_bulletIndex = 0;
 
     private void Awake()
@@ -18,12 +17,17 @@ public class ObjectPoolingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    void GameStart()
+    {
         GameObject parentObj = new GameObject("PoolingParent");     //새로운 빈 오브젝트를 하나 만들어줌
-        parentObj.transform.position= Vector3.zero;                 //새로운 빈 오브젝트의 위치 설정
+        parentObj.transform.position = Vector3.zero;                 //새로운 빈 오브젝트의 위치 설정
         bulletPools = new GameObject[100];
-        for(int i = 0;i<bulletPools.Length;i++)
+        for (int i = 0; i < bulletPools.Length; i++)
         {
-            GameObject bullet = Instantiate(bulletP,parentObj.transform);
+            GameObject bullet = Instantiate(bulletP, parentObj.transform);
             bulletPools[i] = bullet;
             bullet.SetActive(false);
         }
@@ -31,9 +35,9 @@ public class ObjectPoolingManager : MonoBehaviour
         GameObject magicBallParent = new GameObject("MBPoolingParent");
         magicBallParent.transform.position = Vector3.zero;
         magicBallPools = new GameObject[50];
-        for(int i = 0;i<magicBallPools.Length;i++)
-        {    
-            GameObject magicBall = Instantiate(magicBallP,magicBallParent.transform);
+        for (int i = 0; i < magicBallPools.Length; i++)
+        {
+            GameObject magicBall = Instantiate(magicBallP, magicBallParent.transform);
             magicBallPools[i] = magicBall;
             magicBall.SetActive(false);
         }

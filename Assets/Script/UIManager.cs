@@ -16,12 +16,17 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Inst = this;
-        isInGame= true;
+        
+    }
+
+    public void GameStart()
+    {
+        isInGame = true;
     }
     // Start is called before the first frame update
     void Start()
     {
-        GoldCount(0);
+        ;
     }
 
     // Update is called once per frame
@@ -34,6 +39,8 @@ public class UIManager : MonoBehaviour
     {
  
     }
+
+
 
     public void GoldCount(float gold)
     {

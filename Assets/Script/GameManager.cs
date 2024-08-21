@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +7,30 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst;
-    public bool isGameStart,isGameEnd;
+    public bool isGameStart,isGameEnd,mapMode;
     [SerializeField] GameObject RelicSelectCanvas;
     public int stageNum;
+    public bool startChooseRelic = true;
     private Transform player, enemy;
+
+    
 
     private void Awake()
     {
-        Inst = this;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        if (Inst != this && Inst != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            Inst = this;
+            DontDestroyOnLoad(gameObject);
+        }
+     
+
+       
+       
     }
     // Start is called before the first frame update
     void Start()
@@ -23,10 +38,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+   
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void GameStart()
@@ -37,12 +53,40 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void NextStage(List<RelicSO> setEnemyRelic)
+    public void NextStage()
     {
-        enemy.GetComponent<RelicSkills>().relics = setEnemyRelic;
+       //enemy.GetComponent<RelicSkills>().relics = setEnemyRelic;
         stageNum++;
+       
+        if(stageNum != 1)
+        {
+            startChooseRelic= false;
+            GameStart();
+        }
+        else
+        {
+            EnableRelicChoose();
+        }
         SceneManager.LoadScene("StageScene");
+        DOVirtual.DelayedCall(0.5f,()=> ResetStart());
     }
+
+
+
+    public void ResetStart()
+    {
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        UIManager.Inst.GameStart();
+        RelicManager.Inst.GameStart();
+    }
+
+    public void EnableRelicChoose()
+    {
+        RelicSelectCanvas.gameObject.SetActive(true);
+    }
+
 
     public void GameEnd(bool isPlayerWin)
     {

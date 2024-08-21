@@ -2717,7 +2717,7 @@ RectTransform:
   - {fileID: 902790482}
   - {fileID: 1316860312}
   - {fileID: 837839277}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 990318708}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4429,7 +4429,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 693703578}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &990318709
@@ -4458,7 +4459,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b3158a39f9258e045b73d7f1a54ae6fe, type: 2}
   - {fileID: 11400000, guid: a25000686df4ec04d9948dcf330f8c3a, type: 2}
   - {fileID: 11400000, guid: 3c256d62df8b1db4da9c8b9389c0c249, type: 2}
-  attackType: 0
 --- !u!114 &990318710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4492,7 +4492,6 @@ MonoBehaviour:
   bulletPools: []
   magicBallPools: []
   flooringPools: []
-  shootPoint: {fileID: 48622709}
   bulletIndex: 0
   magicIndex: 0
   f_bulletIndex: 0
@@ -4572,8 +4571,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameStart: 0
   isGameEnd: 0
+  mapMode: 0
   RelicSelectCanvas: {fileID: 902790481}
   stageNum: 0
+  startChooseRelic: 1
 --- !u!1 &1127015471
 GameObject:
   m_ObjectHideFlags: 0
@@ -8351,8 +8352,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 83f94ea5455d3e64ea430f819a18e48c, type: 3}
   - {fileID: 8300000, guid: 57214bedf2430714bb325ef3c4f52919, type: 3}
   - {fileID: 8300000, guid: b5ead2cb0b6f3a546a499bade888bc42, type: 3}
-  - {fileID: 8300000, guid: b5ead2cb0b6f3a546a499bade888bc42, type: 3}
-  - {fileID: 8300000, guid: b5ead2cb0b6f3a546a499bade888bc42, type: 3}
+  - {fileID: 8300000, guid: 0f31335575520f54fa1bf353d8a9d5db, type: 3}
+  - {fileID: 8300000, guid: b5dd9e688c61fff49847d667e67f2f04, type: 3}
 --- !u!82 &1693562550
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10083,7 +10084,6 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1382408777}
   - {fileID: 979528800}
-  - {fileID: 693703578}
   - {fileID: 1802712927}
   - {fileID: 1878583274}
   - {fileID: 990318708}

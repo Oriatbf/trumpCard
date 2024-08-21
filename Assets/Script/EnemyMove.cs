@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemyMove : Character
 {
-
+    private EnemyMove Inst;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private CardStats card;
     [SerializeField] private float Gunrange,dashRange;
@@ -24,6 +24,7 @@ public class EnemyMove : Character
     
     public override void Start()
     {
+      
         opponent = GameObject.FindGameObjectWithTag("Player").transform;
         _dir = (opponent.position - transform.position).normalized;
         _camera = Camera.main;

@@ -12,8 +12,7 @@ public class RelicManager : MonoBehaviour
     public List<RelicSO> commonRelicSOs = new List<RelicSO>();
     public List<RelicSO> unCommonRelicSOs = new List<RelicSO>();
     public List<RelicSO> rareRelicSOs = new List<RelicSO>();
-  //  public List<RelicSO> epicRelicSOs = new List<RelicSO>();
-  //  public List<RelicSO> legendaryRelicSOs = new List<RelicSO>();
+
     public List<int> rarityChance;
     [SerializeField] List<int> rarityChanceList;
 
@@ -23,33 +22,40 @@ public class RelicManager : MonoBehaviour
     private void Awake()
     {
         Inst = this;
+        for (int i = 0; i < relicLootsLayout.childCount; i++)
+        {
+            relicLoots.Add(relicLootsLayout.GetChild(i).gameObject);
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+       
+    }
+
+    public void GameStart()
+    {
         int sum = 0;
-        foreach(var num in rarityChance)
+        foreach (var num in rarityChance)
         {
-            sum+= num;
+            sum += num;
             rarityChanceList.Add(sum);
         }
         if (sum != 1000) Debug.Log("유물 확률 문제");
 
-        
 
 
-        for(int i = 0;i< relicLootsLayout.childCount; i++)
-        {
-            relicLoots.Add(relicLootsLayout.GetChild(i).gameObject);
-        }
+
+     
         RandomSO();
     }
 
+ 
 
     public void RandomSO()
     {
-
+        Debug.Log("RandomSo");
         List<int> index = new List<int>();
         for(int i = 0; i < relicLoots.Count; i++)
         {

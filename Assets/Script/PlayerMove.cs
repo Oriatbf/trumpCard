@@ -32,7 +32,6 @@ public class PlayerMove : Character
 
     public override void Start()
     {
-
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
         TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
@@ -46,6 +45,7 @@ public class PlayerMove : Character
     // Update is called once per frame
     public override void Update()
     {
+        
         if (GameManager.Inst.isGameStart)
         {
             base.Update();

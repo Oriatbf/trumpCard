@@ -70,7 +70,7 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case NodeType.MinorEnemy:
-                    SceneManager.LoadScene(1);
+                    GameManager.Inst.NextStage();
                     MapPlayerTracker.Instance.Locked = false;
                     break;
                 case NodeType.EliteEnemy:
