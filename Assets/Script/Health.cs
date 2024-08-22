@@ -96,7 +96,7 @@ public class Health : MonoBehaviour
                 else
                 {
                     GameManager.Inst.GameEnd(false);
-                    //플레이어 사망 게임 끝
+                    
                 }
                 curHp = maxHp;
             }

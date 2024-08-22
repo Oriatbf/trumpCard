@@ -12,8 +12,15 @@ public class TypeManager : MonoBehaviour
 
     private void Awake()
     {
-       
-        Inst = this;
+        if (Inst != this && Inst != null)
+        {
+            return;
+        }
+        else
+        {
+            Inst = this;
+        }
+
 
     }
     // Start is called before the first frame update

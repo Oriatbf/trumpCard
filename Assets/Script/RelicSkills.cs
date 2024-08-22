@@ -22,6 +22,14 @@ public class RelicSkills : MonoBehaviour
     private void Awake()
     {
         character= GetComponent<Character>();
+        if (characterType == CharacterType.Player) relics = RelicManager.Inst.playerRelic;
+    }
+    [Button]
+    public void relicDebug()
+    {
+        Debug.Log(RelicManager.Inst.playerRelic.Count);
+       relics = RelicManager.Inst.playerRelic;
+        Debug.Log(relics.Count);
     }
 
     public void SetRelicIcon() 

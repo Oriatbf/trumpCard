@@ -43,8 +43,14 @@ public class RelicLoot : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<RelicSkills>().relics.Add(curRelic);
+        player.GetComponent<Character>().StartRelicSkill();
         if (!GameManager.Inst.isGameEnd) GameManager.Inst.GameStart();
-        else SceneManager.LoadScene("TestMapScene");
+        else
+        {
+            Time.timeScale = 1.0f;
+            GameManager.Inst.mapMode = true;
+            SceneManager.LoadScene("TestMapScene");
+        }
     }
 
 }

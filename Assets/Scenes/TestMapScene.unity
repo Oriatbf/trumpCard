@@ -2243,6 +2243,7 @@ GameObject:
   - component: {fileID: 1218317767}
   - component: {fileID: 1218317766}
   - component: {fileID: 1218317765}
+  - component: {fileID: 1218317772}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2262,6 +2263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826316c7e07494d4e8b8551597b4c9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRelic:
+  - {fileID: 11400000, guid: 6c7f91274a0926c42a4f0f4158640632, type: 2}
   relicSOs:
   - {fileID: 11400000, guid: d560eaab6f69ece41adf679a5930e64d, type: 2}
   - {fileID: 11400000, guid: 4594f07127407594fa074f2b7c338c1b, type: 2}
@@ -2278,6 +2281,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: decb127f371602b4794d2687d305453c, type: 2}
   - {fileID: 11400000, guid: 645aeec7bd0064a4ba00edfc2e15d691, type: 2}
   - {fileID: 11400000, guid: 1c50658861583b34fa763a05c04a0565, type: 2}
+  cur_relicSOs: []
   commonRelicSOs:
   - {fileID: 11400000, guid: 1c50658861583b34fa763a05c04a0565, type: 2}
   - {fileID: 11400000, guid: 8d6e08b09ef792b4eaf9abe2e0100ab8, type: 2}
@@ -2326,7 +2330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameStart: 0
   isGameEnd: 0
-  mapMode: 0
+  mapMode: 1
   RelicSelectCanvas: {fileID: 374086669}
   stageNum: 0
   startChooseRelic: 1
@@ -2408,6 +2412,18 @@ Transform:
   - {fileID: 413607570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1218317772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218317764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad8da2d0a755c847b451846b89e1d66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1294898512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,6 +3940,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3015013619643396332, guid: f3d397d8780414037811524dd988a62e, type: 3}
+      propertyPath: yOffset
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3015013619643396332, guid: f3d397d8780414037811524dd988a62e, type: 3}
       propertyPath: scrollRectVertical
       value: 

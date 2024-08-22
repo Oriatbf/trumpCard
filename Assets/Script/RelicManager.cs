@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
+using VInspector;
 
 public class RelicManager : MonoBehaviour
 {
     public static RelicManager Inst;
-
+    public List<RelicSO> playerRelic = new List<RelicSO>();
     public List<RelicSO> relicSOs = new List<RelicSO>();
-
+    public List<RelicSO> cur_relicSOs = new List<RelicSO>();
     public List<RelicSO> commonRelicSOs = new List<RelicSO>();
     public List<RelicSO> unCommonRelicSOs = new List<RelicSO>();
     public List<RelicSO> rareRelicSOs = new List<RelicSO>();
@@ -21,7 +23,15 @@ public class RelicManager : MonoBehaviour
 
     private void Awake()
     {
-        Inst = this;
+        if (Inst != this && Inst != null)
+        {
+            return;
+        }
+        else
+        {
+            Inst = this;
+        }
+       
         for (int i = 0; i < relicLootsLayout.childCount; i++)
         {
             relicLoots.Add(relicLootsLayout.GetChild(i).gameObject);
@@ -34,6 +44,14 @@ public class RelicManager : MonoBehaviour
        
     }
 
+    [Button]
+    public void RelicDebug() 
+    {
+        Debug.Log(playerRelic.Count);
+        Debug.Log(playerRelic[1]);
+    }
+
+    [Button]
     public void GameStart()
     {
         int sum = 0;
@@ -51,14 +69,14 @@ public class RelicManager : MonoBehaviour
         RandomSO();
     }
 
- 
-
-    public void RandomSO()
+   
+    void RandomSO()
     {
         Debug.Log("RandomSo");
         List<int> index = new List<int>();
         for(int i = 0; i < relicLoots.Count; i++)
         {
+            Debug.Log("RandomSo");
             int random;
             do
             {
@@ -71,12 +89,16 @@ public class RelicManager : MonoBehaviour
 
         for (int j = 0; j < relicLoots.Count; j++)
         {
+            Debug.Log(relicLoots.Count);
             int k = 0;
             List<RelicSO> curRarityRelics = new List<RelicSO>();
             for (k = 0; k<rarityChance.Count; k++)
             {
+                Debug.Log(index.Count);
+                Debug.Log(rarityChanceList[k]);
                 if (index[j] <= rarityChanceList[k])
                 {
+                    Debug.Log(relicLoots.Count);
                     break;
                 }
             }
@@ -96,8 +118,11 @@ public class RelicManager : MonoBehaviour
             }
             while (index2.Contains(random));
             index2.Add(random);
-
+            cur_relicSOs.Add(curRarityRelics[random]);
+            Debug.Log(curRarityRelics[random]);
+           
             relicLoots[j].GetComponent<RelicLoot>().SetCard(curRarityRelics[random]);
+          
         }
 
 
