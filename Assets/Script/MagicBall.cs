@@ -20,9 +20,12 @@ public class MagicBall : Projectile
 
     private void OnEnable()
     {
-        
-        target = GameObject.FindWithTag("Enemy").transform;
-        randomBezier = new RandomBezier(transform.position, target.position, setRad, getRad);
+        if(GameObject.FindWithTag("Enemy") != null)
+        {
+            target = GameObject.FindWithTag("Enemy").transform;
+            randomBezier = new RandomBezier(transform.position, target.position, setRad, getRad);
+           
+        }
         t = 0;
     }
 

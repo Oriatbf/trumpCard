@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 1
   infor:
-    playerCardImage: {fileID: 21300000, guid: 4f261884ea39d6f47b08887809b46805, type: 3}
-    enemyCardImage: {fileID: 21300000, guid: 7c5133c149f342543bd3c2d0dd19cfdd, type: 3}
-    cardType: 8
-    attackType: 5
-    bulletTypeIndex: 5
-    damage: 4
-    coolTime: 0.6
-    speed: 4.5
-    hp: 130
+    playerCardImage: {fileID: 21300000, guid: 76af4f20f5ae6a345acc9ae5b46b3ce3, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: c059592e6985c0d4884918c1559b3abe, type: 3}
+    cardType: 0
+    attackType: 0
+    bulletTypeIndex: 0
+    damage: 248
+    coolTime: 0.8
+    speed: 3.3
+    hp: 100
     bulletCount: 1
-    attackCount: 1
-    cardNum: 9
+    attackCount: 2
+    cardNum: 1
     projectileTurnback: 0
-    maxCharge: 1.5
-    maxChargeDam: 10
+    maxCharge: 0
+    maxChargeDam: 0
   relicInfor:
     characterTrans: {fileID: 0}
     characterHealth: {fileID: 0}

@@ -30,14 +30,24 @@ public class PlayerMove : Character
     [SerializeField] VariableJoystick moveJoyStick,dirJoyStick;
 
 
+    public override void Awake()
+    {
+        base.Awake();
+       
+    }
+
     public override void Start()
     {
+        TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
+     ;
+   
+        base.Start();
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
-        TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
+        
         SetStat();
 
-        base.Start();
+        
 
         
     }

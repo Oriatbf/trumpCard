@@ -36,7 +36,7 @@ public class Character : MonoBehaviour
 
 
 
-    private void Awake()
+    public virtual void Awake()
     {
         characterSO.relicInfor.characterTrans = transform;
         rigid = GetComponent<Rigidbody2D>();
@@ -68,7 +68,7 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        
+        StartRelicSkill();
     }
 
     // Update is called once per frame

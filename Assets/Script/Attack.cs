@@ -8,10 +8,22 @@ public class Attack : MonoBehaviour
 {
     public static Attack Inst;
     ObjectPoolingManager pool;
+
+    private void Awake()
+    {
+        if (Inst != this && Inst != null)
+        {
+            return;
+        }
+        else
+        {
+            Inst = this;
+        }
+    }
     private void Start()
     {
         pool = ObjectPoolingManager.Inst;
-        Inst = this;
+        Debug.Log(pool.gameObject);
     }
 
     public void shootRevolver(Vector2 dir, Transform curTrans,Transform shootPoint,CardStats charSO,bool isPlayer)

@@ -15,8 +15,14 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        Inst = this;
-        
+        if (Inst != this && Inst != null)
+        {
+            return;
+        }
+        else
+        {
+            Inst = this;
+        }
     }
 
     public void GameStart()
