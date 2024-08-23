@@ -132,7 +132,7 @@ namespace Map
                     return new Vector2((length - padding) / 2f, backgroundPadding.y / 2f) -
                            Flip(node.position) * unitsToPixelsMultiplier;
                 case MapOrientation.LeftToRight:
-                    return new Vector2((padding - length) / 2f, -backgroundPadding.y / 2f) +
+                    return new Vector2((padding - length) / 2f - 200, -backgroundPadding.y / 2f + 20) +
                            Flip(node.position) * unitsToPixelsMultiplier;
                 default:
                     return Vector2.zero;
