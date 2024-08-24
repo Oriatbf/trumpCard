@@ -30,5 +30,6 @@ public class CountDown : MonoBehaviour
     public void CountEnd()
     {
         camSet.CameraAnimation();
+        // 플레이어 움직일 수 있게
     }
 }
