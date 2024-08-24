@@ -8,8 +8,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Inst;
 
-    public bool  isInGame; //게임 중 인지 확인
-
     public TextMeshProUGUI goldText;
     public float gold;
 
@@ -27,7 +25,7 @@ public class UIManager : MonoBehaviour
 
     public void GameStart()
     {
-        isInGame = true;
+      
     }
     // Start is called before the first frame update
     void Start()

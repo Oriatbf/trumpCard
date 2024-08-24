@@ -69,10 +69,17 @@ public class Attack : MonoBehaviour
         {
             DOVirtual.DelayedCall(delay, () =>
             {
-                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO, damage), charSO.relicInfor.size, charSO.infor.bulletTypeIndex);
-                pool.bulletPools[pool.bulletIndex].SetActive(true);
-                pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
-                pool.bulletPools[pool.bulletIndex].transform.rotation = curTrans.rotation;
+                Transform curBullet = pool.bulletPools[pool.bulletIndex].transform;
+                curBullet.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO, damage), charSO.relicInfor.size, charSO.infor.bulletTypeIndex);
+                curBullet.gameObject.SetActive(true);
+                curBullet.position = shootPoint.position;
+              
+                Quaternion rotation = Quaternion.LookRotation(dir);
+                curBullet.localScale= dir.x < 0? new Vector2(Mathf.Abs(curBullet.localScale.x)*-1,curBullet.localScale.y): new Vector2(Mathf.Abs(curBullet.localScale.x), curBullet.localScale.y);
+                rotation.x = 0;
+                rotation.y = 0;
+                
+                pool.bulletPools[pool.bulletIndex].transform.rotation = rotation;
                
                 pool.bulletIndex++;
                 if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;

@@ -115,8 +115,10 @@ public class EnemyMove : Character
 
     }
 
-    private void OnDrawGizmos()
+    public override void OnDrawGizmos()
     {
+        base.OnDrawGizmos();
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,Gunrange);
         Gizmos.DrawWireSphere(transform.position, Gunrange-3);

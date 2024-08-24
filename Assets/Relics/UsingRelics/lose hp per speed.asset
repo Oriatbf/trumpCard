@@ -37,7 +37,7 @@ MonoBehaviour:
     add_Speed: 0
     L_P_S_Hp: 10
     loseHp_Per_Speed: 0.1
-    p_Size: 0
+    p_Size: 2
     p_Count: 0
     slime: {fileID: 0}
     melee_Add_Dam: 0

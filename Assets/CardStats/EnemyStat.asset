@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 1
   infor:
-    playerCardImage: {fileID: 21300000, guid: e2be0c77025bd664587d1f5953017cce, type: 3}
-    enemyCardImage: {fileID: 21300000, guid: 5b10b54969c81d244a225bbb6f602d28, type: 3}
-    cardType: 9
-    attackType: 4
-    bulletTypeIndex: 0
-    damage: 82.5
-    coolTime: 1.5
-    speed: 4
-    hp: 115
-    bulletCount: 5
+    playerCardImage: {fileID: 21300000, guid: 4f261884ea39d6f47b08887809b46805, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: 7c5133c149f342543bd3c2d0dd19cfdd, type: 3}
+    cardType: 8
+    attackType: 5
+    bulletTypeIndex: 5
+    damage: 4
+    coolTime: 0.6
+    speed: 4.5
+    hp: 130
+    bulletCount: 1
     attackCount: 1
-    cardNum: 10
+    cardNum: 9
     projectileTurnback: 0
-    maxCharge: 0
-    maxChargeDam: 0
+    maxCharge: 1.5
+    maxChargeDam: 10
   relicInfor:
     characterTrans: {fileID: 0}
     characterHealth: {fileID: 0}
@@ -36,5 +36,5 @@ MonoBehaviour:
     isFlooring: 0
     floorTickDamage: 0
     criticalChance: 7
-    criticalDamage: 1.5
+    criticalDamage: 0
     bloodSucking: 0

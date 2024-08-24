@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isGameStart, isGameEnd, mapMode, isLobby;
     [SerializeField] GameObject RelicSelectCanvas;
     public int stageNum;
+    public CountDown countDown;
     public bool startChooseRelic = false;
     [HideInInspector] public bool playerDead;
     private Transform player, enemy;
@@ -51,9 +52,12 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        isGameStart = true;
-        player.GetComponent<Character>().StartRelicSkill();
-        enemy.GetComponent<Character>().StartRelicSkill();
+        DOVirtual.DelayedCall(1.5f,()=> countDown.CountStart());
+        
+
+        //처음에 렐릭 선택하고 바로 적용시킬 때
+     //   player.GetComponent<Character>().StartRelicSkill();
+      //  enemy.GetComponent<Character>().StartRelicSkill();
     }
 
 
@@ -83,8 +87,9 @@ public class GameManager : MonoBehaviour
 
         if (!mapMode && !playerDead && !isLobby)
         {
+            GameStart();
             ResetStart();
-            EnableRelicChoose(startChooseRelic);
+          //  EnableRelicChoose(startChooseRelic);
         }
 
         Debug.Log("Active scene changed from " + previousScene.name + " to " + newScene.name);
@@ -97,7 +102,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Restart");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
-        UIManager.Inst.GameStart();
 
     }
 
@@ -109,8 +113,10 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd(bool isPlayerWin)
     {
+        isGameStart = false;
         if (isPlayerWin)
         {
+            
             isGameEnd = true;
             RelicManager.Inst.GameStart();
             RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장

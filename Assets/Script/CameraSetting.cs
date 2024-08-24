@@ -14,7 +14,7 @@ public class CameraSetting : MonoBehaviour
     [Range(1, 10)] [SerializeField] float endSize = 5;
     [Range(0, 5)] [SerializeField] float duration = 1;*/
 
-    // ÃÊ±â ¼¼ÆÃ
+    // ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½
     private void Awake()
     {
         virtualCamera = GameObject.Find("VCam").GetComponent<CinemachineVirtualCamera>();
@@ -23,7 +23,7 @@ public class CameraSetting : MonoBehaviour
         //virtualCamera.m_Lens.OrthographicSize = startSize;
     }
 
-    // ¾Ö´Ï¸ÞÀÌ¼Ç ½ÇÇà
+    // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void CameraAnimation() 
     {
         virtualCamera.Follow = player;

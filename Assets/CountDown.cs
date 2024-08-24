@@ -7,29 +7,31 @@ public class CountDown : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] CameraSetting camSet;
 
-    // ÃÊ±â ¼¼ÆÃ
+    // ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
-        camSet = GameObject.Find("Camera Setting").GetComponent<CameraSetting>();
+     
     }
 
-    // ÀÓ½Ã·Î ³ÖÀº °Å 
+    // ï¿½Ó½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
     void Start()
     {
-        CountStart(); //Test
+       // CountStart(); //Test
     }
 
-    // Ä«¿îÆ® ½ÃÀÛ
+    // ì¹´ìš´íŠ¸ ì‹œì‘
     public void CountStart()
     {
+        camSet = GameObject.Find("Camera Setting").GetComponent<CameraSetting>();
         anim.SetTrigger("countDown");
     }
 
-    // Ä«¿îÆ® ³¡³¯ ½Ã
+    // ì¹´ìš´íŠ¸ ëë‚ ì‹œ(ìë™ìœ¼ë¡œ ì‹¤í–‰ë¨)
     public void CountEnd()
     {
         camSet.CameraAnimation();
-        // ÇÃ·¹ÀÌ¾î ¿òÁ÷ÀÏ ¼ö ÀÖ°Ô
+        GameManager.Inst.isGameStart = true;
+        // ê²Œì„ ì‹œì‘
     }
 }

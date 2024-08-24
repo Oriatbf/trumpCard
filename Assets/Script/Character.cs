@@ -20,18 +20,23 @@ public class Character : MonoBehaviour
     public Transform shootPoint;
     public bool isPlayer;
     public float goldValue;
+    public LayerMask opponentMask;
 
     [Tab("Debug")]
     public Vector3 _dir;
     public bool isFlooring;
 
-     public float coolTime, curCoolTime,speed;
-    [HideInInspector] public Animator animator;
-     public Transform opponent;
+    public float coolTime, curCoolTime,speed;
+    public Transform opponent;
+
+    [HideInInspector] public bool isDashing;
+    [HideInInspector] public float _curCharging; 
+
+    [HideInInspector] public Animator animator; 
     [HideInInspector]public Health health;
     [HideInInspector] public GambleGauge gambleGauge;
     [HideInInspector]public DashEffect dashEffect;
-    [HideInInspector] public bool isDashing;
+   
     Rigidbody2D rigid;
 
 
@@ -163,6 +168,29 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void MeleeDamage()
+    {
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(transform.position, _dir, 2f, opponentMask);
+        if (hit.collider != null)
+        {
+            hit.transform.GetComponent<Health>().OnDamage(characterSO.infor.damage);
+        }
+        AudioManager.Inst.AudioEffectPlay(characterSO.infor.cardNum);
+    }
+
+
+    public virtual void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + transform.forward, transform.forward);
+        Gizmos.DrawRay(transform.position, _dir * 2);
+
+        Gizmos.color = Color.green;
+
+    }
+
+
     public virtual void RangeAttack(bool isRevolver,CardStats curSO)
     {
         if (curCoolTime <= 0)
@@ -197,27 +225,23 @@ public class Character : MonoBehaviour
 
         }
     }
-    /*
-    public virtual void BowCharge()
-    {
-        float curCharge = 0;
-        float damage = 0;
-        curCharge  += Time.deltaTime;
-        if(curCharge>=characterSO.infor.maxCharge) curCharge = characterSO.infor.maxCharge;
-        for(int i = 0; i < characterSO.infor.chargeStep.Count; i++)
-        {
-            if(curCharge < characterSO.infor.chargeStep[i])
-            {
-                damage = characterSO.infor.chargeDamage[i];
-                break;
-            }
-        }
-    }*/
+ 
 
 
     public virtual void BowAttack()
     {
-       
+        _curCharging += Time.deltaTime;
+        if (_curCharging >= 1.5f) _curCharging = 1.5f;
+        attackCoolImage.fillAmount = _curCharging / 1.5f;
+        if(_curCharging >= 1.5f) BowShoot();
+    }
+
+    public virtual void BowShoot()
+    {
+        bool maxCharging = _curCharging >= 1.5f;
+        Attack.Inst.shootBow(_dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging);
+        attackCoolImage.fillAmount = 0;
+        _curCharging = 0;
     }
 
     public void FlooringDamage()

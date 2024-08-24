@@ -18,7 +18,7 @@ public class PlayerMove : Character
     [Tab("Debug")]
     [SerializeField] Vector3 angleVec;
 
-    private float _angle,_curCharging;
+    private float _angle;
 
     
     private Camera _camera;
@@ -137,18 +137,10 @@ public class PlayerMove : Character
 
         if (Input.GetMouseButtonUp(0))
         {
-            Shoot();
+            BowShoot();
         }
     }
 
-    public void Shoot()
-    {
-        bool maxCharging = _curCharging >= 1.5f;
-        Attack.Inst.shootBow(_dir, handle.transform.parent, shootPoint, characterSO, true,maxCharging);
-        attackCoolImage.fillAmount = 0;
-        _curCharging = 0;
-       
-    }
 
 
 
@@ -215,27 +207,10 @@ public class PlayerMove : Character
 
 
 
-    public void MeleeDamage()
-    {
-        RaycastHit2D hit;
-        hit = Physics2D.Raycast(transform.position,_dir, 2f, enemyMask);
-        if(hit.collider != null)
-        {
-            hit.transform.GetComponent<Health>().OnDamage(characterSO.infor.damage);
-        }
-        AudioManager.Inst.AudioEffectPlay(characterSO.infor.cardNum);
-    }
+  
 
 
    
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        //Gizmos.DrawLine(transform.position,transform.position + _dir*1.5f);
-        Gizmos.DrawWireCube(transform.position + transform.forward,transform.forward);
-        Gizmos.DrawRay(transform.position, _dir*2);
-    }
 
   
 

@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class HitEvent : MonoBehaviour
 {
-    PlayerMove playerMove;
+    Character character;
     // Start is called before the first frame update
     void Start()
     {
-        playerMove= GetComponentInParent<PlayerMove>();
+        character = GetComponentInParent<Character>();
 
     }
 
     public void hitEvent()
     {
-        playerMove.MeleeDamage();
+        character.MeleeDamage();
     }
 
     // Update is called once per frame
