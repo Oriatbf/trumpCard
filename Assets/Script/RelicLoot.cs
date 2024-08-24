@@ -49,7 +49,8 @@ public class RelicLoot : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             GameManager.Inst.mapMode = true;
-            SceneManager.LoadScene("TestMapScene");
+            GameManager.Inst.SceneTransition("TestMapScene");
+   
         }
     }
 

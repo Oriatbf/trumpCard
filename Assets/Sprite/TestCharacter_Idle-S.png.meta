@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5c3bc465f87a80468855913b4cd1282
+guid: cf325ec17717dbf4dafc7eda491c596d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 22
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -98,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Prey_Walk-S_0
+      name: TestCharacter_Idle-S_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22e2b920b72a0cf49ab4ac731627d2a8
-      internalID: 26938357
+      spriteID: c27a80a6a28aa7a4bab3fb7c3002a1ba
+      internalID: 726283954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Prey_Walk-S_1
+      name: TestCharacter_Idle-S_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fbebf6298fad57478036291970912bc
-      internalID: 1498841625
+      spriteID: d93508fefd5f740448a8357bfc2702a6
+      internalID: -491339219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Prey_Walk-S_2
+      name: TestCharacter_Idle-S_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fbc3f879e7e6854bafca031aa406008
-      internalID: -586623817
+      spriteID: 74c8f2029d2d9a642b25ccc145d46c3f
+      internalID: -157658596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Prey_Walk-S_3
+      name: TestCharacter_Idle-S_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,92 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 707a05d6ce1831746a0e792f526ce9d9
-      internalID: 576848556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Prey_Walk-S_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e83c95961ba6604aabbeaeaebd92647
-      internalID: 763932622
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Prey_Walk-S_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 657d9686c5eee914e9d04ada737c57b7
-      internalID: 119949187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Prey_Walk-S_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c765225e7d707545a07a1844c6814f3
-      internalID: 665191706
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Prey_Walk-S_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 296cdf0a5d63be640adcf6e6b495e17e
-      internalID: 1981316028
+      spriteID: 1f99b88bb2b1eec439a0a318ab52089b
+      internalID: 21332627
       vertices: []
       indices: 
       edges: []
@@ -288,14 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Prey_Walk-S_0: 26938357
-      Prey_Walk-S_1: 1498841625
-      Prey_Walk-S_2: -586623817
-      Prey_Walk-S_3: 576848556
-      Prey_Walk-S_4: 763932622
-      Prey_Walk-S_5: 119949187
-      Prey_Walk-S_6: 665191706
-      Prey_Walk-S_7: 1981316028
+      TestCharacter_Idle-S_0: 726283954
+      TestCharacter_Idle-S_1: -491339219
+      TestCharacter_Idle-S_2: -157658596
+      TestCharacter_Idle-S_3: 21332627
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

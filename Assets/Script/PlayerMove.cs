@@ -39,7 +39,7 @@ public class PlayerMove : Character
     public override void Start()
     {
         TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
-     ;
+     
    
         base.Start();
         opponent = GameObject.FindWithTag("Enemy").transform;
@@ -55,6 +55,8 @@ public class PlayerMove : Character
     // Update is called once per frame
     public override void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.F2)) health.OnDamage(1000);
         
         if (GameManager.Inst.isGameStart)
         {

@@ -9,6 +9,7 @@ public class RelicManager : MonoBehaviour
 {
     public static RelicManager Inst;
     public List<RelicSO> playerRelic = new List<RelicSO>();
+    public List<RelicSO> enemyRelic = new List<RelicSO>();
     public List<RelicSO> relicSOs = new List<RelicSO>();
     public List<RelicSO> cur_relicSOs = new List<RelicSO>();
     public List<RelicSO> commonRelicSOs = new List<RelicSO>();

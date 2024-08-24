@@ -21,12 +21,21 @@ namespace EasyTransition
 
         private void Awake()
         {
-            instance = this;
+            if (instance != this && instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            else
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
         }
 
         public static TransitionManager Instance()
         {
-            if (instance == null)
+            if (instance == null )
                 Debug.LogError("You tried to access the instance before it exists.");
 
             return instance;
@@ -117,6 +126,12 @@ namespace EasyTransition
             yield return new WaitForSecondsRealtime(transitionSettings.destroyTime);
 
             onTransitionEnd?.Invoke();
+            runningTransition = false;
+            if (GameManager.Inst.playerDead)
+            {
+              //  Destroy(GameManager.Inst.gameObject);
+                Debug.Log("pppppdaed");
+            }
         }
 
         IEnumerator Timer(int sceneIndex, float startDelay, TransitionSettings transitionSettings)
@@ -141,6 +156,7 @@ namespace EasyTransition
             yield return new WaitForSecondsRealtime(transitionSettings.destroyTime);
 
             onTransitionEnd?.Invoke();
+            runningTransition = false;
         }
 
         IEnumerator Timer(float delay, TransitionSettings transitionSettings)

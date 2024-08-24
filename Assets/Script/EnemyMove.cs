@@ -29,7 +29,7 @@ public class EnemyMove : Character
         _dir = (opponent.position - transform.position).normalized;
         _camera = Camera.main;
         TypeManager.Inst.TypeChange(card.infor.cardNum, transform, false,characterSO);
-
+        relicSkills.relics = RelicManager.Inst.enemyRelic;
         SetStat();
 
         base.Start();

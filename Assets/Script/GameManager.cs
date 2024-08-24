@@ -1,22 +1,24 @@
 using DG.Tweening;
+using EasyTransition;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VInspector;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst;
-    public bool isGameStart,isGameEnd,mapMode;
+    public bool isGameStart, isGameEnd, mapMode, isLobby;
     [SerializeField] GameObject RelicSelectCanvas;
     public int stageNum;
-    public bool startChooseRelic = true;
-    bool playerDead;
+    public bool startChooseRelic = false;
+    [HideInInspector] public bool playerDead;
     private Transform player, enemy;
 
-    
 
-    public  void Awake()
+
+    public void Awake()
     {
         if (Inst != this && Inst != null)
         {
@@ -40,11 +42,11 @@ public class GameManager : MonoBehaviour
         RelicManager.Inst.GameStart();
     }
 
-   
+
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void GameStart()
@@ -57,29 +59,34 @@ public class GameManager : MonoBehaviour
 
     public void NextStage()
     {
-        Debug.Log("next");
-       //enemy.GetComponent<RelicSkills>().relics = setEnemyRelic;
+
+        RelicManager.Inst.enemyRelic = MapSetEnemtRelc.Inst.enemyRelicSOs[stageNum];
         stageNum++;
-       
-        if(stageNum != 1)
+
+        if (stageNum != 1)
         {
-            startChooseRelic= false;
+            startChooseRelic = false;
 
         }
         else
         {
-            EnableRelicChoose();
+            startChooseRelic = true;
         }
         mapMode = false;
-        SceneManager.LoadScene("StageScene");
-        Debug.Log("startScene");
-       // ResetStart();
+        SceneTransition("StageScene");
     }
-   
+
 
     void OnActiveSceneChanged(Scene previousScene, Scene newScene)
     {
-        if(!mapMode && !playerDead)ResetStart();
+
+
+        if (!mapMode && !playerDead && !isLobby)
+        {
+            ResetStart();
+            EnableRelicChoose(startChooseRelic);
+        }
+
         Debug.Log("Active scene changed from " + previousScene.name + " to " + newScene.name);
         // 씬이 변경되었을 때 하고 싶은 작업을 여기서 처리
     }
@@ -91,31 +98,37 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
         UIManager.Inst.GameStart();
-      
+
     }
 
-    public void EnableRelicChoose()
+    public void EnableRelicChoose(bool startRelic)
     {
-        RelicSelectCanvas.gameObject.SetActive(true);
+        RelicSelectCanvas.gameObject.SetActive(startRelic);
     }
 
 
     public void GameEnd(bool isPlayerWin)
     {
-        Time.timeScale = 0;
         if (isPlayerWin)
         {
-            isGameEnd= true;
+            isGameEnd = true;
             RelicManager.Inst.GameStart();
-            RelicManager.Inst.playerRelic =  player.GetComponent<RelicSkills>().relics;
+            RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장
             RelicSelectCanvas.SetActive(true);
         }
         else
         {
+            isLobby = true;
             playerDead = true;
-            SceneManager.LoadScene("LobbyScene");
-            Destroy(gameObject);
-           
+            SceneTransition("LobbyScene");
+            Destroy(gameObject,2f);
+
         }
     }
-}
+
+    public void SceneTransition(string sceneName)
+    {
+        DemoLoadScene.Inst.LoadScene(sceneName);
+    }
+
+}    

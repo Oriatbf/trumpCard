@@ -88,6 +88,7 @@ public class Health : MonoBehaviour
             if (curHp <= 0)
             {
                 transform.gameObject.SetActive(false);
+
                 if (!character.isPlayer)
                 {
                     UIManager.Inst.GoldCount(character.goldValue);
@@ -96,9 +97,9 @@ public class Health : MonoBehaviour
                 else
                 {
                     GameManager.Inst.GameEnd(false);
-                    
+
                 }
-                curHp = maxHp;
+              
             }
         }
        

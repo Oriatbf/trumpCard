@@ -5,23 +5,25 @@ using VInspector;
 
 public class LobbyPlayer : MonoBehaviour
 {
-    [Tab("Input")]
-    [SerializeField] private LayerMask enemyMask;
 
+    Animator animator;
+    SpriteRenderer spr;
 
     [Tab("Debug")]
     [SerializeField] Vector3 angleVec;
 
-    private float _angle;
-
-
-    private Camera _camera;
     public float speed = 4f;
 
 
     [Tab("Mobile")]
     [SerializeField] bool mobileVersion;
     [SerializeField] VariableJoystick moveJoyStick, dirJoyStick;
+
+    private void Awake()
+    {
+        animator= GetComponent<Animator>();
+        spr = GetComponent<SpriteRenderer>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,12 @@ public class LobbyPlayer : MonoBehaviour
             x = Input.GetAxisRaw("Horizontal");
             y = Input.GetAxisRaw("Vertical");
         }
+
+        if (x == 0 && y == 0) animator.SetBool("isWalk", false);
+        else animator.SetBool("isWalk", true);
+
+        if (x < 0) spr.flipX = true;
+        else if(x>0) spr.flipX = false; 
 
 
         angleVec = new Vector3(x, y, 0).normalized;
