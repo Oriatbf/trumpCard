@@ -23,13 +23,13 @@ namespace EasyTransition
         {
             if (instance != this && instance != null)
             {
-                Destroy(gameObject);
+                Destroy(transform.parent);
                 return;
             }
             else
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(transform.parent);
             }
         }
 

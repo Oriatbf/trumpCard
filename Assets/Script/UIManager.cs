@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
     public static UIManager Inst;
 
     public TextMeshProUGUI goldText;
+    [SerializeField] GameObject relicIcon;
+    [SerializeField] Transform relicIconCanvas;
+   
     public float gold;
 
     private void Awake()
@@ -30,7 +33,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ;
+        GoldCount(0);
     }
 
     // Update is called once per frame
@@ -39,9 +42,10 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void EndGamble()
+    public void InstanceRelicIcon(RelicSO relicSO)
     {
- 
+        GameObject icon =  Instantiate(relicIcon, relicIconCanvas);
+        icon.GetComponent<Image>().sprite = relicSO.relicIcon;
     }
 
 
@@ -49,6 +53,6 @@ public class UIManager : MonoBehaviour
     public void GoldCount(float gold)
     {
         this.gold += gold;
-        goldText.text = "골드 : " + this.gold.ToString();
+        goldText.text = "<sprite=0> " + this.gold.ToString();
     }
 }

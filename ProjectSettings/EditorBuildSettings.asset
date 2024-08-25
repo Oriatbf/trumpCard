@@ -11,13 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StageScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MapScene.unity
     guid: fb93a30a4b9f31540ad663d86d91e6d6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestMapScene.unity
     guid: 7b72f52a4de337c4891218fa374d320e
   - enabled: 1
     path: Assets/Scenes/LobbyScene.unity
     guid: 11cc0a4c6a2f91b4f9fd77ce249ea45e
+  - enabled: 1
+    path: Assets/Scenes/RealMap.unity
+    guid: a76c6e53a29258e4083118ade8a05603
   m_configObjects: {}

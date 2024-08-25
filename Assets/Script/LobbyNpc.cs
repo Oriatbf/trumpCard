@@ -49,7 +49,7 @@ public class LobbyNpc : MonoBehaviour
             {
                 if (npcType == NpcType.start)
                 {
-                    DemoLoadScene.Inst.LoadScene("TestMapScene");
+                    DemoLoadScene.Inst.LoadScene("RealMap");
                     return;
                 }
                 if (textCanvas.transform.localScale.x != 1)
@@ -78,8 +78,20 @@ public class LobbyNpc : MonoBehaviour
         else text.ShowText( npcText[textIndex]);
         textIndex++;
         if(textIndex == npcText.Length) textIndex= 0;
+  
+    }
 
-        
+    public void TutorialDialogue()
+    {
+        textCanvas.transform.DOScale(1, 0.5f).OnComplete(() => 
+        {
+            text.ShowText(npcText[textIndex]);
+            textIndex++;
+            if (textIndex == npcText.Length) textIndex = 0;
+        });
+
+       // DOVirtual.DelayedCall(2f,)
+       
     }
 
     public void OnDrawGizmos()

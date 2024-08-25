@@ -53,6 +53,9 @@ public class Character : MonoBehaviour
         curCharging = dashMaxCharging;
 
         characterSO.relicInfor.characterHealth= health;
+
+        int randomGold = Random.Range(100, 151);
+        goldValue= randomGold;
     }
 
     public void Gambling()

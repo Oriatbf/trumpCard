@@ -34,12 +34,14 @@ public class RelicSkills : MonoBehaviour
 
     public void SetRelicIcon() 
     {
+        /*
         for(int i = curRelicCount; i < relics.Count; i++)
         {
             GameObject icon = Instantiate(relicImagePrefab,iconCanvas);
             icon.GetComponent<Image>().sprite = relics[i].relicIcon;
         }
         curRelicCount = relics.Count;
+        */
      
     }
 
