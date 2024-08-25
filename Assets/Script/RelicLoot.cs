@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VInspector;
 
 public class RelicLoot : MonoBehaviour
 {
@@ -11,17 +9,15 @@ public class RelicLoot : MonoBehaviour
     [SerializeField] Color[] rarityColor;
     [SerializeField] Image rarityImage,relicIcon;
     RelicSO curRelic;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //상점 상호작용
+    [SerializeField] bool ShopCard;
+
+    [ShowIf("ShopCard")]
+    [SerializeField] TextMeshProUGUI goldText;
+
+    private bool purchased;
+    private int gold;
 
     public void SetCard(RelicSO relicSO)
     {
@@ -37,6 +33,19 @@ public class RelicLoot : MonoBehaviour
         }
         this.relicIcon.sprite = relicSO.relicIcon;
         rarityImage.color= rarityColor[rarityIndex];
+
+        // 상점 상호작용
+        if (ShopCard)
+        {
+            switch (relicSO.rarity)
+            {
+                case RelicSO.Rarity.Common: gold = Random.Range(170, 200); break;
+                case RelicSO.Rarity.Rare: gold = Random.Range(210, 250); break;
+                case RelicSO.Rarity.Epic: gold = Random.Range(290, 350); break;
+            }
+
+            goldText.text = "<sprite=0> " + gold;
+        }
     }
 
     public void SelectRelic()
@@ -55,4 +64,22 @@ public class RelicLoot : MonoBehaviour
         }
     }
 
+    // 상점 상호작용
+    public void BuyRelic()
+    {
+        if(!purchased && UIManager.Inst.gold >= gold)
+        {
+            purchased = true;
+
+            UIManager.Inst.gold -= gold;
+            goldText.text = "SALE";
+
+            // 플레이어한테 적용안됨 명시
+
+            //GameObject player = GameObject.FindGameObjectWithTag("Player");
+            //player.GetComponent<RelicSkills>().relics.Add(curRelic);
+            //player.GetComponent<Character>().StartRelicSkill();
+            UIManager.Inst.InstanceRelicIcon(curRelic);
+        }
+    }
 }

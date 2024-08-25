@@ -55,6 +55,16 @@ public class RelicManager : MonoBehaviour
     [Button]
     public void GameStart()
     {
+        /*for (int i = 0; i < relicLoots.Count; i++)
+        {
+            var SO = RandomSO(relicLoots);
+            relicLoots[i].GetComponent<RelicLoot>().SetCard(SO.curRarityRelics[SO.random]);
+        }*/
+    }
+
+   
+    public (List<RelicSO> curRarityRelics, int random) RandomSO(List<GameObject> relicLoots)
+    {
         int sum = 0;
         foreach (var num in rarityChance)
         {
@@ -63,16 +73,6 @@ public class RelicManager : MonoBehaviour
         }
         if (sum != 1000) Debug.Log("유물 확률 문제");
 
-
-
-
-     
-        RandomSO();
-    }
-
-   
-    void RandomSO()
-    {
         Debug.Log("RandomSo");
         List<int> index = new List<int>();
         for(int i = 0; i < relicLoots.Count; i++)
@@ -121,11 +121,10 @@ public class RelicManager : MonoBehaviour
             index2.Add(random);
             cur_relicSOs.Add(curRarityRelics[random]);
             Debug.Log(curRarityRelics[random]);
-           
-            relicLoots[j].GetComponent<RelicLoot>().SetCard(curRarityRelics[random]);
-          
+
+            return (curRarityRelics, random);
         }
 
-
+        return (null, 0);
     }
 }
