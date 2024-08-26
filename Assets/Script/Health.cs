@@ -17,6 +17,8 @@ public class Health : MonoBehaviour
     [SerializeField] RectTransform rectParent;
     [SerializeField] float floorTickTime =1;
     [SerializeField] Image hpBar;
+    [SerializeField] Material whiteMaterial,defaultMaterial;
+    [SerializeField] SpriteRenderer spr;
     [HideInInspector] public bool autoHeal;
     [HideInInspector] public float autoHealSpeed;
     [HideInInspector] public bool isFloor;
@@ -79,6 +81,8 @@ public class Health : MonoBehaviour
     {
         if (!isInv)
         {
+            spr.material = whiteMaterial;
+            DOVirtual.DelayedCall(0.1f, () => spr.material = defaultMaterial);
             curHp -= damage;
             HpBarIncrease();
             IncreaseGambleGauge(true,damage); // 피격 게이지 올라가기

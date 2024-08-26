@@ -36,5 +36,5 @@ MonoBehaviour:
     isFlooring: 0
     floorTickDamage: 0
     criticalChance: 7
-    criticalDamage: 0
+    criticalDamage: 1.5
     bloodSucking: 0
