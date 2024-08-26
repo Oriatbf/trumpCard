@@ -24,6 +24,7 @@ namespace EasyTransition
             if (instance != this && instance != null)
             {
                 Destroy(transform.parent);
+                Destroy(gameObject);
                 return;
             }
             else

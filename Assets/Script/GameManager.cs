@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using EasyTransition;
 using System.Collections;
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool playerDead;
     private Transform player, enemy;
 
-
+    Camera zoomCam;
 
     public void Awake()
     {
@@ -52,17 +53,17 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        DOVirtual.DelayedCall(1.5f,()=> countDown.CountStart());
+        GameManager.Inst.isGameStart = true;
+       // DOVirtual.DelayedCall(1.5f,()=> countDown.CountStart());
         
 
-        //처음에 렐릭 선택하고 바로 적용시킬 때
-     //   player.GetComponent<Character>().StartRelicSkill();
-      //  enemy.GetComponent<Character>().StartRelicSkill();
+   
     }
 
 
     public void NextStage()
     {
+
 
         RelicManager.Inst.enemyRelic = MapSetEnemtRelc.Inst.enemyRelicSOs[stageNum];
         stageNum++;
@@ -102,6 +103,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Restart");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        zoomCam = GameObject.FindGameObjectWithTag("CinemaCam").GetComponent<Camera>();
+        zoomCam.gameObject.SetActive(false);
 
     }
 
@@ -110,26 +113,43 @@ public class GameManager : MonoBehaviour
         RelicSelectCanvas.gameObject.SetActive(startRelic);
     }
 
-
-    public void GameEnd(bool isPlayerWin)
+    private void OnDisable()
     {
-        isGameStart = false;
-        if (isPlayerWin)
-        {
-            
-            isGameEnd = true;
-            RelicManager.Inst.GameStart();
-            RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장
-            RelicSelectCanvas.SetActive(true);
-        }
-        else
-        {
-            isLobby = true;
-            playerDead = true;
-            SceneTransition("LobbyScene");
-            Destroy(gameObject,2f);
+        Debug.Log("diaablse");
+    }
 
-        }
+    [Button]
+    public void GameEnd(bool isPlayerWin,GameObject deadCharacter)
+    {
+        zoomCam.gameObject.SetActive(true);
+        isGameStart = false;
+        zoomCam.transform.position= new Vector3( deadCharacter.transform.position.x, deadCharacter.transform.position.y,-10);
+        DOTween.To(() => zoomCam.orthographicSize, size => zoomCam.orthographicSize = size, 3, 1f);
+        Time.timeScale = 0.3f;
+
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            Time.timeScale = 1;
+            deadCharacter.gameObject.SetActive(false);
+            if (isPlayerWin)
+            {
+
+                isGameEnd = true;
+                RelicManager.Inst.GameStart();
+                RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장
+                RelicSelectCanvas.SetActive(true);
+            }
+            else
+            {
+                isLobby = true;
+                playerDead = true;
+                SceneTransition("LobbyScene");
+                Destroy(gameObject, 2f);
+
+            }
+        });
+
+        
     }
 
     public void SceneTransition(string sceneName)

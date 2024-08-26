@@ -87,16 +87,15 @@ public class Health : MonoBehaviour
             DamageNumber damageNumber = numberPrefab.SpawnGUI(rectParent,transform.position,damage);
             if (curHp <= 0)
             {
-                transform.gameObject.SetActive(false);
 
                 if (!character.isPlayer)
                 {
                     UIManager.Inst.GoldCount(character.goldValue);
-                    GameManager.Inst.GameEnd(true);
+                    GameManager.Inst.GameEnd(true,gameObject);
                 }
                 else
                 {
-                    GameManager.Inst.GameEnd(false);
+                    GameManager.Inst.GameEnd(false,gameObject);
 
                 }
               

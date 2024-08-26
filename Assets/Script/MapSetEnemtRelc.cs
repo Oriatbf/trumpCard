@@ -24,6 +24,7 @@ public class MapSetEnemtRelc : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("llll");
         RelicManager relicManager = RelicManager.Inst;
         for (int i = 0; i < 10; i++)
         {

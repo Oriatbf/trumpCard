@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,12 +37,14 @@ public class Character : MonoBehaviour
     [HideInInspector]public Health health;
     [HideInInspector] public GambleGauge gambleGauge;
     [HideInInspector]public DashEffect dashEffect;
+
    
     Rigidbody2D rigid;
 
 
 
     public virtual void Awake()
+
     {
         characterSO.relicInfor.characterTrans = transform;
         rigid = GetComponent<Rigidbody2D>();
