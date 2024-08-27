@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d35d5a46a30574a9a4e8fc40efb9bd, type: 3}
+  m_Name: Evnet2
+  m_EditorClassIdentifier: 
+  eventImage: {fileID: 21300000, guid: 49de682ae5a3b5a4697038411cc87767, type: 3}
+  eventName: "\uB09C \uC870\uC774\uACE0\uC720\uD29C\uBE0C"
+  eventText: "\uD558\uC774\uD558\uC774"
+  options:
+  - ChoiceText: "\uD558\uC774"
+    additionType: 1
+    typeValue: 0
+    random: 1
+    addRelic: {fileID: 0}
+  - ChoiceText: "\uD558\uC774\uD558\uC774\n"
+    additionType: 1
+    typeValue: 0
+    random: 1
+    addRelic: {fileID: 0}
+  - ChoiceText: "\uC886\uAC19\uC544\uC11C \uB5A0\uB098\uAE30"
+    additionType: 1
+    typeValue: 0
+    random: 1
+    addRelic: {fileID: 0}
