@@ -53,8 +53,8 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        GameManager.Inst.isGameStart = true;
-       // DOVirtual.DelayedCall(1.5f,()=> countDown.CountStart());
+//GameManager.Inst.isGameStart = true;
+       DOVirtual.DelayedCall(1.5f,()=> countDown.CountStart());
         
 
    
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
         DOVirtual.DelayedCall(3f, () =>
         {
             Time.timeScale = 1;
-            deadCharacter.gameObject.SetActive(false);
+         //   deadCharacter.gameObject.SetActive(false);
             if (isPlayerWin)
             {
 

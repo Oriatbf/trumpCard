@@ -55,15 +55,16 @@ public class RelicManager : MonoBehaviour
     [Button]
     public void GameStart()
     {
-        /*for (int i = 0; i < relicLoots.Count; i++)
+
+        for (int i = 0; i < relicLoots.Count; i++)
         {
-            var SO = RandomSO(relicLoots);
+            var SO = RandomSO(relicLoots.Count);
             relicLoots[i].GetComponent<RelicLoot>().SetCard(SO.curRarityRelics[SO.random]);
-        }*/
+        }
     }
 
    
-    public (List<RelicSO> curRarityRelics, int random) RandomSO(List<GameObject> relicLoots)
+    public (List<RelicSO> curRarityRelics, int random) RandomSO(int relicCount)
     {
         int sum = 0;
         foreach (var num in rarityChance)
@@ -75,7 +76,7 @@ public class RelicManager : MonoBehaviour
 
         Debug.Log("RandomSo");
         List<int> index = new List<int>();
-        for(int i = 0; i < relicLoots.Count; i++)
+        for(int i = 0; i < relicCount; i++)
         {
             Debug.Log("RandomSo");
             int random;
@@ -88,9 +89,8 @@ public class RelicManager : MonoBehaviour
         }
         List<int> index2 = new List<int>();
 
-        for (int j = 0; j < relicLoots.Count; j++)
+        for (int j = 0; j < relicCount; j++)
         {
-            Debug.Log(relicLoots.Count);
             int k = 0;
             List<RelicSO> curRarityRelics = new List<RelicSO>();
             for (k = 0; k<rarityChance.Count; k++)
@@ -99,7 +99,7 @@ public class RelicManager : MonoBehaviour
                 Debug.Log(rarityChanceList[k]);
                 if (index[j] <= rarityChanceList[k])
                 {
-                    Debug.Log(relicLoots.Count);
+
                     break;
                 }
             }

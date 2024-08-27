@@ -38,6 +38,7 @@ public class EnemyMove : Character
     // Update is called once per frame
     public override void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F3)) health.OnDamage(1000);
         if (GameManager.Inst.isGameStart && !health.inFreezeDebuff)
         {
             base.Update();

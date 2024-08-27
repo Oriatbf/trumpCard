@@ -4,7 +4,7 @@ using UnityEngine;
 public class EventOption
 {
     [TextArea]
-    public string ChoiceText;  // ¼±ÅÃÁöÀÇ ÅØ½ºÆ®
+    public string ChoiceText;  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®
 
     public enum AdditionType
     {
@@ -17,7 +17,7 @@ public class EventOption
 
     // Value -----------------------------------------------
 
-    public int typeValue;     // º¯È­·®
+    public int typeValue;     // ï¿½ï¿½È­ï¿½ï¿½
 
     // Relic -----------------------------------------------
 
@@ -31,8 +31,8 @@ public class EventOption
 [CreateAssetMenu(fileName = "EventSO", menuName = "Scriptable SO/Event", order = 1)]
 public class EventScriptable : ScriptableObject
 {   
-    public Sprite eventImage;     // ÀÌº¥Æ® ÀÌ¹ÌÁö
-    public string eventName;      // ÀÌº¥Æ® ÀÌ¸§ ÅØ½ºÆ®
-    public string eventText;      // ÀÌº¥Æ® ¼³¸í ÅØ½ºÆ®
-    public EventOption[] options; // ÀÌº¥Æ® ¼±ÅÃÁö ¹è¿­
+    public Sprite eventImage;     // ï¿½Ìºï¿½Æ® ï¿½Ì¹ï¿½ï¿½ï¿½
+    public string eventName;      // ï¿½Ìºï¿½Æ® ï¿½Ì¸ï¿½ ï¿½Ø½ï¿½Æ®
+    public string eventText;      // ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®
+    public EventOption[] options; // ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
 }

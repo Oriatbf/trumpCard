@@ -10,7 +10,7 @@ public class RelicLoot : MonoBehaviour
     [SerializeField] Image rarityImage,relicIcon;
     RelicSO curRelic;
 
-    //»óÁ¡ »óÈ£ÀÛ¿ë
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½
     [SerializeField] bool ShopCard;
 
     [ShowIf("ShopCard")]
@@ -34,7 +34,7 @@ public class RelicLoot : MonoBehaviour
         this.relicIcon.sprite = relicSO.relicIcon;
         rarityImage.color= rarityColor[rarityIndex];
 
-        // »óÁ¡ »óÈ£ÀÛ¿ë
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½
         if (ShopCard)
         {
             switch (relicSO.rarity)
@@ -64,7 +64,7 @@ public class RelicLoot : MonoBehaviour
         }
     }
 
-    // »óÁ¡ »óÈ£ÀÛ¿ë
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½
     public void BuyRelic()
     {
         if(!purchased && UIManager.Inst.gold >= gold)
@@ -74,7 +74,7 @@ public class RelicLoot : MonoBehaviour
             UIManager.Inst.gold -= gold;
             goldText.text = "SALE";
 
-            // ÇÃ·¹ÀÌ¾îÇÑÅ× Àû¿ë¾ÈµÊ ¸í½Ã
+            // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Èµï¿½ ï¿½ï¿½ï¿½
 
             //GameObject player = GameObject.FindGameObjectWithTag("Player");
             //player.GetComponent<RelicSkills>().relics.Add(curRelic);

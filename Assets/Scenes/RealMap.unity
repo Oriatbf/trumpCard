@@ -7487,7 +7487,7 @@ MonoBehaviour:
   isLobby: 0
   RelicSelectCanvas: {fileID: 374086669}
   stageNum: 0
-  countDown: {fileID: 0}
+  countDown: {fileID: 864389671}
   startChooseRelic: 1
   playerDead: 0
 --- !u!114 &1218317768

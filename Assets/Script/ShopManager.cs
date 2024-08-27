@@ -36,7 +36,7 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < relicLoots.Count; i++)
         {
-            var SO = RelicManager.Inst.RandomSO(relicLoots);
+            var SO = RelicManager.Inst.RandomSO(relicLoots.Count);
             relicLoots[i].GetComponent<RelicLoot>().SetCard(SO.curRarityRelics[SO.random]);
         }
     }
