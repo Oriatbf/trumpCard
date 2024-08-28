@@ -84,16 +84,28 @@ public class EventManager : MonoBehaviour
         {
             case EventOption.AdditionType.Gold:
                 if (randomSuccess)
-                    UIManager.Inst.gold += option.typeValue;
+                    UIManager.Inst.GoldCount(option.typeValue);
                 break;
             case EventOption.AdditionType.Relic:
                 if (randomSuccess)
                 {
-                    for (int i = 0; i < option.typeValue; i++)
+                    if(option.randomRelic)
                     {
-                        RelicSO RanSO = option.Relics[Random.Range(0, option.Relics.Length)];
-                        RelicManager.Inst.playerRelic.Add(RanSO);
-                        UIManager.Inst.InstanceRelicIcon(RanSO);
+                        for (int i = 0; i < option.typeValue; i++)
+                        {
+                            var SO = RelicManager.Inst.RandomSO(option.typeValue);
+                            RelicManager.Inst.playerRelic.Add(SO.curRarityRelics[SO.random]);
+                            UIManager.Inst.InstanceRelicIcon(SO.curRarityRelics[SO.random]);
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < option.typeValue; i++)
+                        {
+                            RelicSO RanSO = option.Relics[Random.Range(0, option.Relics.Length)];
+                            RelicManager.Inst.playerRelic.Add(RanSO);
+                            UIManager.Inst.InstanceRelicIcon(RanSO);
+                        }
                     }
                 }
                 break;
@@ -124,7 +136,7 @@ public class EventManager : MonoBehaviour
         {
             case EventOption.AdditionType.Gold:
                 if(option.allGold_Remove)
-                    UIManager.Inst.gold -= UIManager.Inst.gold;
+                    UIManager.Inst.GoldCount(-UIManager.Inst.gold);
                 break;
             case EventOption.AdditionType.Relic:
                 break;

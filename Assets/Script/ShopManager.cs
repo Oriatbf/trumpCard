@@ -45,7 +45,7 @@ public class ShopManager : MonoBehaviour
     {
         if (UIManager.Inst.gold >= 70)
         {
-            UIManager.Inst.gold -= 70;
+            UIManager.Inst.GoldCount(-70);
             Refresh();
         }
     }

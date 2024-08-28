@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d35d5a46a30574a9a4e8fc40efb9bd, type: 3}
+  m_Name: Event_RanRelics
+  m_EditorClassIdentifier: 
+  eventImage: {fileID: 21300000, guid: 49de682ae5a3b5a4697038411cc87767, type: 3}
+  eventName: "\uC720\uBB3C \uAD00\uB9AC\uC790"
+  eventText: "\"\uC800\uB294 \uC774 \uB3C4\uBC15\uC7A5\uC5D0\uC11C \uC720\uBB3C\uC744
+    \uAD00\uB9AC\uD558\uB294 \uC790\uB85C\uC11C, \uB2F9\uC2E0\uC758 \uC7A0\uC7AC\uB825\uC744
+    \uBCF4\uACE0 \uD22C\uC790\uB97C \uACB0\uC2EC\uD588\uC2B5\uB2C8\uB2E4! \uC6D0\uD558\uB294
+    \uC720\uBB3C\uC774 \uC788\uB2E4\uBA74 \uB9C8\uC74C\uAECF \uACE0\uB974\uC138\uC694.\""
+  options:
+  - ChoiceText: "\uC9C0\uC2DD\uC5D0 \uD22C\uC790\uD55C\uB2E4.\n\uC778\uCCB8\uD2B8
+      \uAD00\uB828 \uC720\uBB3C \uC911 \uB79C\uB364 \uD68D\uB4DD"
+    AfterText: "\uB098\uB294 \uAE4A\uC774 \uACE0\uBBFC\uD55C \uB05D\uC5D0 \uC778\uCCB8\uD2B8
+      \uAD00\uB828 \uC720\uBB3C\uC744 \uC120\uD0DD\uD588\uB2E4. \uD22C\uC790\uC790\uC758
+      \uAE30\uB300\uB97C \uC800\uBC84\uB9AC\uC9C0 \uC54A\uAE30\uB97C \uBC14\uB784
+      \uBFD0\uC774\uB2E4."
+    additionType: 2
+    typeValue: 1
+    ImsiRelic: 0
+    random: 0
+    randomValue: 35
+    randomAddType: 1
+    allGold_Remove: 1
+    randomAfterText: "\uB8F0\uB81B\uC774 \uBA48\uCD94\uC790, \uAF5D\uC774 \uB098\uC654\uB2E4.
+      \uC0AC\uAE30\uAFBC\uC740 \uBA40\uB9AC \uB3C4\uB9DD\uCE58\uAE30 \uC2DC\uC791\uD588\uACE0,
+      \uB2F9\uC2E0\uC740 \uADF8\uB97C \uC7A1\uC744 \uC218 \uC5C6\uC5C8\uB2E4."
+    randomRelic: 0
+    Relics:
+    - {fileID: 11400000, guid: d560eaab6f69ece41adf679a5930e64d, type: 2}
+  - ChoiceText: "\uBBFC\uCCA9\uC5D0 \uD22C\uC790\uD55C\uB2E4.\n\uC18D\uB3C4 \uAD00\uB828
+      \uC720\uBB3C \uC911 \uB79C\uB364 \uD68D\uB4DD"
+    AfterText: "\uB098\uB294 \uAE4A\uC774 \uACE0\uBBFC\uD55C \uB05D\uC5D0 \uC18D\uB3C4
+      \uAD00\uB828 \uC720\uBB3C\uC744 \uC120\uD0DD\uD588\uB2E4. \uD22C\uC790\uC790\uC758
+      \uAE30\uB300\uB97C \uC800\uBC84\uB9AC\uC9C0 \uC54A\uAE30\uB97C \uBC14\uB784
+      \uBFD0\uC774\uB2E4."
+    additionType: 2
+    typeValue: 1
+    ImsiRelic: 0
+    random: 0
+    randomValue: 15
+    randomAddType: 1
+    allGold_Remove: 1
+    randomAfterText: "\uB8F0\uB81B\uC774 \uBA48\uCD94\uC790, \uAF5D\uC774 \uB098\uC654\uB2E4.
+      \uC0AC\uAE30\uAFBC\uC740 \uBA40\uB9AC \uB3C4\uB9DD\uCE58\uAE30 \uC2DC\uC791\uD588\uACE0,
+      \uB2F9\uC2E0\uC740 \uADF8\uB97C \uC7A1\uC744 \uC218 \uC5C6\uC5C8\uB2E4."
+    randomRelic: 0
+    Relics:
+    - {fileID: 11400000, guid: 1c50658861583b34fa763a05c04a0565, type: 2}
+    - {fileID: 11400000, guid: 645aeec7bd0064a4ba00edfc2e15d691, type: 2}
+    - {fileID: 11400000, guid: 7ec8a374313d8e74293a7f38b5621344, type: 2}
+    - {fileID: 11400000, guid: 8810550cab055cc458f9c0ff908ff386, type: 2}
+    - {fileID: 11400000, guid: 57d078a0d97a0b5438bb3119ccc65549, type: 2}
+  - ChoiceText: "\uD798\uC5D0 \uD22C\uC790\uD55C\uB2E4.\n\uACF5\uACA9\uB825 \uAD00\uB828
+      \uC720\uBB3C \uC911 \uB79C\uB364 \uD68D\uB4DD"
+    AfterText: "\uB098\uB294 \uAE4A\uC774 \uACE0\uBBFC\uD55C \uB05D\uC5D0 \uACF5\uACA9\uB825
+      \uAD00\uB828 \uC720\uBB3C\uC744 \uC120\uD0DD\uD588\uB2E4. \uD22C\uC790\uC790\uC758
+      \uAE30\uB300\uB97C \uC800\uBC84\uB9AC\uC9C0 \uC54A\uAE30\uB97C \uBC14\uB784
+      \uBFD0\uC774\uB2E4."
+    additionType: 2
+    typeValue: 1
+    ImsiRelic: 0
+    random: 0
+    randomValue: 40
+    randomAddType: 1
+    allGold_Remove: 0
+    randomAfterText: "\uC559 \uB098\uBE60\uB760"
+    randomRelic: 0
+    Relics:
+    - {fileID: 11400000, guid: 542dc5779e3908e4cb186a8a8b9c2e71, type: 2}
+    - {fileID: 11400000, guid: 6b39c4e001e7ce243b84d260fc7a2d8b, type: 2}
+    - {fileID: 11400000, guid: d805571f4abd3cd40a6340238a3441aa, type: 2}
+    - {fileID: 11400000, guid: 81fb708c17400234e80f1141a34dcfd5, type: 2}
+    - {fileID: 11400000, guid: 505f107d9a3436744a6f77c9f7f251e6, type: 2}

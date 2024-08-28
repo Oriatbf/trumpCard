@@ -71,7 +71,7 @@ public class RelicLoot : MonoBehaviour
         {
             purchased = true;
 
-            UIManager.Inst.gold -= gold;
+            UIManager.Inst.GoldCount(-gold);
             goldText.text = "SALE";
 
             // Shop

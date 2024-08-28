@@ -44,6 +44,9 @@ public class EventOption
 
     // Relic -----------------------------------------------
 
+    [DrawIf("additionType", AdditionType.Relic)]
+    public bool randomRelic;
+
     public RelicSO[] Relics;
 }
 
