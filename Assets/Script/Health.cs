@@ -134,7 +134,7 @@ public class Health : MonoBehaviour
         Health op_health =  character.opponent.GetComponent<Health>();
         Character op_character= character.opponent.GetComponent<Character>();
         op_health.IncreaseGambleGauge(false,damage); // 적 캐릭터가 공격 시 올라가는 갬블게이지
-        if (op_character.characterSO.relicInfor.bloodSucking) op_health.OnHeal(damage *0.5f); // 적 캐릭터가 피흡 보유시 힐   
+      //  if (op_character.characterSO.relicInfor.bloodSucking) op_health.OnHeal(damage *0.5f); // 적 캐릭터가 피흡 보유시 힐   
     }
 
     public void IncreaseGambleGauge(bool isHitted,float damage)

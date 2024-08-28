@@ -47,17 +47,15 @@ public class RelicSkills : MonoBehaviour
 
     public void StartSkill()
     {
-        Debug.Log("ff");
         if (relics.Count > 0)
         {
             foreach (RelicSO relic in relics)
             {
                 foreach (RelicSO.RelicType relicType in relic.relicType)
                 {
-                    if (relicType.activeType == RelicSO.RelicType.ActiveType.Start)
-                    {
-                        relic.StartRelicActive(character.characterSO, relicType);
-                    }
+                   
+                    relic.StartRelicActive(character.characterSO, relicType);
+                 
                 }
 
             }
@@ -72,11 +70,8 @@ public class RelicSkills : MonoBehaviour
             foreach (RelicSO relic in relics)
             {
                 foreach (RelicSO.RelicType relicType in relic.relicType)
-                {
-                    if (relicType.activeType == RelicSO.RelicType.ActiveType.Start)
-                    {
-                        relic.StartRatioRelicActive(character.characterSO, relicType);
-                    }
+                {          
+                    relic.StartRatioRelicActive(character.characterSO, relicType);
                 }
 
             }
@@ -87,14 +82,5 @@ public class RelicSkills : MonoBehaviour
 
 
 
-    public void AttackSkill()
-    {
-
-    }
-
-
-    public void ReloadSkill()
-    {
-
-    }
+   
 }
