@@ -50,7 +50,6 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("TestShopOpen")]
     public void ShopOpen()
     {
         shopAnim.SetBool("ShopFade", true);

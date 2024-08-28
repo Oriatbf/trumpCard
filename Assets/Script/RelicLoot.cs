@@ -10,7 +10,7 @@ public class RelicLoot : MonoBehaviour
     [SerializeField] Image rarityImage,relicIcon;
     RelicSO curRelic;
 
-    //���� ��ȣ�ۿ�
+    // Shop
     [SerializeField] bool ShopCard;
 
     [ShowIf("ShopCard")]
@@ -34,7 +34,7 @@ public class RelicLoot : MonoBehaviour
         this.relicIcon.sprite = relicSO.relicIcon;
         rarityImage.color= rarityColor[rarityIndex];
 
-        // ���� ��ȣ�ۿ�
+        // Shop
         if (ShopCard)
         {
             switch (relicSO.rarity)
@@ -64,7 +64,7 @@ public class RelicLoot : MonoBehaviour
         }
     }
 
-    // ���� ��ȣ�ۿ�
+    // Shop
     public void BuyRelic()
     {
         if(!purchased && UIManager.Inst.gold >= gold)
@@ -74,11 +74,9 @@ public class RelicLoot : MonoBehaviour
             UIManager.Inst.gold -= gold;
             goldText.text = "SALE";
 
-            // �÷��̾����� ����ȵ� ���
+            // Shop
 
-            //GameObject player = GameObject.FindGameObjectWithTag("Player");
-            //player.GetComponent<RelicSkills>().relics.Add(curRelic);
-            //player.GetComponent<Character>().StartRelicSkill();
+            RelicManager.Inst.playerRelic.Add(curRelic);
             UIManager.Inst.InstanceRelicIcon(curRelic);
         }
     }

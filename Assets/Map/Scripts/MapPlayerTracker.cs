@@ -83,6 +83,7 @@ namespace Map
                 case NodeType.Boss:
                     break;
                 case NodeType.Mystery:
+                    EventManager.Inst.EventOpen();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
