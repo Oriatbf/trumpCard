@@ -64,7 +64,6 @@ public class Attack : MonoBehaviour
     {
         float delay = 0;
         float damage = isMaxCharge ?  charSO.infor.maxChargeDam :charSO.infor.damage;
-        Debug.Log(isMaxCharge);
         for (var i = 0; i < charSO.infor.attackCount; i++)
         {
             DOVirtual.DelayedCall(delay, () =>

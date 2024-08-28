@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
+using static BasicAbility;
 
 public class RelicSkills : MonoBehaviour
 {
@@ -45,39 +47,37 @@ public class RelicSkills : MonoBehaviour
      
     }
 
+    
     public void StartSkill()
     {
         if (relics.Count > 0)
         {
-            foreach (RelicSO relic in relics)
+            foreach (var item in relics)
             {
-                foreach (RelicSO.RelicType relicType in relic.relicType)
+                BasicAbility relic = item as BasicAbility;
+                if (relic != null)
                 {
-                   
-                    relic.StartRelicActive(character.characterSO, relicType);
-                 
+                    foreach (BasicAbility.RelicType relicType in relic.relicType)
+                        relic.Active(character.characterSO, relicType);
                 }
-
+              
             }
-        }
-       
-    }
 
-    public void StartRatioSkill()
-    {
-        if(relics.Count > 0)
-        {
-            foreach (RelicSO relic in relics)
+            foreach (var item in relics)
             {
-                foreach (RelicSO.RelicType relicType in relic.relicType)
-                {          
-                    relic.StartRatioRelicActive(character.characterSO, relicType);
+                SpecialAbility relic = item as SpecialAbility;
+                if (relic != null)
+                {
+                    foreach (SpecialAbility.RelicType relicType in relic.relicType)
+                        relic.Active(character.characterSO, relicType);
                 }
-
+               
             }
         }
        
     }
+
+ 
    
 
 

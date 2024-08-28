@@ -72,7 +72,7 @@ public class Character : MonoBehaviour
     public void StartRelicSkill()
     {
         relicSkills.StartSkill();
-        relicSkills.StartRatioSkill();
+
         if(isPlayer) relicSkills.SetRelicIcon();
     }
 

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using static RelicSO.RelicType;
 
-[CreateAssetMenu(fileName = "CardSO", menuName ="Scriptable SO/Card",order = 1)]
+[CreateAssetMenu(fileName = "CardSO", menuName = "Scriptable SO/Card", order = 1)]
+
 
 public class CardStats : ScriptableObject
 {
@@ -12,7 +12,7 @@ public class CardStats : ScriptableObject
     {
         Two, Three, Four, Five,Six,Seven,Eight,Nine,Ten,Jack,Queen,King,A
     }
-
+    public enum Role { Melee, Range }
     public enum AttackType
     {
         Range,Melee,MeleeSting,Magic,ShotGun,Bow
@@ -31,6 +31,7 @@ public class CardStats : ScriptableObject
     {
         public Sprite playerCardImage, enemyCardImage;
         public CardType cardType;
+        public Role role;
         public AttackType attackType;
         public int bulletTypeIndex;
         public float damage;
@@ -58,12 +59,7 @@ public class CardStats : ScriptableObject
         public float floorTickDamage;
         public int criticalChance;
         public float criticalDamage;
-        public float meleeDam;
-        public float meleeSpeed;
-        public float meleeCool;
-        public float rangeDam;
-        public float rangeSpeed;
-        public float rangeCool;
+
 
     }
 

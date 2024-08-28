@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using VInspector;
-using static RelicSO.RelicType;
 
 public class LobbyNpc : MonoBehaviour
 {
