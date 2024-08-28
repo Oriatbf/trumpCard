@@ -58,8 +58,16 @@ public class CardStats : ScriptableObject
         public float floorTickDamage;
         public int criticalChance;
         public float criticalDamage;
-        public bool bloodSucking;
+        public float meleeDam;
+        public float meleeSpeed;
+        public float meleeCool;
+        public float rangeDam;
+        public float rangeSpeed;
+        public float rangeCool;
+
     }
+
+    public List<int> bloodSuckingInchant = new List<int>();
     [ShowIfEnum("character", (int)Character.playerAble)] public RelicInfor relicInfor;
    
 
