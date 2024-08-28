@@ -8,6 +8,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] Image characterHead;
     [SerializeField] Vector3 offset;
     GameObject player;
+
+    public bool playerMoving;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,11 @@ public class LobbyManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void StopMoving()
+    {
+        playerMoving = false;
     }
 
     private void LateUpdate()

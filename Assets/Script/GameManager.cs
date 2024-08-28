@@ -53,11 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-//GameManager.Inst.isGameStart = true;
        DOVirtual.DelayedCall(1.5f,()=> countDown.CountStart());
-        
-
-   
     }
 
 

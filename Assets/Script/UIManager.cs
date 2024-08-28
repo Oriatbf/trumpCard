@@ -18,11 +18,14 @@ public class UIManager : MonoBehaviour
     {
         if (Inst != this && Inst != null)
         {
+            Destroy(transform.gameObject);
+            
             return;
         }
         else
         {
             Inst = this;
+            DontDestroyOnLoad(transform.gameObject);
         }
     }
 
