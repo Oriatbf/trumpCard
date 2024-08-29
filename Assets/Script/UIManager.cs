@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
    
     public float gold;
 
+
     private void Awake()
     {
         if (Inst != this && Inst != null)
@@ -29,6 +30,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
+   
+
     public void GameStart()
     {
       
@@ -36,14 +39,22 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("스타토");
+        gold = 0;
         GoldCount(0);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoldRelicReset()
     {
-
+        Debug.Log("리셋");
+        gold= 0;
+        GoldCount(0);
+        for(int i = 0;i<relicIconCanvas.childCount;i++)
+        {
+            Destroy(relicIconCanvas.GetChild(i).gameObject);
+        }
     }
+
 
     public void InstanceRelicIcon(RelicSO relicSO)
     {

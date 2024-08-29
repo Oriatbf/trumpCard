@@ -136,7 +136,7 @@ public class EventManager : MonoBehaviour
         {
             case EventOption.AdditionType.Gold:
                 if(option.allGold_Remove)
-                    UIManager.Inst.GoldCount(-UIManager.Inst.gold);
+                    UIManager.Inst.GoldCount(-UIManager.Inst.gold); Debug.Log("다슴");
                 break;
             case EventOption.AdditionType.Relic:
                 break;

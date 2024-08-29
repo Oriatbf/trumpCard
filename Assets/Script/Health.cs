@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
     [HideInInspector] public float autoHealSpeed;
     [HideInInspector] public bool isFloor;
     bool isInv = false;
+    bool death = false;
 
     [Tab("Debuff")]
     public bool inFireDebuff,inFreezeDebuff;
@@ -81,9 +82,9 @@ public class Health : MonoBehaviour
             EnemyUp(damage);
             
             DamageNumber damageNumber = numberPrefab.SpawnGUI(rectParent,transform.position,damage);
-            if (curHp <= 0)
+            if (curHp <= 0 && !death)
             {
-
+                death = true;
                 if (!character.isPlayer)
                 {
                     UIManager.Inst.GoldCount(character.goldValue);

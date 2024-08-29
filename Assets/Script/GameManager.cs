@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
 
     void OnActiveSceneChanged(Scene previousScene, Scene newScene)
     {
+
         if (!mapMode && !playerDead && !isLobby)
         {
             GameStart();
@@ -139,6 +140,7 @@ public class GameManager : MonoBehaviour
             {
                 isLobby = true;
                 playerDead = true;
+                UIManager.Inst.GoldRelicReset();
                 SceneTransition("LobbyScene");
                 Destroy(gameObject, 2f);
 
