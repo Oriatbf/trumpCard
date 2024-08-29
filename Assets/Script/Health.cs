@@ -46,18 +46,10 @@ public class Health : MonoBehaviour
         FireDebuff();
     }
 
-    public void SetHp(float statHp)
+    public void SetHp(float remnantHp)
     {
-        float overHp = 0; 
-        if(maxHp < statHp)
-        {
-            overHp  = statHp - maxHp;
-        }
-       
-        maxHp = statHp;
-        curHp += overHp;
-        if(curHp > maxHp) curHp= maxHp;
-
+        curHp = remnantHp;
+        HpBarIncrease();
     }
 
     public void ResetHp(float maxHp)

@@ -64,6 +64,7 @@ public class Bullet : Projectile
                 if (isPlayerBullet)
                 {
                     collision.gameObject.GetComponent<Health>().OnDamage(damage);
+                    EffectManager.Inst.SpawnEffect(transform, 0);
                     gameObject.SetActive(isReturn);
                 }
                 break;
@@ -71,12 +72,15 @@ public class Bullet : Projectile
                 if (!isPlayerBullet)
                 {
                     collision.gameObject.GetComponent<Health>().OnDamage(damage);
+                    EffectManager.Inst.SpawnEffect(transform, 0);
                     gameObject.SetActive(isReturn);
                 }
                 break;
 
 
         }
+
+       
 
     }
 

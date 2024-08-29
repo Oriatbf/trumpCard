@@ -150,6 +150,8 @@ public class GameManager : MonoBehaviour
 
     public void SceneTransition(string sceneName)
     {
+        if (sceneName == "LobbyScene") isLobby = true;
+        else isLobby = false;
         DemoLoadScene.Inst.LoadScene(sceneName);
     }
 

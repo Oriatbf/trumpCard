@@ -55,7 +55,7 @@ public class PlayerMove : Character
     // Update is called once per frame
     public override void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.F4)) Gambling();
         if (Input.GetKeyDown(KeyCode.F2)) health.OnDamage(1000);
         
         if (GameManager.Inst.isGameStart)

@@ -100,6 +100,7 @@ public class Character : MonoBehaviour
         coolTime= characterSO.infor.coolTime;
         curCoolTime= characterSO.infor.coolTime;
         health.ResetHp(characterSO.infor.hp);
+        health.SetHp(characterSO.relicInfor.remnantHealth);
         
     }
 

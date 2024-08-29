@@ -53,7 +53,8 @@ public class CardStats : ScriptableObject
     public struct RelicInfor
     {
         public Transform characterTrans;
-        public Health characterHealth; 
+        public Health characterHealth;
+        public float remnantHealth;
         public float size;
         public bool isFlooring;
         public float floorTickDamage;
