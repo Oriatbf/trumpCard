@@ -80,8 +80,6 @@ public class GameManager : MonoBehaviour
 
     void OnActiveSceneChanged(Scene previousScene, Scene newScene)
     {
-
-
         if (!mapMode && !playerDead && !isLobby)
         {
             GameStart();
@@ -122,10 +120,12 @@ public class GameManager : MonoBehaviour
         zoomCam.transform.position= new Vector3( deadCharacter.transform.position.x, deadCharacter.transform.position.y,-10);
         DOTween.To(() => zoomCam.orthographicSize, size => zoomCam.orthographicSize = size, 3, 1f);
         Time.timeScale = 0.3f;
+        Time.fixedDeltaTime = 1 / Time.timeScale * 0.02f;
 
         DOVirtual.DelayedCall(3f, () =>
         {
             Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f;
          //   deadCharacter.gameObject.SetActive(false);
             if (isPlayerWin)
             {

@@ -5,26 +5,26 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Inst;
-    AudioSource audioSource;
+    public AudioSource audioSource_BGM;
+    public AudioSource audioSource_SFX;
     public AudioClip[] backGroundAudio;
     public AudioClip[] effectAudioClip;
 
     private void Awake()
     {
         Inst = this;
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     public void AudioPlay(int index)
     {
-        audioSource.clip = backGroundAudio[index];
-        audioSource.Play();
+        audioSource_BGM.clip = backGroundAudio[index];
+        audioSource_BGM.Play();
     }
 
     public void AudioEffectPlay(int index)
     {
-
-        audioSource.PlayOneShot(effectAudioClip[index]);
+        audioSource_SFX.PlayOneShot(effectAudioClip[index]);
     }
 
 }

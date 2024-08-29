@@ -127,10 +127,9 @@ namespace EasyTransition
 
             onTransitionEnd?.Invoke();
             runningTransition = false;
-            if (GameManager.Inst.playerDead)
+            if (FindObjectOfType<GameManager>() != null && GameManager.Inst.playerDead)
             {
-              //  Destroy(GameManager.Inst.gameObject);
-                Debug.Log("pppppdaed");
+                Destroy(GameManager.Inst.gameObject);
             }
         }
 
