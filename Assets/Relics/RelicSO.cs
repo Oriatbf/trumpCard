@@ -26,4 +26,9 @@ public class RelicSO : ScriptableObject
     {
         
     }
+
+    public virtual void Active(CardStats so, InChantRelic.RelicType relicType)
+    {
+
+    }
 }

@@ -22,8 +22,8 @@ public class PlayerMove : Character
 
     
     private Camera _camera;
+    Vector3 bowDir;
 
-   
 
     [Tab("Mobile")]
     [SerializeField] bool mobileVersion;
@@ -39,17 +39,13 @@ public class PlayerMove : Character
     public override void Start()
     {
        
-     
-   
+
         base.Start();
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
         
         SetStat();
 
-        
-
-        
     }
 
     // Update is called once per frame
@@ -128,17 +124,44 @@ public class PlayerMove : Character
 
     public override void BowAttack()
     {
-        if (Input.GetMouseButton(0))
+        if (!mobileVersion)
         {
-            _curCharging += Time.deltaTime;
-            if (_curCharging >= 1.5f) _curCharging = 1.5f;
-            attackCoolImage.fillAmount = _curCharging / 1.5f;
-        }
+            if (Input.GetMouseButton(0))
+            {
+                _curCharging += Time.deltaTime;
+                if (_curCharging >= 1.5f) _curCharging = 1.5f;
+                attackCoolImage.fillAmount = _curCharging / 1.5f;
+            }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            BowShoot();
+            if (Input.GetMouseButtonUp(0))
+            {
+                BowShoot();
+            }
         }
+        else
+        {
+            
+            if(_dir != Vector3.zero) bowDir = _dir;
+            if(_dir != Vector3.zero)
+            {
+                bowDir = _dir;
+              
+                _curCharging += Time.deltaTime;
+                if (_curCharging >= 1.5f) _curCharging = 1.5f;
+                attackCoolImage.fillAmount = _curCharging / 1.5f;
+                if(_curCharging>=1.5f)BowShoot();
+               
+            }
+
+            if(_dir == Vector3.zero && _curCharging >= 0.3f)
+            {
+                BowShoot(bowDir);
+            }
+
+           
+       
+        }
+       
     }
 
 

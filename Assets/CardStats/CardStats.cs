@@ -60,7 +60,7 @@ public class CardStats : ScriptableObject
         public float floorTickDamage;
         public int criticalChance;
         public float criticalDamage;
-
+        public bool bloodSucking;
 
     }
 

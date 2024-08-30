@@ -54,25 +54,30 @@ public class RelicSkills : MonoBehaviour
         {
             foreach (var item in relics)
             {
-                BasicAbility relic = item as BasicAbility;
-                if (relic != null)
+                BasicAbility basicRelic = item as BasicAbility;
+                SpecialAbility specialRelic = item as SpecialAbility;
+                InChantRelic inChantRelic= item as InChantRelic;
+                if (basicRelic != null)
                 {
-                    foreach (BasicAbility.RelicType relicType in relic.relicType)
-                        relic.Active(character.characterSO, relicType);
+                    foreach (BasicAbility.RelicType relicType in basicRelic.relicType)
+                        basicRelic.Active(character.characterSO, relicType);
                 }
-              
+
+                if (specialRelic != null)
+                {
+                    foreach (SpecialAbility.RelicType relicType in specialRelic.relicType)
+                        specialRelic.Active(character.characterSO, relicType);
+                }
+
+                if (inChantRelic != null)
+                {
+                    foreach (InChantRelic.RelicType relicType in inChantRelic.relicType)
+                        inChantRelic.Active(character.characterSO, relicType);
+                }
+
             }
 
-            foreach (var item in relics)
-            {
-                SpecialAbility relic = item as SpecialAbility;
-                if (relic != null)
-                {
-                    foreach (SpecialAbility.RelicType relicType in relic.relicType)
-                        relic.Active(character.characterSO, relicType);
-                }
-               
-            }
+          
         }
        
     }

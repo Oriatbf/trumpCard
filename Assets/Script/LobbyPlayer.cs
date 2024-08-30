@@ -35,6 +35,11 @@ public class LobbyPlayer : MonoBehaviour
     {
         Move();
     }
+
+    private void LateUpdate()
+    {
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -8, 8), Mathf.Clamp(transform.position.y, -4.2f, 1.1f));
+    }
     private void Move()
     {
         if (!TutorialText.Inst.disableAction)

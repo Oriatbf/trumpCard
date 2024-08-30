@@ -80,7 +80,7 @@ public class Character : MonoBehaviour
     public virtual void Start()
     {
         Gambling();
-        StartRelicSkill();
+       
        
     }
 
@@ -88,7 +88,10 @@ public class Character : MonoBehaviour
     public virtual void Update()
     {
         if(curDashCool> 0) curDashCool -= Time.deltaTime;
-        if (gambleGauge._curGauge >= gambleGauge.maxGauge) Gambling();
+        if (gambleGauge._curGauge >= gambleGauge.maxGauge)
+        {
+            Gambling();
+        }
     }
     private void LateUpdate()
     {
@@ -247,8 +250,18 @@ public class Character : MonoBehaviour
 
     public virtual void BowShoot()
     {
+        Debug.Log(_dir);
         bool maxCharging = _curCharging >= 1.5f;
         Attack.Inst.shootBow(_dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging);
+        attackCoolImage.fillAmount = 0;
+        _curCharging = 0;
+    }
+
+    public virtual void BowShoot(Vector3 dir)
+    {
+        Debug.Log(_dir);
+        bool maxCharging = _curCharging >= 1.5f;
+        Attack.Inst.shootBow(dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging);
         attackCoolImage.fillAmount = 0;
         _curCharging = 0;
     }

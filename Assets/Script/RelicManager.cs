@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using VInspector;
@@ -9,12 +11,14 @@ public class RelicManager : MonoBehaviour
 {
     public static RelicManager Inst;
     public List<RelicSO> playerRelic = new List<RelicSO>();
+    public List<int> playerBloodInchant = new List<int>();
     public List<RelicSO> enemyRelic = new List<RelicSO>();
     public List<RelicSO> relicSOs = new List<RelicSO>();
     public List<RelicSO> cur_relicSOs = new List<RelicSO>();
     public List<RelicSO> commonRelicSOs = new List<RelicSO>();
     public List<RelicSO> unCommonRelicSOs = new List<RelicSO>();
     public List<RelicSO> rareRelicSOs = new List<RelicSO>();
+    public List<RelicSO> InchantRelics= new List<RelicSO>();
 
     public List<int> rarityChance;
     [SerializeField] List<int> rarityChanceList;
@@ -31,6 +35,14 @@ public class RelicManager : MonoBehaviour
         else
         {
             Inst = this;
+        }
+
+        foreach (var item in InchantRelics)
+        {
+ 
+            InChantRelic inChantRelic = item as InChantRelic;
+            inChantRelic.excute.isExcute = false;
+            
         }
        
         for (int i = 0; i < relicLootsLayout.childCount; i++)
@@ -61,6 +73,22 @@ public class RelicManager : MonoBehaviour
             var SO = RandomSO(relicLoots.Count);
             relicLoots[i].GetComponent<RelicLoot>().SetCard(SO.curRarityRelics[SO.random]);
         }
+    }
+
+    public void InchantBlood(CardStats so)
+    {
+        if(playerBloodInchant.Count> 0)
+        {
+            for (int i = 0; i < playerBloodInchant.Count; i++)
+            {
+                if (playerBloodInchant[i] == so.infor.cardNum)
+                {
+                    so.relicInfor.bloodSucking = true;
+                    break;
+                }
+            }
+        }
+      
     }
 
    
