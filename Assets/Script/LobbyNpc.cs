@@ -22,7 +22,7 @@ public class LobbyNpc : MonoBehaviour
 
     [SerializeField] LayerMask playerLayer;
     
-    bool trig,startTrig;
+    public bool trig,startTrig;
     int textIndex;
     // Start is called before the first frame update
     void Start()
@@ -37,28 +37,14 @@ public class LobbyNpc : MonoBehaviour
         if (Physics2D.OverlapBox(transform.position + (Vector3)pos, size, 0, playerLayer))
         {
             trig = true;
-            if (npcType== NpcType.start && !startTrig )
+            if (npcType == NpcType.start && !startTrig)
             {
                 startTrig = true;
                 textCanvas.transform.DOScale(1, 0.5f).OnComplete(() => { DialogeText(); });
                 return;
             }
-            
-            if (Input.GetKeyDown(KeyCode.F1))
-            {
-                if (npcType == NpcType.start)
-                {
-                    DemoLoadScene.Inst.LoadScene("RealMap");
-                    return;
-                }
-                if (textCanvas.transform.localScale.x != 1)
-                    textCanvas.transform.DOScale(1, 0.5f).OnComplete(() => { DialogeText(); });
-                else DialogeText();
 
-                
-             
-            }
-            
+
         }
         else if (trig)
         {
@@ -67,6 +53,28 @@ public class LobbyNpc : MonoBehaviour
             text.ShowText("");
             trig= false;
         }
+    }
+
+    public void NpcInteract()
+    {
+        if (trig)
+        {
+          
+           
+            if (npcType == NpcType.start)
+            {
+                DemoLoadScene.Inst.LoadScene("RealMap");
+                return;
+            }
+            if (textCanvas.transform.localScale.x != 1)
+                textCanvas.transform.DOScale(1, 0.5f).OnComplete(() => { DialogeText(); });
+            else DialogeText();
+
+
+
+            
+        }
+      
     }
 
     [Button]

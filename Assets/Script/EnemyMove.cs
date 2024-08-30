@@ -24,15 +24,15 @@ public class EnemyMove : Character
     
     public override void Start()
     {
-      
+        base.Start();
         opponent = GameObject.FindGameObjectWithTag("Player").transform;
         _dir = (opponent.position - transform.position).normalized;
         _camera = Camera.main;
-        TypeManager.Inst.TypeChange(card.infor.cardNum, transform, false,characterSO);
+       
         relicSkills.relics = RelicManager.Inst.enemyRelic;
         SetStat();
 
-        base.Start();
+       
     }
 
     // Update is called once per frame

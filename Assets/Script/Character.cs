@@ -79,7 +79,9 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
+        Gambling();
         StartRelicSkill();
+       
     }
 
     // Update is called once per frame

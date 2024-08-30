@@ -23,7 +23,7 @@ MonoBehaviour:
     damage: 2
     coolTime: 0.8
     speed: 3.3
-    hp: 100
+    hp: 50
     bulletCount: 1
     attackCount: 2
     cardNum: 1
@@ -34,6 +34,7 @@ MonoBehaviour:
   relicInfor:
     characterTrans: {fileID: 0}
     characterHealth: {fileID: 0}
+    remnantHealth: 0
     size: 0
     isFlooring: 0
     floorTickDamage: 0

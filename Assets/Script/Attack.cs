@@ -33,19 +33,23 @@ public class Attack : MonoBehaviour
         {
             DOVirtual.DelayedCall(delay, ()=>
             {
-                Transform bulletTrans = pool.bulletPools[pool.bulletIndex].transform;
-                bulletTrans.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical( charSO, charSO.infor.damage), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
-                bulletTrans.gameObject.SetActive(true);
-                bulletTrans.position = shootPoint.position;
-                bulletTrans.rotation = curTrans.rotation;
+                Transform curBullet = pool.bulletPools[pool.bulletIndex].transform;
+                curBullet.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical( charSO, charSO.infor.damage), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
+                curBullet.gameObject.SetActive(true);
+                curBullet.position = shootPoint.position;
+                Quaternion rotation = Quaternion.LookRotation(dir);
+                curBullet.localScale = dir.x < 0 ? new Vector2(Mathf.Abs(curBullet.localScale.x) * -1, curBullet.localScale.y) : new Vector2(Mathf.Abs(curBullet.localScale.x), curBullet.localScale.y);
+                rotation.x = 0;
+                rotation.y = 0;
+                curBullet.rotation = rotation;
                
                 pool.bulletIndex++;
                 if (charSO.relicInfor.isFlooring)
                 {
                      pool.f_bulletIndex++;
-                    pool.flooringPools[pool.f_bulletIndex].SetActive(true);
-                    pool.flooringPools[pool.f_bulletIndex].GetComponent<FlooringCol>().SetFloorObj(bulletTrans,charSO.relicInfor.floorTickDamage,isPlayer);
-                    if (pool.f_bulletIndex > pool.flooringPools.Length - 1) pool.f_bulletIndex = 0;
+                     pool.flooringPools[pool.f_bulletIndex].SetActive(true);
+                     pool.flooringPools[pool.f_bulletIndex].GetComponent<FlooringCol>().SetFloorObj(curBullet,charSO.relicInfor.floorTickDamage,isPlayer);
+                     if (pool.f_bulletIndex > pool.flooringPools.Length - 1) pool.f_bulletIndex = 0;
                 }
           
                
@@ -78,7 +82,7 @@ public class Attack : MonoBehaviour
                 rotation.x = 0;
                 rotation.y = 0;
                 
-                pool.bulletPools[pool.bulletIndex].transform.rotation = rotation;
+                curBullet.rotation = rotation;
                
                 pool.bulletIndex++;
                 if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;

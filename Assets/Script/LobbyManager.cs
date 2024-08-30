@@ -9,10 +9,13 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] Vector3 offset;
     GameObject player;
 
+     [SerializeField] LobbyNpc[] lobbyNpcs = new LobbyNpc[0];
+
     public bool playerMoving;
     // Start is called before the first frame update
     void Start()
     {
+        lobbyNpcs = FindObjectsOfType<LobbyNpc>();
         player = GameObject.FindGameObjectWithTag("LobbyPlayer");
     }
 
@@ -25,6 +28,14 @@ public class LobbyManager : MonoBehaviour
     public void StopMoving()
     {
         playerMoving = false;
+    }
+
+    public void CheckNpc()
+    {
+        foreach(var npc in lobbyNpcs)
+        {
+            npc.NpcInteract();
+        }
     }
 
     private void LateUpdate()

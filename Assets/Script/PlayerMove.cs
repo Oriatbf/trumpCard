@@ -38,7 +38,7 @@ public class PlayerMove : Character
 
     public override void Start()
     {
-        TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
+       
      
    
         base.Start();

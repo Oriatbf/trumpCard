@@ -34,7 +34,7 @@ public class Bullet : Projectile
 
     public void SetDir(Vector2 dir,bool isPlayerBullet,bool isReturn,float damage,float scale,int bulletIndex)
     {
-       transform.localScale = new Vector3( scale,scale,scale);
+        transform.localScale = new Vector3( scale,scale,scale);
         bulletDir = dir.normalized;
         this.isReturn = isReturn;
         this.damage= damage;
