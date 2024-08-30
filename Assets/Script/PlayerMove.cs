@@ -60,7 +60,7 @@ public class PlayerMove : Character
 
             if (Input.GetKeyDown(KeyCode.LeftShift) && curCharging > 0 && curDashCool <= 0)
             {
-                DashMove(angleVec);
+                Dash();
             }
 
 
@@ -73,6 +73,14 @@ public class PlayerMove : Character
         }
        
 
+    }
+
+    public void Dash()
+    {
+        if(curCharging > 0 && curDashCool <= 0)
+        {
+            DashMove(angleVec);
+        }
     }
 
   
