@@ -38,6 +38,7 @@ public class ShopManager : MonoBehaviour
         {
             var SO = RelicManager.Inst.RandomSO(relicLoots.Count);
             relicLoots[i].GetComponent<RelicLoot>().SetCard(SO.curRarityRelics[SO.random]);
+            relicLoots[i].GetComponent<RelicLoot>().purchased = false;
         }
     }
 
@@ -50,6 +51,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("ShopOpen")]
     public void ShopOpen()
     {
         shopAnim.SetBool("ShopFade", true);

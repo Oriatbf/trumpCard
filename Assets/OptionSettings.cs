@@ -27,13 +27,19 @@ public class OptionSettings : MonoBehaviour
 
     public void SetBGMVolume(float volume)
     {
-        audioMixer.SetFloat("BGMParam", Mathf.Log10(volume) * 20);
+        if (volume == 0)
+            audioMixer.SetFloat("BGMParam", -80f); // 최소 음량으로 설정 (음소거)
+        else
+            audioMixer.SetFloat("BGMParam", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("BGMParam", volume);
     }
 
     public void SetSFXVolume(float volume)
     {
-        audioMixer.SetFloat("SFXParam", Mathf.Log10(volume) * 20);
+        if (volume == 0)
+            audioMixer.SetFloat("SFXParam", -80f); // 최소 음량으로 설정 (음소거)
+        else
+            audioMixer.SetFloat("SFXParam", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("SFXParam", volume);
     }
 
@@ -55,6 +61,7 @@ public class OptionSettings : MonoBehaviour
 
     public void GiveUp()
     {
+        anim.SetBool("OptionFade", false);
         GameManager.Inst.SceneTransition("LobbyScene");
     }
 

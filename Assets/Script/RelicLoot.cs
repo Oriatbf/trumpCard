@@ -16,7 +16,7 @@ public class RelicLoot : MonoBehaviour
     [ShowIf("ShopCard")]
     [SerializeField] TextMeshProUGUI goldText;
 
-    private bool purchased;
+    public bool purchased;
     private int gold;
 
     public void SetCard(RelicSO relicSO)
