@@ -28,6 +28,8 @@ public class PlayerMove : Character
     [Tab("Mobile")]
     [SerializeField] bool mobileVersion;
     [SerializeField] VariableJoystick moveJoyStick,dirJoyStick;
+    [SerializeField] Button dashBtn;
+    Image dashBtnImage;
 
 
     public override void Awake()
@@ -45,7 +47,7 @@ public class PlayerMove : Character
         _camera = Camera.main;
         
         SetStat();
-
+        dashBtnImage = dashBtn.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -70,10 +72,26 @@ public class PlayerMove : Character
             if (isFlooring) FlooringDamage();
 
             CoolTime(characterSO);
+            if (mobileVersion)
+            {
+                if (curCharging > 0)
+                {
+                    dashBtn.image.enabled = true;
+                    dashBtn.enabled = true;
+                }
+                else
+                {
+                    dashBtn.image.enabled = false;
+                    dashBtn.enabled = false;
+                }
+            }
         }
+
+    
        
 
     }
+
 
     public void Dash()
     {
