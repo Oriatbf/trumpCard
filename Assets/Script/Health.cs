@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
 
     //GambleGauge Value
     GambleGauge gambleGauge;
-    private float hittedValue = 1f,attackValue = 0.7f; //hitted : 맞았을 때 , attack : 공격했을 때 늘어날 값
+    private float hittedValue = 2f,attackValue = 1f; //hitted : 맞았을 때 , attack : 공격했을 때 늘어날 값
     Character character;
     EnemyMove enemyMove;
 

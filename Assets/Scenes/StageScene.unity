@@ -1229,7 +1229,6 @@ GameObject:
   - component: {fileID: 489386489}
   - component: {fileID: 489386491}
   - component: {fileID: 489386490}
-  - component: {fileID: 489386492}
   m_Layer: 0
   m_Name: VCam
   m_TagString: Untagged
@@ -1307,19 +1306,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1239489485}
---- !u!114 &489386492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 489386488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c0d5f6d026a36428e9a52d2991ec02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_objBackScissor: {fileID: 3574266984379935870, guid: 47b9e665524b1204393891d1ba8e9390, type: 3}
 --- !u!1 &491877133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,7 +2554,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &759668917
 RectTransform:
@@ -4877,7 +4863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.9248905, a: 1}
+  m_Color: {r: 0.9245283, g: 0.76578075, b: 0.06541473, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

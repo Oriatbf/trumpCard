@@ -22,7 +22,7 @@ public class LobbyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.F1))CheckNpc();
     }
 
     public void StopMoving()
