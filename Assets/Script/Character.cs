@@ -11,7 +11,9 @@ public class Character : MonoBehaviour
 {
     [Tab("Input")]
     public Image attackCoolImage;
-    public float dashMaxCharging, dashSpeed,dashCool,dashInvTime;
+    private float dashCool = 5;
+    private float dashMaxCharging = 1;
+    public float  dashSpeed,dashInvTime;
     [HideInInspector]public float curCharging,curDashCool;
     public GameObject[] weapons;
     public GameObject handle;
@@ -32,7 +34,7 @@ public class Character : MonoBehaviour
     public Transform opponent;
 
     [HideInInspector] public bool isDashing;
-    [HideInInspector] public float _curCharging; 
+     public float _curCharging; 
 
     [HideInInspector] public Animator animator; 
     [HideInInspector]public Health health;
@@ -54,7 +56,7 @@ public class Character : MonoBehaviour
         dashEffect = GetComponent<DashEffect>();
         relicSkills = GetComponent<RelicSkills>();
         gambleGauge= GetComponent<GambleGauge>();
-        curCharging = dashMaxCharging;
+        curCharging = 1;
 
         characterSO.relicInfor.characterHealth= health;
 
@@ -90,7 +92,16 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        if(curDashCool> 0) curDashCool -= Time.deltaTime;
+        if (curDashCool > 0 && curCharging <1)
+        {
+            curDashCool -= Time.deltaTime;
+        }
+        if (curDashCool <= 0 && curCharging<1)
+        {
+            curCharging++;
+
+        }
+
         if (gambleGauge._curGauge >= gambleGauge.maxGauge)
         {
             Gambling();

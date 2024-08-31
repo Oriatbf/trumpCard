@@ -5769,9 +5769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCoolImage: {fileID: 1259285237}
-  dashMaxCharging: 3
   dashSpeed: 7
-  dashCool: 1.5
   dashInvTime: 0.5
   curCharging: 0
   curDashCool: 0
@@ -6006,9 +6004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCoolImage: {fileID: 126284116}
-  dashMaxCharging: 3
   dashSpeed: 5
-  dashCool: 2
   dashInvTime: 0.5
   curCharging: 0
   curDashCool: 0
@@ -6057,6 +6053,7 @@ MonoBehaviour:
   mobileVersion: 1
   moveJoyStick: {fileID: 1299182435}
   dirJoyStick: {fileID: 1232440092}
+  dashBtn: {fileID: 1674200346}
 --- !u!212 &1892181552
 SpriteRenderer:
   m_ObjectHideFlags: 0
