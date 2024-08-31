@@ -152,16 +152,16 @@ public class PlayerMove : Character
         }
         else
         {
-            
+           
             if(_dir != Vector3.zero) bowDir = _dir;
             if(_dir != Vector3.zero)
             {
                 bowDir = _dir;
               
                 _curCharging += Time.deltaTime;
-                if (_curCharging >= 1.5f) _curCharging = 1.5f;
-                attackCoolImage.fillAmount = _curCharging / 1.5f;
-                if(_curCharging>=1.5f)BowShoot();
+                if (_curCharging >= coolTime) _curCharging = coolTime;
+                attackCoolImage.fillAmount = _curCharging / coolTime;
+                if(_curCharging>=coolTime)BowShoot();
                
             }
 

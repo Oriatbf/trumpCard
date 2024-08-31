@@ -255,15 +255,15 @@ public class Character : MonoBehaviour
     public virtual void BowAttack()
     {
         _curCharging += Time.deltaTime;
-        if (_curCharging >= 1.5f) _curCharging = 1.5f;
-        attackCoolImage.fillAmount = _curCharging / 1.5f;
-        if(_curCharging >= 1.5f) BowShoot();
+        if (_curCharging >= coolTime) _curCharging = coolTime;
+        attackCoolImage.fillAmount = _curCharging / coolTime;
+        if(_curCharging >= coolTime) BowShoot();
     }
 
     public virtual void BowShoot()
     {
         Debug.Log(_dir);
-        bool maxCharging = _curCharging >= 1.5f;
+        bool maxCharging = _curCharging >= coolTime;
         Attack.Inst.shootBow(_dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging,this);
         attackCoolImage.fillAmount = 0;
         _curCharging = 0;
@@ -272,7 +272,7 @@ public class Character : MonoBehaviour
     public virtual void BowShoot(Vector3 dir)
     {
         Debug.Log(_dir);
-        bool maxCharging = _curCharging >= 1.5f;
+        bool maxCharging = _curCharging >= coolTime;
         Attack.Inst.shootBow(dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging, this);
         attackCoolImage.fillAmount = 0;
         _curCharging = 0;

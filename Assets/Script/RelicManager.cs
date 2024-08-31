@@ -68,11 +68,6 @@ public class RelicManager : MonoBehaviour
     public void GameStart()
     {
 
-        for (int i = 0; i < relicLoots.Count; i++)
-        {
-            var SO = RandomSO(relicLoots.Count);
-            relicLoots[i].GetComponent<RelicLoot>().SetCard(SO.curRarityRelics[SO.random]);
-        }
     }
 
     public void InchantBlood(CardStats so)

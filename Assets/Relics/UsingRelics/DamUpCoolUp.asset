@@ -10,15 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acf7dd14625110a4280edea76f172fdf, type: 3}
-  m_Name: projectilleSize
+  m_Name: DamUpCoolUp
   m_EditorClassIdentifier: 
   relicName: 
   relicIcon: {fileID: 0}
-  relicInfor: "\uD22C\uC0AC\uCCB4 \uD06C\uAE30\uAC00 1 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicInfor: "\uACF5\uACA9\uB51C\uB808\uC774\uAC00 0.6 \uC99D\uAC00\uD558\uB294
+    \uB300\uC2E0 \uACF5\uACA9\uB825\uC774 1 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   rarity: 1
   relicType:
-  - relic_Type: 3
+  - relic_Type: 0
     relicKind: 0
     roleAdd: 2
     addValue: 1
+    ratioValue: 0
+  - relic_Type: 2
+    relicKind: 0
+    roleAdd: 2
+    addValue: 0.6
     ratioValue: 0

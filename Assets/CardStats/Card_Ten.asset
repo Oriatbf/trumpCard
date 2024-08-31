@@ -21,7 +21,7 @@ MonoBehaviour:
     attackType: 5
     bulletTypeIndex: 5
     damage: 4
-    coolTime: 0.6
+    coolTime: 1.5
     speed: 4.5
     hp: 75
     bulletCount: 1
@@ -40,3 +40,4 @@ MonoBehaviour:
     floorTickDamage: 0
     criticalChance: 0
     criticalDamage: 0
+    bloodSucking: 0

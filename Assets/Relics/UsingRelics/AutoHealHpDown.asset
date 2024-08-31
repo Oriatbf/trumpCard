@@ -10,15 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acf7dd14625110a4280edea76f172fdf, type: 3}
-  m_Name: projectilleSize
+  m_Name: AutoHealHpDown
   m_EditorClassIdentifier: 
-  relicName: 
+  relicName: "\uD76C\uC0DD\uC758 \uC131\uBC30"
   relicIcon: {fileID: 0}
-  relicInfor: "\uD22C\uC0AC\uCCB4 \uD06C\uAE30\uAC00 1 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicInfor: "1\uCD08\uB9C8\uB2E4 0.5\uC529 \uCCB4\uB825\uC774 \uD68C\uBCF5\uB418\uC9C0\uB9CC
+    \uCD5C\uB300\uCCB4\uB825\uC774 10 \uAC10\uC18C\uD569\uB2C8\uB2E4"
   rarity: 1
   relicType:
-  - relic_Type: 3
+  - relic_Type: 8
     relicKind: 0
     roleAdd: 2
-    addValue: 1
+    addValue: 0.5
+    ratioValue: 0
+  - relic_Type: 7
+    relicKind: 0
+    roleAdd: 2
+    addValue: -10
     ratioValue: 0

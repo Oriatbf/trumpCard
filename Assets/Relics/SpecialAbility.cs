@@ -13,7 +13,7 @@ public class SpecialAbility : RelicSO
     {
 
 
-        public enum Relic_Type { flooringBullet, SpawnSlime }
+        public enum Relic_Type { flooringBullet, SpawnSlime,UpGradeA }
 
         public Relic_Type relic_Type;
 
@@ -37,6 +37,15 @@ public class SpecialAbility : RelicSO
                 so.relicInfor.isFlooring = true; so.relicInfor.floorTickDamage = relicType.addValue; break;
             case Relic_Type.SpawnSlime:
                 Instantiate(relicType.slime, (so.relicInfor.characterTrans.position + (Vector3)(Random.insideUnitCircle)).normalized * 2f, Quaternion.identity);break;
+            case Relic_Type.UpGradeA:
+                if(so.infor.cardNum== 0)
+                {
+                    so.infor.damage += 5;
+                    so.infor.hp += 20;
+                    so.infor.speed += 2;
+                 
+                }
+                break;
 
         }
     }
