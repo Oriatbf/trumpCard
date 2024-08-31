@@ -191,6 +191,7 @@ MonoBehaviour:
   relicIcon: {fileID: 386246421}
   ShopCard: 1
   goldText: {fileID: 159937258}
+  purchased: 0
 --- !u!114 &20275179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1455,6 +1456,7 @@ MonoBehaviour:
   relicIcon: {fileID: 580317207}
   ShopCard: 1
   goldText: {fileID: 1743904948}
+  purchased: 0
 --- !u!114 &314153060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2972,6 +2974,7 @@ MonoBehaviour:
   relicIcon: {fileID: 1054864738}
   ShopCard: 1
   goldText: {fileID: 1096603619}
+  purchased: 0
 --- !u!114 &511676955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6951,6 +6954,7 @@ MonoBehaviour:
   relicIcon: {fileID: 1339461658}
   ShopCard: 1
   goldText: {fileID: 1314142970}
+  purchased: 0
 --- !u!114 &1135892090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7231,6 +7235,7 @@ MonoBehaviour:
   relicIcon: {fileID: 174993091}
   ShopCard: 1
   goldText: {fileID: 1032373511}
+  purchased: 0
 --- !u!114 &1207713533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7533,6 +7538,7 @@ MonoBehaviour:
   startChooseRelic: 1
   bossStage: 0
   playerDead: 0
+  mapManager: {fileID: 1776090139}
 --- !u!114 &1218317768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12759,6 +12765,7 @@ MonoBehaviour:
   relicIcon: {fileID: 5761789795037428602}
   ShopCard: 1
   goldText: {fileID: 2141987965}
+  purchased: 0
 --- !u!1 &7266887577468336451
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using Cinemachine;
 using DG.Tweening;
 using EasyTransition;
+using Map;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     public bool bossStage;
     [HideInInspector] public bool playerDead;
     private Transform player, enemy;
-
+    [SerializeField] MapManager mapmanager;
     Camera zoomCam;
 
     public void Awake()
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+      
     }
 
 
@@ -57,12 +58,12 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void NextStage()
+    public void FightStage()
     {
 
 
         RelicManager.Inst.enemyRelic = MapSetEnemtRelc.Inst.enemyRelicSOs[stageNum];
-        stageNum++;
+        
 
         if (stageNum != 1)
         {
@@ -77,6 +78,11 @@ public class GameManager : MonoBehaviour
         SceneTransition("StageScene");
     }
 
+    public void StageNext()
+    {
+        stageNum++;
+    }
+
 
     void OnActiveSceneChanged(Scene previousScene, Scene newScene)
     {
@@ -86,6 +92,17 @@ public class GameManager : MonoBehaviour
             GameStart();
             ResetStart();
           //  EnableRelicChoose(startChooseRelic);
+        }
+
+        if(newScene.name == "LobbyScene")
+        {
+            UIManager.Inst.GoldRelicReset();
+            Destroy(gameObject);
+        }
+
+        if(newScene.name == "EndScene")
+        {
+            UIManager.Inst.EndingScene();
         }
 
         Debug.Log("Active scene changed from " + previousScene.name + " to " + newScene.name);
@@ -113,15 +130,31 @@ public class GameManager : MonoBehaviour
         Debug.Log("diaablse");
     }
 
-    [Button]
-    public void GameEnd(bool isPlayerWin,GameObject deadCharacter)
+    public void DefectBoss(GameObject deadCharacter)
+    {
+        CameraZoom(deadCharacter);
+        isLobby = true;
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f;
+            SceneTransition("EndScene");
+        });
+    }
+    void CameraZoom(GameObject deadCharacter)
     {
         zoomCam.gameObject.SetActive(true);
         isGameStart = false;
-        zoomCam.transform.position= new Vector3( deadCharacter.transform.position.x, deadCharacter.transform.position.y,-10);
+        zoomCam.transform.position = new Vector3(deadCharacter.transform.position.x, deadCharacter.transform.position.y, -10);
         DOTween.To(() => zoomCam.orthographicSize, size => zoomCam.orthographicSize = size, 3, 1f);
         Time.timeScale = 0.3f;
         Time.fixedDeltaTime = 1 / Time.timeScale * 0.02f;
+    }
+
+    [Button]
+    public void GameEnd(bool isPlayerWin,GameObject deadCharacter)
+    {
+        CameraZoom(deadCharacter);
 
         DOVirtual.DelayedCall(3f, () =>
         {
@@ -140,9 +173,7 @@ public class GameManager : MonoBehaviour
             {
                 isLobby = true;
                 playerDead = true;
-                UIManager.Inst.GoldRelicReset();
                 SceneTransition("LobbyScene");
-                Destroy(gameObject, 2f);
 
             }
         });
@@ -152,7 +183,7 @@ public class GameManager : MonoBehaviour
 
     public void SceneTransition(string sceneName)
     {
-        if (sceneName == "LobbyScene") isLobby = true;
+        if (sceneName == "LobbyScene" || sceneName =="EndScene") isLobby = true;
         else isLobby = false;
         DemoLoadScene.Inst.LoadScene(sceneName);
     }

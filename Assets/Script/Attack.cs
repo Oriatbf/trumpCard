@@ -67,7 +67,7 @@ public class Attack : MonoBehaviour
     public void shootBow(Vector2 dir, Transform curTrans, Transform shootPoint, CardStats charSO, bool isPlayer,bool isMaxCharge,Character character)
     {
         float delay = 0;
-        float damage = isMaxCharge ?  charSO.infor.maxChargeDam :charSO.infor.damage;
+        float damage = isMaxCharge ? charSO.infor.damage+charSO.infor.plusMaxChargeDam :charSO.infor.damage;
         for (var i = 0; i < charSO.infor.attackCount; i++)
         {
             DOVirtual.DelayedCall(delay, () =>

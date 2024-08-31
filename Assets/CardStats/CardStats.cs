@@ -43,7 +43,7 @@ public class CardStats : ScriptableObject
         public int cardNum;
         public bool projectileTurnback;
         [ShowIfEnum("attackType", (int)AttackType.Bow)] public float maxCharge;
-        [ShowIfEnum("attackType", (int)AttackType.Bow)] public float maxChargeDam;
+        [ShowIfEnum("attackType", (int)AttackType.Bow)] public float plusMaxChargeDam;
 
 
     }

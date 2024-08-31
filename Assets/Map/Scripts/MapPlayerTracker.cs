@@ -70,20 +70,21 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case NodeType.MinorEnemy:
-                    GameManager.Inst.NextStage();
+                    GameManager.Inst.FightStage();
                     MapPlayerTracker.Instance.Locked = false;
                     break;
                 case NodeType.EliteEnemy:
-                    GameManager.Inst.NextStage();
+                    GameManager.Inst.FightStage();
                     break;
                 case NodeType.Treasure:
                     break;
                 case NodeType.Store:
                     ShopManager.Inst.ShopOpen();
+                    
                     break;
                 case NodeType.Boss:
                     GameManager.Inst.bossStage = true;
-                    GameManager.Inst.NextStage();
+                    GameManager.Inst.FightStage();
                     break;
                 case NodeType.Mystery:
                     EventManager.Inst.EventOpen();
@@ -91,6 +92,8 @@ namespace Map
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            GameManager.Inst.StageNext();
         }
 
         private void PlayWarningThatNodeCannotBeAccessed()

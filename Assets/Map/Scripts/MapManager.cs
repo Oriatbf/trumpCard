@@ -11,8 +11,11 @@ namespace Map
 
         public Map CurrentMap { get; private set; }
 
+ 
+
         private void Start()
         {
+
             if (PlayerPrefs.HasKey("Map"))
             {
                 string mapJson = PlayerPrefs.GetString("Map");
@@ -35,8 +38,8 @@ namespace Map
                 GenerateNewMap();
             }
 
-
-            if(GameManager.Inst.stageNum ==0) GenerateNewMap();
+            if(GameManager.Inst.stageNum== 0) GenerateNewMap();
+     
         }
 
         public void GenerateNewMap()

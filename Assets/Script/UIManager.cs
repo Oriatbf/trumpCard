@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI goldText;
     [SerializeField] GameObject relicIcon;
     [SerializeField] Transform relicIconCanvas;
+    [SerializeField] Canvas uiTopBar;
    
     public float gold;
 
@@ -47,12 +48,18 @@ public class UIManager : MonoBehaviour
     public void GoldRelicReset()
     {
         Debug.Log("리셋");
-        gold= 0;
+        uiTopBar.enabled = true;
+        gold = 0;
         GoldCount(0);
         for(int i = 0;i<relicIconCanvas.childCount;i++)
         {
             Destroy(relicIconCanvas.GetChild(i).gameObject);
         }
+    }
+
+    public void EndingScene()
+    {
+        uiTopBar.enabled= false;
     }
 
 

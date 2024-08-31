@@ -4837,6 +4837,7 @@ MonoBehaviour:
   goldText: {fileID: 1235779161}
   relicIcon: {fileID: 5250104531490275889, guid: d59936f0b0fa99844b2d88eab620b0a5, type: 3}
   relicIconCanvas: {fileID: 998977501}
+  uiTopBar: {fileID: 521207333}
   gold: 0
 --- !u!1 &1364290481
 GameObject:

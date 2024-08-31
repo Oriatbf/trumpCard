@@ -74,7 +74,7 @@ public class Health : MonoBehaviour
 
     public void OnDamage(float damage)
     {
-        if (!isInv)
+        if (!isInv )
         {
             spr.material = whiteMaterial;
             DOVirtual.DelayedCall(0.1f, () => spr.material = defaultMaterial);
@@ -89,7 +89,8 @@ public class Health : MonoBehaviour
             IncreaseGambleGauge(true,damage); // 피격 게이지 올라가기
             EnemyUp(damage);
             
-            DamageNumber damageNumber = numberPrefab.SpawnGUI(rectParent,transform.position,damage);
+            if(damage >=0)
+                numberPrefab.SpawnGUI(rectParent,transform.position,damage);
 
 
             if (curHp <= 0 && !death)
@@ -98,7 +99,15 @@ public class Health : MonoBehaviour
                 if (!character.isPlayer)
                 {
                     UIManager.Inst.GoldCount(character.goldValue);
-                    GameManager.Inst.GameEnd(true,gameObject);
+                    if(enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss)
+                    {
+                        GameManager.Inst.DefectBoss(gameObject);
+                    }
+                    else
+                    {
+                        GameManager.Inst.GameEnd(true, gameObject);
+                    }
+                  
                 }
                 else
                 {
