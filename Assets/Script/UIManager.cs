@@ -60,6 +60,7 @@ public class UIManager : MonoBehaviour
     {
         GameObject icon =  Instantiate(relicIcon, relicIconCanvas);
         icon.GetComponent<Image>().sprite = relicSO.relicIcon;
+        icon.transform.Find("RelicLootImage").GetComponent<RelicLoot>().SetCard(relicSO);
     }
 
 
