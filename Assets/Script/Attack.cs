@@ -126,10 +126,10 @@ public class Attack : MonoBehaviour
     }
 
     public void QueenMagic(Transform shootPoint,CardStats charSO ,bool isPlayer,Transform target,Character character)
-    {
+    { 
         for (int i = 0; i < charSO.infor.bulletCount; i++)
         {
-            pool.magicBallPools[pool.magicIndex].transform.GetComponent<MagicBall>().SetTarget(target, Critical(charSO,charSO.infor.damage * character.extraAttackRatio));
+            pool.magicBallPools[pool.magicIndex].transform.GetComponent<MagicBall>().SetTarget(target, Critical(charSO,charSO.infor.damage * character.extraAttackRatio),isPlayer);
             pool.magicBallPools[pool.magicIndex].transform.position = shootPoint.position;
             pool.magicBallPools[pool.magicIndex].SetActive(true);
             

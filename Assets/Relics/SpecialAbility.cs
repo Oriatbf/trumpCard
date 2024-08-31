@@ -42,8 +42,9 @@ public class SpecialAbility : RelicSO
                 {
                     so.infor.damage += 5;
                     so.infor.hp += 20;
+                    so.relicInfor.relicPlusHealth += 20;
                     so.infor.speed += 2;
-                 
+                    Debug.Log("AAA");
                 }
                 break;
 

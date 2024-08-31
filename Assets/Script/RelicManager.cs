@@ -16,8 +16,8 @@ public class RelicManager : MonoBehaviour
     public List<RelicSO> relicSOs = new List<RelicSO>();
     public List<RelicSO> cur_relicSOs = new List<RelicSO>();
     public List<RelicSO> commonRelicSOs = new List<RelicSO>();
-    public List<RelicSO> unCommonRelicSOs = new List<RelicSO>();
     public List<RelicSO> rareRelicSOs = new List<RelicSO>();
+    public List<RelicSO> epicRelicSOs = new List<RelicSO>();
     public List<RelicSO> InchantRelics= new List<RelicSO>();
 
     public List<int> rarityChance;
@@ -65,9 +65,13 @@ public class RelicManager : MonoBehaviour
     }
 
     [Button]
-    public void GameStart()
+    public void SetRelic()
     {
-
+        for (int i = 0; i < relicLoots.Count; i++)
+        {
+            var SO = RandomSO(relicLoots.Count);
+            relicLoots[i].GetComponent<RelicLoot>().SetCard(SO.curRarityRelics[SO.random]);
+        }
     }
 
     public void InchantBlood(CardStats so)
@@ -90,6 +94,7 @@ public class RelicManager : MonoBehaviour
     public (List<RelicSO> curRarityRelics, int random) RandomSO(int relicCount)
     {
         int sum = 0;
+        rarityChanceList.Clear();
         foreach (var num in rarityChance)
         {
             sum += num;
@@ -131,9 +136,9 @@ public class RelicManager : MonoBehaviour
                 case 0:
                     curRarityRelics = commonRelicSOs; break;
                 case 1:
-                    curRarityRelics = unCommonRelicSOs; break;
-                case 2:
                     curRarityRelics = rareRelicSOs; break;
+                case 2:
+                    curRarityRelics = epicRelicSOs; break;
             }
             int random;
             do

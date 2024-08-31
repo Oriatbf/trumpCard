@@ -41,8 +41,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start");
-        RelicManager.Inst.GameStart();
+
     }
 
 
@@ -133,7 +132,7 @@ public class GameManager : MonoBehaviour
             {
 
                 isGameEnd = true;
-                RelicManager.Inst.GameStart();
+                RelicManager.Inst.SetRelic();
                 RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장
                 RelicSelectCanvas.SetActive(true);
             }

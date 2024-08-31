@@ -7461,25 +7461,40 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df5a6da2ee2c06d4199b5df612709365, type: 2}
   cur_relicSOs: []
   commonRelicSOs:
-  - {fileID: 11400000, guid: 1c50658861583b34fa763a05c04a0565, type: 2}
-  - {fileID: 11400000, guid: 8d6e08b09ef792b4eaf9abe2e0100ab8, type: 2}
-  - {fileID: 11400000, guid: 6b39c4e001e7ce243b84d260fc7a2d8b, type: 2}
-  - {fileID: 11400000, guid: 542dc5779e3908e4cb186a8a8b9c2e71, type: 2}
-  unCommonRelicSOs:
-  - {fileID: 11400000, guid: 57d078a0d97a0b5438bb3119ccc65549, type: 2}
-  - {fileID: 11400000, guid: 8810550cab055cc458f9c0ff908ff386, type: 2}
-  - {fileID: 11400000, guid: 505f107d9a3436744a6f77c9f7f251e6, type: 2}
-  - {fileID: 11400000, guid: d805571f4abd3cd40a6340238a3441aa, type: 2}
-  - {fileID: 11400000, guid: 81fb708c17400234e80f1141a34dcfd5, type: 2}
-  - {fileID: 11400000, guid: 7ec8a374313d8e74293a7f38b5621344, type: 2}
-  - {fileID: 11400000, guid: 645aeec7bd0064a4ba00edfc2e15d691, type: 2}
+  - {fileID: 11400000, guid: 9c33652b67f9eb344a6161008041aad0, type: 2}
+  - {fileID: 11400000, guid: 1586836426a827a4190eae2a150f36ec, type: 2}
+  - {fileID: 11400000, guid: a738cd3b6869a9a48a8e630d989e4fcc, type: 2}
+  - {fileID: 11400000, guid: b288649f82389534d807eaa2a2390a6c, type: 2}
+  - {fileID: 11400000, guid: 250ee7a13247ba845b9507e25c08e96d, type: 2}
+  - {fileID: 11400000, guid: f1f571f3afee5f84b8ce1ac07b610879, type: 2}
+  - {fileID: 11400000, guid: 8848a9dee7497f94d9a3b7d75f7a5b7e, type: 2}
+  - {fileID: 11400000, guid: 03bca3b9ac1dd2a41b97f4a9bfdfd652, type: 2}
+  - {fileID: 11400000, guid: 294d722116147bd4ca5cdd1d0911d0bd, type: 2}
+  - {fileID: 11400000, guid: 983953e642aaa5f4aa2a4468751387f0, type: 2}
+  - {fileID: 11400000, guid: e6eb7685e45cd8a46b4f55f122d5b104, type: 2}
+  - {fileID: 11400000, guid: 80d28cf80da13d1479e660af9e91e4f7, type: 2}
+  - {fileID: 11400000, guid: cee250044a8a3db4096434b06a31b804, type: 2}
+  - {fileID: 11400000, guid: aaac3f318becf0440aa95d5e1a01475e, type: 2}
+  - {fileID: 11400000, guid: 856d329513237f44ea0d3adad3f1fb6c, type: 2}
   rareRelicSOs:
-  - {fileID: 11400000, guid: 4594f07127407594fa074f2b7c338c1b, type: 2}
-  - {fileID: 11400000, guid: decb127f371602b4794d2687d305453c, type: 2}
-  - {fileID: 11400000, guid: 5bbcd091a0a1c644b9633ae7bb7370cf, type: 2}
-  - {fileID: 11400000, guid: d560eaab6f69ece41adf679a5930e64d, type: 2}
+  - {fileID: 11400000, guid: 83b17a3d4ef93b3459e0b9df0111233d, type: 2}
+  - {fileID: 11400000, guid: 1eede68c6b970b9408b8f522f3c2a3de, type: 2}
+  - {fileID: 11400000, guid: f5cdfb7a2103d284fa6cd95b97cf87cd, type: 2}
+  - {fileID: 11400000, guid: 72a746f505f0bb54ea21a7515749d50a, type: 2}
+  - {fileID: 11400000, guid: 889dc2cc5807ec448be0060318f37805, type: 2}
+  - {fileID: 11400000, guid: b627985d782a0bd4cb1b52b1793160ea, type: 2}
+  - {fileID: 11400000, guid: bdaf377a75968d241ad5274db0f8e1c2, type: 2}
+  - {fileID: 11400000, guid: 95021431d4ee97448bd53261e1cdf6fd, type: 2}
+  - {fileID: 11400000, guid: 9b9f874e567e9704fad050a18d333723, type: 2}
+  - {fileID: 11400000, guid: 5c1b515ff3ac90b489ee5d8522c7f9b3, type: 2}
+  - {fileID: 11400000, guid: 6db71750992cbac4896f5a7e88949347, type: 2}
+  epicRelicSOs:
+  - {fileID: 11400000, guid: 4917b6be685f562439e75d02059306c9, type: 2}
+  - {fileID: 11400000, guid: 9808cee3a4405ee46b54d0d8b1d1d472, type: 2}
+  - {fileID: 11400000, guid: 64a7967ad4b1166468e712c4945d3daa, type: 2}
+  - {fileID: 11400000, guid: df5a6da2ee2c06d4199b5df612709365, type: 2}
   InchantRelics:
-  - {fileID: 11400000, guid: a8603cdb2adf4ad42acef316bf7b10f9, type: 2}
+  - {fileID: 11400000, guid: 4917b6be685f562439e75d02059306c9, type: 2}
   rarityChance: f40100005e01000096000000
   rarityChanceList: 
   relicLootsLayout: {fileID: 1816944433}

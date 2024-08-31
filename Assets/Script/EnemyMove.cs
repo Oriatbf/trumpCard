@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyMove : Character
 {
@@ -13,6 +14,7 @@ public class EnemyMove : Character
     [SerializeField] private float Gunrange,dashRange;
     [SerializeField] private bool haveDash;
     [SerializeField] private float midDistanceMoveCool;
+    [SerializeField] private Image crown;
   
     private float _angle;
     private Vector2 _dir2,finalDir;
@@ -25,12 +27,18 @@ public class EnemyMove : Character
     public override void Start()
     {
         base.Start();
-        if (GameManager.Inst.bossStage) enemyCharacter = EnemyCharacter.Boss;
+        if (GameManager.Inst.bossStage)
+        {
+            enemyCharacter = EnemyCharacter.Boss;
+            crown.enabled= true;
+        }
+        else crown.enabled= false;
         opponent = GameObject.FindGameObjectWithTag("Player").transform;
         _dir = (opponent.position - transform.position).normalized;
         _camera = Camera.main;
        
         relicSkills.relics = RelicManager.Inst.enemyRelic;
+      //  TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
         SetStat();
 
        

@@ -8,10 +8,9 @@ public class MagicBall : Projectile
     RandomBezier randomBezier;
     [SerializeField] float setRad, getRad;
     public float damage;
-    [SerializeField] Transform target;
     [SerializeField] float speed;
     private float t;
-
+    Transform target;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,19 +19,19 @@ public class MagicBall : Projectile
 
     private void OnEnable()
     {
-        if(GameObject.FindWithTag("Enemy") != null)
-        {
-            target = GameObject.FindWithTag("Enemy").transform;
-            randomBezier = new RandomBezier(transform.position, target.position, setRad, getRad);
-           
-        }
+
         t = 0;
+        if(target != null)
+            randomBezier = new RandomBezier(transform.position, target.position, setRad, getRad);
     }
 
-    public void SetTarget(Transform transform,float damage)
+    public void SetTarget(Transform transform,float damage,bool isPlayer)
     {
+        isPlayerBullet= isPlayer;
         this.damage= damage;
         target = transform;
+ 
+       
         ActiveFalse();
     }
 
@@ -40,7 +39,7 @@ public class MagicBall : Projectile
     void Update()
     {
         transform.position = Bezier.GetPoint(randomBezier, t);
-        if (transform.position == target.position)
+        if (t>=1)
         {
             gameObject.SetActive(false);
         }
@@ -49,7 +48,13 @@ public class MagicBall : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && isPlayerBullet)
+        {
+            collision.GetComponent<Health>().OnDamage(damage);
+            gameObject.SetActive(false);
+        }
+
+        if (collision.CompareTag("Player") && !isPlayerBullet)
         {
             collision.GetComponent<Health>().OnDamage(damage);
             gameObject.SetActive(false);

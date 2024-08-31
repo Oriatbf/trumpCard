@@ -55,6 +55,7 @@ public class CardStats : ScriptableObject
         public Transform characterTrans;
         public Health characterHealth;
         public float remnantHealth;
+        public float relicPlusHealth;
         public float size;
         public bool isFlooring;
         public float floorTickDamage;

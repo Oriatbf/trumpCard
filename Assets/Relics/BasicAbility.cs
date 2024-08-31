@@ -64,7 +64,12 @@ public class BasicAbility : RelicSO
             case Relic_Type.criticalDam:
                 so.relicInfor.criticalDamage = relicType.addValue; break;
             case Relic_Type.hp:
-                if (ReturnRoleAbility(so, relicType)) so.infor.hp += relicType.addValue; break;
+                if (ReturnRoleAbility(so, relicType))
+                {
+                    so.infor.hp += relicType.addValue;
+                    so.relicInfor.relicPlusHealth += relicType.addValue;
+                }
+                break;
             case Relic_Type.AutoHeal:
                 so.relicInfor.characterHealth.autoHeal = true;
                 so.relicInfor.characterHealth.autoHealSpeed = relicType.addValue;

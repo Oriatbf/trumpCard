@@ -65,13 +65,15 @@ public class Character : MonoBehaviour
     public void Gambling()
     {
         gambleGauge._curGauge = 0;
-        TypeManager.Inst.TypeChange(GambleManager.GambleIndex(), transform, true, characterSO);
-        SetStat();
+        TypeManager.Inst.TypeChange(GambleManager.GambleIndex(), transform, isPlayer, characterSO);
+       
         StartRelicSkill();
+        SetStat();
     }
 
     public void StartRelicSkill()
     {
+        characterSO.relicInfor.relicPlusHealth = 0;
         relicSkills.StartSkill();
 
         if(isPlayer) relicSkills.SetRelicIcon();
@@ -107,6 +109,7 @@ public class Character : MonoBehaviour
         curCoolTime= characterSO.infor.coolTime;
         health.ResetHp(characterSO.infor.hp);
         health.SetHp(characterSO.relicInfor.remnantHealth);
+        health.curHp += characterSO.relicInfor.relicPlusHealth;
         
     }
 
@@ -172,9 +175,9 @@ public class Character : MonoBehaviour
 
             if (!isSting)
             {
-                animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack");
-                
-             // 역방향 재생
+                animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack"); // 역방향 재생
+
+
             }
             else animator.SetTrigger("StingAttack");
 
@@ -235,12 +238,12 @@ public class Character : MonoBehaviour
         {
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
-            animator.SetTrigger("SwordAttack");
+            animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack");
 
             switch (curSO.infor.cardType)
             {
                 case CardStats.CardType.Queen:
-                    Attack.Inst.QueenMagic(shootPoint, curSO, true, opponent,this);
+                    Attack.Inst.QueenMagic(shootPoint, curSO, isPlayer, opponent,this);
                     break;
                 case CardStats.CardType.King:
                     Attack.Inst.KingMagic(_dir, handle.transform.parent, shootPoint, curSO, isPlayer, this);
