@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf7dd14625110a4280edea76f172fdf, type: 3}
   m_Name: AutoHeal_Small
   m_EditorClassIdentifier: 
-  relicName: 
-  relicIcon: {fileID: 0}
+  relicName: "\uB9C8\uC74C\uC9D3\uAE30"
+  relicIcon: {fileID: 21300000, guid: 8f071554f2f247e42a3375fc77028db9, type: 3}
   relicInfor: "1\uCD08\uB9C8\uB2E4 0.1\uC529 \uCCB4\uB825\uC774 \uD68C\uBCF5\uB429\uB2C8\uB2E4"
   rarity: 0
   relicType:

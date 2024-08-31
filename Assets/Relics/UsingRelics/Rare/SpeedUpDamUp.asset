@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpeedUpDamUp
   m_EditorClassIdentifier: 
   relicName: "\uAC00\uC2DC \uC2E0\uBC1C"
-  relicIcon: {fileID: 0}
+  relicIcon: {fileID: 21300000, guid: 8f071554f2f247e42a3375fc77028db9, type: 3}
   relicInfor: "\uC774\uB3D9\uC18D\uB3C4 1 \uC99D\uAC00 \uACF5\uACA9\uB825 2 \uC99D\uAC00"
   rarity: 1
   relicType:

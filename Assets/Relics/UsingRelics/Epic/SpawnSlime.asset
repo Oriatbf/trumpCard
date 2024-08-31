@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22af399b95571746924450cef57d07c, type: 3}
   m_Name: SpawnSlime
   m_EditorClassIdentifier: 
-  relicName: 
-  relicIcon: {fileID: 0}
+  relicName: "\uC804\uC0DD\uC2AC"
+  relicIcon: {fileID: 21300000, guid: 8f071554f2f247e42a3375fc77028db9, type: 3}
   relicInfor: "\uAC8C\uC784 \uC2DC\uC791, \uAC2C\uBE14 \uC2DC \uC2AC\uB77C\uC784\uC744
     \uC18C\uD658\uD569\uB2C8\uB2E4"
   rarity: 2

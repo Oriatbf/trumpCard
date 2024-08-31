@@ -5788,6 +5788,7 @@ MonoBehaviour:
   opponentMask:
     serializedVersion: 2
     m_Bits: 64
+  resetRelicInfor: {fileID: 11400000, guid: e94ea88ee39b2024390d9457422cec23, type: 2}
   extraAttackRatio: 1
   _dir: {x: 0, y: 0, z: 0}
   isFlooring: 0
@@ -6023,6 +6024,7 @@ MonoBehaviour:
   opponentMask:
     serializedVersion: 2
     m_Bits: 8
+  resetRelicInfor: {fileID: 11400000, guid: e94ea88ee39b2024390d9457422cec23, type: 2}
   extraAttackRatio: 1
   _dir: {x: 0, y: 0, z: 0}
   isFlooring: 0

@@ -37,7 +37,7 @@ MonoBehaviour:
       \uB2F9\uC2E0\uC740 \uADF8\uB97C \uC7A1\uC744 \uC218 \uC5C6\uC5C8\uB2E4."
     randomRelic: 0
     Relics:
-    - {fileID: 11400000, guid: d560eaab6f69ece41adf679a5930e64d, type: 2}
+    - {fileID: 11400000, guid: 4917b6be685f562439e75d02059306c9, type: 2}
   - ChoiceText: "\uBBFC\uCCA9\uC5D0 \uD22C\uC790\uD55C\uB2E4.\n\uC18D\uB3C4 \uAD00\uB828
       \uC720\uBB3C \uC911 \uB79C\uB364 \uD68D\uB4DD"
     AfterText: "\uB098\uB294 \uAE4A\uC774 \uACE0\uBBFC\uD55C \uB05D\uC5D0 \uC18D\uB3C4
@@ -56,11 +56,15 @@ MonoBehaviour:
       \uB2F9\uC2E0\uC740 \uADF8\uB97C \uC7A1\uC744 \uC218 \uC5C6\uC5C8\uB2E4."
     randomRelic: 0
     Relics:
-    - {fileID: 11400000, guid: 1c50658861583b34fa763a05c04a0565, type: 2}
-    - {fileID: 11400000, guid: 645aeec7bd0064a4ba00edfc2e15d691, type: 2}
-    - {fileID: 11400000, guid: 7ec8a374313d8e74293a7f38b5621344, type: 2}
-    - {fileID: 11400000, guid: 8810550cab055cc458f9c0ff908ff386, type: 2}
-    - {fileID: 11400000, guid: 57d078a0d97a0b5438bb3119ccc65549, type: 2}
+    - {fileID: 11400000, guid: aaac3f318becf0440aa95d5e1a01475e, type: 2}
+    - {fileID: 11400000, guid: 856d329513237f44ea0d3adad3f1fb6c, type: 2}
+    - {fileID: 11400000, guid: 294d722116147bd4ca5cdd1d0911d0bd, type: 2}
+    - {fileID: 11400000, guid: 8848a9dee7497f94d9a3b7d75f7a5b7e, type: 2}
+    - {fileID: 11400000, guid: 9c33652b67f9eb344a6161008041aad0, type: 2}
+    - {fileID: 11400000, guid: 9b9f874e567e9704fad050a18d333723, type: 2}
+    - {fileID: 11400000, guid: 5c1b515ff3ac90b489ee5d8522c7f9b3, type: 2}
+    - {fileID: 11400000, guid: f5cdfb7a2103d284fa6cd95b97cf87cd, type: 2}
+    - {fileID: 11400000, guid: 72a746f505f0bb54ea21a7515749d50a, type: 2}
   - ChoiceText: "\uD798\uC5D0 \uD22C\uC790\uD55C\uB2E4.\n\uACF5\uACA9\uB825 \uAD00\uB828
       \uC720\uBB3C \uC911 \uB79C\uB364 \uD68D\uB4DD"
     AfterText: "\uB098\uB294 \uAE4A\uC774 \uACE0\uBBFC\uD55C \uB05D\uC5D0 \uACF5\uACA9\uB825
@@ -77,8 +81,9 @@ MonoBehaviour:
     randomAfterText: "\uC559 \uB098\uBE60\uB760"
     randomRelic: 0
     Relics:
-    - {fileID: 11400000, guid: 542dc5779e3908e4cb186a8a8b9c2e71, type: 2}
-    - {fileID: 11400000, guid: 6b39c4e001e7ce243b84d260fc7a2d8b, type: 2}
-    - {fileID: 11400000, guid: d805571f4abd3cd40a6340238a3441aa, type: 2}
-    - {fileID: 11400000, guid: 81fb708c17400234e80f1141a34dcfd5, type: 2}
-    - {fileID: 11400000, guid: 505f107d9a3436744a6f77c9f7f251e6, type: 2}
+    - {fileID: 11400000, guid: 72a746f505f0bb54ea21a7515749d50a, type: 2}
+    - {fileID: 11400000, guid: 250ee7a13247ba845b9507e25c08e96d, type: 2}
+    - {fileID: 11400000, guid: a738cd3b6869a9a48a8e630d989e4fcc, type: 2}
+    - {fileID: 11400000, guid: b288649f82389534d807eaa2a2390a6c, type: 2}
+    - {fileID: 11400000, guid: 03bca3b9ac1dd2a41b97f4a9bfdfd652, type: 2}
+    - {fileID: 11400000, guid: cee250044a8a3db4096434b06a31b804, type: 2}

@@ -25,7 +25,7 @@ public class MapSetEnemtRelc : MonoBehaviour
     {
         Debug.Log("llll");
         RelicManager relicManager = RelicManager.Inst;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 11; i++)
         {
             enemyRelicSOs.Add(new List<RelicSO>());
             List<RelicSO> haveSO = new List<RelicSO>();
@@ -45,7 +45,7 @@ public class MapSetEnemtRelc : MonoBehaviour
         }
 
         int p = 0;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 11; i++)
         {
             for (int j = 0; j <= i; j++)
             {

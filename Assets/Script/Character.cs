@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
     public bool isPlayer;
     public float goldValue;
     public LayerMask opponentMask;
+    [SerializeField] CardStats resetRelicInfor;
     [HideInInspector] public float extraAttackRatio = 1;
 
     [Tab("Debug")]
@@ -47,8 +48,9 @@ public class Character : MonoBehaviour
 
 
     public virtual void Awake()
-
     {
+
+        characterSO.relicInfor = resetRelicInfor.relicInfor;
         characterSO.relicInfor.characterTrans = transform;
         rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();

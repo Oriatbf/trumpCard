@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf7dd14625110a4280edea76f172fdf, type: 3}
   m_Name: RangeDamUp
   m_EditorClassIdentifier: 
-  relicName: 
-  relicIcon: {fileID: 0}
-  relicInfor: "\uC6D0\uAC70\uB9AC\uBB34\uAE30\uC758 \uACF5\uACA9\uB825\uC774 2.5
-    \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicName: "\uC874 \uC705"
+  relicIcon: {fileID: 21300000, guid: 8f071554f2f247e42a3375fc77028db9, type: 3}
+  relicInfor: "\uC6D0\uAC70\uB9AC\uCE90\uB9AD\uD130\uC758 \uACF5\uACA9\uB825\uC774
+    2.5 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   rarity: 0
   relicType:
   - relic_Type: 0

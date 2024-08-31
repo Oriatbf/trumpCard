@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AutoHealHpDown
   m_EditorClassIdentifier: 
   relicName: "\uD76C\uC0DD\uC758 \uC131\uBC30"
-  relicIcon: {fileID: 0}
+  relicIcon: {fileID: 21300000, guid: 8f071554f2f247e42a3375fc77028db9, type: 3}
   relicInfor: "1\uCD08\uB9C8\uB2E4 0.5\uC529 \uCCB4\uB825\uC774 \uD68C\uBCF5\uB418\uC9C0\uB9CC
     \uCD5C\uB300\uCCB4\uB825\uC774 10 \uAC10\uC18C\uD569\uB2C8\uB2E4"
   rarity: 1

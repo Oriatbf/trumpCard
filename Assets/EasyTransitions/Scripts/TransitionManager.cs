@@ -127,10 +127,7 @@ namespace EasyTransition
 
             onTransitionEnd?.Invoke();
             runningTransition = false;
-            if (FindObjectOfType<GameManager>() != null && GameManager.Inst.playerDead)
-            {
-                Destroy(GameManager.Inst.gameObject);
-            }
+        
         }
 
         IEnumerator Timer(int sceneIndex, float startDelay, TransitionSettings transitionSettings)

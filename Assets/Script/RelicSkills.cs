@@ -25,14 +25,9 @@ public class RelicSkills : MonoBehaviour
     {
         character= GetComponent<Character>();
         if (characterType == CharacterType.Player) relics = RelicManager.Inst.playerRelic;
+        if(characterType == CharacterType.Enemy) relics = RelicManager.Inst.enemyRelic;
     }
-    [Button]
-    public void relicDebug()
-    {
-        Debug.Log(RelicManager.Inst.playerRelic.Count);
-       relics = RelicManager.Inst.playerRelic;
-        Debug.Log(relics.Count);
-    }
+
 
     public void SetRelicIcon() 
     {

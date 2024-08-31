@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf7dd14625110a4280edea76f172fdf, type: 3}
   m_Name: MeleeHpUp
   m_EditorClassIdentifier: 
-  relicName: 
-  relicIcon: {fileID: 0}
-  relicInfor: "\uADFC\uC811\uBB34\uAE30\uC758 \uCCB4\uB825\uC774 20 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicName: "\uACAC\uACE0\uD55C \uAC15\uD0C0"
+  relicIcon: {fileID: 21300000, guid: 8f071554f2f247e42a3375fc77028db9, type: 3}
+  relicInfor: "\uADFC\uC811\uCE90\uB9AD\uD130\uC758 \uCCB4\uB825\uC774 20 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   rarity: 1
   relicType:
   - relic_Type: 7
