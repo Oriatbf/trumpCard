@@ -33,7 +33,8 @@ public class LobbyPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if(!TutorialManager.Inst.isTutorialing)
+            Move();
     }
 
     private void LateUpdate()

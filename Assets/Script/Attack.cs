@@ -26,7 +26,7 @@ public class Attack : MonoBehaviour
         Debug.Log(pool.gameObject);
     }
 
-    public void shootRevolver(Vector2 dir, Transform curTrans,Transform shootPoint,CardStats charSO,bool isPlayer)
+    public void shootRevolver(Vector2 dir, Transform curTrans,Transform shootPoint,CardStats charSO,bool isPlayer,Character character)
     {
         float delay = 0;
         for (var i = 0; i < charSO.infor.attackCount; i++)
@@ -34,7 +34,7 @@ public class Attack : MonoBehaviour
             DOVirtual.DelayedCall(delay, ()=>
             {
                 Transform curBullet = pool.bulletPools[pool.bulletIndex].transform;
-                curBullet.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical( charSO, charSO.infor.damage), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
+                curBullet.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical( charSO, charSO.infor.damage * character.extraAttackRatio), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
                 curBullet.gameObject.SetActive(true);
                 curBullet.position = shootPoint.position;
                 Quaternion rotation = Quaternion.LookRotation(dir);
@@ -64,7 +64,7 @@ public class Attack : MonoBehaviour
        
     }
 
-    public void shootBow(Vector2 dir, Transform curTrans, Transform shootPoint, CardStats charSO, bool isPlayer,bool isMaxCharge)
+    public void shootBow(Vector2 dir, Transform curTrans, Transform shootPoint, CardStats charSO, bool isPlayer,bool isMaxCharge,Character character)
     {
         float delay = 0;
         float damage = isMaxCharge ?  charSO.infor.maxChargeDam :charSO.infor.damage;
@@ -73,7 +73,7 @@ public class Attack : MonoBehaviour
             DOVirtual.DelayedCall(delay, () =>
             {
                 Transform curBullet = pool.bulletPools[pool.bulletIndex].transform;
-                curBullet.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO, damage), charSO.relicInfor.size, charSO.infor.bulletTypeIndex);
+                curBullet.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO, damage*character.extraAttackRatio), charSO.relicInfor.size, charSO.infor.bulletTypeIndex);
                 curBullet.gameObject.SetActive(true);
                 curBullet.position = shootPoint.position;
               
@@ -93,7 +93,7 @@ public class Attack : MonoBehaviour
         AudioManager.Inst.AudioEffectPlay(charSO.infor.cardNum);
     }
 
-    public void shootShotgun(Vector2 dir, Transform curTrans, Transform shootPoint,CardStats charSO,bool isPlayer)
+    public void shootShotgun(Vector2 dir, Transform curTrans, Transform shootPoint,CardStats charSO,bool isPlayer, Character character)
     {
         float delay = 0;
         for(int j = 0; j < charSO.infor.attackCount; j++)
@@ -106,7 +106,7 @@ public class Attack : MonoBehaviour
                     Vector2 spreadDir = Quaternion.Euler(0, 0, angle) * dir; // Apply the angle to the direction vector
 
                     // Activate and set up the bullet
-                    pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(spreadDir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO, charSO.infor.damage), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
+                    pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(spreadDir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO, charSO.infor.damage*character.extraAttackRatio), charSO.relicInfor.size,charSO.infor.bulletTypeIndex);
 
                     pool.bulletPools[pool.bulletIndex].SetActive(true);
                     pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
@@ -125,11 +125,11 @@ public class Attack : MonoBehaviour
 
     }
 
-    public void QueenMagic(Transform shootPoint,CardStats charSO ,bool isPlayer,Transform target)
+    public void QueenMagic(Transform shootPoint,CardStats charSO ,bool isPlayer,Transform target,Character character)
     {
         for (int i = 0; i < charSO.infor.bulletCount; i++)
         {
-            pool.magicBallPools[pool.magicIndex].transform.GetComponent<MagicBall>().SetTarget(target, Critical(charSO,charSO.infor.damage));
+            pool.magicBallPools[pool.magicIndex].transform.GetComponent<MagicBall>().SetTarget(target, Critical(charSO,charSO.infor.damage * character.extraAttackRatio));
             pool.magicBallPools[pool.magicIndex].transform.position = shootPoint.position;
             pool.magicBallPools[pool.magicIndex].SetActive(true);
             
@@ -139,7 +139,7 @@ public class Attack : MonoBehaviour
 
     }
 
-    public void KingMagic(Vector2 dir, Transform curTrans, Transform shootPoint, CardStats charSO, bool isPlayer)
+    public void KingMagic(Vector2 dir, Transform curTrans, Transform shootPoint, CardStats charSO, bool isPlayer, Character character)
     {
         float delay = 0;
         for (var i = 0; i < charSO.infor.bulletCount; i++)
@@ -149,7 +149,7 @@ public class Attack : MonoBehaviour
                 pool.bulletPools[pool.bulletIndex].SetActive(true);
                 pool.bulletPools[pool.bulletIndex].transform.position = shootPoint.position;
                 pool.bulletPools[pool.bulletIndex].transform.rotation = curTrans.rotation;
-                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO,charSO.infor.damage),1,0);
+                pool.bulletPools[pool.bulletIndex].transform.GetComponent<Bullet>().SetDir(dir, isPlayer, charSO.infor.projectileTurnback, Critical(charSO,charSO.infor.damage * character.extraAttackRatio),1,0);
                 pool.bulletIndex++;
                 if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
             });

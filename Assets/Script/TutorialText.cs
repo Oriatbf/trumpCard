@@ -38,8 +38,12 @@ public class TutorialText : MonoBehaviour
 
     public void DiasbleAction(bool disable)
     {
+
         disableAction = disable;
-        if (!disableAction) text.ShowText("");
+        if (!disableAction)
+        {
+            text.ShowText("");
+        }
 
     }
    

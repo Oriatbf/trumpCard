@@ -22,6 +22,7 @@ public class Character : MonoBehaviour
     public bool isPlayer;
     public float goldValue;
     public LayerMask opponentMask;
+    [HideInInspector] public float extraAttackRatio = 1;
 
     [Tab("Debug")]
     public Vector3 _dir;
@@ -186,10 +187,21 @@ public class Character : MonoBehaviour
         hit = Physics2D.Raycast(transform.position, _dir, 2f, opponentMask);
         if (hit.collider != null)
         {
-            hit.transform.GetComponent<Health>().OnDamage(characterSO.infor.damage);
+            hit.transform.GetComponent<Health>().OnDamage(Critical(characterSO,characterSO.infor.damage * extraAttackRatio));
         }
         AudioManager.Inst.AudioEffectPlay(characterSO.infor.cardNum);
     }
+
+    public float Critical(CardStats charSO, float damage)
+    {
+        int a = Random.Range(1, 101);
+        if (charSO.relicInfor.criticalChance >= a)
+        {
+            return damage * charSO.relicInfor.criticalDamage;
+        }
+        else return damage;
+    }
+
 
 
     public virtual void OnDrawGizmos()
@@ -211,9 +223,9 @@ public class Character : MonoBehaviour
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
             if (isRevolver)
-                Attack.Inst.shootRevolver(_dir, handle.transform.parent, shootPoint, curSO, isPlayer);
+                Attack.Inst.shootRevolver(_dir, handle.transform.parent, shootPoint, curSO, isPlayer,this);
             else
-                Attack.Inst.shootShotgun(_dir, handle.transform.parent, shootPoint, curSO, isPlayer);
+                Attack.Inst.shootShotgun(_dir, handle.transform.parent, shootPoint, curSO, isPlayer,this);
         }
     }
 
@@ -228,10 +240,10 @@ public class Character : MonoBehaviour
             switch (curSO.infor.cardType)
             {
                 case CardStats.CardType.Queen:
-                    Attack.Inst.QueenMagic(shootPoint, curSO, true, opponent);
+                    Attack.Inst.QueenMagic(shootPoint, curSO, true, opponent,this);
                     break;
                 case CardStats.CardType.King:
-                    Attack.Inst.KingMagic(_dir, handle.transform.parent, shootPoint, curSO, isPlayer);
+                    Attack.Inst.KingMagic(_dir, handle.transform.parent, shootPoint, curSO, isPlayer, this);
                     break;
             }
 
@@ -252,7 +264,7 @@ public class Character : MonoBehaviour
     {
         Debug.Log(_dir);
         bool maxCharging = _curCharging >= 1.5f;
-        Attack.Inst.shootBow(_dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging);
+        Attack.Inst.shootBow(_dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging,this);
         attackCoolImage.fillAmount = 0;
         _curCharging = 0;
     }
@@ -261,7 +273,7 @@ public class Character : MonoBehaviour
     {
         Debug.Log(_dir);
         bool maxCharging = _curCharging >= 1.5f;
-        Attack.Inst.shootBow(dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging);
+        Attack.Inst.shootBow(dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging, this);
         attackCoolImage.fillAmount = 0;
         _curCharging = 0;
     }

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int stageNum;
     public CountDown countDown;
     public bool startChooseRelic = false;
+    public bool bossStage;
     [HideInInspector] public bool playerDead;
     private Transform player, enemy;
 

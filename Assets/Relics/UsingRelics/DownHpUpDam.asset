@@ -10,15 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acf7dd14625110a4280edea76f172fdf, type: 3}
-  m_Name: DamageIncrease
+  m_Name: DownHpUpDam
   m_EditorClassIdentifier: 
   relicName: 
   relicIcon: {fileID: 0}
-  relicInfor: "\uACF5\uACA9\uB825\uC774 1.5 \uC99D\uAC00\uD569\uB2C8\uB2E4"
-  rarity: 0
+  relicInfor: "\uCD5C\uB300\uCCB4\uB825\uC774 15 \uAC10\uC18C\uD558\uC9C0\uB9CC \uACF5\uACA9\uB825\uC774
+    4 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  rarity: 1
   relicType:
+  - relic_Type: 7
+    relicKind: 0
+    roleAdd: 2
+    addValue: -15
+    ratioValue: 0
   - relic_Type: 0
     relicKind: 0
     roleAdd: 2
-    addValue: 1.5
+    addValue: 4
     ratioValue: 0

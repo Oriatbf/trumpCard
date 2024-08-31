@@ -20,7 +20,7 @@ MonoBehaviour:
     role: 0
     attackType: 3
     bulletTypeIndex: 0
-    damage: 10
+    damage: 3
     coolTime: 1.5
     speed: 4
     hp: 75
@@ -40,3 +40,4 @@ MonoBehaviour:
     floorTickDamage: 0
     criticalChance: 0
     criticalDamage: 0
+    bloodSucking: 0

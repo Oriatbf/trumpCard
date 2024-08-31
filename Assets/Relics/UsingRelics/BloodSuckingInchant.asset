@@ -9,16 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acf7dd14625110a4280edea76f172fdf, type: 3}
-  m_Name: DamageIncrease
+  m_Script: {fileID: 11500000, guid: d7362452d9a1d6c4f93dbb64dd1b211c, type: 3}
+  m_Name: BloodSuckingInchant
   m_EditorClassIdentifier: 
   relicName: 
   relicIcon: {fileID: 0}
-  relicInfor: "\uACF5\uACA9\uB825\uC774 1.5 \uC99D\uAC00\uD569\uB2C8\uB2E4"
-  rarity: 0
+  relicInfor: "\uCE74\uB4DC 1\uAC1C\uC5D0 \uD53C\uD761 \uC778\uCC48\uD2B8\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4"
+  rarity: 2
+  excute:
+    isExcute: 0
   relicType:
   - relic_Type: 0
-    relicKind: 0
-    roleAdd: 2
-    addValue: 1.5
-    ratioValue: 0

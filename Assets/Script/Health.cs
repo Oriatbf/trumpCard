@@ -33,12 +33,14 @@ public class Health : MonoBehaviour
     GambleGauge gambleGauge;
     private float hittedValue = 1f,attackValue = 0.7f; //hitted : 맞았을 때 , attack : 공격했을 때 늘어날 값
     Character character;
+    EnemyMove enemyMove;
 
     private void Start()
     {
         gambleGauge=GetComponent<GambleGauge>();
         character= GetComponent<Character>();
         hpBar.fillAmount = 1;
+        if(!character.isPlayer)enemyMove=GetComponent<EnemyMove>();
     }
 
     private void Update()
@@ -78,10 +80,18 @@ public class Health : MonoBehaviour
             DOVirtual.DelayedCall(0.1f, () => spr.material = defaultMaterial);
             curHp -= damage;
             HpBarIncrease();
+            if (!character.isPlayer)
+            {
+                if (curHp <= maxHp / 2 && enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss) character.extraAttackRatio = 2;
+
+            }
+            
             IncreaseGambleGauge(true,damage); // 피격 게이지 올라가기
             EnemyUp(damage);
             
             DamageNumber damageNumber = numberPrefab.SpawnGUI(rectParent,transform.position,damage);
+
+
             if (curHp <= 0 && !death)
             {
                 death = true;

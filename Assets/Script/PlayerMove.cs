@@ -77,10 +77,14 @@ public class PlayerMove : Character
 
     public void Dash()
     {
-        if(curCharging > 0 && curDashCool <= 0)
+        if (GameManager.Inst.isGameStart)
         {
-            DashMove(angleVec);
+            if (curCharging > 0 && curDashCool <= 0)
+            {
+                DashMove(angleVec);
+            }
         }
+       
     }
 
   

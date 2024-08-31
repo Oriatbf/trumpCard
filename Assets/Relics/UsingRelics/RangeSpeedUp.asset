@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acf7dd14625110a4280edea76f172fdf, type: 3}
-  m_Name: DamageIncrease
+  m_Name: RangeSpeedUp
   m_EditorClassIdentifier: 
   relicName: 
   relicIcon: {fileID: 0}
-  relicInfor: "\uACF5\uACA9\uB825\uC774 1.5 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicInfor: "\uC6D0\uAC70\uB9AC\uBB34\uAE30\uC758 \uC18D\uB3C4\uAC00 1.5 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   rarity: 0
   relicType:
-  - relic_Type: 0
+  - relic_Type: 1
     relicKind: 0
-    roleAdd: 2
+    roleAdd: 1
     addValue: 1.5
     ratioValue: 0

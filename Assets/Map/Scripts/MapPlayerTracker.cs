@@ -74,6 +74,7 @@ namespace Map
                     MapPlayerTracker.Instance.Locked = false;
                     break;
                 case NodeType.EliteEnemy:
+                    GameManager.Inst.NextStage();
                     break;
                 case NodeType.Treasure:
                     break;
@@ -81,6 +82,8 @@ namespace Map
                     ShopManager.Inst.ShopOpen();
                     break;
                 case NodeType.Boss:
+                    GameManager.Inst.bossStage = true;
+                    GameManager.Inst.NextStage();
                     break;
                 case NodeType.Mystery:
                     EventManager.Inst.EventOpen();

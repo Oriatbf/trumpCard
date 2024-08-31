@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class EnemyMove : Character
 {
-    private EnemyMove Inst;
+    //나중에 캐릭터들 역할 수정 필요
+    public enum EnemyCharacter { defaultEnemy,Boss}
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private CardStats card;
     [SerializeField] private float Gunrange,dashRange;
@@ -15,16 +16,16 @@ public class EnemyMove : Character
   
     private float _angle;
     private Vector2 _dir2,finalDir;
+    public EnemyCharacter enemyCharacter;
 
     bool randomDir;
 
     private Camera _camera;
 
-   
-    
     public override void Start()
     {
         base.Start();
+        if (GameManager.Inst.bossStage) enemyCharacter = EnemyCharacter.Boss;
         opponent = GameObject.FindGameObjectWithTag("Player").transform;
         _dir = (opponent.position - transform.position).normalized;
         _camera = Camera.main;
