@@ -93,8 +93,9 @@ public class Health : MonoBehaviour
                 numberPrefab.SpawnGUI(rectParent,transform.position,damage);
 
 
-            if (curHp <= 0 && !death)
+            if (curHp <= 0 && !death && !GameManager.Inst.isGameEnd)
             {
+                GameManager.Inst.isGameEnd= true;
                 death = true;
                 if (!character.isPlayer)
                 {

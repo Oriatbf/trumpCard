@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
     public virtual void Awake()
     {
 
-        characterSO.relicInfor = resetRelicInfor.relicInfor;
+       
         characterSO.relicInfor.characterTrans = transform;
         rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();
@@ -68,9 +68,10 @@ public class Character : MonoBehaviour
 
     public void Gambling()
     {
+       
         gambleGauge._curGauge = 0;
         TypeManager.Inst.TypeChange(GambleManager.GambleIndex(), transform, isPlayer, characterSO);
-       
+        characterSO.relicInfor = resetRelicInfor.relicInfor;
         StartRelicSkill();
         SetStat();
     }
@@ -122,8 +123,10 @@ public class Character : MonoBehaviour
         curCoolTime= characterSO.infor.coolTime;
         health.ResetHp(characterSO.infor.hp);
         health.SetHp(characterSO.relicInfor.remnantHealth);
-        health.curHp += characterSO.relicInfor.relicPlusHealth;
-        
+        if(health.curHp + characterSO.relicInfor.relicPlusHealth <=0) health.curHp = 1;
+        else health.curHp += characterSO.relicInfor.relicPlusHealth;
+
+
     }
 
    

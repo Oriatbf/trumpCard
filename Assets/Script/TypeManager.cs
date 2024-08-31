@@ -37,6 +37,7 @@ public class TypeManager : MonoBehaviour
         characterSO.relicInfor.remnantHealth = cardSO[num].infor.hp - remnantHp;
 
 
+
         if (character.TryGetComponent(out SpriteRenderer sprite))
             sprite.sprite = isPlayer ? cardSO[num].infor.playerCardImage : cardSO[num].infor.enemyCardImage;
         ChangeAttackType(character,num);      

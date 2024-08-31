@@ -96,8 +96,15 @@ public class GameManager : MonoBehaviour
 
         if(newScene.name == "LobbyScene")
         {
-            UIManager.Inst.GoldRelicReset();
-            Destroy(gameObject);
+          
+        }
+        else
+        {
+            if(SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                UIManager.Inst.GoldRelicReset();
+                Destroy(gameObject);
+            }
         }
 
         if(newScene.name == "EndScene")
@@ -154,6 +161,7 @@ public class GameManager : MonoBehaviour
     [Button]
     public void GameEnd(bool isPlayerWin,GameObject deadCharacter)
     {
+        isGameEnd = true;
         CameraZoom(deadCharacter);
 
         DOVirtual.DelayedCall(3f, () =>
@@ -164,7 +172,7 @@ public class GameManager : MonoBehaviour
             if (isPlayerWin)
             {
 
-                isGameEnd = true;
+               
                 RelicManager.Inst.SetRelic();
                 RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장
                 RelicSelectCanvas.SetActive(true);
