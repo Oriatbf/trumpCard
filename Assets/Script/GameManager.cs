@@ -96,7 +96,8 @@ public class GameManager : MonoBehaviour
 
         if(newScene.name == "LobbyScene")
         {
-          
+            UIManager.Inst.GoldRelicReset();
+            Destroy(gameObject);
         }
         else
         {

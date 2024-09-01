@@ -51,7 +51,7 @@ public class Character : MonoBehaviour
     {
 
        
-        characterSO.relicInfor.characterTrans = transform;
+       
         rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();
         health= GetComponent<Health>();
@@ -59,7 +59,7 @@ public class Character : MonoBehaviour
         relicSkills = GetComponent<RelicSkills>();
         gambleGauge= GetComponent<GambleGauge>();
         curCharging = 1;
-
+        characterSO.relicInfor.characterTrans = transform;
         characterSO.relicInfor.characterHealth= health;
 
         int randomGold = Random.Range(100, 151);
@@ -68,10 +68,12 @@ public class Character : MonoBehaviour
 
     public void Gambling()
     {
-       
+        characterSO.relicInfor = resetRelicInfor.relicInfor;
+        characterSO.relicInfor.characterTrans = transform;
+        characterSO.relicInfor.characterHealth = health;
         gambleGauge._curGauge = 0;
         TypeManager.Inst.TypeChange(GambleManager.GambleIndex(), transform, isPlayer, characterSO);
-        characterSO.relicInfor = resetRelicInfor.relicInfor;
+       
         StartRelicSkill();
         SetStat();
     }

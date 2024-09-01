@@ -93,12 +93,14 @@ public class Health : MonoBehaviour
                 numberPrefab.SpawnGUI(rectParent,transform.position,damage);
 
 
-            if (curHp <= 0 && !death && !GameManager.Inst.isGameEnd)
+            if (curHp <= 0 && !death)
             {
                 GameManager.Inst.isGameEnd= true;
                 death = true;
+                character.opponent.GetComponent<Health>().isInv = true;
                 if (!character.isPlayer)
                 {
+                   
                     UIManager.Inst.GoldCount(character.goldValue);
                     if(enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss)
                     {

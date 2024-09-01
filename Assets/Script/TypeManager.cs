@@ -32,9 +32,11 @@ public class TypeManager : MonoBehaviour
 
     public void TypeChange(int num, Transform character, bool isPlayer,CardStats characterSO)
     {
-        float remnantHp = characterSO.relicInfor.characterHealth.maxHp - characterSO.relicInfor.characterHealth.curHp;
+        float remnantHp = characterSO.relicInfor.characterHealth.maxHp - characterSO.relicInfor.characterHealth.curHp;  //바뀌기 전 최대체력 - 현재체력 = 닳은 체력 
         characterSO.infor = cardSO[num].infor;
-        characterSO.relicInfor.remnantHealth = cardSO[num].infor.hp - remnantHp;
+        float isHpZero = cardSO[num].infor.hp - remnantHp;
+       
+        characterSO.relicInfor.remnantHealth = isHpZero>0? cardSO[num].infor.hp - remnantHp:1;  //바뀐 최대체력 - 닳은 체력 
 
 
 
