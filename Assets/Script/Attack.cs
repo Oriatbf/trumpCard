@@ -102,6 +102,7 @@ public class Attack : MonoBehaviour
             {
                 for (int i = 0; i < charSO.infor.bulletCount; i++)
                 {
+                    Transform curBullet = pool.bulletPools[pool.bulletIndex].transform;
                     float angle = 50 * ((float)i / (charSO.infor.bulletCount) - 0.5f); // Spread bullets evenly within the spreadAngle
                     Vector2 spreadDir = Quaternion.Euler(0, 0, angle) * dir; // Apply the angle to the direction vector
 
@@ -113,7 +114,12 @@ public class Attack : MonoBehaviour
                     pool.bulletPools[pool.bulletIndex].transform.rotation = curTrans.rotation;
 
 
+                    Quaternion rotation = Quaternion.LookRotation(dir);
+                    curBullet.localScale = dir.x < 0 ? new Vector2(Mathf.Abs(curBullet.localScale.x) * -1, curBullet.localScale.y) : new Vector2(Mathf.Abs(curBullet.localScale.x), curBullet.localScale.y);
+                    rotation.x = 0;
+                    rotation.y = 0;
 
+                    curBullet.rotation = rotation;
                     pool.bulletIndex++;
                     if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
                 }
