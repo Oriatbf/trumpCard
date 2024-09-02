@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relicName: "\uB3C4\uBC15\uC0AC"
   relicIcon: {fileID: 21300000, guid: 8f071554f2f247e42a3375fc77028db9, type: 3}
-  relicInfor: "\uCE58\uBA85\uD0C0 \uD655\uB960\uC774 8 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicInfor: "\uCE58\uBA85\uD0C0 \uD655\uB960\uC774 13 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   rarity: 0
   relicType:
   - relic_Type: 6
     relicKind: 0
     roleAdd: 2
-    addValue: 8
+    addValue: 13
     ratioValue: 0

@@ -121,12 +121,14 @@ public class Character : MonoBehaviour
     public void SetStat()
     {
         speed = characterSO.infor.speed;
-        coolTime= characterSO.infor.coolTime;
-        curCoolTime= characterSO.infor.coolTime;
+        coolTime= characterSO.infor.coolTime < 0.1f?0.1f: characterSO.infor.coolTime; //쿨타임 최소치
+        curCoolTime= coolTime;
+        characterSO.infor.damage = characterSO.infor.damage<1?1:characterSO.infor.damage; // 데미지 최소치
         health.ResetHp(characterSO.infor.hp);
         health.SetHp(characterSO.relicInfor.remnantHealth);
         if(health.curHp + characterSO.relicInfor.relicPlusHealth <=0) health.curHp = 1;
         else health.curHp += characterSO.relicInfor.relicPlusHealth;
+        health.HpBarIncrease();
 
 
     }

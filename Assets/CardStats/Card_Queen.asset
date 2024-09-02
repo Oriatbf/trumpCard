@@ -17,7 +17,7 @@ MonoBehaviour:
     playerCardImage: {fileID: 21300000, guid: 815d9a85ae11d9d449d714be033990d3, type: 3}
     enemyCardImage: {fileID: 21300000, guid: f023624f699b67e4c8187f0e79138d95, type: 3}
     cardType: 10
-    role: 0
+    role: 1
     attackType: 3
     bulletTypeIndex: 0
     damage: 3
@@ -29,12 +29,13 @@ MonoBehaviour:
     cardNum: 11
     projectileTurnback: 0
     maxCharge: 0
-    maxChargeDam: 0
+    plusMaxChargeDam: 0
   bloodSuckingInchant: 
   relicInfor:
     characterTrans: {fileID: 0}
     characterHealth: {fileID: 0}
     remnantHealth: 0
+    relicPlusHealth: 0
     size: 0
     isFlooring: 0
     floorTickDamage: 0

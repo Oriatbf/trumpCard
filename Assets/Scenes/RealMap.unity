@@ -7346,6 +7346,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cee250044a8a3db4096434b06a31b804, type: 2}
   - {fileID: 11400000, guid: aaac3f318becf0440aa95d5e1a01475e, type: 2}
   - {fileID: 11400000, guid: 856d329513237f44ea0d3adad3f1fb6c, type: 2}
+  - {fileID: 11400000, guid: c8f4fa500d168d24c8d17bfa3b554ab7, type: 2}
+  - {fileID: 11400000, guid: e6791cf24e67b124b9c06d6dd90c177a, type: 2}
   rareRelicSOs:
   - {fileID: 11400000, guid: 83b17a3d4ef93b3459e0b9df0111233d, type: 2}
   - {fileID: 11400000, guid: 1eede68c6b970b9408b8f522f3c2a3de, type: 2}
@@ -7358,6 +7360,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b9f874e567e9704fad050a18d333723, type: 2}
   - {fileID: 11400000, guid: 5c1b515ff3ac90b489ee5d8522c7f9b3, type: 2}
   - {fileID: 11400000, guid: 6db71750992cbac4896f5a7e88949347, type: 2}
+  - {fileID: 11400000, guid: df52698a27cadd14d8d01dbea84fb3f4, type: 2}
   epicRelicSOs:
   - {fileID: 11400000, guid: 4917b6be685f562439e75d02059306c9, type: 2}
   - {fileID: 11400000, guid: 9808cee3a4405ee46b54d0d8b1d1d472, type: 2}

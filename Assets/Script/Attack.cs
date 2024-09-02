@@ -28,6 +28,7 @@ public class Attack : MonoBehaviour
 
     public void shootRevolver(Vector2 dir, Transform curTrans,Transform shootPoint,CardStats charSO,bool isPlayer,Character character)
     {
+        if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
         float delay = 0;
         for (var i = 0; i < charSO.infor.attackCount; i++)
         {
@@ -66,6 +67,7 @@ public class Attack : MonoBehaviour
 
     public void shootBow(Vector2 dir, Transform curTrans, Transform shootPoint, CardStats charSO, bool isPlayer,bool isMaxCharge,Character character)
     {
+        if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
         float delay = 0;
         float damage = isMaxCharge ? charSO.infor.damage+charSO.infor.plusMaxChargeDam :charSO.infor.damage;
         for (var i = 0; i < charSO.infor.attackCount; i++)
@@ -95,6 +97,7 @@ public class Attack : MonoBehaviour
 
     public void shootShotgun(Vector2 dir, Transform curTrans, Transform shootPoint,CardStats charSO,bool isPlayer, Character character)
     {
+        if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
         float delay = 0;
         for(int j = 0; j < charSO.infor.attackCount; j++)
         {
@@ -147,6 +150,7 @@ public class Attack : MonoBehaviour
 
     public void KingMagic(Vector2 dir, Transform curTrans, Transform shootPoint, CardStats charSO, bool isPlayer, Character character)
     {
+        if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
         float delay = 0;
         for (var i = 0; i < charSO.infor.bulletCount; i++)
         {

@@ -23,20 +23,22 @@ MonoBehaviour:
     damage: 7
     coolTime: 0.75
     speed: 3.4
-    hp: 65
+    hp: 70
     bulletCount: 1
     attackCount: 1
     cardNum: 5
     projectileTurnback: 0
     maxCharge: 0
-    maxChargeDam: 0
+    plusMaxChargeDam: 0
   bloodSuckingInchant: 
   relicInfor:
     characterTrans: {fileID: 0}
     characterHealth: {fileID: 0}
     remnantHealth: 0
+    relicPlusHealth: 0
     size: 0
     isFlooring: 0
     floorTickDamage: 0
     criticalChance: 0
     criticalDamage: 0
+    bloodSucking: 0

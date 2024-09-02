@@ -34,16 +34,16 @@ public class SpecialAbility : RelicSO
         switch (relicType.relic_Type)
         {
             case Relic_Type.flooringBullet:
-                so.relicInfor.isFlooring = true; so.relicInfor.floorTickDamage = relicType.addValue; break;
+                so.relicInfor.isFlooring = true; so.relicInfor.floorTickDamage += relicType.addValue; break;
             case Relic_Type.SpawnSlime:
                 Instantiate(relicType.slime, (so.relicInfor.characterTrans.position + (Vector3)(Random.insideUnitCircle)).normalized * 2f, Quaternion.identity);break;
             case Relic_Type.UpGradeA:
                 if(so.infor.cardNum== 0)
                 {
-                    so.infor.damage += 5;
-                    so.infor.hp += 20;
-                    so.relicInfor.relicPlusHealth += 20;
-                    so.infor.speed += 2;
+                    so.infor.damage += 7;
+                    so.infor.hp += 25;
+                    so.relicInfor.relicPlusHealth += 25;
+                    so.infor.speed += 2.5f;
                     Debug.Log("AAA");
                 }
                 break;
