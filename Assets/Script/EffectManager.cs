@@ -22,6 +22,7 @@ public class EffectManager : MonoBehaviour
 
     public void SpawnEffect(Transform transform,int index)
     {
-        Instantiate(effect[index],transform.position,Quaternion.identity);
+        GameObject a = Instantiate(effect[index],transform.position,Quaternion.identity);
+        Destroy(a, 2f);
     }
 }

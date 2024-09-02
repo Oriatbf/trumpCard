@@ -283,7 +283,6 @@ public class Character : MonoBehaviour
 
     public virtual void BowShoot()
     {
-        Debug.Log(_dir);
         bool maxCharging = _curCharging >= coolTime;
         Attack.Inst.shootBow(_dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging,this);
         attackCoolImage.fillAmount = 0;
@@ -292,7 +291,6 @@ public class Character : MonoBehaviour
 
     public virtual void BowShoot(Vector3 dir)
     {
-        Debug.Log(_dir);
         bool maxCharging = _curCharging >= coolTime;
         Attack.Inst.shootBow(dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging, this);
         attackCoolImage.fillAmount = 0;

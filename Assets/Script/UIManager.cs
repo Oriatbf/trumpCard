@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;  //모바일 최적화
         Debug.Log("스타토");
         gold = 0;
         GoldCount(0);

@@ -6215,8 +6215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6589ce0ea2e1914192f6774aedbf9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relics:
-  - {fileID: 11400000, guid: 6c7f91274a0926c42a4f0f4158640632, type: 2}
+  relics: []
   characterType: 0
   relicImagePrefab: {fileID: 5890349769155904036, guid: d59936f0b0fa99844b2d88eab620b0a5, type: 3}
   iconCanvas: {fileID: 0}

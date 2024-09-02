@@ -57,6 +57,11 @@ public class GameManager : MonoBehaviour
        DOVirtual.DelayedCall(1.5f,()=> countDown.CountStart());
     }
 
+    private void OnEnable()
+    {
+        stageNum = 0;
+    }
+
 
     public void FightStage()
     {
@@ -94,19 +99,19 @@ public class GameManager : MonoBehaviour
           //  EnableRelicChoose(startChooseRelic);
         }
 
-        if(newScene.name == "LobbyScene")
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             UIManager.Inst.GoldRelicReset();
-            Destroy(gameObject);
+            Destroy(GameManager.Inst.gameObject);
         }
-        else
+
+        
+        if (newScene.name == "LobbyScene")
         {
-            if(SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                UIManager.Inst.GoldRelicReset();
-                Destroy(gameObject);
-            }
+            UIManager.Inst.GoldRelicReset();
+            Destroy(GameManager.Inst.gameObject);
         }
+
 
         if(newScene.name == "EndScene")
         {

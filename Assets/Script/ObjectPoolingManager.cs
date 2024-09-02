@@ -33,7 +33,7 @@ public class ObjectPoolingManager : MonoBehaviour
         GameObject parentObj = new GameObject("PoolingParent");     //새로운 빈 오브젝트를 하나 만들어줌
         parentObj.transform.position = Vector3.zero;                 //새로운 빈 오브젝트의 위치 설정
         parentObj.transform.SetParent(transform, true);
-        bulletPools = new GameObject[100];
+        bulletPools = new GameObject[200];
         for (int i = 0; i < bulletPools.Length; i++)
         {
             GameObject bullet = Instantiate(bulletP, parentObj.transform);
