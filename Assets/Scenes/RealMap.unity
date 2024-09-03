@@ -7348,6 +7348,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 856d329513237f44ea0d3adad3f1fb6c, type: 2}
   - {fileID: 11400000, guid: c8f4fa500d168d24c8d17bfa3b554ab7, type: 2}
   - {fileID: 11400000, guid: e6791cf24e67b124b9c06d6dd90c177a, type: 2}
+  - {fileID: 11400000, guid: c7bad4d6ddd9b9c4abda94701cf38dde, type: 2}
+  - {fileID: 11400000, guid: 177d83821cf435141b47022e36bb791a, type: 2}
   rareRelicSOs:
   - {fileID: 11400000, guid: 83b17a3d4ef93b3459e0b9df0111233d, type: 2}
   - {fileID: 11400000, guid: 1eede68c6b970b9408b8f522f3c2a3de, type: 2}

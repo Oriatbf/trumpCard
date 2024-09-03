@@ -17,7 +17,7 @@ public class Bullet : Projectile
     private void Start()
     {
         rigid.velocity = Vector2.zero;
-        rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
+        rigid.AddForce(bulletDir * 8f, ForceMode2D.Impulse);
        
        
     }
@@ -28,7 +28,7 @@ public class Bullet : Projectile
         
         rigid.velocity = Vector2.zero;
 
-        rigid.AddForce(bulletDir * 5f, ForceMode2D.Impulse);
+        rigid.AddForce(bulletDir * 8f, ForceMode2D.Impulse);
 
     }
 

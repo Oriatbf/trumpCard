@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acf7dd14625110a4280edea76f172fdf, type: 3}
-  m_Name: MuscleMan
+  m_Name: MuscleMan2
   m_EditorClassIdentifier: 
-  relicName: "\uCF8C\uAC78\uADFC\uC721\uB9E8"
+  relicName: "\uCF8C\uAC78\uADFC\uC721\uB9E8+"
   relicIcon: {fileID: 21300000, guid: 8f071554f2f247e42a3375fc77028db9, type: 3}
-  relicInfor: "\uADFC\uC811\uCE90\uB9AD\uD130\uC758 \uACF5\uACA9\uB825\uC774 2 \uC99D\uAC00\uD558\uACE0
-    \uCCB4\uB825\uC774 14 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  relicInfor: "\uADFC\uC811\uCE90\uB9AD\uD130\uC758 \uACF5\uACA9\uB825\uC774 3 \uC99D\uAC00\uD558\uACE0
+    \uCCB4\uB825\uC774 20 \uC99D\uAC00\uD569\uB2C8\uB2E4"
   rarity: 1
   relicType:
   - relic_Type: 0

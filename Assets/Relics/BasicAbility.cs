@@ -66,8 +66,7 @@ public class BasicAbility : RelicSO
             case Relic_Type.hp:
                 if (ReturnRoleAbility(so, relicType))
                 {
-                    so.infor.hp += relicType.addValue;
-                    so.relicInfor.relicPlusHealth += relicType.addValue;
+                    HpUpRelic(so, relicType.addValue);
                 }
                 break;
             case Relic_Type.AutoHeal:
@@ -98,12 +97,20 @@ public class BasicAbility : RelicSO
         switch (relicType.relic_Type)
         {
             case Relic_Type.damage:
-                so.infor.damage += RatioChangeValue(so.infor.damage, relicType.ratioValue); break;
+               if(ReturnRoleAbility(so,relicType)) so.infor.damage += RatioChangeValue(so.infor.damage, relicType.ratioValue); break;
             case Relic_Type.speed:
-                so.infor.speed += RatioChangeValue(so.infor.speed, relicType.ratioValue); break;
+               if (ReturnRoleAbility(so, relicType)) so.infor.speed += RatioChangeValue(so.infor.speed, relicType.ratioValue); break;
             case Relic_Type.cool:
-                so.infor.coolTime += RatioChangeValue(so.infor.coolTime, relicType.ratioValue); break;
+               if (ReturnRoleAbility(so, relicType)) so.infor.coolTime += RatioChangeValue(so.infor.coolTime, relicType.ratioValue); break;
+            case Relic_Type.hp:
+                if (ReturnRoleAbility(so, relicType)) HpUpRelic(so,RatioChangeValue(so.infor.hp, relicType.ratioValue)); break;
         }
+    }
+
+    public void HpUpRelic(CardStats so, float hpValue)
+    {
+        so.infor.hp += hpValue;
+        so.relicInfor.relicPlusHealth += hpValue;
     }
 
     float RatioChangeValue(float abilValue, float ratioValue)
