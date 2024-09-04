@@ -2492,7 +2492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &759668914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6029,7 +6029,7 @@ MonoBehaviour:
     m_Bits: 8
   card: {fileID: 11400000, guid: ef530e6e81593284f90e4ec3ca24d4b7, type: 2}
   angleVec: {x: 0, y: 0, z: 0}
-  mobileVersion: 1
+  mobileVersion: 0
   moveJoyStick: {fileID: 1299182435}
   dirJoyStick: {fileID: 1232440092}
   dashBtn: {fileID: 1674200346}

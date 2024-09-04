@@ -20,7 +20,7 @@ MonoBehaviour:
     role: 1
     attackType: 0
     bulletTypeIndex: 1
-    damage: 3.5
+    damage: 2
     coolTime: 1
     speed: 3.5
     hp: 70
