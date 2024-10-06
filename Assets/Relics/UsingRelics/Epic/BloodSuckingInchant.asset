@@ -20,4 +20,4 @@ MonoBehaviour:
     isExcute: 1
   relicType:
   - relic_Type: 0
-  - relic_Type: 0
+    count: 2

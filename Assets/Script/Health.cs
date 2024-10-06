@@ -8,7 +8,6 @@ using VInspector;
 
 public class Health : MonoBehaviour
 {
-
     [Tab("Hp")]
     //Hp Value
     public float curHp;
@@ -19,22 +18,18 @@ public class Health : MonoBehaviour
     [SerializeField] Image hpBar;
     [SerializeField] Material whiteMaterial,defaultMaterial;
     [SerializeField] SpriteRenderer spr;
-    [HideInInspector] public bool autoHeal;
+    [HideInInspector] public bool autoHeal,isDotDamage;
     [HideInInspector] public float autoHealSpeed;
     [HideInInspector] public bool isFloor;
     bool isInv = false;
     bool death = false;
-
-    [Tab("Debuff")]
-    public bool inFireDebuff,inFreezeDebuff;
-    public float fireDotDam,freezeTime;
 
     //GambleGauge Value
     GambleGauge gambleGauge;
     private float hittedValue = 2f,attackValue = 1f; //hitted : 맞았을 때 , attack : 공격했을 때 늘어날 값
     Character character;
     EnemyMove enemyMove;
-
+    Coroutine freezeDebuff;
     private void Start()
     {
         gambleGauge=GetComponent<GambleGauge>();
@@ -46,15 +41,12 @@ public class Health : MonoBehaviour
     private void Update()
     {
         if(autoHeal)AutoHeal();
-        FireDebuff();
     }
-
     public void SetHp(float remnantHp)
     {
         curHp = remnantHp;
         HpBarIncrease();
     }
-
     public void ResetHp(float maxHp)
     {
         this.maxHp = maxHp;
@@ -68,8 +60,7 @@ public class Health : MonoBehaviour
         {
             curHp += autoHealSpeed * Time.deltaTime;
             HpBarIncrease();
-        }
-    
+        }  
     }
 
     public void OnDamage(float damage)
@@ -79,18 +70,12 @@ public class Health : MonoBehaviour
             spr.material = whiteMaterial;
             DOVirtual.DelayedCall(0.1f, () => spr.material = defaultMaterial);
             curHp -= damage;
-            HpBarIncrease();
-            if (!character.isPlayer)
-            {
-                if (curHp <= maxHp / 2 && enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss) character.extraAttackRatio = 2;
-
-            }
-            
+            HpBarIncrease();    
             IncreaseGambleGauge(true,damage); // 피격 게이지 올라가기
             EnemyUp(damage);
             
             if(damage >=0)
-                numberPrefab.SpawnGUI(rectParent,transform.position,damage);
+                numberPrefab.SpawnGUI(rectParent,transform.position,damage); //데미지 UI
 
 
             if (curHp <= 0 && !death)
@@ -99,52 +84,18 @@ public class Health : MonoBehaviour
                 death = true;
                 character.opponent.GetComponent<Health>().isInv = true;
                 if (!character.isPlayer)
-                {
-                   
+                {     
                     UIManager.Inst.GoldCount(character.goldValue);
-                    if(enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss)
-                    {
-                        GameManager.Inst.DefectBoss(gameObject);
-                    }
-                    else
-                    {
-                        GameManager.Inst.GameEnd(true, gameObject);
-                    }
-                  
+                    if(enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss) GameManager.Inst.DefectBoss(gameObject);
+                    else GameManager.Inst.GameEnd(true, gameObject);    
                 }
-                else
-                {
-                    GameManager.Inst.GameEnd(false,gameObject);
-
-                }
-              
+                else GameManager.Inst.GameEnd(false, gameObject);
             }
         }
        
     }
 
-    void FreezeDebuff()
-    {
-        if (inFreezeDebuff)
-        {
-            freezeTime -= Time.deltaTime;
-            if (freezeTime > 0)
-            {
-
-            }
-            else inFreezeDebuff= false;
-        }
-    }
-
-    void FireDebuff()
-    {
-        if (inFireDebuff)
-        {
-            OnDamage(fireDotDam*Time.deltaTime);
-        }
-    }
-
-    void EnemyUp(float damage)
+    void EnemyUp(float damage) //수정 요함
     {
         Health op_health =  character.opponent.GetComponent<Health>();
         Character op_character= character.opponent.GetComponent<Character>();
@@ -154,6 +105,7 @@ public class Health : MonoBehaviour
             op_health.OnHeal(damage * 0.5f); // 적 캐릭터가 피흡 보유시 힐   
             Debug.Log("피흡");
         }
+
     }
 
     public void IncreaseGambleGauge(bool isHitted,float damage)
@@ -170,10 +122,51 @@ public class Health : MonoBehaviour
         HpBarIncrease();
     }
 
-    public void HpBarIncrease()
+    public void HpBarIncrease() => hpBar.fillAmount = curHp / maxHp;
+    public void InvTime(float time)
     {
-        hpBar.fillAmount = curHp/maxHp;
+        isInv = true;
+        DOVirtual.DelayedCall(time, () => isInv = false);
     }
+
+    public void DotDamage(float time,float damage)
+    {
+        StartCoroutine( ApplyDotDamage(time, damage));
+    }
+    public void IceAge(float time)
+    {
+        if (freezeDebuff != null) StopCoroutine(freezeDebuff);
+
+        freezeDebuff =  StartCoroutine(ApplyIce(time));
+    }
+
+    IEnumerator ApplyIce(float iceDuration)
+    {
+        float elapsedTime = 0;
+        character.moveBlock = true;
+        while (elapsedTime < iceDuration)
+        {           
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        character.moveBlock = false;
+        freezeDebuff = null;
+        yield break;
+    }
+
+    IEnumerator ApplyDotDamage(float dotDuration,float damage)
+    {
+        float elapsedTime = 0;
+        while (elapsedTime < dotDuration) 
+        {
+            OnDamage(damage);
+            elapsedTime += 1;
+            yield return new WaitForSeconds(1);
+        }
+        yield break;
+    }
+
+    # region 독장판
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -185,11 +178,7 @@ public class Health : MonoBehaviour
         CheckFlooring(collision);
     }
 
-    public void InvTime(float time)
-    {
-        isInv= true;
-        DOVirtual.DelayedCall(time, () => isInv = false);
-    }
+   
 
     void CheckFlooring(Collider2D collision)
     {
@@ -200,4 +189,6 @@ public class Health : MonoBehaviour
             DOVirtual.DelayedCall(floorTickTime, () => isFloor = false);
         }
     }
+
+#endregion
 }

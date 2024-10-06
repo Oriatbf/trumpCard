@@ -11,7 +11,6 @@ public class RelicManager : MonoBehaviour
 {
     public static RelicManager Inst;
     public List<RelicSO> playerRelic = new List<RelicSO>();
-    public List<int> playerBloodInchant = new List<int>();
     public List<RelicSO> enemyRelic = new List<RelicSO>();
     public List<RelicSO> relicSOs = new List<RelicSO>();
     public List<RelicSO> cur_relicSOs = new List<RelicSO>();
@@ -74,21 +73,7 @@ public class RelicManager : MonoBehaviour
         }
     }
 
-    public void InchantBlood(CardStats so)
-    {
-        if(playerBloodInchant.Count> 0)
-        {
-            for (int i = 0; i < playerBloodInchant.Count; i++)
-            {
-                if (playerBloodInchant[i] == so.infor.cardNum)
-                {
-                    so.relicInfor.bloodSucking = true;
-                    break;
-                }
-            }
-        }
-      
-    }
+
 
    
     public (List<RelicSO> curRarityRelics, int random) RandomSO(int relicCount)

@@ -30,7 +30,7 @@ MonoBehaviour:
     projectileTurnback: 0
     maxCharge: 0
     plusMaxChargeDam: 0
-  bloodSuckingInchant: 
+  bloodInchant: 
   relicInfor:
     characterTrans: {fileID: 0}
     characterHealth: {fileID: 0}
@@ -42,3 +42,4 @@ MonoBehaviour:
     criticalChance: 7
     criticalDamage: 1.3
     bloodSucking: 0
+    fireDebuff: 0

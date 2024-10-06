@@ -55,8 +55,8 @@ public class PlayerMove : Character
     {
         if (Input.GetKeyDown(KeyCode.F4)) Gambling();
         if (Input.GetKeyDown(KeyCode.F2)) health.OnDamage(1000);
-        
-        if (GameManager.Inst.isGameStart)
+        if (Input.GetKeyDown(KeyCode.F9)) Debug.Log(characterSO.debuffs.Count);
+        if (GameManager.Inst.isGameStart && !moveBlock)
         {
             base.Update();
 
@@ -109,8 +109,7 @@ public class PlayerMove : Character
 
     private void Move()
     {
-        if (!health.inFreezeDebuff)
-        {
+       
             float x;
             float y;
             //Move
@@ -150,9 +149,9 @@ public class PlayerMove : Character
 
             if (_dir.x < 0) handle.transform.localScale = new Vector3(-1, 1);
             if(_dir.x>0)handle.transform.localScale = new Vector3(1, 1);
-        }
-
     }
+
+    
 
     public override void BowAttack()
     {

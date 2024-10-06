@@ -9,6 +9,8 @@ using VInspector;
 
 public class Character : MonoBehaviour
 {
+    
+
     [Tab("Input")]
     public Image attackCoolImage;
     private float dashCool = 5;
@@ -25,11 +27,11 @@ public class Character : MonoBehaviour
     public float goldValue;
     public LayerMask opponentMask;
     [SerializeField] CardStats resetRelicInfor;
-    [HideInInspector] public float extraAttackRatio = 1;
 
     [Tab("Debug")]
     public Vector3 _dir;
     public bool isFlooring;
+    public bool moveBlock=false;
 
     public float coolTime, curCoolTime,speed;
     public Transform opponent;
@@ -66,9 +68,11 @@ public class Character : MonoBehaviour
         goldValue= randomGold;
     }
 
-    public void Gambling()
+    public void Gambling() //갬블시 초기화 되는 내용 및 체인지
     {
         characterSO.relicInfor = resetRelicInfor.relicInfor;
+        characterSO.bloodInchant.Clear();
+        characterSO.debuffs.Clear();
         characterSO.relicInfor.characterTrans = transform;
         characterSO.relicInfor.characterHealth = health;
         gambleGauge._curGauge = 0;
@@ -97,6 +101,8 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+       
+
         if (curDashCool > 0 && curCharging <1)
         {
             curDashCool -= Time.deltaTime;
@@ -196,8 +202,8 @@ public class Character : MonoBehaviour
             if (!isSting)
             {
                 animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack"); // 역방향 재생
-
-
+                ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
+                Attack.Inst.Slash(shootInfor);
             }
             else animator.SetTrigger("StingAttack");
 
@@ -210,7 +216,8 @@ public class Character : MonoBehaviour
         hit = Physics2D.Raycast(transform.position, _dir, 2f, opponentMask);
         if (hit.collider != null)
         {
-            hit.transform.GetComponent<Health>().OnDamage(Critical(characterSO,characterSO.infor.damage * extraAttackRatio));
+            hit.transform.GetComponent<Health>().OnDamage(Critical(characterSO,characterSO.infor.damage));
+
         }
         AudioManager.Inst.AudioEffectPlay(characterSO.infor.cardNum);
     }
@@ -242,13 +249,11 @@ public class Character : MonoBehaviour
     {
         if (curCoolTime <= 0)
         {
+            ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent,shootPoint);
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
-            if (isRevolver)
-                Attack.Inst.shootRevolver(_dir, handle.transform.parent, shootPoint, curSO, isPlayer,this);
-            else
-                Attack.Inst.shootShotgun(_dir, handle.transform.parent, shootPoint, curSO, isPlayer,this);
+            Attack.Inst.Shoot(shootInfor);
         }
     }
 
@@ -256,6 +261,7 @@ public class Character : MonoBehaviour
     {
         if ( curCoolTime <= 0)
         {
+            ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack");
@@ -266,7 +272,7 @@ public class Character : MonoBehaviour
                     Attack.Inst.QueenMagic(shootPoint, curSO, isPlayer, opponent,this);
                     break;
                 case CardStats.CardType.King:
-                    Attack.Inst.KingMagic(_dir, handle.transform.parent, shootPoint, curSO, isPlayer, this);
+                    Attack.Inst.Shoot(shootInfor);
                     break;
             }
 
@@ -285,16 +291,18 @@ public class Character : MonoBehaviour
 
     public virtual void BowShoot()
     {
+        ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
         bool maxCharging = _curCharging >= coolTime;
-        Attack.Inst.shootBow(_dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging,this);
+        Attack.Inst.Shoot(shootInfor,maxCharging);
         attackCoolImage.fillAmount = 0;
         _curCharging = 0;
     }
 
     public virtual void BowShoot(Vector3 dir)
     {
+        ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
         bool maxCharging = _curCharging >= coolTime;
-        Attack.Inst.shootBow(dir, handle.transform.parent, shootPoint, characterSO, isPlayer, maxCharging, this);
+        Attack.Inst.Shoot(shootInfor, maxCharging);
         attackCoolImage.fillAmount = 0;
         _curCharging = 0;
     }

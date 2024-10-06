@@ -14,10 +14,10 @@ public class InChantRelic : RelicSO
     {
 
 
-        public enum Relic_Type { BloodSucking }
+        public enum Relic_Type { BloodSucking,fireDebuff,iceDebuff}
 
         public Relic_Type relic_Type;
-
+        public int count;
         
 
     }
@@ -35,9 +35,10 @@ public class InChantRelic : RelicSO
 
     public override void Active(CardStats so, RelicType relicType)
     {
-        Debug.Log("AAA");
+       
         if(!excute.isExcute) SetInchant(so, relicType);
         SpecialAbilityType(so, relicType);
+        Debug.Log("AAA");
     }
 
     public void SpecialAbilityType(CardStats so, RelicType relicType)
@@ -45,17 +46,23 @@ public class InChantRelic : RelicSO
         switch (relicType.relic_Type)
         {
             case Relic_Type.BloodSucking:
-                for(int i = 0; i<RelicManager.Inst.playerBloodInchant.Count; i++)
+                if (so.bloodInchant.Count > 0)
                 {
-                   
-                    if (RelicManager.Inst.playerBloodInchant[i] == so.infor.cardNum)
+                    for (int i = 0; i < so.bloodInchant.Count; i++)
                     {
-                        Debug.Log("blooood");
-                        so.relicInfor.bloodSucking = true;
-                        break;
+                        if (so.bloodInchant[i] == so.infor.cardNum)
+                        {
+                            Debug.Log("blooood" + so.bloodInchant[i]);
+                            so.relicInfor.bloodSucking = true;
+                            so.debuffs.Add(new FireDebuff { dotDamage = 2, duration = 5 });
+                            break;
+                        }
                     }
-                   
-                } break;
+
+                }
+                break;
+
+
 
         }
     }
@@ -67,15 +74,34 @@ public class InChantRelic : RelicSO
             switch (relicType.relic_Type)
             {
                 case Relic_Type.BloodSucking:
-                    RelicManager.Inst.playerBloodInchant.Add(Random.Range(0, 13)); break;
+                    CheckContains(so.bloodInchant,relicType);
+                    break;
+                case Relic_Type.fireDebuff:
+                    CheckContains(so.fireInchant, relicType);
+                    break;
+                case Relic_Type.iceDebuff:
+                    CheckContains(so.iceInchant, relicType);
+                    break;
 
             }
 
             excute.isExcute = true;
             Debug.Log(excute.isExcute);
-        }
-       
+        } 
+    }
 
-        
+    public void CheckContains(List<int> list,RelicType relicType)
+    {
+        for (int i = 0; i < relicType.count; i++)
+        {
+            if (list.Count > 12) return;
+            int randomValue = Random.Range(0, 13);
+            while (list.Contains(randomValue))
+            {
+                randomValue = Random.Range(0, 13);
+            }
+
+            list.Add(randomValue);
+        }
     }
 }

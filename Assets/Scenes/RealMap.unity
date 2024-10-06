@@ -7296,8 +7296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRelic:
-  - {fileID: 11400000, guid: 64a7967ad4b1166468e712c4945d3daa, type: 2}
-  playerBloodInchant: 
+  - {fileID: 11400000, guid: 4917b6be685f562439e75d02059306c9, type: 2}
   enemyRelic: []
   relicSOs:
   - {fileID: 11400000, guid: 9c33652b67f9eb344a6161008041aad0, type: 2}
