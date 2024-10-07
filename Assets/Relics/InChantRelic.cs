@@ -46,25 +46,51 @@ public class InChantRelic : RelicSO
         switch (relicType.relic_Type)
         {
             case Relic_Type.BloodSucking:
-                if (so.bloodInchant.Count > 0)
+                if(HaveInchant(so.bloodInchant, so.infor.cardNum))
                 {
-                    for (int i = 0; i < so.bloodInchant.Count; i++)
-                    {
-                        if (so.bloodInchant[i] == so.infor.cardNum)
-                        {
-                            Debug.Log("blooood" + so.bloodInchant[i]);
-                            so.relicInfor.bloodSucking = true;
-                            so.debuffs.Add(new FireDebuff { dotDamage = 2, duration = 5 });
-                            break;
-                        }
-                    }
+                    Debug.Log("blooood" + so.infor.cardNum);
+                    so.relicInfor.bloodSucking = true;
+                }
+                break;
 
+            case Relic_Type.fireDebuff:
+                if (HaveInchant(so.fireInchant, so.infor.cardNum))
+                {
+                    Debug.Log("fire" + so.infor.cardNum);
+                    so.debuffs.Add(new FireDebuff { dotDamage = 2, duration = 5 });
+                }
+                break;
+
+            case Relic_Type.iceDebuff:
+                if (HaveInchant(so.iceInchant, so.infor.cardNum))
+                {
+                    Debug.Log("ice" + so.infor.cardNum);
+                    so.debuffs.Add(new IceDebuff {duration = 0.5f});
                 }
                 break;
 
 
 
+
         }
+    }
+
+    public bool HaveInchant(List<int> inchantList,int cardNum)
+    {
+        if (inchantList.Count > 0)
+        {
+            for (int i = 0; i < inchantList.Count; i++)
+            {
+                if (inchantList[i] == cardNum)
+                {
+                    Debug.Log("inchant" + inchantList[i]);
+
+                    return true;
+                }
+            }
+
+        }
+        return false;
     }
 
     public void SetInchant(CardStats so, RelicType relicType)
