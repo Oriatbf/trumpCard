@@ -7295,6 +7295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826316c7e07494d4e8b8551597b4c9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSO: {fileID: 11400000, guid: 0581483cd9dc8d34586e1661cfc65b78, type: 2}
   playerRelic:
   - {fileID: 11400000, guid: 56bb313b89600fb4d93fe5b3bd0bc6b3, type: 2}
   enemyRelic: []

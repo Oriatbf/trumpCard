@@ -10,6 +10,7 @@ using VInspector;
 public class RelicManager : MonoBehaviour
 {
     public static RelicManager Inst;
+    public CardStats playerSO;
     public List<RelicSO> playerRelic = new List<RelicSO>();
     public List<RelicSO> enemyRelic = new List<RelicSO>();
     public List<RelicSO> relicSOs = new List<RelicSO>();
@@ -36,13 +37,6 @@ public class RelicManager : MonoBehaviour
             Inst = this;
         }
 
-        foreach (var item in InchantRelics)
-        {
- 
-            InChantRelic inChantRelic = item as InChantRelic;
-            inChantRelic.excute.isExcute = false;
-            
-        }
        
         for (int i = 0; i < relicLootsLayout.childCount; i++)
         {
@@ -53,7 +47,16 @@ public class RelicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        foreach (var relic in playerRelic)
+        {
+            InChantRelic inChantRelic = relic as InChantRelic;
+            if (inChantRelic != null)
+            {
+                foreach (InChantRelic.RelicType relicType in inChantRelic.relicType)
+                    inChantRelic.Inchant(playerSO, relicType);
+            }
+
+        }
     }
 
     [Button]

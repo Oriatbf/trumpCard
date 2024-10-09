@@ -16,8 +16,7 @@ MonoBehaviour:
   relicIcon: {fileID: 21300000, guid: 8f071554f2f247e42a3375fc77028db9, type: 3}
   relicInfor: "\uCE74\uB4DC 2\uAC1C\uC5D0 \uC5BC\uC74C \uC778\uCC48\uD2B8\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4"
   rarity: 2
-  excute:
-    isExcute: 0
   relicType:
   - relic_Type: 2
+    inchantIcon: {fileID: 21300000, guid: a0af11e95147b214e9bbe58fc4847cee, type: 3}
     count: 2

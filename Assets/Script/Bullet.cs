@@ -105,7 +105,7 @@ public class Bullet : Projectile
                     debuff.Apply(health);
                 }
                 health.OnDamage(damage);
-               // health.IceAge(0.2f);
+             
                 EffectManager.Inst.SpawnEffect(transform, 0);
                 gameObject.SetActive(isReturn);
             }

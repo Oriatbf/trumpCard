@@ -1,8 +1,10 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VInspector;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,8 +14,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject relicIcon;
     [SerializeField] Transform relicIconCanvas;
     [SerializeField] Canvas uiTopBar;
+ 
    
     public float gold;
+
+    [Foldout("Inchant")]
+    [SerializeField] CardStats[] numberCards;
+    [SerializeField] Image[] inchantCardImage;
+    [SerializeField] Canvas inchantCanvas;
+    Animator inchantAnim;
+
 
 
     private void Awake()
@@ -31,17 +41,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-   
 
-    public void GameStart()
-    {
-      
-    }
     // Start is called before the first frame update
     void Start()
     {
+        inchantAnim= inchantCanvas.GetComponent<Animator>();
         Application.targetFrameRate = 60;  //모바일 최적화
-        Debug.Log("스타토");
         gold = 0;
         GoldCount(0);
     }
@@ -69,6 +74,23 @@ public class UIManager : MonoBehaviour
         GameObject icon =  Instantiate(relicIcon, relicIconCanvas);
         icon.GetComponent<Image>().sprite = relicSO.relicIcon;
         icon.transform.Find("RelicLootImage").GetComponent<RelicLoot>().SetCard(relicSO);
+    }
+
+    public void InchantCanvasAnim(List<int> inchantList,Sprite inchantIcon)
+    {
+        for(int i = 0; i<inchantList.Count;i++)
+        {
+            for(int j = 0; j < 13; j++)
+            {
+                if (inchantList[i] == j)
+                {
+                    inchantCardImage[i].sprite = numberCards[j].infor.playerCardImage;
+                    inchantCardImage[i].transform.GetChild(0).GetComponent<Image>().sprite = inchantIcon;
+                }
+            }
+        }
+        inchantAnim.SetTrigger("Intro");
+        DOVirtual.DelayedCall(4f, () => inchantAnim.SetTrigger("Outtro"));
     }
 
 

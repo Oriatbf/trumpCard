@@ -17,6 +17,7 @@ MonoBehaviour:
   relicInfor: 
   rarity: 0
   excute:
-    isExcute: 1
+    isExcute: 0
   relicType:
   - relic_Type: 0
+    count: 0

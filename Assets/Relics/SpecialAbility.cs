@@ -13,7 +13,7 @@ public class SpecialAbility : RelicSO
     {
 
 
-        public enum Relic_Type { flooringBullet, SpawnSlime,UpGradeA }
+        public enum Relic_Type { flooringBullet, SpawnSlime,UpGradeA ,slashMelee}
 
         public Relic_Type relic_Type;
 
@@ -50,6 +50,8 @@ public class SpecialAbility : RelicSO
                     Debug.Log("AAA");
                 }
                 break;
+            case Relic_Type.slashMelee:
+                so.relicInfor.isSlash = true; break;
 
         }
     }

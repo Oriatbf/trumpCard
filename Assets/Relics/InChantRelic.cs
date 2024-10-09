@@ -17,28 +17,26 @@ public class InChantRelic : RelicSO
         public enum Relic_Type { BloodSucking,fireDebuff,iceDebuff}
 
         public Relic_Type relic_Type;
+        public Sprite inchantIcon;
         public int count;
-        
 
     }
 
-    [Serializable]
-    public class Excute
-    {
-        public bool isExcute;
-    }
 
 
-
-    public Excute excute;
     public RelicType[] relicType;
 
     public override void Active(CardStats so, RelicType relicType)
     {
        
-        if(!excute.isExcute) SetInchant(so, relicType);
+      
         SpecialAbilityType(so, relicType);
         Debug.Log("AAA");
+    }
+
+    public void Inchant(CardStats so, RelicType relicType)
+    {
+        SetInchant(so, relicType);
     }
 
     public void SpecialAbilityType(CardStats so, RelicType relicType)
@@ -68,10 +66,6 @@ public class InChantRelic : RelicSO
                     so.debuffs.Add(new IceDebuff {duration = 0.5f});
                 }
                 break;
-
-
-
-
         }
     }
 
@@ -95,32 +89,32 @@ public class InChantRelic : RelicSO
 
     public void SetInchant(CardStats so, RelicType relicType)
     {
-        if (!excute.isExcute)
+       
+        Debug.Log("익스큐트");
+        List<int> cp_InchantList= new List<int>();
+        switch (relicType.relic_Type)
         {
-            switch (relicType.relic_Type)
-            {
-                case Relic_Type.BloodSucking:
-                    CheckContains(so.bloodInchant,relicType);
-                    break;
-                case Relic_Type.fireDebuff:
-                    CheckContains(so.fireInchant, relicType);
-                    break;
-                case Relic_Type.iceDebuff:
-                    CheckContains(so.iceInchant, relicType);
-                    break;
+            case Relic_Type.BloodSucking:
+                cp_InchantList = CheckContains(so.bloodInchant,relicType);
+                break;
+            case Relic_Type.fireDebuff:
+                cp_InchantList = CheckContains(so.fireInchant, relicType);
+                break;
+            case Relic_Type.iceDebuff:
+                cp_InchantList = CheckContains(so.iceInchant, relicType);
+                break;
 
-            }
-
-            excute.isExcute = true;
-            Debug.Log(excute.isExcute);
-        } 
+        }
+        UIManager.Inst.InchantCanvasAnim(cp_InchantList,relicType.inchantIcon);
+         
     }
 
-    public void CheckContains(List<int> list,RelicType relicType)
+    public List<int> CheckContains(List<int> list,RelicType relicType)
     {
+        List<int> cp_InchantList = new List<int>();
         for (int i = 0; i < relicType.count; i++)
         {
-            if (list.Count > 12) return;
+            if (list.Count > 12) return null;
             int randomValue = Random.Range(0, 13);
             while (list.Contains(randomValue))
             {
@@ -128,6 +122,8 @@ public class InChantRelic : RelicSO
             }
 
             list.Add(randomValue);
+            cp_InchantList.Add(randomValue);
         }
+        return cp_InchantList;
     }
 }

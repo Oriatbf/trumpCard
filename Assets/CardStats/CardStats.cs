@@ -61,8 +61,8 @@ public class CardStats : ScriptableObject
         public float floorTickDamage;
         public int criticalChance;
         public float criticalDamage;
-       
-        public bool bloodSucking,fireDebuff;
+        public bool isSlash;
+        public bool bloodSucking;
       
     }
 
@@ -71,17 +71,28 @@ public class CardStats : ScriptableObject
     public List<Debuff> debuffs = new List<Debuff>();
 
     [ShowIfEnum("character", (int)Character.playerAble)] public RelicInfor relicInfor;
+
+    public void ResetRelicInfor()
+    {
+        relicInfor.characterTrans = null;
+        relicInfor.characterHealth = null;
+        relicInfor.remnantHealth = 0;
+        relicInfor.relicPlusHealth= 0;
+        relicInfor.size = 1;
+        relicInfor.isFlooring = false;
+        relicInfor.floorTickDamage= 0;
+        relicInfor.criticalChance = 7;
+        relicInfor.criticalDamage = 1.3f;
+        relicInfor.isSlash = false;
+        relicInfor.bloodSucking = false;
+    }
    
-
-
-
-
-
-
-
-
-
-
-
+    public void ClearDebuffList()
+    {
+        bloodInchant.Clear();
+        fireInchant.Clear();
+        iceInchant.Clear();
+        debuffs.Clear();
+    }
 
 }

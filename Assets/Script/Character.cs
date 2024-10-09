@@ -26,7 +26,6 @@ public class Character : MonoBehaviour
     public bool isPlayer;
     public float goldValue;
     public LayerMask opponentMask;
-    [SerializeField] CardStats resetRelicInfor;
 
     [Tab("Debug")]
     public Vector3 _dir;
@@ -70,8 +69,7 @@ public class Character : MonoBehaviour
 
     public void Gambling() //갬블시 초기화 되는 내용 및 체인지
     {
-        characterSO.relicInfor = resetRelicInfor.relicInfor;
-        characterSO.bloodInchant.Clear();
+        characterSO.ResetRelicInfor();
         characterSO.debuffs.Clear();
         characterSO.relicInfor.characterTrans = transform;
         characterSO.relicInfor.characterHealth = health;
@@ -82,9 +80,14 @@ public class Character : MonoBehaviour
         SetStat();
     }
 
+    public void CardStatReset() //게임이 다끝나고 로비로 돌아가야할 때 실행
+    {
+        characterSO.ResetRelicInfor();
+        characterSO.ClearDebuffList();
+    }
+
     public void StartRelicSkill()
     {
-        characterSO.relicInfor.relicPlusHealth = 0;
         relicSkills.StartSkill();
 
         if(isPlayer) relicSkills.SetRelicIcon();
@@ -94,8 +97,7 @@ public class Character : MonoBehaviour
     public virtual void Start()
     {
         Gambling();
-       
-       
+
     }
 
     // Update is called once per frame
@@ -203,7 +205,7 @@ public class Character : MonoBehaviour
             {
                 animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack"); // 역방향 재생
                 ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
-                Attack.Inst.Slash(shootInfor);
+                if(characterSO.relicInfor.isSlash)Attack.Inst.Slash(shootInfor);
             }
             else animator.SetTrigger("StingAttack");
 
@@ -216,7 +218,12 @@ public class Character : MonoBehaviour
         hit = Physics2D.Raycast(transform.position, _dir, 2f, opponentMask);
         if (hit.collider != null)
         {
-            hit.transform.GetComponent<Health>().OnDamage(Critical(characterSO,characterSO.infor.damage));
+            Health opponentHealth = hit.transform.GetComponent<Health>();
+            foreach (Debuff debuff in characterSO.debuffs)
+            {
+                debuff.Apply(opponentHealth);
+            }
+            opponentHealth.OnDamage(Critical(characterSO,characterSO.infor.damage));
 
         }
         AudioManager.Inst.AudioEffectPlay(characterSO.infor.cardNum);
