@@ -19,7 +19,7 @@ MonoBehaviour:
     cardType: 2
     role: 0
     attackType: 1
-    bulletTypeIndex: 0
+    bulletTypeIndex: 6
     damage: 6.5
     coolTime: 0.7
     speed: 3.4
@@ -30,7 +30,9 @@ MonoBehaviour:
     projectileTurnback: 0
     maxCharge: 0
     plusMaxChargeDam: 0
-  bloodSuckingInchant: 
+  bloodInchant: 
+  fireInchant: 
+  iceInchant: 
   relicInfor:
     characterTrans: {fileID: 0}
     characterHealth: {fileID: 0}
@@ -41,4 +43,5 @@ MonoBehaviour:
     floorTickDamage: 0
     criticalChance: 0
     criticalDamage: 0
+    isSlash: 0
     bloodSucking: 0

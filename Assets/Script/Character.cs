@@ -205,7 +205,9 @@ public class Character : MonoBehaviour
             {
                 animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack"); // 역방향 재생
                 ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
-                if(characterSO.relicInfor.isSlash)Attack.Inst.Slash(shootInfor);
+                if(characterSO.relicInfor.isSlash) Attack.Inst.Slash(shootInfor);
+                EffectManager.Inst.SpawnEffect(shootPoint.transform, 1, handle.transform.parent.rotation);
+
             }
             else animator.SetTrigger("StingAttack");
 
