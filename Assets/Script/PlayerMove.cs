@@ -18,9 +18,6 @@ public class PlayerMove : Character
     [Tab("Debug")]
     [SerializeField] Vector3 angleVec;
 
-    private float _angle;
-
-    
     private Camera _camera;
     Vector3 bowDir;
 

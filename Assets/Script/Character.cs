@@ -29,6 +29,7 @@ public class Character : MonoBehaviour
 
     [Tab("Debug")]
     public Vector3 _dir;
+    protected float _angle;
     public bool isFlooring;
     public bool moveBlock=false;
 
@@ -206,8 +207,7 @@ public class Character : MonoBehaviour
                 animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack"); // 역방향 재생
                 ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
                 if(characterSO.relicInfor.isSlash) Attack.Inst.Slash(shootInfor);
-                EffectManager.Inst.SpawnEffect(shootPoint.transform, 1, handle.transform.parent.rotation);
-
+             
             }
             else animator.SetTrigger("StingAttack");
 
@@ -216,6 +216,14 @@ public class Character : MonoBehaviour
 
     public void MeleeDamage()
     {
+        if(characterSO.infor.attackType == CardStats.AttackType.Melee)
+        {
+            EffectManager.Inst.SpawnEffect(shootPoint.transform, 1, Quaternion.Euler(0, 0, _angle));
+            ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
+            Attack.Inst.Slash(shootInfor);
+        }
+           
+
         RaycastHit2D hit;
         hit = Physics2D.Raycast(transform.position, _dir, 2f, opponentMask);
         if (hit.collider != null)

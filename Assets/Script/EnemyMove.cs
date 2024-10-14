@@ -16,7 +16,6 @@ public class EnemyMove : Character
     [SerializeField] private float midDistanceMoveCool;
     [SerializeField] private Image crown;
   
-    private float _angle;
     private Vector2 _dir2,finalDir;
     public EnemyCharacter enemyCharacter;
 

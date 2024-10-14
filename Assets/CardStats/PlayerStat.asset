@@ -14,29 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 1
   infor:
-    playerCardImage: {fileID: 21300000, guid: fe54ee0361e831843bfade1b675a6355, type: 3}
-    enemyCardImage: {fileID: 21300000, guid: d265873cd95b0134aa0da35ccd8cf17d, type: 3}
-    cardType: 6
-    role: 1
-    attackType: 0
-    bulletTypeIndex: 1
-    damage: 2
-    coolTime: 1
-    speed: 3.5
-    hp: 70
+    playerCardImage: {fileID: 21300000, guid: b71d07aa712838c4a9c83a68605d47f3, type: 3}
+    enemyCardImage: {fileID: 21300000, guid: 231e9e664c47b46429f17bc9f7a3649a, type: 3}
+    cardType: 1
+    role: 0
+    attackType: 1
+    bulletTypeIndex: 6
+    damage: 9
+    coolTime: 1.5
+    speed: 3
+    hp: 65
     bulletCount: 1
-    attackCount: 3
-    cardNum: 7
+    attackCount: 1
+    cardNum: 2
     projectileTurnback: 0
     maxCharge: 0
     plusMaxChargeDam: 0
   bloodInchant: 
-  fireInchant: 0c000000040000000000000007000000
+  fireInchant: 0400000001000000
   iceInchant: 
   relicInfor:
     characterTrans: {fileID: 0}
     characterHealth: {fileID: 0}
-    remnantHealth: 24
+    remnantHealth: 25.800003
     relicPlusHealth: 0
     size: 1
     isFlooring: 0

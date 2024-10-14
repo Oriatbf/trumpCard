@@ -47,7 +47,9 @@ public class RelicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var relic in playerRelic)
+        playerSO.ClearDebuffList();
+
+        foreach (var relic in playerRelic) //처음으로 맵선택 왔을 때 인챈트 렐릭
         {
             InChantRelic inChantRelic = relic as InChantRelic;
             if (inChantRelic != null)
