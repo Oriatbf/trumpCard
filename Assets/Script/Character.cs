@@ -343,11 +343,11 @@ public class Character : MonoBehaviour
         isDashing = true;
         curDashCool = dashCool;
         health.InvTime(dashInvTime);
-        rigid.velocity = dir * dashSpeed;
+        rigid.linearVelocity = dir * dashSpeed;
         dashEffect.ActiveDashEffect(0.2f);
         DOVirtual.DelayedCall(0.2f, () =>
         {
-            rigid.velocity = Vector2.zero;
+            rigid.linearVelocity = Vector2.zero;
             isDashing= false;
 
             });

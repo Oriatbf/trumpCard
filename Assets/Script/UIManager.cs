@@ -90,7 +90,7 @@ public class UIManager : MonoBehaviour
             }
         }
         inchantAnim.SetTrigger("Intro");
-        DOVirtual.DelayedCall(4f, () => inchantAnim.SetTrigger("Outtro"));
+        
     }
 
 

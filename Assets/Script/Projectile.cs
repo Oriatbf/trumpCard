@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
         Debug.Log("true");
         DOVirtual.DelayedCall(2f, () =>
         {
-            rigid.velocity = -rigid.velocity;
+            rigid.linearVelocity = -rigid.linearVelocity;
             ActiveFalse();
             });
     }
