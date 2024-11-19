@@ -101,21 +101,21 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            UIManager.Inst.GoldRelicReset();
+           // UIManager.Inst.GoldRelicReset();
             Destroy(GameManager.Inst.gameObject);
         }
 
         
         if (newScene.name == "LobbyScene")
         {
-            UIManager.Inst.GoldRelicReset();
+           // UIManager.Inst.GoldRelicReset();
             Destroy(GameManager.Inst.gameObject);
         }
 
 
         if(newScene.name == "EndScene")
         {
-            UIManager.Inst.EndingScene();
+            //UIManager.Inst.EndingScene();
         }
 
         Debug.Log("Active scene changed from " + previousScene.name + " to " + newScene.name);

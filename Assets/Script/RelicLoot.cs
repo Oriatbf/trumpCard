@@ -53,7 +53,7 @@ public class RelicLoot : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<RelicSkills>().relics.Add(curRelic);
         player.GetComponent<Character>().StartRelicSkill();
-        UIManager.Inst.InstanceRelicIcon(curRelic);
+        ResourceManager.Inst.InstanceRelicIcon(curRelic);
         if (!GameManager.Inst.isGameEnd) GameManager.Inst.GameStart();
         else
         {
@@ -67,17 +67,17 @@ public class RelicLoot : MonoBehaviour
     // Shop
     public void BuyRelic()
     {
-        if(!purchased && UIManager.Inst.gold >= gold)
+        if(!purchased && ResourceManager.Inst.CurrentGold() >= gold)
         {
             purchased = true;
 
-            UIManager.Inst.GoldCount(-gold);
+            ResourceManager.Inst.GetGold(-gold);
             goldText.text = "SALE";
 
             // Shop
 
             RelicManager.Inst.playerRelic.Add(curRelic);
-            UIManager.Inst.InstanceRelicIcon(curRelic);
+            ResourceManager.Inst.InstanceRelicIcon(curRelic);
         }
     }
 }

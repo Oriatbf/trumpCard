@@ -85,7 +85,6 @@ public class Health : MonoBehaviour
                 character.opponent.GetComponent<Health>().isInv = true;
                 if (!character.isPlayer)
                 {     
-                    UIManager.Inst.GoldCount(character.goldValue);
                     if(enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss) GameManager.Inst.DefectBoss(gameObject);
                     else GameManager.Inst.GameEnd(true, gameObject);    
                 }

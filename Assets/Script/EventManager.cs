@@ -84,7 +84,7 @@ public class EventManager : MonoBehaviour
         {
             case EventOption.AdditionType.Gold:
                 if (randomSuccess)
-                    UIManager.Inst.GoldCount(option.typeValue);
+                    ResourceManager.Inst.GetGold(-option.typeValue);
                 break;
             case EventOption.AdditionType.Relic:
                 if (randomSuccess)
@@ -95,7 +95,7 @@ public class EventManager : MonoBehaviour
                         {
                             var SO = RelicManager.Inst.RandomSO(option.typeValue);
                             RelicManager.Inst.playerRelic.Add(SO.curRarityRelics[SO.random]);
-                            UIManager.Inst.InstanceRelicIcon(SO.curRarityRelics[SO.random]);
+                            ResourceManager.Inst.InstanceRelicIcon(SO.curRarityRelics[SO.random]);
                         }
                     }
                     else
@@ -104,7 +104,7 @@ public class EventManager : MonoBehaviour
                         {
                             RelicSO RanSO = option.Relics[Random.Range(0, option.Relics.Length)];
                             RelicManager.Inst.playerRelic.Add(RanSO);
-                            UIManager.Inst.InstanceRelicIcon(RanSO);
+                            ResourceManager.Inst.InstanceRelicIcon(RanSO);
                         }
                     }
                 }
@@ -136,7 +136,7 @@ public class EventManager : MonoBehaviour
         {
             case EventOption.AdditionType.Gold:
                 if(option.allGold_Remove)
-                    UIManager.Inst.GoldCount(-UIManager.Inst.gold); Debug.Log("다슴");
+                    ResourceManager.Inst.GetGold(-99999); Debug.Log("다슴");
                 break;
             case EventOption.AdditionType.Relic:
                 break;

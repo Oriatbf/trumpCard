@@ -44,9 +44,9 @@ public class ShopManager : MonoBehaviour
 
     public void RefreshBtn()
     {
-        if (UIManager.Inst.gold >= 70)
+        if (ResourceManager.Inst.CurrentGold() >= 70)
         {
-            UIManager.Inst.GoldCount(-70);
+            ResourceManager.Inst.GetGold(-70);
             Refresh();
         }
     }

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8980fbce-ce1f-40fc-ad40-6187e7f32ffb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo C#/Crosshair.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo C#/Crosshair.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/2D/DNP_Background.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/2D/DNP_Background.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/3D/DNP_Crosshair.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/3D/DNP_Crosshair.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/3D/DNP_Cube.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/3D/DNP_Cube.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Hurt/Anim_HURT_00007.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Hurt/Anim_HURT_00007.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Hurt/Anim_HURT_00009.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Hurt/Anim_HURT_00009.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Hurt/Anim_HURT_00011.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Hurt/Anim_HURT_00011.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00001.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00001.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00003.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00003.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00005.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00005.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00007.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00007.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00009.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00009.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00011.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00011.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00013.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00013.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00015.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00015.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00017.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00017.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00019.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00019.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00021.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00021.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00023.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00023.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00025.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00025.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00027.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00027.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00029.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Idle/Anim_IDLE_00029.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_01.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_03.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_03.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_04.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_04.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_05.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_05.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_06.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_06.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_07.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_07.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_08.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_08.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_09.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_09.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_10.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_10.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_11.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_11.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_12.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_12.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_13.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_13.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_14.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_14.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_15.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_15.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_16.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_16.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_17.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_17.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_18.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_18.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_19.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Jump/Anim_JUMP_19.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_01.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_03.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_03.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_04.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_04.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_05.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_05.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_06.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_06.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_07.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_07.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_08.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_08.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_09.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_09.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_10.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_10.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_11.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_11.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_12.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_12.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_13.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_13.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_14.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_14.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_15.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_15.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_16.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_16.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_17.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_17.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_18.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_18.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_19.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_19.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_20.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_20.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_21.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_21.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_22.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Ellen/Run/ELLEN_RUN_NoGun_22.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Other/DNP_Background.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Other/DNP_Background.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Other/DNP_Grass.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Textures/Sprites/Other/DNP_Grass.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Villager/Textures/Belt.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Villager/Textures/Belt.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Villager/Textures/Shoes.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Villager/Textures/Shoes.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Villager/Textures/Skin.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Demo/Villager/Textures/Skin.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Editor/Resources/DNP/Textures/DNP_Banner.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/DamageNumbersPro/Editor/Resources/DNP/Textures/DNP_Banner.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/SettingsIcon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/SettingsIcon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/SlicedCircle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/SlicedCircle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/TransitionDemoLogo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/TransitionDemoLogo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/TransitionIcon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/TransitionIcon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/TransitionManagerSettingsLogo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/TransitionManagerSettingsLogo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/TransitionPrefabIcon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Sprites/TransitionPrefabIcon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/Brush/BrushTransitionAnimation.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/Brush/BrushTransitionAnimation.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/DiagonalRectangleGrid/DiagonalRectangleGridTransitionAnimation.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/DiagonalRectangleGrid/DiagonalRectangleGridTransitionAnimation.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/DoubleWipe/DoubleWipeTransitionAnimation.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/DoubleWipe/DoubleWipeTransitionAnimation.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/HorizontalCurtain/HorizontalCurtainTransitionAnimation.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/HorizontalCurtain/HorizontalCurtainTransitionAnimation.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/LinearWipe/LinearWipeTransitionAnimation.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/LinearWipe/LinearWipeTransitionAnimation.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/Noise/NoiseTransitionAnimation.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/Noise/NoiseTransitionAnimation.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/PaintSplash/PaintSplashTransitionAnimation.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/PaintSplash/PaintSplashTransitionAnimation.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/RectangleGrid/RectangleGridTransitionAnimation.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/RectangleGrid/RectangleGridTransitionAnimation.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/VerticalCurtain/VerticalCurtainTransitionAnimation.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Transitions/VerticalCurtain/VerticalCurtainTransitionAnimation.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Outline.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Outline.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Outline_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Outline_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Plain.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Plain.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Plain_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Plain_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Ridged.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Ridged.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Ridged_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/All Axis Backgrounds/AllAxis_Ridged_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Outline.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Outline.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Outline_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Outline_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Plain.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Plain.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Plain_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Plain_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Ridged.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Ridged.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Ridged_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Handles/Handle_Ridged_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Outline.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Outline.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Outline_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Outline_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Plain.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Plain.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Plain_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Plain_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Ridged.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Ridged.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Ridged_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Horizontal Backgrounds/Horizontal_Ridged_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Outline.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Outline.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Outline_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Outline_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Plain.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Plain.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Plain_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Plain_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Ridged.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Ridged.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Ridged_Arrows.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Joystick Pack/Sprites/Vertical Backgrounds/Vertical_Ridged_Arrows.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/OneLine/OneLine/Screenshot_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/OneLine/OneLine/Screenshot_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/OneLine/OneLine/Screenshot_2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/OneLine/OneLine/Screenshot_2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/OneLine/OneLine/Screenshot_3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/OneLine/OneLine/Screenshot_3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Example/Sprites/Circle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Example/Sprites/Circle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Example/Sprites/Example_sprites.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Example/Sprites/Example_sprites.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Example/Sprites/example_dialoguebox_body.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Example/Sprites/example_dialoguebox_body.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/pause_icon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/pause_icon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/play_icon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/play_icon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/restart_icon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/restart_icon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/save_icon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/save_icon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/stop_icon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/Febucci/Text Animator/Scripts/Editor/Resources/Text Animator/stop_icon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Circle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Circle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Kenney RPG Pack panels/panel_beige.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Kenney RPG Pack panels/panel_beige.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Kenney RPG Pack panels/panel_beigeLight.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Kenney RPG Pack panels/panel_beigeLight.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Kenney RPG Pack panels/panel_blue.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Kenney RPG Pack panels/panel_blue.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Kenney RPG Pack panels/panel_brown.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/Kenney RPG Pack panels/panel_brown.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/circle-64.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/circle-64.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/empty-circle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/empty-circle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/carl-olsen/brutal-helm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/carl-olsen/brutal-helm.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/carl-olsen/flame.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/carl-olsen/flame.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/carl-olsen/spider-face.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/carl-olsen/spider-face.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/cathelineau/torc.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/cathelineau/torc.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/backpack.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/backpack.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/bed.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/bed.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/brute.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/brute.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/bully-minion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/bully-minion.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/camping-tent.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/camping-tent.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/chest.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/chest.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/circle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/circle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/executioner-hood.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/executioner-hood.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/fireplace.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/fireplace.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/forest-camp.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/delapouite/forest-camp.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/barbute.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/barbute.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/burning-embers.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/burning-embers.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/campfire.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/campfire.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/crowned-skull.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/crowned-skull.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/daemon-skull.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/daemon-skull.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/death-zone.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/death-zone.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/dread-skull.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/dread-skull.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/heavy-helm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/heavy-helm.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/horned-helm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/horned-helm.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/hydra.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/hydra.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/ink-swirl.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/ink-swirl.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/letter-bomb.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/letter-bomb.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/locked-chest.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Sprites/game-icons.net/lorc/locked-chest.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenUpgradeManager.XML" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenUpgradeManager.XML.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenUpgradeManager.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenUpgradeManager.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EventManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/LobbyPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/LobbyPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/RelicLoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/RelicLoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/InChantRelic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/InChantRelic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ShopManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ShopManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/UI/ResourceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/UI/ResourceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2p44PGGhq3gDYfxMKO0bXwP1JHy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\재완\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\재완\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\재완\\AppData\\Local\\Symbols\\src"
+    ]
+  }
+}]]></component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Downloads/GambleRoguePcBuild\newTrumpCard.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\재완\Downloads\GambleRoguePcBuild" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="D:\Unity\Unity Editor\6000.0.21f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath D:\Unity\trumpCard\GambleRogue -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="D:\Unity\trumpCard\GambleRogue" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="D:\Unity\Unity Editor\6000.0.21f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\Unity\trumpCard\GambleRogue -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="D:\Unity\trumpCard\GambleRogue" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8980fbce-ce1f-40fc-ad40-6187e7f32ffb" name="Changes" comment="" />
+      <created>1732011999934</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732011999934</updated>
+      <workItem from="1732012015024" duration="1446000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

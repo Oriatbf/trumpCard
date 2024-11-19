@@ -7,8 +7,7 @@ public class LobbyPlayer : MonoBehaviour
 {
 
     Animator animator;
-    SpriteRenderer spr;
-    [SerializeField] LobbyManager manager;
+    private SpriteRenderer spr;
     [Tab("Debug")]
     [SerializeField] Vector3 angleVec;
 

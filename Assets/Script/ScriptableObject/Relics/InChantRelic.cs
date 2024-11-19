@@ -105,7 +105,7 @@ public class InChantRelic : RelicSO
                 break;
 
         }
-        UIManager.Inst.InchantCanvasAnim(cp_InchantList,relicType.inchantIcon);
+       //UIManager.Inst.InchantCanvasAnim(cp_InchantList,relicType.inchantIcon);
          
     }
 
