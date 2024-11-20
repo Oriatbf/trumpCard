@@ -30,17 +30,16 @@ public class LobbyPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        if(!TutorialManager.Inst.isTutorialing)
-            Move();
+       
     }
 
     private void LateUpdate()
     {
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, -8, 8), Mathf.Clamp(transform.position.y, -4.2f, 1.1f));
     }
-    private void Move()
+    protected void Move()
     {
         if (!TutorialText.Inst.disableAction)
         {

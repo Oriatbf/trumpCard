@@ -6,24 +6,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using VInspector;
-
-public class LobbyNpc : MonoBehaviour
+public enum NpcType {Npc,Player }
+public class LobbyNpc : LobbyPlayer
 {
-    public enum NpcType {bartender,slime,start }
+   
 
     public NpcType npcType;
 
 
     [TextArea][SerializeField] string[] npcText;
-    [SerializeField] Canvas textCanvas;
+    [SerializeField] private Canvas textCanvas;
+    [SerializeField] private float detectRange;
+    [SerializeField] private bool inDetect = false;
     
-    [SerializeField] Vector2 size, pos;
     TypewriterByCharacter text;
-
-    [SerializeField] LayerMask playerLayer;
-    
-    public bool trig,startTrig;
     int textIndex;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,55 +30,43 @@ public class LobbyNpc : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        if (Physics2D.OverlapBox(transform.position + (Vector3)pos, size, 0, playerLayer))
-        {
-            trig = true;
-            if (npcType == NpcType.start && !startTrig)
-            {
-                startTrig = true;
-                textCanvas.transform.DOScale(1, 0.5f).OnComplete(() => { DialogeText(); });
-                return;
-            }
+        if(!TutorialManager.Inst.isTutorialing && npcType == NpcType.Player)
+            Move();
 
-
-        }
-        else if (trig)
+        if (npcType == NpcType.Npc)
         {
-            startTrig = false;
-            textCanvas.transform.DOScale(0, 0.5f);
-            text.ShowText("");
-            trig= false;
+            DetectPlayer();
         }
+        
     }
+
+    public void DetectPlayer()
+    {
+        if (Vector3.Distance(NpcManager.Inst.GetPlayerNpc().transform.position, transform.position) < detectRange)
+        {
+            inDetect = true;
+        }
+        else inDetect = false;
+        
+        if(inDetect && Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Npc)
+            NpcInteract();
+    }
+
+
 
     public void NpcInteract()
     {
-        if (trig)
-        {
-          
-           
-            if (npcType == NpcType.start)
-            {
-                DemoLoadScene.Inst.LoadScene("RealMap");
-                return;
-            }
-            if (textCanvas.transform.localScale.x != 1)
-                textCanvas.transform.DOScale(1, 0.5f).OnComplete(() => { DialogeText(); });
-            else DialogeText();
-
-
-
-            
-        }
-      
+        Debug.Log(gameObject.name);
+        npcType = NpcType.Player;
+        DOVirtual.DelayedCall(0.1f, () => NpcManager.Inst.SetPlayerNpc());
     }
 
     [Button]
     public void DialogeText()
     {
-        if(npcType == NpcType.slime)
+        if(npcType == NpcType.Player)
             text.ShowText("<shake>" + npcText[textIndex]);
         else text.ShowText( npcText[textIndex]);
         textIndex++;
@@ -101,10 +87,5 @@ public class LobbyNpc : MonoBehaviour
        
     }
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + (Vector3)pos, size);
-    }
-   
+  
 }
