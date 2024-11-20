@@ -151,6 +151,7 @@ Transform:
   - {fileID: 370765912}
   - {fileID: 1814805525}
   - {fileID: 1866175009}
+  - {fileID: 416637689}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &50286457
@@ -1209,18 +1210,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0482f20ba5b559b4ca8c36dc53b24024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectRange: 1
+  npcType: 0
+  inDetect: 0
   angleVec: {x: 0, y: 0, z: 0}
   speed: 4
   mobileVersion: 0
   moveJoyStick: {fileID: 0}
   dirJoyStick: {fileID: 0}
-  npcType: 0
   npcText:
   - "\uBC18\uAC11\uB2E4"
   - "\uAEBC\uC838"
   textCanvas: {fileID: 1914602986}
-  detectRange: 1
-  inDetect: 0
 --- !u!1 &415154212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,14 +1298,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416637688}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1875822865}
   - {fileID: 724845437}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 15221679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &416637690
 MonoBehaviour:
@@ -1315,20 +1316,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 416637688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0482f20ba5b559b4ca8c36dc53b24024, type: 3}
+  m_Script: {fileID: 11500000, guid: e7137e38d335fc541959e6c6af95a199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectRange: 3
+  npcType: 0
+  inDetect: 0
   angleVec: {x: 0, y: 0, z: 0}
   speed: 4
   mobileVersion: 0
   moveJoyStick: {fileID: 0}
   dirJoyStick: {fileID: 0}
-  npcType: 0
-  npcText:
-  - "\uAC8C\uC784 \uC2DC\uC791"
-  textCanvas: {fileID: 724845434}
-  detectRange: 0
-  inDetect: 0
 --- !u!1 &425349255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,18 +2142,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0482f20ba5b559b4ca8c36dc53b24024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectRange: 1
+  npcType: 0
+  inDetect: 0
   angleVec: {x: 0, y: 0, z: 0}
   speed: 4
   mobileVersion: 0
   moveJoyStick: {fileID: 0}
   dirJoyStick: {fileID: 0}
-  npcType: 0
   npcText:
   - "\uC624\uB298\uB3C4 \uAF5D\uC774\uAD70"
   - "\uBB58 \uBD10"
   textCanvas: {fileID: 912772130}
-  detectRange: 1
-  inDetect: 0
 --- !u!70 &611883013
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2609,11 +2607,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!223 &724845434 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3002022100819133302, guid: 57a6973daccf252409d0a9dc9e9e7cbb, type: 3}
-  m_PrefabInstance: {fileID: 1951542888}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &724845437 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7043713721448013333, guid: 57a6973daccf252409d0a9dc9e9e7cbb, type: 3}
@@ -6833,7 +6826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterHead: {fileID: 305868807}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0.8, z: 0}
   playerNpc: {fileID: 0}
   lobbyNpcs: []
   playerMoving: 0
@@ -7028,17 +7021,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0482f20ba5b559b4ca8c36dc53b24024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectRange: 1
+  npcType: 0
+  inDetect: 0
   angleVec: {x: 0, y: 0, z: 0}
   speed: 4
   mobileVersion: 0
   moveJoyStick: {fileID: 0}
   dirJoyStick: {fileID: 0}
-  npcType: 0
   npcText:
   - "\uD558\uC774"
   textCanvas: {fileID: 503237182}
-  detectRange: 1
-  inDetect: 0
 --- !u!1 &1827379323
 GameObject:
   m_ObjectHideFlags: 0
@@ -7439,7 +7432,7 @@ SpriteRenderer:
   m_SortingOrder: 11
   m_Sprite: {fileID: -989707289, guid: 1229742a32335aa41b59cb6c2d728e51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -7477,18 +7470,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0482f20ba5b559b4ca8c36dc53b24024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectRange: 1
+  npcType: 1
+  inDetect: 0
   angleVec: {x: 0, y: 0, z: 0}
   speed: 4
   mobileVersion: 0
   moveJoyStick: {fileID: 0}
   dirJoyStick: {fileID: 0}
-  npcType: 1
   npcText:
   - '!#@%$#'
   - '&#*$#*'
   textCanvas: {fileID: 257228779}
-  detectRange: 1
-  inDetect: 0
 --- !u!61 &1866175011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8620,7 +8613,6 @@ SceneRoots:
   - {fileID: 1330238468}
   - {fileID: 1931643158}
   - {fileID: 1214849688}
-  - {fileID: 416637689}
   - {fileID: 847224787}
   - {fileID: 1565842107}
   - {fileID: 1790432860}

@@ -40,25 +40,14 @@ public class NpcManager : MonoBehaviour
         playerNpc = _playerNpc[0];
     }
     
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.F1))CheckNpc();
-    }
+    
+   
 
     public void StopMoving()
     {
         playerMoving = false;
     }
-
-    public void CheckNpc()
-    {
-        foreach(var npc in lobbyNpcs)
-        {
-            npc.NpcInteract();
-        }
-    }
+    
 
     public LobbyNpc GetPlayerNpc() => playerNpc;
 

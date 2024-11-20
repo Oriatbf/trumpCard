@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,6 +11,9 @@ using VInspector;
 public class RelicManager : MonoBehaviour
 {
     public static RelicManager Inst;
+
+    public List<RelicSO> testR = new List<RelicSO>();
+    
     public CardStats playerSO;
     public List<RelicSO> playerRelic = new List<RelicSO>();
     public List<RelicSO> enemyRelic = new List<RelicSO>();
@@ -59,6 +63,9 @@ public class RelicManager : MonoBehaviour
             }
 
         }
+
+       var relics = Resources.LoadAll<RelicSO>("Relics");
+       testR = new List<RelicSO>(relics);
     }
 
     [Button]

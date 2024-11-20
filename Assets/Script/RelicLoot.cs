@@ -54,6 +54,7 @@ public class RelicLoot : MonoBehaviour
         player.GetComponent<RelicSkills>().relics.Add(curRelic);
         player.GetComponent<Character>().StartRelicSkill();
         ResourceManager.Inst.InstanceRelicIcon(curRelic);
+        /*
         if (!GameManager.Inst.isGameEnd) GameManager.Inst.GameStart();
         else
         {
@@ -61,7 +62,7 @@ public class RelicLoot : MonoBehaviour
             GameManager.Inst.mapMode = true;
             GameManager.Inst.SceneTransition("RealMap");
    
-        }
+        }*/
     }
 
     // Shop

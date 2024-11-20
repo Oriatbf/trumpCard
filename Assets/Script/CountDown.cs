@@ -31,7 +31,6 @@ public class CountDown : MonoBehaviour
     public void CountEnd()
     {
         camSet.CameraAnimation();
-        GameManager.Inst.isGameStart = true;
         // 게임 시작
     }
 }

@@ -12,6 +12,8 @@ public class ResourceManager : MonoBehaviour
     [SerializeField] private Transform relicIconCanvas;
     [SerializeField] private Canvas uiTopBar;
 
+    
+
     private int _gold = 0;
 
     private void Awake()

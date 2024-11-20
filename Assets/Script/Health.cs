@@ -80,15 +80,15 @@ public class Health : MonoBehaviour
 
             if (curHp <= 0 && !death)
             {
-                GameManager.Inst.isGameEnd= true;
                 death = true;
                 character.opponent.GetComponent<Health>().isInv = true;
                 if (!character.isPlayer)
-                {     
-                    if(enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss) GameManager.Inst.DefectBoss(gameObject);
-                    else GameManager.Inst.GameEnd(true, gameObject);    
+                {
+                    if (enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss)
+                        StartCoroutine(GameManager.Inst.DefectBoss(transform));
+                    else StartCoroutine( GameManager.Inst.GameEnd(true, gameObject));
                 }
-                else GameManager.Inst.GameEnd(false, gameObject);
+                else StartCoroutine(GameManager.Inst.GameEnd(false, gameObject));
             }
         }
        

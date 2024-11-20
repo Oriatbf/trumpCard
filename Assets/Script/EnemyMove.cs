@@ -47,7 +47,7 @@ public class EnemyMove : Character
     public override void Update()
     {
         if (Input.GetKeyDown(KeyCode.F3)) health.OnDamage(1000);
-        if (GameManager.Inst.isGameStart && !moveBlock )
+        if (!moveBlock )
         {
             base.Update();
             Rotation();

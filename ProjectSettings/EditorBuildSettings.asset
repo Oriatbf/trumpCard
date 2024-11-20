@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LobbyScene.unity
     guid: 11cc0a4c6a2f91b4f9fd77ce249ea45e
   - enabled: 1
-    path: Assets/Scenes/RealMap.unity
+    path: Assets/Scenes/Map.unity
     guid: a76c6e53a29258e4083118ade8a05603
   - enabled: 1
     path: Assets/Scenes/StageScene.unity
@@ -18,3 +18,4 @@ EditorBuildSettings:
     path: Assets/Scenes/EndScene.unity
     guid: 8ab33573c4a636b4cae34622ec58cf04
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

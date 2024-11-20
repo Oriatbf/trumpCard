@@ -1,13 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VInspector;
-
-public class LobbyPlayer : MonoBehaviour
+public enum NpcType {Npc,Player }
+public class LobbyInteraction : MonoBehaviour
 {
 
     Animator animator;
     private SpriteRenderer spr;
+    public float detectRange;
+    public NpcType npcType;
+    public bool inDetect = false;
+    protected Action interactAction;
+    
     [Tab("Debug")]
     [SerializeField] Vector3 angleVec;
 
@@ -22,18 +28,23 @@ public class LobbyPlayer : MonoBehaviour
     {
         animator= GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
+        interactAction += () => InteractAction();
     }
 
-    // Update is called once per frame
-    public virtual void Update()
+
+    public void DetectPlayer()
     {
-       
+        if (Vector3.Distance(NpcManager.Inst.GetPlayerNpc().transform.position, transform.position) < detectRange)
+        {
+            inDetect = true;
+        }
+        else inDetect = false;
+        
+        if(inDetect && Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Npc)
+            interactAction?.Invoke();
     }
+
+    protected virtual void InteractAction(){}
 
     private void LateUpdate()
     {
@@ -57,11 +68,18 @@ public class LobbyPlayer : MonoBehaviour
                 y = Input.GetAxisRaw("Vertical");
             }
 
-            if (x == 0 && y == 0) animator.SetBool("isWalk", false);
-            else animator.SetBool("isWalk", true);
+            if (animator)
+            {
+                if (x == 0 && y == 0) animator.SetBool("isWalk", false);
+                else animator.SetBool("isWalk", true);
+            }
 
-            if (x < 0) spr.flipX = true;
-            else if (x > 0) spr.flipX = false;
+            if (spr)
+            {
+                if (x < 0) spr.flipX = true;
+                else if (x > 0) spr.flipX = false;
+            }
+            
 
 
             angleVec = new Vector3(x, y, 0).normalized;

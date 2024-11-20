@@ -53,7 +53,7 @@ public class PlayerMove : Character
         if (Input.GetKeyDown(KeyCode.F4)) Gambling();
         if (Input.GetKeyDown(KeyCode.F2)) health.OnDamage(1000);
         if (Input.GetKeyDown(KeyCode.F9)) Debug.Log(characterSO.debuffs.Count);
-        if (GameManager.Inst.isGameStart && !moveBlock)
+        if ( !moveBlock)
         {
             base.Update();
 
@@ -92,13 +92,12 @@ public class PlayerMove : Character
 
     public void Dash()
     {
-        if (GameManager.Inst.isGameStart)
-        {
+     
             if (curCharging > 0 && curDashCool <= 0)
             {
                 DashMove(angleVec);
             }
-        }
+        
        
     }
 

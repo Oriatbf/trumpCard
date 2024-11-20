@@ -6,19 +6,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using VInspector;
-public enum NpcType {Npc,Player }
-public class LobbyNpc : LobbyPlayer
+
+public class LobbyNpc : LobbyInteraction
 {
-   
-
-    public NpcType npcType;
-
-
     [TextArea][SerializeField] string[] npcText;
     [SerializeField] private Canvas textCanvas;
-    [SerializeField] private float detectRange;
-    [SerializeField] private bool inDetect = false;
-    
+ 
     TypewriterByCharacter text;
     int textIndex;
     
@@ -30,7 +23,7 @@ public class LobbyNpc : LobbyPlayer
     }
 
     // Update is called once per frame
-    public override void Update()
+    public  void Update()
     {
         if(!TutorialManager.Inst.isTutorialing && npcType == NpcType.Player)
             Move();
@@ -42,25 +35,15 @@ public class LobbyNpc : LobbyPlayer
         
     }
 
-    public void DetectPlayer()
-    {
-        if (Vector3.Distance(NpcManager.Inst.GetPlayerNpc().transform.position, transform.position) < detectRange)
-        {
-            inDetect = true;
-        }
-        else inDetect = false;
-        
-        if(inDetect && Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Npc)
-            NpcInteract();
-    }
+   
 
 
 
-    public void NpcInteract()
+    protected override void InteractAction()
     {
         Debug.Log(gameObject.name);
         npcType = NpcType.Player;
-        DOVirtual.DelayedCall(0.1f, () => NpcManager.Inst.SetPlayerNpc());
+        DOVirtual.DelayedCall(0.01f, () => NpcManager.Inst.SetPlayerNpc());
     }
 
     [Button]

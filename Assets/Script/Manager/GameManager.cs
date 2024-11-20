@@ -11,7 +11,6 @@ using VInspector;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst;
-    public bool isGameStart, isGameEnd, mapMode, isLobby;
     [SerializeField] GameObject RelicSelectCanvas;
     public int stageNum;
     public CountDown countDown;
@@ -79,7 +78,6 @@ public class GameManager : MonoBehaviour
         {
             startChooseRelic = true;
         }
-        mapMode = false;
         SceneTransition("StageScene");
     }
 
@@ -91,13 +89,13 @@ public class GameManager : MonoBehaviour
 
     void OnActiveSceneChanged(Scene previousScene, Scene newScene)
     {
-
+    /*
         if (!mapMode && !playerDead && !isLobby)
         {
             GameStart();
             ResetStart();
           //  EnableRelicChoose(startChooseRelic);
-        }
+        }*/
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
@@ -137,68 +135,42 @@ public class GameManager : MonoBehaviour
     {
         RelicSelectCanvas.gameObject.SetActive(startRelic);
     }
-
-    private void OnDisable()
-    {
-        Debug.Log("diaablse");
-    }
-
-    public void DefectBoss(GameObject deadCharacter)
-    {
-        CameraZoom(deadCharacter);
-        isLobby = true;
-        DOVirtual.DelayedCall(3f, () =>
-        {
-            Time.timeScale = 1;
-            Time.fixedDeltaTime = 0.02f;
-            SceneTransition("EndScene");
-        });
-    }
-    void CameraZoom(GameObject deadCharacter)
+   
+    IEnumerator CameraZoom(Transform deadCharacter)
     {
         zoomCam.gameObject.SetActive(true);
-        isGameStart = false;
-        zoomCam.transform.position = new Vector3(deadCharacter.transform.position.x, deadCharacter.transform.position.y, -10);
+        zoomCam.transform.DOMove(new Vector3(deadCharacter.position.x, deadCharacter.position.y), 0.35f);
         DOTween.To(() => zoomCam.orthographicSize, size => zoomCam.orthographicSize = size, 3, 1f);
-        Time.timeScale = 0.3f;
-        Time.fixedDeltaTime = 1 / Time.timeScale * 0.02f;
+        TimeManager.ChangeTimeSpeed(0.3f);
+        yield return new WaitForSeconds(3f);
+    }
+    
+    public IEnumerator DefectBoss(Transform deadCharacter)
+    {
+        yield return StartCoroutine(CameraZoom(deadCharacter.transform)); 
+        TimeManager.ChangeTimeSpeed(1);
+        SceneTransition("EndScene");
     }
 
     [Button]
-    public void GameEnd(bool isPlayerWin,GameObject deadCharacter)
+    public IEnumerator GameEnd(bool isPlayerWin,GameObject deadCharacter)
     {
-        isGameEnd = true;
-        CameraZoom(deadCharacter);
-
-        DOVirtual.DelayedCall(3f, () =>
+        yield return StartCoroutine(CameraZoom(deadCharacter.transform)); 
+        TimeManager.ChangeTimeSpeed(1);
+        if (isPlayerWin)
         {
-            Time.timeScale = 1;
-            Time.fixedDeltaTime = 0.02f;
-         //   deadCharacter.gameObject.SetActive(false);
-            if (isPlayerWin)
-            {
-
-               
-                RelicManager.Inst.SetRelic();
-                RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장
-                RelicSelectCanvas.SetActive(true);
-            }
-            else
-            {
-                isLobby = true;
-                playerDead = true;
-                SceneTransition("LobbyScene");
-
-            }
-        });
-
-        
+            RelicManager.Inst.SetRelic();
+            RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장
+            RelicSelectCanvas.SetActive(true);
+        }
+        else
+        {
+            SceneTransition("LobbyScene");
+        }
     }
 
     public void SceneTransition(string sceneName)
     {
-        if (sceneName == "LobbyScene" || sceneName =="EndScene") isLobby = true;
-        else isLobby = false;
         DemoLoadScene.Inst.LoadScene(sceneName);
     }
 

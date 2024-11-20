@@ -46,7 +46,7 @@ public class OptionSettings : MonoBehaviour
     public void OptionFade(bool fade)
     {
         // InGame Stop
-        if (GameObject.Find("Player") != null && !GameManager.Inst.isGameStart && !fading)
+        if (GameObject.Find("Player") != null &&  !fading)
         {
             return;
         }
@@ -54,9 +54,7 @@ public class OptionSettings : MonoBehaviour
         fading = fade;
         anim.SetBool("OptionFade", fade);
 
-        // InGame Stop
-        if (GameObject.Find("Player") != null)
-            GameManager.Inst.isGameStart = !fade;
+
     }
 
     public void GiveUp()

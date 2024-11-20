@@ -27,7 +27,7 @@ public class SlimeMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Inst.isGameStart && opponent != null)
+        if (opponent != null)
         {
             if (opponent.position.x < transform.position.x) spr.flipX = false;
             else spr.flipX = true;
