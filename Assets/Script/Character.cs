@@ -7,11 +7,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
 
+public enum CharacterType
+{
+    Player,Enemy
+}
+
 public class Character : MonoBehaviour
 {
-    
 
-    [Tab("Input")]
+
+    [Tab("Input")] 
+    public CharacterType characterType;
     public Image attackCoolImage;
     private float dashCool = 5;
     private float dashMaxCharging = 1;
@@ -19,11 +25,10 @@ public class Character : MonoBehaviour
     [HideInInspector]public float curCharging,curDashCool;
     public GameObject[] weapons;
     public GameObject handle;
-    public CardStats characterSO;
     public RelicSkills relicSkills;
     public float flooringCool;
     public Transform shootPoint;
-    public bool isPlayer;
+    //public bool isPlayer;
     public float goldValue;
     public LayerMask opponentMask;
 
@@ -45,15 +50,16 @@ public class Character : MonoBehaviour
     [HideInInspector]public DashEffect dashEffect;
 
    
-    Rigidbody2D rigid;
+    private Rigidbody2D rigid;
+    private SpriteRenderer spr;
 
 
 
     public virtual void Awake()
     {
 
-       
-       
+
+        spr = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();
         health= GetComponent<Health>();
@@ -61,8 +67,8 @@ public class Character : MonoBehaviour
         relicSkills = GetComponent<RelicSkills>();
         gambleGauge= GetComponent<GambleGauge>();
         curCharging = 1;
-        characterSO.relicInfor.characterTrans = transform;
-        characterSO.relicInfor.characterHealth= health;
+      //  characterSO.relicInfor.characterTrans = transform;
+      //  characterSO.relicInfor.characterHealth= health;
 
         int randomGold = Random.Range(100, 151);
         goldValue= randomGold;
@@ -70,28 +76,28 @@ public class Character : MonoBehaviour
 
     public void Gambling() //갬블시 초기화 되는 내용 및 체인지
     {
-        characterSO.ResetRelicInfor();
-        characterSO.debuffs.Clear();
-        characterSO.relicInfor.characterTrans = transform;
-        characterSO.relicInfor.characterHealth = health;
+       // characterSO.ResetRelicInfor();
+      //  characterSO.debuffs.Clear();
+     //   characterSO.relicInfor.characterTrans = transform;
+      //  characterSO.relicInfor.characterHealth = health;
         gambleGauge._curGauge = 0;
-        TypeManager.Inst.TypeChange(GambleManager.GambleIndex(), transform, isPlayer, characterSO);
+        
        
         StartRelicSkill();
-        SetStat();
+        SetStat(TypeManager.Inst.GetRandomCardSO());
     }
 
     public void CardStatReset() //게임이 다끝나고 로비로 돌아가야할 때 실행
     {
-        characterSO.ResetRelicInfor();
-        characterSO.ClearDebuffList();
+        //characterSO.ResetRelicInfor();
+       // characterSO.ClearDebuffList();
     }
 
     public void StartRelicSkill()
     {
         relicSkills.StartSkill();
 
-        if(isPlayer) relicSkills.SetRelicIcon();
+        if(characterType == CharacterType.Player) relicSkills.SetRelicIcon();
     }
 
     // Start is called before the first frame update
@@ -127,17 +133,20 @@ public class Character : MonoBehaviour
     }
 
 
-    public void SetStat()
+    public void SetStat(CardStats cardSO)
     {
-        speed = characterSO.infor.speed;
-        coolTime= characterSO.infor.coolTime < 0.1f?0.1f: characterSO.infor.coolTime; //쿨타임 최소치
+        
+        speed = cardSO.infor.speed;
+        coolTime= cardSO.infor.coolTime < 0.1f?0.1f: cardSO.infor.coolTime; //쿨타임 최소치
         curCoolTime= coolTime;
-        characterSO.infor.damage = characterSO.infor.damage<1?1:characterSO.infor.damage; // 데미지 최소치
-        health.ResetHp(characterSO.infor.hp);
-        health.SetHp(characterSO.relicInfor.remnantHealth);
-        if(health.curHp + characterSO.relicInfor.relicPlusHealth <=0) health.curHp = 1;
-        else health.curHp += characterSO.relicInfor.relicPlusHealth;
+        cardSO.infor.damage = cardSO.infor.damage<1?1:cardSO.infor.damage; // 데미지 최소치
+        health.ResetHp(cardSO.infor.hp);
+        //health.SetHp(characterSO.relicInfor.remnantHealth);
+       // if(health.curHp + characterSO.relicInfor.relicPlusHealth <=0) health.curHp = 1;
+        //else health.curHp += characterSO.relicInfor.relicPlusHealth;
         health.HpBarIncrease();
+        spr.sprite = characterType == CharacterType.Player? cardSO.infor.playerCardImage : cardSO.infor.enemyCardImage;
+
 
 
     }

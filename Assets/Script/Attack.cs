@@ -9,22 +9,14 @@ using Newtonsoft.Json.Bson;
 
 public class ShootInfor
 {
-    public int bulletCount;
-    public int shootCount;
     public Vector3 dir;
-    public CardStats charSO;
     public Transform curTrans;
     public Transform shootPoint;
-    public bool isPlayer;
-    public ShootInfor(Vector3 dir, CardStats charSO, bool isPlayer, Transform curTrans, Transform shootPoint)
+    public ShootInfor(Vector3 dir, Transform curTrans, Transform shootPoint)
     {
-        bulletCount = charSO.infor.bulletCount;
-        shootCount = charSO.infor.attackCount;
-        this.isPlayer = isPlayer;
         this.dir = dir;
         this.curTrans = curTrans;
         this.shootPoint = shootPoint;
-        this.charSO= charSO;
     }
 }
 public class Attack : MonoBehaviour
@@ -76,11 +68,11 @@ public class Attack : MonoBehaviour
         CardStats so = shootInfor.charSO;
         Vector2 finalDir = new Vector2(0,0);
 
-        for (var j = 0; j < shootInfor.shootCount; j++)
+        for (var j = 0; j < shootInfor.charSO.infor.attackCount; j++)
         {
             DOVirtual.DelayedCall(delay, () =>
             {
-                for (var i = 0; i < shootInfor.bulletCount; i++)
+                for (var i = 0; i < shootInfor.charSO.infor.bulletCount; i++)
                 {
                     float damage = shootInfor.charSO.infor.damage;
                     if (shootInfor.charSO.infor.attackType == CardStats.AttackType.Bow) //활 최대로 당겼을 때
@@ -90,7 +82,7 @@ public class Attack : MonoBehaviour
 
                     if (shootInfor.charSO.infor.attackType == CardStats.AttackType.ShotGun) // 샷건 해당
                     {
-                        float angle = 50 * ((float)i / (shootInfor.bulletCount) - 0.5f); // Spread bullets evenly within the spreadAngle
+                        float angle = 50 * ((float)i / (shootInfor.charSO.infor.bulletCount) - 0.5f); // Spread bullets evenly within the spreadAngle
                         finalDir = Quaternion.Euler(0, 0, angle) * shootInfor.dir; // Apply the angle to the direction vector
                     }
                     else finalDir = shootInfor.dir;

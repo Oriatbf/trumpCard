@@ -23,12 +23,13 @@ public class TypeManager : MonoBehaviour
 
 
     }
-    // Start is called before the first frame update
-    void Start()
+
+    public CardStats GetRandomCardSO()
     {
-        
-        
+        int random = Random.Range(0, cardSO.Length);
+        return cardSO[random];
     }
+
 
     public void TypeChange(int num, Transform character, bool isPlayer,CardStats characterSO)
     {

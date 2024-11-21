@@ -91,11 +91,12 @@ public class EventManager : MonoBehaviour
                 {
                     if(option.randomRelic)
                     {
+                        var randomRelics = RelicManager.Inst.GetRandomRelics(option.typeValue);
                         for (int i = 0; i < option.typeValue; i++)
                         {
-                            var SO = RelicManager.Inst.RandomSO(option.typeValue);
-                            RelicManager.Inst.playerRelic.Add(SO.curRarityRelics[SO.random]);
-                            ResourceManager.Inst.InstanceRelicIcon(SO.curRarityRelics[SO.random]);
+                           
+                            RelicManager.Inst.playerRelic.Add(randomRelics[i]);
+                            ResourceManager.Inst.InstanceRelicIcon(randomRelics[i]);
                         }
                     }
                     else

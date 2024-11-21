@@ -65,8 +65,7 @@ public class GameManager : MonoBehaviour
     public void FightStage()
     {
 
-
-        RelicManager.Inst.enemyRelic = MapSetEnemtRelc.Inst.enemyRelicSOs[stageNum];
+        
         
 
         if (stageNum != 1)
