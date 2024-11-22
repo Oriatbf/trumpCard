@@ -12,11 +12,14 @@ public class ShootInfor
     public Vector3 dir;
     public Transform curTrans;
     public Transform shootPoint;
-    public ShootInfor(Vector3 dir, Transform curTrans, Transform shootPoint)
+    public Character character;
+
+    public ShootInfor(Vector3 dir, Transform curTrans, Transform shootPoint,Character character)
     {
         this.dir = dir;
         this.curTrans = curTrans;
         this.shootPoint = shootPoint;
+        this.character = character;
     }
 }
 public class Attack : MonoBehaviour
@@ -65,14 +68,13 @@ public class Attack : MonoBehaviour
        
         if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
         float delay = 0;
-        CardStats so = shootInfor.charSO;
         Vector2 finalDir = new Vector2(0,0);
 
-        for (var j = 0; j < shootInfor.charSO.infor.attackCount; j++)
+        for (var j = 0; j < shootInfor.character.attackCount; j++)
         {
             DOVirtual.DelayedCall(delay, () =>
             {
-                for (var i = 0; i < shootInfor.charSO.infor.bulletCount; i++)
+                for (var i = 0; i < shootInfor.character.bulletCount; i++)
                 {
                     float damage = shootInfor.charSO.infor.damage;
                     if (shootInfor.charSO.infor.attackType == CardStats.AttackType.Bow) //활 최대로 당겼을 때

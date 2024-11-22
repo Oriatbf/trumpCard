@@ -31,6 +31,7 @@ public class Character : MonoBehaviour
     //public bool isPlayer;
     public float goldValue;
     public LayerMask opponentMask;
+    public CardStats curTypeCard;
 
     [Tab("Debug")]
     public Vector3 _dir;
@@ -39,6 +40,7 @@ public class Character : MonoBehaviour
     public bool moveBlock=false;
 
     public float coolTime, curCoolTime,speed;
+    public int attackCount, bulletCount;
     public Transform opponent;
 
     [HideInInspector] public bool isDashing;
@@ -84,7 +86,8 @@ public class Character : MonoBehaviour
         
        
         StartRelicSkill();
-        SetStat(TypeManager.Inst.GetRandomCardSO());
+        curTypeCard = TypeManager.Inst.GetRandomCardSO();
+        SetStat(curTypeCard);
     }
 
     public void CardStatReset() //게임이 다끝나고 로비로 돌아가야할 때 실행
