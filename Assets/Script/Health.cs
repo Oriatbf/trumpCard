@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
         gambleGauge=GetComponent<GambleGauge>();
         character= GetComponent<Character>();
         hpBar.fillAmount = 1;
-        if(!character.isPlayer)enemyMove=GetComponent<EnemyMove>();
+      //  if(!character.isPlayer)enemyMove=GetComponent<EnemyMove>();
     }
 
     private void Update()
@@ -82,13 +82,14 @@ public class Health : MonoBehaviour
             {
                 death = true;
                 character.opponent.GetComponent<Health>().isInv = true;
+                /*
                 if (!character.isPlayer)
                 {
                     if (enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss)
                         StartCoroutine(GameManager.Inst.DefectBoss(transform));
                     else StartCoroutine( GameManager.Inst.GameEnd(true, gameObject));
                 }
-                else StartCoroutine(GameManager.Inst.GameEnd(false, gameObject));
+                else StartCoroutine(GameManager.Inst.GameEnd(false, gameObject));*/
             }
         }
        
@@ -96,6 +97,7 @@ public class Health : MonoBehaviour
 
     void EnemyUp(float damage) //수정 요함
     {
+        /*
         Health op_health =  character.opponent.GetComponent<Health>();
         Character op_character= character.opponent.GetComponent<Character>();
         op_health.IncreaseGambleGauge(false,damage); // 적 캐릭터가 공격 시 올라가는 갬블게이지
@@ -103,7 +105,7 @@ public class Health : MonoBehaviour
         {
             op_health.OnHeal(damage * 0.5f); // 적 캐릭터가 피흡 보유시 힐   
             Debug.Log("피흡");
-        }
+        }*/
 
     }
 
@@ -142,13 +144,13 @@ public class Health : MonoBehaviour
     IEnumerator ApplyIce(float iceDuration)
     {
         float elapsedTime = 0;
-        character.moveBlock = true;
+       // character.moveBlock = true;
         while (elapsedTime < iceDuration)
         {           
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        character.moveBlock = false;
+      //  character.moveBlock = false;
         freezeDebuff = null;
         yield break;
     }
@@ -181,12 +183,13 @@ public class Health : MonoBehaviour
 
     void CheckFlooring(Collider2D collision)
     {
+        /*
         if (collision.CompareTag("Floor") && character.isPlayer != collision.GetComponent<Flooring>().isPlayerOwner && !isFloor)
         {
             isFloor = true;
             OnDamage( collision.GetComponent<Flooring>().tickDamage);
             DOVirtual.DelayedCall(floorTickTime, () => isFloor = false);
-        }
+        }*/
     }
 
 #endregion

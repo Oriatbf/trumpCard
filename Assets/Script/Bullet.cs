@@ -2,26 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletInfor
-{
-    public float damage;
-    public bool isReturn;
-    public Vector2 dir;
-    public float scale;
-    public int bulletIndex;
-    public bool isPlayerBullet;
-    public List<Debuff> debuffs;
-    public BulletInfor(float damage,bool isReturn, Vector2 bulletDir, float scale, int bulletIndex, bool isPlayerBullet, List<Debuff> debuffs)
-    {
-        this.damage = damage;
-        this.isReturn = isReturn;
-        this.dir = bulletDir;
-        this.scale = scale;
-        this.bulletIndex = bulletIndex;
-        this.isPlayerBullet = isPlayerBullet;
-        this.debuffs = debuffs;
-    }
-}
 
 public class Bullet : Projectile
 {
@@ -54,25 +34,9 @@ public class Bullet : Projectile
 
     }
 
-    public void SetDir(BulletInfor bulletInfor)
+    public void Init()
     {
-        transform.localScale = new Vector3( bulletInfor.scale,bulletInfor.scale,bulletInfor.scale);
-        bulletDir = bulletInfor.dir.normalized;
-        isReturn = bulletInfor.isReturn;
-        damage= bulletInfor.damage;
-        debuffs = new List<Debuff>();
-        debuffs = bulletInfor.debuffs;
-        isPlayerBullet = bulletInfor.isPlayerBullet;
-        for(int i = 0; i< transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(false);
-        }
-        transform.GetChild(bulletInfor.bulletIndex).gameObject.SetActive(true);
-
-        if (!isReturn)
-            ActiveFalse();
-        else
-            Return(rigid);
+        
     }
 
   

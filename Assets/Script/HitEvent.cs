@@ -14,7 +14,7 @@ public class HitEvent : MonoBehaviour
 
     public void hitEvent()
     {
-        character.MeleeDamage();
+        //character.MeleeDamage();
     }
 
     // Update is called once per frame

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "CardSO", menuName = "Scriptable SO/Card", order = 1)]
 
@@ -38,7 +39,7 @@ public class CardStats : ScriptableObject
         public float coolTime;
         public float speed;
         public float hp;
-        public int bulletCount;
+        public int extraHitCount;
         public int attackCount;
         public int cardNum;
         public bool projectileTurnback;

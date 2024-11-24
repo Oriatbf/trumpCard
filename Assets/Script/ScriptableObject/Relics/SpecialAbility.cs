@@ -37,8 +37,7 @@ public class SpecialAbility : RelicSO
                 so.relicInfor.isFlooring = true; so.relicInfor.floorTickDamage += relicType.addValue; break;
             case Relic_Type.SpawnSlime:
                 GameObject slime = Instantiate(relicType.slime, (so.relicInfor.characterTrans.position + (Vector3)(Random.insideUnitCircle)).normalized * 2f, Quaternion.identity);
-                slime.GetComponent<SlimeMove>().SetInfor(so.relicInfor.characterTrans.GetComponent<Character>().isPlayer);
-                Debug.Log(so.relicInfor.characterTrans.GetComponent<Character>().isPlayer);
+              //  slime.GetComponent<SlimeMove>().SetInfor(so.relicInfor.characterTrans.GetComponent<Character>().isPlayer);
                 break;
             case Relic_Type.UpGradeA:
                 if(so.infor.cardNum== 0)

@@ -6,64 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="8980fbce-ce1f-40fc-ad40-6187e7f32ffb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Circle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circle.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Bullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Effect/FX_SwordEffect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Effect/FX_SwordEffect.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Effect/HittedEffect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Effect/HittedEffect.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MagicBall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MagicBall.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Slime.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Slime.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Attack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Bullet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EventManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/TypeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/TypeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/MapSetEnemtRelc.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/MapSetEnemtRelc.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/RelicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/RelicManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/BloodSuckingInchant.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/BloodSuckingInchant.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/FireDebuffInchant.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/FireDebuffInchant.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/IceDebuffInchant.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/IceDebuffInchant.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/PosionBullet.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/PosionBullet.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/Slash.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/Slash.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/SpawnSlime.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/SpawnSlime.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/SuperMuscle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/SuperMuscle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/UpgradeA.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Epic/UpgradeA.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/AutoHealHpDown.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/AutoHealHpDown.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/AutoHeal_Middle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/AutoHeal_Middle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/DamDownCoolDown.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/DamDownCoolDown.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/DamUpCoolUp.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/DamUpCoolUp.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/DownDamUpCriticalChance.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/DownDamUpCriticalChance.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/DownHpUpDam.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/DownHpUpDam.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/MeleeHpUp.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/MeleeHpUp.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/MuscleMan.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/MuscleMan.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/MuscleMan2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/MuscleMan2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/RangeHpUp.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/RangeHpUp.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/RangeSpeedUp.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/RangeSpeedUp.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/SpeedUpDamUp.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/SpeedUpDamUp.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/TurtleChest.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/UsingRelics/Rare/TurtleChest.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ShopManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ShopManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/HitEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/HitEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/PlayerMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/PlayerMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/RelicSkills.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/RelicSkills.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/CardStats/CardStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScriptableObject/CardStats/CardStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/SpecialAbility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/SpecialAbility.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +29,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbae017f0374fce9921b97a33a4e8ca1dd800/88/a95e8ac0/Time.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/LobbyStartBtn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Stat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Utility/TimeManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -164,7 +118,8 @@
       <workItem from="1732012015024" duration="1446000" />
       <workItem from="1732099306710" duration="5060000" />
       <workItem from="1732107806027" duration="4352000" />
-      <workItem from="1732184322493" duration="8628000" />
+      <workItem from="1732184322493" duration="8787000" />
+      <workItem from="1732260573558" duration="4339000" />
     </task>
     <servers />
   </component>

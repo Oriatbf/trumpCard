@@ -43,7 +43,7 @@ public class PlayerMove : Character
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
         
-        SetStat();
+        SetStat(curTypeCard);
         dashBtnImage = dashBtn.GetComponent<Image>();
     }
 
@@ -52,37 +52,34 @@ public class PlayerMove : Character
     {
         if (Input.GetKeyDown(KeyCode.F4)) Gambling();
         if (Input.GetKeyDown(KeyCode.F2)) health.OnDamage(1000);
-        if (Input.GetKeyDown(KeyCode.F9)) Debug.Log(characterSO.debuffs.Count);
-        if ( !moveBlock)
+        //if (Input.GetKeyDown(KeyCode.F9)) Debug.Log(characterSO.debuffs.Count);
+    
+        
+        base.Update();
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && curCharging > 0 && curDashCool <= 0)
         {
-            base.Update();
+            Dash();
+        }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && curCharging > 0 && curDashCool <= 0)
+
+        Move();
+
+       // CoolTime(characterSO);
+        if (mobileVersion)
+        {
+            if (curCharging > 0)
             {
-                Dash();
+                dashBtn.image.enabled = true;
+                dashBtn.enabled = true;
             }
-
-
-            Move();
-
-
-            if (isFlooring) FlooringDamage();
-
-            CoolTime(characterSO);
-            if (mobileVersion)
+            else
             {
-                if (curCharging > 0)
-                {
-                    dashBtn.image.enabled = true;
-                    dashBtn.enabled = true;
-                }
-                else
-                {
-                    dashBtn.image.enabled = false;
-                    dashBtn.enabled = false;
-                }
+                dashBtn.image.enabled = false;
+                dashBtn.enabled = false;
             }
         }
+        
 
     
        

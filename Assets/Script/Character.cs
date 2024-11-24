@@ -14,7 +14,7 @@ public enum CharacterType
 
 public class Character : MonoBehaviour
 {
-
+    
 
     [Tab("Input")] 
     public CharacterType characterType;
@@ -26,18 +26,13 @@ public class Character : MonoBehaviour
     public GameObject[] weapons;
     public GameObject handle;
     public RelicSkills relicSkills;
-    public float flooringCool;
     public Transform shootPoint;
-    //public bool isPlayer;
     public float goldValue;
-    public LayerMask opponentMask;
     public CardStats curTypeCard;
 
     [Tab("Debug")]
     public Vector3 _dir;
     protected float _angle;
-    public bool isFlooring;
-    public bool moveBlock=false;
 
     public float coolTime, curCoolTime,speed;
     public int attackCount, bulletCount;
@@ -54,13 +49,15 @@ public class Character : MonoBehaviour
    
     private Rigidbody2D rigid;
     private SpriteRenderer spr;
+    private Stat stat;
+    private ShootInfor shootInfor;
 
 
 
     public virtual void Awake()
     {
 
-
+        stat = GetComponent<Stat>();
         spr = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();
@@ -98,9 +95,9 @@ public class Character : MonoBehaviour
 
     public void StartRelicSkill()
     {
-        relicSkills.StartSkill();
+        //relicSkills.StartSkill();
 
-        if(characterType == CharacterType.Player) relicSkills.SetRelicIcon();
+       // if(characterType == CharacterType.Player) relicSkills.SetRelicIcon();
     }
 
     // Start is called before the first frame update
@@ -150,9 +147,10 @@ public class Character : MonoBehaviour
         health.HpBarIncrease();
         spr.sprite = characterType == CharacterType.Player? cardSO.infor.playerCardImage : cardSO.infor.enemyCardImage;
 
-
-
+        shootInfor = new ShootInfor(this, stat);
     }
+    
+    
 
    
 
@@ -217,22 +215,20 @@ public class Character : MonoBehaviour
             if (!isSting)
             {
                 animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack"); // 역방향 재생
-                ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
-                if(characterSO.relicInfor.isSlash) Attack.Inst.Slash(shootInfor);
+                //if(characterSO.relicInfor.isSlash) Attack.Inst.Slash(shootInfor);
              
             }
             else animator.SetTrigger("StingAttack");
 
         }
     }
-
+/*
     public void MeleeDamage()
     {
-        if(characterSO.infor.attackType == CardStats.AttackType.Melee)
+        if(curTypeCard.infor.attackType == CardStats.AttackType.Melee)
         {
             EffectManager.Inst.SpawnEffect(shootPoint.transform, 1, Quaternion.Euler(0, 0, _angle));
-            ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
-            Attack.Inst.Slash(shootInfor);
+           // Attack.Inst.Slash(shootInfor);
         }
            
 
@@ -245,21 +241,12 @@ public class Character : MonoBehaviour
             {
                 debuff.Apply(opponentHealth);
             }
-            opponentHealth.OnDamage(Critical(characterSO,characterSO.infor.damage));
+            opponentHealth.OnDamage(Critical(stat));
 
         }
         AudioManager.Inst.AudioEffectPlay(characterSO.infor.cardNum);
-    }
+    }*/
 
-    public float Critical(CardStats charSO, float damage)
-    {
-        int a = Random.Range(1, 101);
-        if (charSO.relicInfor.criticalChance >= a)
-        {
-            return damage * charSO.relicInfor.criticalDamage;
-        }
-        else return damage;
-    }
 
 
 
@@ -278,7 +265,7 @@ public class Character : MonoBehaviour
     {
         if (curCoolTime <= 0)
         {
-            ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent,shootPoint);
+            
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger("GunAttack");
@@ -290,7 +277,6 @@ public class Character : MonoBehaviour
     {
         if ( curCoolTime <= 0)
         {
-            ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack");
@@ -298,7 +284,7 @@ public class Character : MonoBehaviour
             switch (curSO.infor.cardType)
             {
                 case CardStats.CardType.Queen:
-                    Attack.Inst.QueenMagic(shootPoint, curSO, isPlayer, opponent,this);
+                   // Attack.Inst.QueenMagic(shootPoint, curSO, isPlayer, opponent,this);
                     break;
                 case CardStats.CardType.King:
                     Attack.Inst.Shoot(shootInfor);
@@ -320,7 +306,6 @@ public class Character : MonoBehaviour
 
     public virtual void BowShoot()
     {
-        ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
         bool maxCharging = _curCharging >= coolTime;
         Attack.Inst.Shoot(shootInfor,maxCharging);
         attackCoolImage.fillAmount = 0;
@@ -329,26 +314,12 @@ public class Character : MonoBehaviour
 
     public virtual void BowShoot(Vector3 dir)
     {
-        ShootInfor shootInfor = new ShootInfor(_dir, characterSO, isPlayer, handle.transform.parent, shootPoint);
         bool maxCharging = _curCharging >= coolTime;
         Attack.Inst.Shoot(shootInfor, maxCharging);
         attackCoolImage.fillAmount = 0;
         _curCharging = 0;
     }
-
-    public void FlooringDamage()
-    {
-        if(flooringCool <= 0 && isFlooring)
-        {
-            health.OnDamage(2);
-            flooringCool = 5f;
-        }
-        else
-        {
-            flooringCool-=Time.deltaTime;
-        }
-    }
-
+    
     public void DashMove(Vector2 dir)
     {
         curCharging--;

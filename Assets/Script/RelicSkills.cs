@@ -42,7 +42,7 @@ public class RelicSkills : MonoBehaviour
      
     }
 
-    
+    /*
     public void StartSkill()
     {
         if (relics.Count > 0)
@@ -74,8 +74,9 @@ public class RelicSkills : MonoBehaviour
 
           
         }
+        
        
-    }
+    }*/
 
  
    

@@ -13,13 +13,17 @@ public class ShootInfor
     public Transform curTrans;
     public Transform shootPoint;
     public Character character;
+    public CardStats curTypeCard;
+    public Stat stat;
 
-    public ShootInfor(Vector3 dir, Transform curTrans, Transform shootPoint,Character character)
+    public ShootInfor(Character character,Stat stat)
     {
-        this.dir = dir;
-        this.curTrans = curTrans;
-        this.shootPoint = shootPoint;
+        this.dir = character._dir;
+        this.curTrans = character.transform;
+        this.shootPoint = character.shootPoint;
         this.character = character;
+        this.curTypeCard =  character.curTypeCard;
+        this.stat = stat;
     }
 }
 public class Attack : MonoBehaviour
@@ -46,20 +50,20 @@ public class Attack : MonoBehaviour
         Debug.Log(pool.gameObject);
     }
 
-
-    public void QueenMagic(Transform shootPoint,CardStats charSO ,bool isPlayer,Transform target,Character character)
+/*
+    public void QueenMagic(ShootInfor shootInfor)
     { 
-        for (int i = 0; i < charSO.infor.bulletCount; i++)
+        for (int i = 0; i < shootInfor.stat.extraHitCount; i++)
         {
-            pool.magicBallPools[pool.magicIndex].transform.GetComponent<MagicBall>().SetTarget(target, Critical(charSO,charSO.infor.damage),isPlayer);
-            pool.magicBallPools[pool.magicIndex].transform.position = shootPoint.position;
+            pool.magicBallPools[pool.magicIndex].transform.GetComponent<MagicBall>().SetTarget(target, Critical(shootInfor.stat),isPlayer);
+            pool.magicBallPools[pool.magicIndex].transform.position = shootInfor.character.shootPoint.position;
             pool.magicBallPools[pool.magicIndex].SetActive(true);
             
             pool.magicIndex++;
             if(pool.magicIndex > pool.magicBallPools.Length-1) pool.magicIndex = 0;
         }
 
-    }
+    }*/
 
 
     
@@ -76,21 +80,22 @@ public class Attack : MonoBehaviour
             {
                 for (var i = 0; i < shootInfor.character.bulletCount; i++)
                 {
-                    float damage = shootInfor.charSO.infor.damage;
-                    if (shootInfor.charSO.infor.attackType == CardStats.AttackType.Bow) //활 최대로 당겼을 때
+                    float damage = shootInfor.stat.damage;
+                    /*
+                    if (shootInfor.curTypeCard.infor.attackType == CardStats.AttackType.Bow) //활 최대로 당겼을 때
                     {
                         damage = isMaxCharging ? so.infor.damage + so.infor.plusMaxChargeDam : so.infor.damage;
-                    }
+                    }*/
 
-                    if (shootInfor.charSO.infor.attackType == CardStats.AttackType.ShotGun) // 샷건 해당
+                    if (shootInfor.curTypeCard.infor.attackType == CardStats.AttackType.ShotGun) // 샷건 해당
                     {
-                        float angle = 50 * ((float)i / (shootInfor.charSO.infor.bulletCount) - 0.5f); // Spread bullets evenly within the spreadAngle
+                        float angle = 50 * ((float)i / (shootInfor.character.bulletCount) - 0.5f); // Spread bullets evenly within the spreadAngle
                         finalDir = Quaternion.Euler(0, 0, angle) * shootInfor.dir; // Apply the angle to the direction vector
                     }
                     else finalDir = shootInfor.dir;
 
-                    BulletInfor bulletInfor = new(Critical(so, so.infor.damage), so.infor.projectileTurnback, finalDir, so.relicInfor.size, so.infor.bulletTypeIndex, shootInfor.isPlayer,so.debuffs);
-                    ProjectTileSet(shootInfor, bulletInfor);
+                   
+                    ProjectTileSet(shootInfor);
                   
                 }
             });
@@ -98,13 +103,13 @@ public class Attack : MonoBehaviour
         }
     }
 
-    public void ProjectTileSet(ShootInfor shootInfor, BulletInfor bulletInfor)
+    public void ProjectTileSet(ShootInfor shootInfor)
     {
         Transform curBullet = pool.bulletPools[pool.bulletIndex].transform;
         pool.bulletPools[pool.bulletIndex].SetActive(true);
 
         // 총알 발사
-        pool.bulletPools[pool.bulletIndex].transform.GetComponentInChildren<Bullet>().SetDir(bulletInfor);
+       // pool.bulletPools[pool.bulletIndex].transform.GetComponentInChildren<Bullet>().SetDir(bulletInfor);
 
         pool.bulletPools[pool.bulletIndex].transform.position = shootInfor.shootPoint.position;
         pool.bulletPools[pool.bulletIndex].transform.rotation = shootInfor.curTrans.rotation;
@@ -119,19 +124,20 @@ public class Attack : MonoBehaviour
 
         pool.bulletIndex++;
 
-        isFlooring(shootInfor, curBullet);
+        //isFlooring(shootInfor, curBullet);
 
         if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
     }
-
+/*
     public void Slash(ShootInfor shootInfor)
     {
         CardStats so = shootInfor.charSO;
         Vector2 finalDir = shootInfor.dir;
         BulletInfor bulletInfor = new(Critical(so, so.infor.damage*20/100), so.infor.projectileTurnback, finalDir, so.relicInfor.size, so.infor.bulletTypeIndex, shootInfor.isPlayer,so.debuffs);
         ProjectTileSet(shootInfor,bulletInfor);
-    }
+    }*/
 
+    /*
     void isFlooring(ShootInfor shootInfor, Transform curBullet)
     {
         if (shootInfor.charSO.relicInfor.isFlooring)
@@ -141,14 +147,15 @@ public class Attack : MonoBehaviour
             pool.flooringPools[pool.f_bulletIndex].GetComponent<FlooringCol>().SetFloorObj(curBullet, shootInfor.charSO.relicInfor.floorTickDamage, shootInfor.isPlayer);
             if (pool.f_bulletIndex > pool.flooringPools.Length - 1) pool.f_bulletIndex = 0;
         }
-    }
+    }*/
 
-    public float Critical(CardStats charSO,float damage)
+    public float Critical(Stat stat)
     {
         int a = Random.Range(1, 101);
-        if (charSO.relicInfor.criticalChance >= a)
+        float damage = stat.damage;
+        if (stat.criticalChance >= a)
         {
-            return damage * charSO.relicInfor.criticalDamage;
+            return damage * stat.criticalMultiplier;
         }
         else return damage;
     }
