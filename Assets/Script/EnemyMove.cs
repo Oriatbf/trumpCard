@@ -38,7 +38,7 @@ public class EnemyMove : Character
        
       
       //  TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
-        SetStat(curTypeCard);
+        SetStat();
 
        
     }
@@ -98,8 +98,8 @@ public class EnemyMove : Character
     {
         finalDir =  finalDir.normalized;
         //이동
-        float moveX = finalDir.x * speed * Time.deltaTime;
-        float moveY = finalDir.y * speed * Time.deltaTime;
+        float moveX = finalDir.x * stat.speed * Time.deltaTime;
+        float moveY = finalDir.y * stat.speed * Time.deltaTime;
        
         transform.Translate(new Vector3(moveX,moveY,0),Space.World);
 

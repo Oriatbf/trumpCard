@@ -9,10 +9,7 @@ using UnityEngine.Serialization;
 
 public class CardStats : ScriptableObject
 {
-    public enum CardType
-    {
-        Two, Three, Four, Five,Six,Seven,Eight,Nine,Ten,Jack,Queen,King,A
-    }
+
     public enum Role { Melee, Range }
     public enum AttackType
     {
@@ -31,7 +28,6 @@ public class CardStats : ScriptableObject
     public struct Information
     {
         public Sprite playerCardImage, enemyCardImage;
-        public CardType cardType;
         public Role role;
         public AttackType attackType;
         public int bulletTypeIndex;

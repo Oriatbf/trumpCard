@@ -8,76 +8,37 @@ public class Bullet : Projectile
     public Rigidbody2D rigid;
     public float damage;
     public bool isReturn;
-    public List<Debuff> debuffs;
     Vector2 bulletDir;
+    
+    CharacterType characterType;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
     }
+    
 
-    private void Start()
+    public void Init(Stat stat,Vector2 dir)
     {
         rigid.linearVelocity = Vector2.zero;
-        rigid.AddForce(bulletDir * 8f, ForceMode2D.Impulse);
-       
-       
-    }
-
-
-    void OnEnable()
-    {
-        
-        rigid.linearVelocity = Vector2.zero;
-
-        rigid.AddForce(bulletDir * 8f, ForceMode2D.Impulse);
-
-    }
-
-    public void Init()
-    {
-        
+        damage = stat.damage;
+        rigid.AddForce(dir * stat.bulletSpeed, ForceMode2D.Impulse);
+        //Dir,damage,speed
     }
 
   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-      
-        if (collision.TryGetComponent<Health>(out Health health))
+        if (collision.TryGetComponent(out Character character))
         {
-            bool isOpponent = false;
-            switch (collision.tag)
+            if (characterType != character.characterType)
             {
-                case "Enemy":
-                    if (isPlayerBullet)
-                    {
-                        isOpponent = true;
-                    }
-                    break;
-                case "Player":
-                    if (!isPlayerBullet)
-                    {
-                        isOpponent= true;
-                    }
-                    break;
-            }
-            if (isOpponent)
-            {
-                foreach(Debuff debuff in debuffs)
-                {
-                    debuff.Apply(health);
-                }
-                health.OnDamage(damage);
-             
+                character.health.OnDamage(damage);
                 EffectManager.Inst.SpawnEffect(transform, 0);
                 gameObject.SetActive(isReturn);
             }
-           
         }
-        
-
-
     }
 
 }

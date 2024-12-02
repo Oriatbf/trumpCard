@@ -28,16 +28,13 @@ public class Character : MonoBehaviour
     public RelicSkills relicSkills;
     public Transform shootPoint;
     public float goldValue;
-    public CardStats curTypeCard;
 
     [Tab("Debug")]
     public Vector3 _dir;
     protected float _angle;
-
-    public float coolTime, curCoolTime,speed;
-    public int attackCount, bulletCount;
+    
     public Transform opponent;
-
+    public float curCoolTime,coolTime;
     [HideInInspector] public bool isDashing;
      public float _curCharging; 
 
@@ -49,15 +46,13 @@ public class Character : MonoBehaviour
    
     private Rigidbody2D rigid;
     private SpriteRenderer spr;
-    private Stat stat;
+    public Stat stat;
     private ShootInfor shootInfor;
 
 
 
     public virtual void Awake()
     {
-
-        stat = GetComponent<Stat>();
         spr = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();
@@ -80,11 +75,9 @@ public class Character : MonoBehaviour
      //   characterSO.relicInfor.characterTrans = transform;
       //  characterSO.relicInfor.characterHealth = health;
         gambleGauge._curGauge = 0;
-        
-       
         StartRelicSkill();
-        curTypeCard = TypeManager.Inst.GetRandomCardSO();
-        SetStat(curTypeCard);
+        SetStat();
+        SetWeapon(stat.cardNum);
     }
 
     public void CardStatReset() //게임이 다끝나고 로비로 돌아가야할 때 실행
@@ -126,6 +119,7 @@ public class Character : MonoBehaviour
         {
             Gambling();
         }
+       // CoolTime();
     }
     private void LateUpdate()
     {
@@ -133,19 +127,20 @@ public class Character : MonoBehaviour
     }
 
 
-    public void SetStat(CardStats cardSO)
+    public void SetStat()
     {
-        
-        speed = cardSO.infor.speed;
-        coolTime= cardSO.infor.coolTime < 0.1f?0.1f: cardSO.infor.coolTime; //쿨타임 최소치
-        curCoolTime= coolTime;
-        cardSO.infor.damage = cardSO.infor.damage<1?1:cardSO.infor.damage; // 데미지 최소치
-        health.ResetHp(cardSO.infor.hp);
+        stat = CardDataManager.Inst.RandomCard().stat;
+        stat.speed = stat.speed <1?1:stat.speed;
+        stat.coolTime= stat.coolTime < 0.1f?0.1f: stat.coolTime; //쿨타임 최소치
+        curCoolTime= stat.coolTime;
+        coolTime = stat.coolTime;
+        stat.damage = stat.damage<1?1:stat.damage; // 데미지 최소치
+        health.ResetHp(stat.hp);
         //health.SetHp(characterSO.relicInfor.remnantHealth);
        // if(health.curHp + characterSO.relicInfor.relicPlusHealth <=0) health.curHp = 1;
         //else health.curHp += characterSO.relicInfor.relicPlusHealth;
         health.HpBarIncrease();
-        spr.sprite = characterType == CharacterType.Player? cardSO.infor.playerCardImage : cardSO.infor.enemyCardImage;
+       // spr.sprite = characterType == CharacterType.Player? cardSO.infor.playerCardImage : cardSO.infor.enemyCardImage;
 
         shootInfor = new ShootInfor(this, stat);
     }
@@ -170,7 +165,7 @@ public class Character : MonoBehaviour
     {
         if (curCoolTime > 0)
         {
-            attackCoolImage.fillAmount = curCoolTime / coolTime;
+            attackCoolImage.fillAmount = curCoolTime / stat.coolTime;
             curCoolTime -= Time.deltaTime;
         }
         else
@@ -190,16 +185,16 @@ public class Character : MonoBehaviour
                 MeleeAttack(true);
                 break;
             case CardStats.AttackType.Range:
-                RangeAttack(true, curSO);
+                RangeAttack(true);
                 break;
             case CardStats.AttackType.Bow:
                 BowAttack();
                 break;
             case CardStats.AttackType.ShotGun:
-                RangeAttack(false, curSO);
+                RangeAttack(false);
                 break;
             case CardStats.AttackType.Magic:
-                MagicAttack(curSO);
+                MagicAttack();
                 break;
         }
     }
@@ -209,7 +204,7 @@ public class Character : MonoBehaviour
         if ( curCoolTime <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
-            curCoolTime = coolTime;
+            curCoolTime = stat.coolTime;
             attackCoolImage.fillAmount = 1;
 
             if (!isSting)
@@ -261,7 +256,7 @@ public class Character : MonoBehaviour
     }
 
 
-    public virtual void RangeAttack(bool isRevolver,CardStats curSO)
+    public virtual void RangeAttack(bool isRevolver)
     {
         if (curCoolTime <= 0)
         {
@@ -273,14 +268,14 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual void MagicAttack(CardStats curSO)
+    public virtual void MagicAttack()
     {
         if ( curCoolTime <= 0)
         {
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
             animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack");
-
+/*
             switch (curSO.infor.cardType)
             {
                 case CardStats.CardType.Queen:
@@ -289,7 +284,7 @@ public class Character : MonoBehaviour
                 case CardStats.CardType.King:
                     Attack.Inst.Shoot(shootInfor);
                     break;
-            }
+            }*/
 
         }
     }

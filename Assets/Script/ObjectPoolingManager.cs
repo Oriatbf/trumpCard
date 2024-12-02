@@ -5,8 +5,10 @@ using UnityEngine;
 public class ObjectPoolingManager : MonoBehaviour
 {
     public static ObjectPoolingManager Inst;
-    public GameObject bulletP,magicBallP,flooringBullet;
-    public GameObject[] bulletPools,magicBallPools,flooringPools;
+    public GameObject magicBallP,flooringBullet;
+    public Bullet bulletP;
+    public GameObject[] magicBallPools,flooringPools;
+    public Bullet[] bulletPools;
 
     public int bulletIndex = 0,magicIndex = 0,f_bulletIndex = 0;
 
@@ -33,12 +35,12 @@ public class ObjectPoolingManager : MonoBehaviour
         GameObject parentObj = new GameObject("PoolingParent");     //새로운 빈 오브젝트를 하나 만들어줌
         parentObj.transform.position = Vector3.zero;                 //새로운 빈 오브젝트의 위치 설정
         parentObj.transform.SetParent(transform, true);
-        bulletPools = new GameObject[200];
+        bulletPools = new Bullet[200];
         for (int i = 0; i < bulletPools.Length; i++)
         {
-            GameObject bullet = Instantiate(bulletP, parentObj.transform);
+            Bullet bullet = Instantiate(bulletP, parentObj.transform);
             bulletPools[i] = bullet;
-            bullet.SetActive(false);
+            bullet.gameObject.SetActive(false);
         }
 
         GameObject magicBallParent = new GameObject("MBPoolingParent");

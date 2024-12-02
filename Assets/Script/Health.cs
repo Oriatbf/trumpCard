@@ -13,8 +13,7 @@ public class Health : MonoBehaviour
     public float curHp;
     public float maxHp;
     [SerializeField] DamageNumber numberPrefab;
-    [SerializeField] RectTransform rectParent;
-    [SerializeField] float floorTickTime =1;
+    [SerializeField] private RectTransform rectParent;
     [SerializeField] Image hpBar;
     [SerializeField] Material whiteMaterial,defaultMaterial;
     [SerializeField] SpriteRenderer spr;

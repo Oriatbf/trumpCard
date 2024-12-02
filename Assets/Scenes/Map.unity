@@ -7438,12 +7438,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77117bef09ae90244889dc841d4553ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletP: {fileID: 2279115673829943940, guid: 20e6210896a558542a6c49d81a0c6595, type: 3}
   magicBallP: {fileID: 64431691156977257, guid: 11de6d3ecfb67434b830fb98c714a9f3, type: 3}
   flooringBullet: {fileID: 4632088556976240774, guid: 214dc9186be582f4d858e1f9268b016c, type: 3}
-  bulletPools: []
+  bulletP: {fileID: 7791292557416820963, guid: 20e6210896a558542a6c49d81a0c6595, type: 3}
   magicBallPools: []
   flooringPools: []
+  bulletPools: []
   bulletIndex: 0
   magicIndex: 0
   f_bulletIndex: 0

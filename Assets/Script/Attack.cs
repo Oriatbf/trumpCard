@@ -13,7 +13,6 @@ public class ShootInfor
     public Transform curTrans;
     public Transform shootPoint;
     public Character character;
-    public CardStats curTypeCard;
     public Stat stat;
 
     public ShootInfor(Character character,Stat stat)
@@ -22,7 +21,6 @@ public class ShootInfor
         this.curTrans = character.transform;
         this.shootPoint = character.shootPoint;
         this.character = character;
-        this.curTypeCard =  character.curTypeCard;
         this.stat = stat;
     }
 }
@@ -74,11 +72,11 @@ public class Attack : MonoBehaviour
         float delay = 0;
         Vector2 finalDir = new Vector2(0,0);
 
-        for (var j = 0; j < shootInfor.character.attackCount; j++)
+        for (var j = 0; j < shootInfor.stat.attackCount; j++)
         {
             DOVirtual.DelayedCall(delay, () =>
             {
-                for (var i = 0; i < shootInfor.character.bulletCount; i++)
+                for (var i = 0; i < shootInfor.stat.extraHitCount; i++)
                 {
                     float damage = shootInfor.stat.damage;
                     /*
@@ -86,13 +84,13 @@ public class Attack : MonoBehaviour
                     {
                         damage = isMaxCharging ? so.infor.damage + so.infor.plusMaxChargeDam : so.infor.damage;
                     }*/
-
+                        /*
                     if (shootInfor.curTypeCard.infor.attackType == CardStats.AttackType.ShotGun) // 샷건 해당
                     {
-                        float angle = 50 * ((float)i / (shootInfor.character.bulletCount) - 0.5f); // Spread bullets evenly within the spreadAngle
+                        float angle = 50 * ((float)i / (shootInfor.stat.extraHitCount) - 0.5f); // Spread bullets evenly within the spreadAngle
                         finalDir = Quaternion.Euler(0, 0, angle) * shootInfor.dir; // Apply the angle to the direction vector
                     }
-                    else finalDir = shootInfor.dir;
+                    else finalDir = shootInfor.dir;*/
 
                    
                     ProjectTileSet(shootInfor);
@@ -105,21 +103,23 @@ public class Attack : MonoBehaviour
 
     public void ProjectTileSet(ShootInfor shootInfor)
     {
-        Transform curBullet = pool.bulletPools[pool.bulletIndex].transform;
-        pool.bulletPools[pool.bulletIndex].SetActive(true);
-
+        Bullet curBullet = pool.bulletPools[pool.bulletIndex];
+        
         // 총알 발사
-       // pool.bulletPools[pool.bulletIndex].transform.GetComponentInChildren<Bullet>().SetDir(bulletInfor);
+        curBullet.Init(shootInfor.stat,shootInfor.dir);
+        curBullet.gameObject.SetActive(true);
 
-        pool.bulletPools[pool.bulletIndex].transform.position = shootInfor.shootPoint.position;
-        pool.bulletPools[pool.bulletIndex].transform.rotation = shootInfor.curTrans.rotation;
+        curBullet.transform.position = shootInfor.shootPoint.position;
+        curBullet.transform.rotation = shootInfor.curTrans.rotation;
 
         //총알 회전
         Quaternion rotation = Quaternion.LookRotation(shootInfor.dir);
-        curBullet.localScale = shootInfor.dir.x < 0 ? new Vector2(Mathf.Abs(curBullet.localScale.x) * -1, curBullet.localScale.y) : new Vector2(Mathf.Abs(curBullet.localScale.x), curBullet.localScale.y);
+        curBullet.transform.localScale = 
+            shootInfor.dir.x < 0 ? new Vector2(Mathf.Abs(curBullet.transform.localScale.x) * -1, curBullet.transform.localScale.y) 
+                : new Vector2(Mathf.Abs(curBullet.transform.localScale.x), curBullet.transform.localScale.y);
         rotation.x = 0;
         rotation.y = 0;
-        curBullet.rotation = rotation;
+        curBullet.transform.rotation = rotation;
 
 
         pool.bulletIndex++;

@@ -12,7 +12,6 @@ public class PlayerMove : Character
 {
     [Tab("Input")]
     [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private CardStats card;
   
 
     [Tab("Debug")]
@@ -42,9 +41,8 @@ public class PlayerMove : Character
         base.Start();
         opponent = GameObject.FindWithTag("Enemy").transform;
         _camera = Camera.main;
-        
-        SetStat(curTypeCard);
-        dashBtnImage = dashBtn.GetComponent<Image>();
+        if(mobileVersion)
+            dashBtnImage = dashBtn.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -61,8 +59,6 @@ public class PlayerMove : Character
         {
             Dash();
         }
-
-
         Move();
 
        // CoolTime(characterSO);
@@ -117,11 +113,10 @@ public class PlayerMove : Character
                 y = Input.GetAxisRaw("Vertical");
             }
 
-
             angleVec = new Vector3(x, y, 0).normalized;
 
-            float moveX = angleVec.x * speed * Time.deltaTime;
-            float moveY = angleVec.y * speed * Time.deltaTime;
+            float moveX = angleVec.x * stat.speed * Time.deltaTime;
+            float moveY = angleVec.y * stat.speed * Time.deltaTime;
             transform.Translate(new Vector3(moveX, moveY, 0), Space.World);
 
             //Rotation
@@ -169,11 +164,10 @@ public class PlayerMove : Character
             if(_dir != Vector3.zero)
             {
                 bowDir = _dir;
-              
                 _curCharging += Time.deltaTime;
-                if (_curCharging >= coolTime) _curCharging = coolTime;
-                attackCoolImage.fillAmount = _curCharging / coolTime;
-                if(_curCharging>=coolTime)BowShoot();
+                if (_curCharging >= stat.coolTime) _curCharging = stat.coolTime;
+                attackCoolImage.fillAmount = _curCharging / stat.coolTime;
+                if(_curCharging>=stat.coolTime)BowShoot();
                
             }
 
@@ -181,34 +175,27 @@ public class PlayerMove : Character
             {
                 BowShoot(bowDir);
             }
-
-           
-       
         }
        
     }
+    
 
-
-
-
-    public override void RangeAttack(bool isRevolver, CardStats curSO)
+    public override void RangeAttack(bool isRevolver)
     {
         if (mobileVersion)
         {
             if( dirJoyStick.Direction != Vector2.zero) 
             {
-                base.RangeAttack(isRevolver, curSO);
+                base.RangeAttack(isRevolver);
             }
         }
         else
         {
             if (Input.GetMouseButton(0))
             {
-                base.RangeAttack(isRevolver, curSO);
+                base.RangeAttack(isRevolver);
             }
         }
-      
-       
     }
 
     public override void MeleeAttack(bool isSting)
@@ -227,41 +214,24 @@ public class PlayerMove : Character
                 base.MeleeAttack(isSting);
             }
         }
-
-
     }
 
-    public override void MagicAttack(CardStats curSO)
+    public override void MagicAttack()
     {
 
         if (mobileVersion)
         {
             if (dirJoyStick.Direction != Vector2.zero)
             {
-                base.MagicAttack(curSO);
+                base.MagicAttack();
             }
         }
         else
         {
             if (Input.GetMouseButton(0))
             {
-                base.MagicAttack(curSO);
+                base.MagicAttack();
             }
         }
-    
-       
     }
-
-
-
-  
-
-
-   
-
-  
-
-    
-
-
 }
