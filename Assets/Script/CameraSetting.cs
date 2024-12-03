@@ -19,16 +19,13 @@ public class CameraSetting : MonoBehaviour
     {
         virtualCamera = GameObject.Find("VCam").GetComponent<CinemachineVirtualCamera>();
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
-
-        //virtualCamera.m_Lens.OrthographicSize = startSize;
+        CameraAnimation();
+        
     }
-
-    // �ִϸ��̼� ����
+    
     public void CameraAnimation() 
     {
         virtualCamera.Follow = player;
 
-        /*DOTween.To(() => virtualCamera.m_Lens.OrthographicSize,
-                   x => virtualCamera.m_Lens.OrthographicSize = x, endSize, duration);*/
     }
 }

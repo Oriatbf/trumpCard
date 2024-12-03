@@ -22,7 +22,7 @@ public class Bullet : Projectile
     {
         ownerCharacter = characterType;
         rigid.linearVelocity = Vector2.zero;
-        damage = stat.damage;
+        damage = Critical.CriticalChance(stat);
         rigid.AddForce(dir * stat.bulletSpeed, ForceMode2D.Impulse);
     }
 

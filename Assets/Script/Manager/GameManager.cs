@@ -50,12 +50,7 @@ public class GameManager : MonoBehaviour
     {
 
     }
-
-    public void GameStart()
-    {
-       DOVirtual.DelayedCall(1.5f,()=> countDown.CountStart());
-    }
-
+    
     private void OnEnable()
     {
         stageNum = 0;

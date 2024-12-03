@@ -20,13 +20,13 @@ public class Health : MonoBehaviour
     [SerializeField] SpriteRenderer spr;
     [HideInInspector] public bool autoHeal;
     [HideInInspector] public float autoHealSpeed;
-    bool isInv = false;
+    [SerializeField]bool isInv = false;
 
     private Action OnDamage;
 
     //GambleGauge Value
     GambleGauge gambleGauge;
-    private float hittedValue = 2f,attackValue = 1f; //hitted : 맞았을 때 , attack : 공격했을 때 늘어날 값
+    private float hittedValue = 5f; //hitted : 맞았을 때 
     Character character;
     EnemyMove enemyMove;
     Coroutine freezeDebuff;
@@ -35,8 +35,10 @@ public class Health : MonoBehaviour
         gambleGauge=GetComponent<GambleGauge>();
         character= GetComponent<Character>();
         hpBar.fillAmount = 1;
-        
-      //  if(!character.isPlayer)enemyMove=GetComponent<EnemyMove>();
+        OnDamage += () => gambleGauge.IncreaseGambleGauge(hittedValue);
+        OnDamage += () => HpBarIncrease();
+
+        //  if(!character.isPlayer)enemyMove=GetComponent<EnemyMove>();
     }
 
     private void Update()
@@ -71,9 +73,7 @@ public class Health : MonoBehaviour
             spr.material = whiteMaterial;
             DOVirtual.DelayedCall(0.1f, () => spr.material = defaultMaterial);
             curHp -= damage;
-            HpBarIncrease();    
-            IncreaseGambleGauge(true,damage); // 피격 게이지 올라가기
-            EnemyUp(damage);
+            OnDamage?.Invoke();
             
             if(damage >=0)
                 numberPrefab.SpawnGUI(rectParent,transform.position,damage); //데미지 UI
@@ -95,27 +95,11 @@ public class Health : MonoBehaviour
        
     }
 
-    void EnemyUp(float damage) //수정 요함
-    {
-        /*
-        Health op_health =  character.opponent.GetComponent<Health>();
-        Character op_character= character.opponent.GetComponent<Character>();
-        op_health.IncreaseGambleGauge(false,damage); // 적 캐릭터가 공격 시 올라가는 갬블게이지
-        if (op_character.characterSO.relicInfor.bloodSucking)
-        {
-            op_health.OnHeal(damage * 0.5f); // 적 캐릭터가 피흡 보유시 힐   
-            Debug.Log("피흡");
-        }*/
 
-    }
 
-    public void IncreaseGambleGauge(bool isHitted,float damage)
-    {
-        if (isHitted) gambleGauge.IncreaseGambleGauge(damage * hittedValue);
-        else gambleGauge.IncreaseGambleGauge(damage*attackValue);
-    }
 
-    public void OnHeal(float healAmount)
+
+    public void OnRecorvery(float healAmount)
     {
         curHp += healAmount;
         if(curHp > maxHp)

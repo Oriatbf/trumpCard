@@ -218,30 +218,44 @@ public class Character : MonoBehaviour
 
         }
     }
-/*
+
     public void MeleeDamage()
     {
-        if(curTypeCard.infor.attackType == CardStats.AttackType.Melee)
+        if(stat.cardType == CardType.Melee)
         {
-            EffectManager.Inst.SpawnEffect(shootPoint.transform, 1, Quaternion.Euler(0, 0, _angle));
+           // EffectManager.Inst.SpawnEffect(shootPoint.transform, 1, Quaternion.Euler(0, 0, _angle));
            // Attack.Inst.Slash(shootInfor);
         }
            
 
-        RaycastHit2D hit;
-        hit = Physics2D.Raycast(transform.position, _dir, 2f, opponentMask);
-        if (hit.collider != null)
-        {
-            Health opponentHealth = hit.transform.GetComponent<Health>();
-            foreach (Debuff debuff in characterSO.debuffs)
-            {
-                debuff.Apply(opponentHealth);
-            }
-            opponentHealth.OnDamage(Critical(stat));
+       // RaycastHit2D hit;
+      //  hit = Physics2D.Raycast(transform.position, _dir, 2f, opponentMask);
+      /*
+      if (hit.collider != null)
+      {
+          Health opponentHealth = hit.transform.GetComponent<Health>();
+          foreach (Debuff debuff in characterSO.debuffs)
+          {
+              debuff.Apply(opponentHealth);
+          }
+          opponentHealth.OnDamage(Critical(stat));
 
+      }*/
+      
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _dir, 2f);
+        foreach (var hit in hits)
+        {
+            if (hit.transform.TryGetComponent(out Character _character))
+            {
+                if (_character.characterType != characterType)
+                {
+                    _character.health.GetDamage(Critical.CriticalChance(stat));
+                }
+            }
         }
-        AudioManager.Inst.AudioEffectPlay(characterSO.infor.cardNum);
-    }*/
+       
+        AudioManager.Inst.AudioEffectPlay(stat.cardNum);
+    }
 
 
 

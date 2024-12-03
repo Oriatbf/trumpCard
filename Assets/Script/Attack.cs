@@ -80,11 +80,6 @@ public class Attack : MonoBehaviour
                 for (var i = 0; i < shootInfor.stat.extraHitCount; i++)
                 {
                     float damage = shootInfor.stat.damage;
-                    
-                    if (shootInfor.stat.cardRole == CardRole.Bow) //활 최대로 당겼을 때
-                    {
-                       // damage = isMaxCharging ? so.infor.damage + so.infor.plusMaxChargeDam : so.infor.damage;
-                    }
                         
                     if (shootInfor.stat.cardRole == CardRole.ShotGun) // 샷건 해당
                     {
@@ -146,7 +141,15 @@ public class Attack : MonoBehaviour
         }
     }*/
 
-    public float Critical(Stat stat)
+    
+
+   
+
+}
+
+public static class Critical
+{
+    public static float CriticalChance(Stat stat)
     {
         int a = Random.Range(1, 101);
         float damage = stat.damage;
@@ -156,7 +159,4 @@ public class Attack : MonoBehaviour
         }
         else return damage;
     }
-
-   
-
 }

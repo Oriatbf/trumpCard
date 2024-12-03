@@ -17,7 +17,7 @@ public class CountDown : MonoBehaviour
     // �ӽ÷� ���� �� 
     void Start()
     {
-       // CountStart(); //Test
+       //CountStart();
     }
 
     // 카운트 시작
