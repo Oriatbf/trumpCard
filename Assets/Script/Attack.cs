@@ -13,6 +13,7 @@ public class ShootInfor
     public Transform curTrans;
     public Transform shootPoint;
     public Character character;
+    public CharacterType characterType;
     public Stat stat;
 
     public ShootInfor(Character character,Stat stat)
@@ -21,6 +22,7 @@ public class ShootInfor
         this.curTrans = character.transform;
         this.shootPoint = character.shootPoint;
         this.character = character;
+        characterType = character.characterType;
         this.stat = stat;
     }
 }
@@ -45,7 +47,6 @@ public class Attack : MonoBehaviour
     private void Start()
     {
         pool = ObjectPoolingManager.Inst;
-        Debug.Log(pool.gameObject);
     }
 
 /*
@@ -79,18 +80,18 @@ public class Attack : MonoBehaviour
                 for (var i = 0; i < shootInfor.stat.extraHitCount; i++)
                 {
                     float damage = shootInfor.stat.damage;
-                    /*
-                    if (shootInfor.curTypeCard.infor.attackType == CardStats.AttackType.Bow) //활 최대로 당겼을 때
+                    
+                    if (shootInfor.stat.cardRole == CardRole.Bow) //활 최대로 당겼을 때
                     {
-                        damage = isMaxCharging ? so.infor.damage + so.infor.plusMaxChargeDam : so.infor.damage;
-                    }*/
-                        /*
-                    if (shootInfor.curTypeCard.infor.attackType == CardStats.AttackType.ShotGun) // 샷건 해당
+                       // damage = isMaxCharging ? so.infor.damage + so.infor.plusMaxChargeDam : so.infor.damage;
+                    }
+                        
+                    if (shootInfor.stat.cardRole == CardRole.ShotGun) // 샷건 해당
                     {
                         float angle = 50 * ((float)i / (shootInfor.stat.extraHitCount) - 0.5f); // Spread bullets evenly within the spreadAngle
                         finalDir = Quaternion.Euler(0, 0, angle) * shootInfor.dir; // Apply the angle to the direction vector
                     }
-                    else finalDir = shootInfor.dir;*/
+                    else finalDir = shootInfor.dir;
 
                    
                     ProjectTileSet(shootInfor);
@@ -104,10 +105,10 @@ public class Attack : MonoBehaviour
     public void ProjectTileSet(ShootInfor shootInfor)
     {
         Bullet curBullet = pool.bulletPools[pool.bulletIndex];
-        
-        // 총알 발사
-        curBullet.Init(shootInfor.stat,shootInfor.dir);
         curBullet.gameObject.SetActive(true);
+        // 총알 발사
+        curBullet.Init(shootInfor.stat,shootInfor.dir,shootInfor.characterType);
+        
 
         curBullet.transform.position = shootInfor.shootPoint.position;
         curBullet.transform.rotation = shootInfor.curTrans.rotation;
@@ -121,11 +122,7 @@ public class Attack : MonoBehaviour
         rotation.y = 0;
         curBullet.transform.rotation = rotation;
 
-
         pool.bulletIndex++;
-
-        //isFlooring(shootInfor, curBullet);
-
         if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
     }
 /*

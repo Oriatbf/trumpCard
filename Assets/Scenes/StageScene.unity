@@ -5655,9 +5655,7 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   spr: {fileID: 1878583273}
   autoHeal: 0
-  isDotDamage: 0
   autoHealSpeed: 0
-  isFloor: 0
 --- !u!61 &1878583272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5816,7 +5814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bdd59cd6dc89694283e82e5faee76ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 0
+  characterType: 1
   attackCoolImage: {fileID: 1259285237}
   dashSpeed: 7
   dashInvTime: 0.5
@@ -5851,6 +5849,9 @@ MonoBehaviour:
   gambleGauge: {fileID: 0}
   dashEffect: {fileID: 0}
   stat:
+    cardType: 0
+    cardRole: 0
+    cardNum: 0
     hp: 0
     speed: 0
     damage: 0
@@ -6232,16 +6233,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHp: 0
   maxHp: 0
-  numberPrefab: {fileID: 0}
+  numberPrefab: {fileID: 6505103995091608495, guid: f7fa9ac186561de4ea123deafeef175a, type: 3}
   rectParent: {fileID: 0}
-  hpBar: {fileID: 936634847}
-  whiteMaterial: {fileID: 0}
-  defaultMaterial: {fileID: 0}
-  spr: {fileID: 0}
+  hpBar: {fileID: 1629790226}
+  whiteMaterial: {fileID: 2100000, guid: 4087f86587b09e643a3a1b074e3b0c00, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  spr: {fileID: 1892181552}
   autoHeal: 0
-  isDotDamage: 0
   autoHealSpeed: 0
-  isFloor: 0
 --- !u!114 &1892181559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6261,8 +6260,11 @@ MonoBehaviour:
   curCharging: 0
   curDashCool: 0
   weapons:
-  - {fileID: 1306996728}
   - {fileID: 718012099}
+  - {fileID: 718012099}
+  - {fileID: 718012099}
+  - {fileID: 718012099}
+  - {fileID: 1306996728}
   - {fileID: 1499365845}
   - {fileID: 1983789985}
   - {fileID: 715537212}
@@ -6273,7 +6275,6 @@ MonoBehaviour:
   - {fileID: 714790641}
   - {fileID: 919474123}
   - {fileID: 1569862880}
-  - {fileID: 907576827}
   handle: {fileID: 1295291624}
   relicSkills: {fileID: 0}
   shootPoint: {fileID: 48622709}
@@ -6289,6 +6290,9 @@ MonoBehaviour:
   gambleGauge: {fileID: 0}
   dashEffect: {fileID: 0}
   stat:
+    cardType: 0
+    cardRole: 0
+    cardNum: 0
     hp: 0
     speed: 0
     damage: 0

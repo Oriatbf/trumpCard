@@ -1,3 +1,4 @@
+using System;
 using DamageNumbersPro;
 using DG.Tweening;
 using System.Collections;
@@ -17,11 +18,11 @@ public class Health : MonoBehaviour
     [SerializeField] Image hpBar;
     [SerializeField] Material whiteMaterial,defaultMaterial;
     [SerializeField] SpriteRenderer spr;
-    [HideInInspector] public bool autoHeal,isDotDamage;
+    [HideInInspector] public bool autoHeal;
     [HideInInspector] public float autoHealSpeed;
-    [HideInInspector] public bool isFloor;
     bool isInv = false;
-    bool death = false;
+
+    private Action OnDamage;
 
     //GambleGauge Value
     GambleGauge gambleGauge;
@@ -34,6 +35,7 @@ public class Health : MonoBehaviour
         gambleGauge=GetComponent<GambleGauge>();
         character= GetComponent<Character>();
         hpBar.fillAmount = 1;
+        
       //  if(!character.isPlayer)enemyMove=GetComponent<EnemyMove>();
     }
 
@@ -62,7 +64,7 @@ public class Health : MonoBehaviour
         }  
     }
 
-    public void OnDamage(float damage)
+    public void GetDamage(float damage)
     {
         if (!isInv )
         {
@@ -77,9 +79,8 @@ public class Health : MonoBehaviour
                 numberPrefab.SpawnGUI(rectParent,transform.position,damage); //데미지 UI
 
 
-            if (curHp <= 0 && !death)
+            if (curHp <= 0)
             {
-                death = true;
                 character.opponent.GetComponent<Health>().isInv = true;
                 /*
                 if (!character.isPlayer)
@@ -159,7 +160,7 @@ public class Health : MonoBehaviour
         float elapsedTime = 0;
         while (elapsedTime < dotDuration) 
         {
-            OnDamage(damage);
+            GetDamage(damage);
             elapsedTime += 1;
             yield return new WaitForSeconds(1);
         }

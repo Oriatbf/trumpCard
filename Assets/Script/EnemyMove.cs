@@ -46,7 +46,7 @@ public class EnemyMove : Character
     // Update is called once per frame
     public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F3)) health.OnDamage(1000);
+        if (Input.GetKeyDown(KeyCode.F3)) health.GetDamage(1000);
   
             base.Update();
             Rotation();
@@ -63,7 +63,7 @@ public class EnemyMove : Character
         _angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
         handle.transform.parent.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
         handle.transform.localScale = new Vector3(_dir.x < 0 ? -1 : 1, 1);
-        _dir = (opponent.position - transform.position);
+        _dir = (opponent.position - transform.position).normalized;
 
         if (!isDashing)
         {
@@ -105,10 +105,11 @@ public class EnemyMove : Character
 
         if (haveDash)
         {
+            /*
             Collider2D projectTileCol = Physics2D.OverlapCircle(transform.position, dashRange);
             if (projectTileCol.transform.CompareTag("ProjectTile"))
             {
-                if (projectTileCol.GetComponentInParent<Projectile>().isPlayerBullet)
+                if (projectTileCol.GetComponentInParent<Projectile>().ownerCharacter != characterType)
                 {
                     Vector2 dir = transform.position - projectTileCol.transform.position;
                     if (curCharging > 0 && curDashCool <= 0)
@@ -119,6 +120,7 @@ public class EnemyMove : Character
               
                 
             }
+            */
         }
 
     }

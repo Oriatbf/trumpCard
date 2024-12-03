@@ -27,7 +27,10 @@ public class CardDataManager : MonoBehaviour
       public Stat stat = new Stat();
       public CardData(CardUnitData.Data cardData)
       {
+         stat.cardType = cardData.cardType;
+         stat.cardRole = cardData.cardRole;
          stat.cardNum = cardData.cardNum;
+         
          stat.bulletSize = 1;
          stat.hp = cardData.hp;
          stat.damage = cardData.damage;
@@ -35,8 +38,8 @@ public class CardDataManager : MonoBehaviour
          stat.coolTime = cardData.coolTime;
          stat.attackCount = cardData.attackCount;
          stat.extraHitCount = cardData.extraHitCount;
-         stat.criticalChance = cardData.criticalChance;
-         stat.criticalMultiplier = cardData.criticalMultiplier;
+         stat.criticalChance = 10;
+         stat.criticalMultiplier = 1.5f;
          stat.bulletSpeed = cardData.bulletSpeed;
       }
    }

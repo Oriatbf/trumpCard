@@ -10,7 +10,7 @@ public class Bullet : Projectile
     public bool isReturn;
     Vector2 bulletDir;
     
-    CharacterType characterType;
+    
 
     private void Awake()
     {
@@ -18,12 +18,12 @@ public class Bullet : Projectile
     }
     
 
-    public void Init(Stat stat,Vector2 dir)
+    public void Init(Stat stat,Vector2 dir,CharacterType characterType)
     {
+        ownerCharacter = characterType;
         rigid.linearVelocity = Vector2.zero;
         damage = stat.damage;
         rigid.AddForce(dir * stat.bulletSpeed, ForceMode2D.Impulse);
-        //Dir,damage,speed
     }
 
   
@@ -32,9 +32,9 @@ public class Bullet : Projectile
     {
         if (collision.TryGetComponent(out Character character))
         {
-            if (characterType != character.characterType)
+            if (ownerCharacter != character.characterType)
             {
-                character.health.OnDamage(damage);
+                character.health.GetDamage(damage);
                 EffectManager.Inst.SpawnEffect(transform, 0);
                 gameObject.SetActive(isReturn);
             }

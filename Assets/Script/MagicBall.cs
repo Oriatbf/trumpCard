@@ -27,7 +27,6 @@ public class MagicBall : Projectile
 
     public void SetTarget(Transform transform,float damage,bool isPlayer)
     {
-        isPlayerBullet= isPlayer;
         this.damage= damage;
         target = transform;
  
@@ -48,16 +47,8 @@ public class MagicBall : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") && isPlayerBullet)
-        {
-            collision.GetComponent<Health>().OnDamage(damage);
+            collision.GetComponent<Health>().GetDamage(damage);
             gameObject.SetActive(false);
-        }
-
-        if (collision.CompareTag("Player") && !isPlayerBullet)
-        {
-            collision.GetComponent<Health>().OnDamage(damage);
-            gameObject.SetActive(false);
-        }
+        
     }
 }

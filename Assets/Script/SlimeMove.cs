@@ -44,7 +44,7 @@ public class SlimeMove : MonoBehaviour
         {
             if (collision.CompareTag("Enemy"))
             {
-                collision.GetComponent<Health>().OnDamage(5);
+                collision.GetComponent<Health>().GetDamage(5);
                 GameObject floorObj = Instantiate(floor, transform.position, Quaternion.identity);
                 Destroy(floorObj, floorDestoryTime);
                 Destroy(gameObject);
@@ -54,7 +54,7 @@ public class SlimeMove : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<Health>().OnDamage(5);
+                collision.GetComponent<Health>().GetDamage(5);
                 GameObject floorObj = Instantiate(floor, transform.position, Quaternion.identity);
                 Destroy(floorObj, floorDestoryTime);
                 Destroy(gameObject);

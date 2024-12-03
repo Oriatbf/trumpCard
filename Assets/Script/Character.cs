@@ -119,7 +119,8 @@ public class Character : MonoBehaviour
         {
             Gambling();
         }
-       // CoolTime();
+        CoolTime();
+        shootInfor.dir = _dir;
     }
     private void LateUpdate()
     {
@@ -161,7 +162,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void CoolTime(CardStats curSO)
+    public void CoolTime()
     {
         if (curCoolTime > 0)
         {
@@ -170,30 +171,30 @@ public class Character : MonoBehaviour
         }
         else
         {
-            ChangeType(curSO);
+            ChangeType(stat);
         }
     }
 
-    public void ChangeType(CardStats curSO)
+    public void ChangeType(Stat stat)
     {
-        switch (curSO.infor.attackType)
+        switch (stat.cardRole)
         {
-            case CardStats.AttackType.Melee:
+            case CardRole.Melee:
                 MeleeAttack(false);
                 break;
-            case CardStats.AttackType.MeleeSting:
+            case CardRole.MeleeSting:
                 MeleeAttack(true);
                 break;
-            case CardStats.AttackType.Range:
+            case CardRole.Range:
                 RangeAttack(true);
                 break;
-            case CardStats.AttackType.Bow:
+            case CardRole.Bow:
                 BowAttack();
                 break;
-            case CardStats.AttackType.ShotGun:
+            case CardRole.ShotGun:
                 RangeAttack(false);
                 break;
-            case CardStats.AttackType.Magic:
+            case CardRole.Magic:
                 MagicAttack();
                 break;
         }

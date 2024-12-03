@@ -4,6 +4,9 @@ using UnityEngine;
 [Serializable]
 public class Stat
 {
+    public CardType cardType;
+    public CardRole cardRole;
+    
     //유물 합산된 능력치가 들어가는 곳
     public int cardNum;
     public float hp;

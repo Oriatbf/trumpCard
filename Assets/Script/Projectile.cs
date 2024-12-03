@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class Projectile : MonoBehaviour
 {
-    public bool isPlayerBullet;
+    public CharacterType ownerCharacter;
    
     public void ActiveFalse()
     {

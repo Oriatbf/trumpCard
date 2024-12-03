@@ -49,7 +49,7 @@ public class PlayerMove : Character
     public override void Update()
     {
         if (Input.GetKeyDown(KeyCode.F4)) Gambling();
-        if (Input.GetKeyDown(KeyCode.F2)) health.OnDamage(1000);
+        if (Input.GetKeyDown(KeyCode.F2)) health.GetDamage(1000);
         //if (Input.GetKeyDown(KeyCode.F9)) Debug.Log(characterSO.debuffs.Count);
     
         
