@@ -23,6 +23,7 @@ public class Bullet : Projectile
         ownerCharacter = characterType;
         rigid.linearVelocity = Vector2.zero;
         damage = Critical.CriticalChance(stat);
+        bulletDir = dir;
         rigid.AddForce(dir * stat.bulletSpeed, ForceMode2D.Impulse);
     }
 
@@ -35,6 +36,7 @@ public class Bullet : Projectile
             if (ownerCharacter != character.characterType)
             {
                 character.health.GetDamage(damage);
+                character.GetForce(bulletDir,5,0.05f);
                 EffectManager.Inst.SpawnEffect(transform, 0);
                 gameObject.SetActive(isReturn);
             }

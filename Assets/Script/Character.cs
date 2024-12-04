@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using DG.Tweening;
 using System.Collections;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
+using Random = UnityEngine.Random;
 
 public enum CharacterType
 {
@@ -145,6 +147,7 @@ public class Character : MonoBehaviour
 
         shootInfor = new ShootInfor(this, stat);
     }
+    
     
     
 
@@ -336,14 +339,18 @@ public class Character : MonoBehaviour
         isDashing = true;
         curDashCool = dashCool;
         health.InvTime(dashInvTime);
-        rigid.linearVelocity = dir * dashSpeed;
         dashEffect.ActiveDashEffect(0.2f);
-        DOVirtual.DelayedCall(0.2f, () =>
+        GetForce(dir,dashSpeed,0.2f,()=>isDashing = false);
+    }
+
+    public void GetForce(Vector2 dir,float forcePower,float time,Action action = null)
+    {
+        rigid.linearVelocity = dir * forcePower;
+        DOVirtual.DelayedCall(time, () =>
         {
             rigid.linearVelocity = Vector2.zero;
-            isDashing= false;
-
-            });
+            action?.Invoke();
+        });
     }
 
 }

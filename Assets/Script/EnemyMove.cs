@@ -36,8 +36,7 @@ public class EnemyMove : Character
         _dir = (opponent.position - transform.position).normalized;
         _camera = Camera.main;
        
-      
-      //  TypeManager.Inst.TypeChange(card.infor.cardNum, transform, true, characterSO);
+        
         SetStat();
 
        
@@ -51,7 +50,6 @@ public class EnemyMove : Character
             base.Update();
             Rotation();
             Move();
-           // CoolTime(characterSO);
         
            
     }

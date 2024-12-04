@@ -6096,6 +6096,7 @@ MonoBehaviour:
   spr: {fileID: 1878583273}
   autoHeal: 0
   autoHealSpeed: 0
+  isInv: 0
 --- !u!61 &1878583272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6325,7 +6326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gambleImage: {fileID: 1627454}
-  gaugePerSec: 1
   _curGauge: 0
   maxGauge: 100
 --- !u!114 &1878583278
@@ -6476,6 +6476,7 @@ GameObject:
   - component: {fileID: 1892181557}
   - component: {fileID: 1892181556}
   - component: {fileID: 1892181560}
+  - component: {fileID: 1892181561}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -6681,6 +6682,7 @@ MonoBehaviour:
   spr: {fileID: 1892181552}
   autoHeal: 0
   autoHealSpeed: 0
+  isInv: 0
 --- !u!114 &1892181559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6764,9 +6766,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gambleImage: {fileID: 1855108256}
-  gaugePerSec: 0
   _curGauge: 0
   maxGauge: 100
+--- !u!114 &1892181561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892181550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87488b65cc3f8b44afccdf908711918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  str: HealRelic
 --- !u!1 &1917282587
 GameObject:
   m_ObjectHideFlags: 0
@@ -6942,6 +6956,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2042633183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042633185}
+  - component: {fileID: 2042633184}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2042633184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042633183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b84a76d075b7146a24113407251823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageUI: {fileID: 6505103995091608495, guid: f7fa9ac186561de4ea123deafeef175a, type: 3}
+  recoverUI: {fileID: 8590484759139478484, guid: dea217c5f7bce3c498e5d395cc64a896, type: 3}
+--- !u!4 &2042633185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042633183}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2059771037
 GameObject:
   m_ObjectHideFlags: 0
@@ -7061,3 +7121,4 @@ SceneRoots:
   - {fileID: 1693562551}
   - {fileID: 491877135}
   - {fileID: 1145953859}
+  - {fileID: 2042633185}

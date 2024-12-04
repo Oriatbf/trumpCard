@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GambleGauge : MonoBehaviour
 {
     [SerializeField] private Image gambleImage;
-    [SerializeField] private float gaugePerSec;
+    private float gaugePerSec=1;
     public float _curGauge, maxGauge;
     // Start is called before the first frame update
     void Start()

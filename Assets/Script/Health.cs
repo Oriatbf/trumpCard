@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
     [HideInInspector] public float autoHealSpeed;
     [SerializeField]bool isInv = false;
 
-    private Action OnDamage;
+    public Action OnDamage,OnHeal;
 
     //GambleGauge Value
     GambleGauge gambleGauge;
@@ -37,6 +37,8 @@ public class Health : MonoBehaviour
         hpBar.fillAmount = 1;
         OnDamage += () => gambleGauge.IncreaseGambleGauge(hittedValue);
         OnDamage += () => HpBarIncrease();
+        OnHeal += () => HpBarIncrease();
+
 
         //  if(!character.isPlayer)enemyMove=GetComponent<EnemyMove>();
     }
@@ -73,10 +75,8 @@ public class Health : MonoBehaviour
             spr.material = whiteMaterial;
             DOVirtual.DelayedCall(0.1f, () => spr.material = defaultMaterial);
             curHp -= damage;
-            OnDamage?.Invoke();
-            
             if(damage >=0)
-                numberPrefab.SpawnGUI(rectParent,transform.position,damage); //데미지 UI
+                UIManager.Inst.DamageUI(rectParent,damage);
 
 
             if (curHp <= 0)
@@ -91,6 +91,8 @@ public class Health : MonoBehaviour
                 }
                 else StartCoroutine(GameManager.Inst.GameEnd(false, gameObject));*/
             }
+            OnDamage?.Invoke();
+
         }
        
     }
@@ -101,10 +103,11 @@ public class Health : MonoBehaviour
 
     public void OnRecorvery(float healAmount)
     {
+        UIManager.Inst.RecorveryUI(rectParent,healAmount);
         curHp += healAmount;
         if(curHp > maxHp)
             curHp = maxHp;
-        HpBarIncrease();
+        OnHeal?.Invoke();;
     }
 
     public void HpBarIncrease() => hpBar.fillAmount = curHp / maxHp;

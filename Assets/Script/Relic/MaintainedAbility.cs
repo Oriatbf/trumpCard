@@ -1,4 +1,4 @@
-using Unity.Android.Gradle.Manifest;
+using System;
 using UnityEngine;
 
 public class MaintainedAbility : MonoBehaviour
