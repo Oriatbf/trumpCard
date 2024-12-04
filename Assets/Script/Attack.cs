@@ -68,22 +68,22 @@ public class Attack : MonoBehaviour
     
     public void Shoot(ShootInfor shootInfor,bool isMaxCharging = false)
     {
-       
+        var stat = shootInfor.stat.basicStatValue;
         if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
         float delay = 0;
         Vector2 finalDir = new Vector2(0,0);
 
-        for (var j = 0; j < shootInfor.stat.attackCount; j++)
+        for (var j = 0; j < stat.attackCount; j++)
         {
             DOVirtual.DelayedCall(delay, () =>
             {
-                for (var i = 0; i < shootInfor.stat.extraHitCount; i++)
+                for (var i = 0; i < stat.extraHitCount; i++)
                 {
-                    float damage = shootInfor.stat.damage;
+                    float damage = stat.damage;
                         
                     if (shootInfor.stat.cardRole == CardRole.ShotGun) // 샷건 해당
                     {
-                        float angle = 50 * ((float)i / (shootInfor.stat.extraHitCount) - 0.5f); // Spread bullets evenly within the spreadAngle
+                        float angle = 50 * ((float)i / (stat.extraHitCount) - 0.5f); // Spread bullets evenly within the spreadAngle
                         finalDir = Quaternion.Euler(0, 0, angle) * shootInfor.dir; // Apply the angle to the direction vector
                     }
                     else finalDir = shootInfor.dir;
@@ -152,10 +152,10 @@ public static class Critical
     public static float CriticalChance(Stat stat)
     {
         int a = Random.Range(1, 101);
-        float damage = stat.damage;
-        if (stat.criticalChance >= a)
+        float damage = stat.basicStatValue.damage;
+        if (stat.basicStatValue.criticalChance >= a)
         {
-            return damage * stat.criticalMultiplier;
+            return damage * stat.basicStatValue.criticalMultiplier;
         }
         else return damage;
     }

@@ -49,7 +49,7 @@ public class Character : MonoBehaviour
     private Rigidbody2D rigid;
     private SpriteRenderer spr;
     public Stat stat;
-    private ShootInfor shootInfor;
+    public ShootInfor shootInfor;
 
 
 
@@ -132,13 +132,14 @@ public class Character : MonoBehaviour
 
     public void SetStat()
     {
-        stat = CardDataManager.Inst.RandomCard().stat;
-        stat.speed = stat.speed <1?1:stat.speed;
-        stat.coolTime= stat.coolTime < 0.1f?0.1f: stat.coolTime; //쿨타임 최소치
-        curCoolTime= stat.coolTime;
-        coolTime = stat.coolTime;
-        stat.damage = stat.damage<1?1:stat.damage; // 데미지 최소치
-        health.ResetHp(stat.hp);
+        stat.basicStatValue = CardDataManager.Inst.RandomCard().stat.basicStatValue;
+        var basicStat = stat.basicStatValue;
+        basicStat.speed = basicStat.speed <1?1:basicStat.speed;
+        basicStat.coolTime= basicStat.coolTime < 0.1f?0.1f: basicStat.coolTime; //쿨타임 최소치
+        curCoolTime= basicStat.coolTime;
+        coolTime = basicStat.coolTime;
+        basicStat.damage = basicStat.damage<1?1:basicStat.damage; // 데미지 최소치
+        health.ResetHp(basicStat.hp);
         //health.SetHp(characterSO.relicInfor.remnantHealth);
        // if(health.curHp + characterSO.relicInfor.relicPlusHealth <=0) health.curHp = 1;
         //else health.curHp += characterSO.relicInfor.relicPlusHealth;
@@ -169,7 +170,7 @@ public class Character : MonoBehaviour
     {
         if (curCoolTime > 0)
         {
-            attackCoolImage.fillAmount = curCoolTime / stat.coolTime;
+            attackCoolImage.fillAmount = curCoolTime / stat.basicStatValue.coolTime;
             curCoolTime -= Time.deltaTime;
         }
         else
@@ -208,7 +209,7 @@ public class Character : MonoBehaviour
         if ( curCoolTime <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
-            curCoolTime = stat.coolTime;
+            curCoolTime = stat.basicStatValue.coolTime;
             attackCoolImage.fillAmount = 1;
 
             if (!isSting)

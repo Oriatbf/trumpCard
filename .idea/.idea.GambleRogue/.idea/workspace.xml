@@ -9,16 +9,15 @@
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/UGS.Examples.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/awesome_sunny.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Attack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/CameraSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/CameraSetting.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/CountDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/CountDown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Data/CardDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/CardDataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Health.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprite/Playing Cards/Card_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprite/Playing Cards/Card_2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/PlayerMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/PlayerMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/HealRelic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/HealRelic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Stat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Stat.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +33,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Script/Relic/MaintainedAbility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Stat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Utility/TimeManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui/Runtime/UGUI/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -123,7 +123,10 @@
       <workItem from="1732107806027" duration="4352000" />
       <workItem from="1732184322493" duration="8787000" />
       <workItem from="1732260573558" duration="4339000" />
-      <workItem from="1733225866588" duration="7095000" />
+      <workItem from="1733225866588" duration="7425000" />
+      <workItem from="1733318300019" duration="146000" />
+      <workItem from="1733318458616" duration="287000" />
+      <workItem from="1733318890955" duration="3412000" />
     </task>
     <servers />
   </component>
