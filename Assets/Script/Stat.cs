@@ -24,9 +24,8 @@ public class Stat
     }
 
     public StatsValue basicStatValue = new StatsValue();
-    public StatsValue relicStatValue = new StatsValue();
-
-
-
+    
 
 }
+
+

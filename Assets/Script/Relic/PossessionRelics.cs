@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PossessionRelics : MonoBehaviour
@@ -11,14 +12,8 @@ public class PossessionRelics : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<Character>();
-        Type type = Type.GetType(str);
-        if (type != null)
-        {
-            object relicInstance = Activator.CreateInstance(type);
-            RelicBase relic = relicInstance as RelicBase;
-            relic.Init(8.5f);
-            possessionRelics.Add(relic);
-        }
+        var relic = RelicDataManager.Inst.relicDatas.FirstOrDefault(r => r.name == str);
+        possessionRelics.Add(relic.relic);
         
        
     }

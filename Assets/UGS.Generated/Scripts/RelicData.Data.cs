@@ -14,7 +14,7 @@ using System.Reflection;
 using UnityEngine;
 
 
-namespace CardUnitData
+namespace RelicData
 {
     [GoogleSheet.Attribute.TableStruct]
     public partial class Data : ITable
@@ -23,7 +23,7 @@ namespace CardUnitData
         public delegate void OnLoadedFromGoogleSheets(List<Data> loadedList, Dictionary<int, Data> loadedDictionary);
 
         static bool isLoaded = false;
-        static string spreadSheetID = "1itSi_ODVllNv_Fdm0ImQyRwN4DfhJEqt1bV8OczseO0"; // it is file id
+        static string spreadSheetID = "1UXfDzy4qtRnMRjCH5RWyd760cxU2G_sbGZGXdnlRtE8"; // it is file id
         static string sheetID = "0"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
@@ -56,17 +56,11 @@ namespace CardUnitData
 
 /* Fields. */
 
-		public System.Int32 cardNum;
-		public System.String cardname;
-		public CardType cardType;
-		public CardRole cardRole;
-		public System.Single hp;
-		public System.Single damage;
-		public System.Single speed;
-		public System.Single coolTime;
-		public System.Int32 attackCount;
-		public System.Int32 extraHitCount;
-		public System.Single bulletSpeed;
+		public System.Int32 id;
+		public System.String name;
+		public System.String description;
+		public System.Single value;
+		public System.String extraRelicID;
   
 
 #region fuctions
@@ -82,7 +76,7 @@ namespace CardUnitData
                  return;
             }
 
-            string text = reader.ReadData("CardUnitData"); 
+            string text = reader.ReadData("RelicData"); 
             if (text != null)
             {
                 var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ReadSpreadSheetResult>(text);
@@ -184,7 +178,7 @@ namespace CardUnitData
                               
                             }
                             List.Add(instance); 
-                            Map.Add(instance.cardNum, instance);
+                            Map.Add(instance.id, instance);
                         }
                         if(isLoaded == false || forceReload)
                         { 
