@@ -58,7 +58,7 @@ public class RelicDataManager : MonoBehaviour
     {
         foreach (var data in RelicData.Data.DataList)
         {
-            Type type = Type.GetType(data.name);
+            Type type = Type.GetType(data.component);
             if (type != null)
             {
                 object relicInstance = Activator.CreateInstance(type);

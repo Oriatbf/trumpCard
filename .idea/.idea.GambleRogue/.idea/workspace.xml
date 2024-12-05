@@ -9,15 +9,14 @@
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/UGS.Examples.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/awesome_sunny.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Attack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Data/CardDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/CardDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Health.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/PlayerMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/PlayerMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/HealRelic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/HealRelic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Stat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Stat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/PossessionRelics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/PossessionRelics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/RelicData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/RelicData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/RelicData.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/RelicData.Data.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +125,8 @@
       <workItem from="1733225866588" duration="7425000" />
       <workItem from="1733318300019" duration="146000" />
       <workItem from="1733318458616" duration="287000" />
-      <workItem from="1733318890955" duration="3412000" />
+      <workItem from="1733318890955" duration="3456000" />
+      <workItem from="1733400437407" duration="4280000" />
     </task>
     <servers />
   </component>

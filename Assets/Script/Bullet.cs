@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Bullet : Projectile
     public Rigidbody2D rigid;
     public float damage;
     public bool isReturn;
+    private float bulletSpeed;
     Vector2 bulletDir;
     
     
@@ -24,10 +26,16 @@ public class Bullet : Projectile
         rigid.linearVelocity = Vector2.zero;
         damage = Critical.CriticalChance(stat);
         bulletDir = dir;
-        rigid.AddForce(dir * stat.basicStatValue.bulletSpeed, ForceMode2D.Impulse);
+        bulletSpeed = stat.basicStatValue.bulletSpeed;
+
+        //rigid.AddForce(dir * stat.basicStatValue.bulletSpeed*100*Time.deltaTime, ForceMode2D.Impulse);
     }
 
-  
+    private void Update()
+    {
+        rigid.linearVelocity = bulletDir * bulletSpeed*70 * Time.deltaTime;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

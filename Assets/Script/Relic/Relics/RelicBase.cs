@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,6 +27,11 @@ public class RelicBase
                 _extraRelic.Excute(character);
             }
         }
+    }
+
+    public virtual IEnumerator ExcuteCor(Character character)
+    {
+        yield return null;
     }
     
 }

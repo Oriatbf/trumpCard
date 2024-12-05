@@ -6782,7 +6782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87488b65cc3f8b44afccdf908711918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  str: DamageToHeal
+  possessionRelics: []
+  relicids: 0200000003000000
 --- !u!1 &1917282587
 GameObject:
   m_ObjectHideFlags: 0

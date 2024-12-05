@@ -58,6 +58,7 @@ namespace RelicData
 
 		public System.Int32 id;
 		public System.String name;
+		public System.String component;
 		public System.String description;
 		public System.Single value;
 		public System.String extraRelicID;
