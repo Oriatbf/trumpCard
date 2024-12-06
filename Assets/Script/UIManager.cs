@@ -19,13 +19,13 @@ public class UIManager : MonoBehaviour
         Inst = this;
     }
 
-    public void RecorveryUI(RectTransform rect,float healAmount)
+    public void RecorveryUI(RectTransform rect,Transform trans,float healAmount)
     {
-        recoverUI.SpawnGUI(rect,transform.position,healAmount);
+        recoverUI.SpawnGUI(rect,trans.position,healAmount);
     }
     
-    public void DamageUI(RectTransform rect,float damage)
+    public void DamageUI(RectTransform rect,Transform trans,float damage)
     {
-        damageUI.SpawnGUI(rect,transform.position,damage);
+        damageUI.SpawnGUI(rect,trans.position,damage);
     }
 }

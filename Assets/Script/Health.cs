@@ -76,7 +76,7 @@ public class Health : MonoBehaviour
             DOVirtual.DelayedCall(0.1f, () => spr.material = defaultMaterial);
             curHp -= damage;
             if(damage >=0)
-                UIManager.Inst.DamageUI(rectParent,damage);
+                UIManager.Inst.DamageUI(rectParent,transform,damage);
 
 
             if (curHp <= 0)
@@ -104,7 +104,7 @@ public class Health : MonoBehaviour
 
     public void OnRecorvery(float healAmount)
     {
-        UIManager.Inst.RecorveryUI(rectParent,healAmount);
+        UIManager.Inst.RecorveryUI(rectParent,transform,healAmount);
         curHp += healAmount;
         if(curHp > maxHp)
             curHp = maxHp;

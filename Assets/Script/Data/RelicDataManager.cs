@@ -5,39 +5,32 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using VHierarchy.Libs;
-using VInspector.Libs;
+
+[Serializable]
+public class RelicDatas
+{
+    public string name;
+    public string description;
+    public int id;
+    public List<int> extraRelicID = new List<int>();
+    public RelicBase relic;
+
+    public RelicDatas(RelicData.Data data,RelicBase relic,List<int> exrtaRelicID)
+    {
+        this.relic = relic;
+        this.extraRelicID = exrtaRelicID;
+        id = data.id;
+        name = data.name;
+        description = data.description;
+    }
+        
+}
 
 public class RelicDataManager : MonoBehaviour
 {
     public static RelicDataManager Inst;
     public List<RelicDatas> relicDatas  = new List<RelicDatas>();
-    [Serializable]
-    public class RelicDatas
-    {
-        public string name;
-        public string description;
-        public int id;
-        public List<int> extraRelicID = new List<int>();
-        public RelicBase relic;
-
-        public RelicDatas(RelicData.Data data,RelicBase relic,List<int> exrtaRelicID)
-        {
-            this.relic = relic;
-            this.extraRelicID = exrtaRelicID;
-            id = data.id;
-            name = data.name;
-            description = data.description;
-        }
-
-        public RelicDatas(RelicDatas relicDatas)
-        {
-            this.relic = relicDatas.relic;
-            this.extraRelicID = relicDatas.extraRelicID;
-            id = relicDatas.id;
-            name = relicDatas.name;
-            description = relicDatas.description;
-        }
-    }
+   
     private void Awake()
     {
         if (Inst != null && Inst != this)
@@ -87,8 +80,7 @@ public class RelicDataManager : MonoBehaviour
                 {
                     var extraRelic =  relicDatas.FirstOrDefault(r => r.id == relicIndex);
                     
-                    var a = new RelicDatas(extraRelic);
-                    data.relic.extraRelic.Add(a.relic);
+                    data.relic.extraRelic.Add(extraRelic.relic);
                 }
             }
         }

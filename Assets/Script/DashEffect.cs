@@ -37,7 +37,7 @@ public class DashEffect : MonoBehaviour
     IEnumerator EffectActiveCool(float time)
     {
         isDash= true;
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSecondsRealtime(time);
         isDash= false;
     }
 

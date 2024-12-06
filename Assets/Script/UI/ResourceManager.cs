@@ -30,7 +30,7 @@ public class ResourceManager : MonoBehaviour
     {
         GameObject icon =  Instantiate(relicIcon, relicIconCanvas);
         icon.GetComponent<Image>().sprite = relicSO.relicIcon;
-        icon.transform.Find("RelicLootImage").GetComponent<RelicLoot>().SetCard(relicSO); //수정 예정
+        icon.transform.Find("RelicLootImage").GetComponent<Card>().SetCard(relicSO); //수정 예정
     }
 
     public void GetGold(int value)

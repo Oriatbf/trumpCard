@@ -18,8 +18,10 @@ public class Sandevistan : RelicBase
         if (active) return;
         active = true;
         TimeManager.ChangeTimeSpeed(0.3f);
+        VolumeManager.Inst.SandevistanEffect(value);
         var defaultSpeed = character.stat.basicStatValue.speed;
         character.stat.basicStatValue.speed = defaultSpeed/Time.timeScale;
+        character.dashEffect.ActiveDashEffect(value);
         DOVirtual.DelayedCall(value, () =>
         {
             TimeManager.ChangeTimeSpeed(1f);

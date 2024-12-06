@@ -93,7 +93,7 @@ public class RelicManager : MonoBehaviour
         var randomRelics = GetRandomRelics(relicLoots.Count);
         for (int i = 0; i < relicLoots.Count; i++)
         {
-            relicLoots[i].GetComponent<RelicLoot>().SetCard(randomRelics[i]);
+            relicLoots[i].GetComponent<Card>().SetCard(randomRelics[i]);
         }
     }
 
