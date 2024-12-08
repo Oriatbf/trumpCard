@@ -37,8 +37,8 @@ namespace Map
             {
                 GenerateNewMap();
             }
-
-            if(GameManager.Inst.stageNum== 0) GenerateNewMap();
+            GenerateNewMap();
+            
      
         }
 

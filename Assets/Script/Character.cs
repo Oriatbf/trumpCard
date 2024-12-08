@@ -132,6 +132,7 @@ public class Character : MonoBehaviour
 
     public void SetStat()
     {
+        float hpRatio = health.curHp/health.maxHp;
         stat.basicStatValue = CardDataManager.Inst.RandomCard().stat.basicStatValue;
         var basicStat = stat.basicStatValue;
         basicStat.speed = basicStat.speed <1?1:basicStat.speed;
@@ -139,12 +140,9 @@ public class Character : MonoBehaviour
         curCoolTime= basicStat.coolTime;
         coolTime = basicStat.coolTime;
         basicStat.damage = basicStat.damage<1?1:basicStat.damage; // 데미지 최소치
-        health.ResetHp(basicStat.hp);
-        //health.SetHp(characterSO.relicInfor.remnantHealth);
-       // if(health.curHp + characterSO.relicInfor.relicPlusHealth <=0) health.curHp = 1;
-        //else health.curHp += characterSO.relicInfor.relicPlusHealth;
-        health.HpBarIncrease();
-       // spr.sprite = characterType == CharacterType.Player? cardSO.infor.playerCardImage : cardSO.infor.enemyCardImage;
+        
+        
+        health.ResetHp(basicStat.hp,(basicStat.hp * hpRatio)+10);
 
         shootInfor = new ShootInfor(this, stat);
     }

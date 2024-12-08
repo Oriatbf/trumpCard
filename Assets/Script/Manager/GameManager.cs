@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public bool startChooseRelic = false;
     public bool bossStage;
     [HideInInspector] public bool playerDead;
-    private Transform player, enemy;
+    private Character player, enemy;
     [SerializeField] MapManager mapmanager;
     Camera zoomCam;
 
@@ -35,21 +35,22 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
-
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Character>();
 
     }
-    // Start is called before the first frame update
-    void Start()
+
+    public Character GetOpponent(Character character)
     {
-      
+        if (character.characterType == CharacterType.Player)
+            return enemy;
+        else if (character.characterType == CharacterType.Enemy)
+            return player;
+        else
+            return null;
+        
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     
     private void OnEnable()
     {
@@ -83,13 +84,6 @@ public class GameManager : MonoBehaviour
 
     void OnActiveSceneChanged(Scene previousScene, Scene newScene)
     {
-    /*
-        if (!mapMode && !playerDead && !isLobby)
-        {
-            GameStart();
-            ResetStart();
-          //  EnableRelicChoose(startChooseRelic);
-        }*/
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
@@ -118,8 +112,6 @@ public class GameManager : MonoBehaviour
     public void ResetStart()
     {
         Debug.Log("Restart");
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
         zoomCam = GameObject.FindGameObjectWithTag("CinemaCam").GetComponent<Camera>();
         zoomCam.gameObject.SetActive(false);
 
@@ -153,7 +145,7 @@ public class GameManager : MonoBehaviour
         TimeManager.ChangeTimeSpeed(1);
         if (isPlayerWin)
         {
-            RelicManager.Inst.SetRelic();
+            //RelicManager.Inst.SetRelic();
             RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장
             RelicSelectCanvas.SetActive(true);
         }

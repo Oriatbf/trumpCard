@@ -30,6 +30,13 @@ public class Health : MonoBehaviour
     Character character;
     EnemyMove enemyMove;
     Coroutine freezeDebuff;
+
+    private void Awake()
+    {
+        curHp = 100;
+        maxHp = 100;
+    }
+
     private void Start()
     {
         gambleGauge=GetComponent<GambleGauge>();
@@ -47,15 +54,12 @@ public class Health : MonoBehaviour
     {
         if(autoHeal)AutoHeal();
     }
-    public void SetHp(float remnantHp)
-    {
-        curHp = remnantHp;
-        HpBarIncrease();
-    }
-    public void ResetHp(float maxHp)
+    public void ResetHp(float maxHp,float curHp)
     {
         this.maxHp = maxHp;
-        curHp = maxHp;
+        this.curHp = curHp;
+        if(this.curHp > this.maxHp)
+            this.curHp = this.maxHp;
         HpBarIncrease();
     }
 

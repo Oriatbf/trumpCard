@@ -34,12 +34,13 @@ public class ShopManager : MonoBehaviour
 
     void Refresh()
     {
+        /*
         var randomRelics = RelicManager.Inst.GetRandomRelics(relicLoots.Count);
         for (int i = 0; i < relicLoots.Count; i++)
         {
             relicLoots[i].GetComponent<Card>().SetCard(randomRelics[i]);
             relicLoots[i].GetComponent<Card>().purchased = false;
-        }
+        }*/
     }
 
     public void RefreshBtn()

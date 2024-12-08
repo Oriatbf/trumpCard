@@ -1,3 +1,5 @@
+using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +12,7 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
     [SerializeField] Color[] rarityColor;
     [SerializeField] Image rarityImage,relicIcon;
 
-    private RectTransform rect;
+    [SerializeField]private RectTransform rect;
 
     // Shop
     [SerializeField] bool ShopCard;
@@ -18,17 +20,30 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
     [ShowIf("ShopCard")]
     [SerializeField] TextMeshProUGUI goldText;
 
+    private RelicDatas relicData;
+
     public bool purchased;
     private int gold;
 
-    public void SetCard(RelicDatas relicDatas)
+    private void Awake()
     {
+        rect = GetComponent<RectTransform>();
+    }
+
+    public void Init(RelicDatas relicDatas)
+    {
+        relicData = relicDatas;
         relicName.text = relicDatas.name;
         relicInfor.text = relicDatas.description;
         int rarityIndex = 0;
 
         this.relicIcon.sprite = null;
         rarityImage.color= rarityColor[rarityIndex];
+    }
+
+    public void SetCard(RelicDatas relicDatas)
+    {
+       
 
         /*
         // Shop
@@ -49,21 +64,27 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
     // Shop
     public void SelectRelic()
     {
-        
+        CharacterRelicData.Inst.AddPlayerRelic(relicData);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         SelectRelic();
+        RelicSelectManager.Inst.Close();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        rect.sizeDelta = new Vector2(rect.sizeDelta.x * 1.5f,rect.sizeDelta.y* 1.5f);
+        float size = 1.15f;
+        Debug.Log("닿음");
+        rect.DOScale(new Vector3(size, size), 0.1f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        rect.sizeDelta = new Vector2(rect.sizeDelta.x * 1f,rect.sizeDelta.y* 1f);
+        float size = 1f;
+        Debug.Log("끝");
+        rect.DOScale(new Vector3(size, size), 0.1f);
     }
+    
 }

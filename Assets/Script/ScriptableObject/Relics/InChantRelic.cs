@@ -12,8 +12,6 @@ public class InChantRelic : RelicSO
     [Serializable]
     public struct RelicType
     {
-
-
         public enum Relic_Type { BloodSucking,fireDebuff,iceDebuff}
 
         public Relic_Type relic_Type;

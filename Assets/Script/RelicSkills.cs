@@ -24,8 +24,8 @@ public class RelicSkills : MonoBehaviour
     private void Awake()
     {
         character= GetComponent<Character>();
-        if (characterType == CharacterType.Player) relics = RelicManager.Inst.playerRelic;
-        if(characterType == CharacterType.Enemy) relics = RelicManager.Inst.enemyRelic;
+       // if (characterType == CharacterType.Player) relics = RelicManager.Inst.playerRelic;
+       // if(characterType == CharacterType.Enemy) relics = RelicManager.Inst.enemyRelic;
     }
 
 

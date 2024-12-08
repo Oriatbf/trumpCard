@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using VHierarchy.Libs;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class RelicDatas
@@ -86,9 +87,37 @@ public class RelicDataManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public List<RelicDatas> RandomRelics(int count)
     {
+        HashSet<int> selectedID = new HashSet<int>();
+        HashSet<RelicDatas> selectedRelic = new HashSet<RelicDatas>();
         
+        for (int j = 0; j < count; j++)
+        {
+            int random = 0;
+            do
+            {
+                random = Random.Range(0, relicDatas.Count);
+            } while (!selectedID.Add(random));
+
+            selectedRelic.Add(relicDatas.FirstOrDefault(r => r.id == random));
+        }
+
+        return selectedRelic.ToList();
+    }
+    
+    public List<RelicDatas> DupRandomRelics(int count)
+    {
+        List<int> selectedID = new List<int>();
+        List<RelicDatas> selectedRelic = new List<RelicDatas>();
+        
+        for (int j = 0; j < count; j++)
+        {
+            int random = 0;
+            random = Random.Range(0, relicDatas.Count);
+            selectedRelic.Add(relicDatas.FirstOrDefault(r => r.id == random));
+        }
+
+        return selectedRelic.ToList();
     }
 }

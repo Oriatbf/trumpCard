@@ -16,10 +16,12 @@ public class ObjectPoolingManager : MonoBehaviour
     {
         if (Inst != this && Inst != null)
         {
+            Destroy(gameObject);
             return;
         }
         else
         {
+            DontDestroyOnLoad(gameObject);
             Inst = this;
         }
       

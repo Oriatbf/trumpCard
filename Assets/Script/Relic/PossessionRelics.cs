@@ -13,11 +13,20 @@ public class PossessionRelics : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<Character>();
-        foreach (var id in relicids)
+        SetRelic();
+        
+    }
+
+    private void SetRelic()
+    {
+        if (character.characterType == CharacterType.Player)
         {
-            var relic = RelicDataManager.Inst.relicDatas.FirstOrDefault(r => r.id == id);
-            possessionRelics.Add(relic.relic);
+            foreach (var relicData in CharacterRelicData.Inst.playerRelicData)
+            {
+                possessionRelics.Add(relicData.relic);
+            }
         }
+       
     }
 
     private void Start()

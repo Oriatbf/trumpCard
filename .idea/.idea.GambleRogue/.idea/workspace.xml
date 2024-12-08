@@ -6,17 +6,32 @@
   <component name="ChangeListManager">
     <list default="true" id="8980fbce-ce1f-40fc-ad40-6187e7f32ffb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Scripts/MapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Scripts/MapManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Scripts/MapPlayerTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Scripts/MapPlayerTracker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Galmuri11 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Galmuri11 SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/UGS.Examples.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/awesome_sunny.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/RelicCard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/RelicCard.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Card.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Character.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/RelicSelectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/RelicSelectManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/TypeManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/TypeManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ObjectPoolingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ObjectPoolingManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/PossessionRelics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/PossessionRelics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/RelicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/RelicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/RelicSkills.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/RelicSkills.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/InChantRelic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Relics/InChantRelic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ShopManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ShopManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/UI/ResourceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/UI/ResourceManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/RelicData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/RelicData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/RelicData.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/RelicData.Data.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +42,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbae017f0374fce9921b97a33a4e8ca1dd800/7e/40bdd472/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/adbae017f0374fce9921b97a33a4e8ca1dd800/88/a95e8ac0/Time.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/LobbyStartBtn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Relic/MaintainedAbility.cs" root0="FORCE_HIGHLIGHTING" />
@@ -127,6 +143,10 @@
       <workItem from="1733318458616" duration="287000" />
       <workItem from="1733318890955" duration="3456000" />
       <workItem from="1733400437407" duration="4280000" />
+      <workItem from="1733484481253" duration="4507000" />
+      <workItem from="1733547883920" duration="5965000" />
+      <workItem from="1733640451775" duration="7120000" />
+      <workItem from="1733664272091" duration="1303000" />
     </task>
     <servers />
   </component>

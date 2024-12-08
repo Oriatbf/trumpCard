@@ -25,9 +25,7 @@ public class RelicManager : MonoBehaviour
     [SerializeField]private  List<RelicSO> epicRelicSOs = new List<RelicSO>();
 
     [SerializeField] List<int> rarityChance;
-
-    [SerializeField] private Transform relicLootsLayout;
-    public List<GameObject> relicLoots = new List<GameObject>();
+    
 
     private void Awake()
     {
@@ -45,12 +43,7 @@ public class RelicManager : MonoBehaviour
         commonRelicSOs = AllRelics.Where(relic => relic.rarity == RelicSO.Rarity.Common).ToList();
         rareRelicSOs = AllRelics.Where(relic => relic.rarity == RelicSO.Rarity.Rare).ToList();
         epicRelicSOs = AllRelics.Where(relic => relic.rarity == RelicSO.Rarity.Epic).ToList();
-
-       
-        for (int i = 0; i < relicLootsLayout.childCount; i++)
-        {
-            relicLoots.Add(relicLootsLayout.GetChild(i).gameObject);
-        }
+        
     }
 
     // Start is called before the first frame update
@@ -87,15 +80,6 @@ public class RelicManager : MonoBehaviour
         Debug.Log(playerRelic[1]);
     }
 
-    [Button]
-    public void SetRelic()
-    {
-        var randomRelics = GetRandomRelics(relicLoots.Count);
-        for (int i = 0; i < relicLoots.Count; i++)
-        {
-            relicLoots[i].GetComponent<Card>().SetCard(randomRelics[i]);
-        }
-    }
 
 
     public List<RelicSO> GetRandomRelics(int _count)

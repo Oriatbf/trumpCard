@@ -2,6 +2,7 @@
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using EasyTransition;
 using UnityEngine.SceneManagement;
 
 namespace Map
@@ -70,11 +71,11 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case NodeType.MinorEnemy:
-                    GameManager.Inst.FightStage();
+                    DemoLoadScene.Inst.LoadScene("StageScene");
                     MapPlayerTracker.Instance.Locked = false;
                     break;
                 case NodeType.EliteEnemy:
-                    GameManager.Inst.FightStage();
+                    DemoLoadScene.Inst.LoadScene("StageScene");
                     break;
                 case NodeType.Treasure:
                     break;
@@ -84,7 +85,7 @@ namespace Map
                     break;
                 case NodeType.Boss:
                     GameManager.Inst.bossStage = true;
-                    GameManager.Inst.FightStage();
+                    DemoLoadScene.Inst.LoadScene("StageScene");
                     break;
                 case NodeType.Mystery:
                     EventManager.Inst.EventOpen();
@@ -100,5 +101,7 @@ namespace Map
         {
             Debug.Log("Selected node cannot be accessed");
         }
+        
+        
     }
 }
