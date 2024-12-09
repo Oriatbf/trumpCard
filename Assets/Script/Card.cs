@@ -34,7 +34,7 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
     {
         relicData = relicDatas;
         relicName.text = relicDatas.name;
-        relicInfor.text = relicDatas.description;
+        relicInfor.text = relicDatas.description; 
         int rarityIndex = 0;
 
         this.relicIcon.sprite = null;
@@ -69,6 +69,7 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("카드선택");
         SelectRelic();
         RelicSelectManager.Inst.Close();
     }

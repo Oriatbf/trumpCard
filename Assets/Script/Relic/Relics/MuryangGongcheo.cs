@@ -11,11 +11,10 @@ public class MuryangGongcheo : RelicBase
         Character opponent =  GameManager.Inst.GetOpponent(character);
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(time);
             
             opponent.health.GetDamage(opponent.health.curHp/2);
             Object.Instantiate(effect);
-            yield return new WaitForSeconds(50f);
         }
     }
 }

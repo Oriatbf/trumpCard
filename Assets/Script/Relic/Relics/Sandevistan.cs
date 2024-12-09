@@ -18,14 +18,14 @@ public class Sandevistan : RelicBase
         if (active) return;
         active = true;
         TimeManager.ChangeTimeSpeed(0.3f);
-        VolumeManager.Inst.SandevistanEffect(value);
-        var defaultSpeed = character.stat.basicStatValue.speed;
-        character.stat.basicStatValue.speed = defaultSpeed/Time.timeScale;
-        character.dashEffect.ActiveDashEffect(value);
-        DOVirtual.DelayedCall(value, () =>
+        VolumeManager.Inst.SandevistanEffect(time);
+        var defaultSpeed = character.stat.statValue.speed;
+        character.stat.statValue.speed = defaultSpeed/Time.timeScale;
+        character.dashEffect.ActiveDashEffect(time);
+        DOVirtual.DelayedCall(time, () =>
         {
             TimeManager.ChangeTimeSpeed(1f);
-            character.stat.basicStatValue.speed = defaultSpeed;
+            character.stat.statValue.speed = defaultSpeed;
             DOVirtual.DelayedCall(coolTime, () => active = false);
         });
     }

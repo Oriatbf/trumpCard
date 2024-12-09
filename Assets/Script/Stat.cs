@@ -8,11 +8,12 @@ public class Stat
     public int cardNum;
     public CardType cardType;
     public CardRole cardRole;
+    public Action statUpAction;
     
     [Serializable]
-    public class StatsValue
+    public struct StatsValue
     {
-       
+
         public float hp;
         public float speed;
         public float damage;
@@ -20,10 +21,18 @@ public class Stat
         public float criticalChance, criticalMultiplier;
         public float bulletSize;
         public float bulletSpeed; 
-        public float attackCount, extraHitCount;  
+        public float attackCount, extraHitCount;
+        
     }
 
-    public StatsValue basicStatValue = new StatsValue();
+    public void StatUpAction()
+    {
+        statUpAction?.Invoke();
+        
+    }
+
+    public StatsValue statValue = new StatsValue();
+    
     
 
 }

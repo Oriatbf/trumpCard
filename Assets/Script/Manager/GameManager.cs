@@ -132,12 +132,12 @@ public class GameManager : MonoBehaviour
         DOTween.To(() => zoomCam.orthographicSize, size => zoomCam.orthographicSize = size, 3, 1f);
         
         yield return new WaitForSecondsRealtime(3f);
+        TimeManager.ChangeTimeSpeed(1f);
     }
     
     public IEnumerator DefectBoss(Transform deadCharacter)
     {
         yield return StartCoroutine(CameraZoom(deadCharacter.transform)); 
-        TimeManager.ChangeTimeSpeed(1);
         SceneTransition("EndScene");
     }
 
@@ -146,10 +146,9 @@ public class GameManager : MonoBehaviour
     {
         
         yield return StartCoroutine(CameraZoom(deadCharacter.transform)); 
-        TimeManager.ChangeTimeSpeed(1);
         if (isPlayerWin)
         {
-            DataManager.Inst.stage++;
+            DataManager.Inst.Data.stage++;
             TimeManager.ChangeTimeSpeed(0f);
             RelicSelectManager.Inst.CardSelect("Map");
         }

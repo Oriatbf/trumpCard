@@ -22,7 +22,6 @@ public class VolumeManager : MonoBehaviour
         else
         {
             Inst = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 

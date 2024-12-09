@@ -2,16 +2,25 @@ using System;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using GoogleSheet.Core.Type;
 using UnityEngine;
 using UnityEngine.Serialization;
 using VHierarchy.Libs;
 using Random = UnityEngine.Random;
 
+[UGS(typeof(Rarity))]
+public enum Rarity
+{
+    Common,Rare,Epic
+}
+
 [Serializable]
 public class RelicDatas
 {
+    public Rarity rarity;
     public string name;
     public string description;
+    public Dictionary<string, string> descriptionVariable = new Dictionary<string, string>();
     public int id;
     public List<int> extraRelicID = new List<int>();
     public RelicBase relic;
@@ -22,7 +31,18 @@ public class RelicDatas
         this.extraRelicID = exrtaRelicID;
         id = data.id;
         name = data.name;
+        descriptionVariable.Add("time", data.time.ToString());
+        descriptionVariable.Add("value", data.value.ToString());
         description = data.description;
+        foreach (var word in descriptionVariable)
+        {
+            description = description.Replace(word.Key,word.Value);
+        }
+
+        Debug.Log(description);
+
+
+
     }
         
 }
@@ -66,7 +86,7 @@ public class RelicDataManager : MonoBehaviour
                         _extraRelicID.Add(int.Parse(str));
                     }
                 }
-                relic.Init(data.value);
+                relic.Init(data.value,data.time);
                 
                 relicDatas.Add(new RelicDatas( data,relic,_extraRelicID));
             }

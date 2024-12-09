@@ -115,8 +115,8 @@ public class PlayerMove : Character
 
             angleVec = new Vector3(x, y, 0).normalized;
 
-            float moveX = angleVec.x * stat.basicStatValue.speed * Time.deltaTime;
-            float moveY = angleVec.y * stat.basicStatValue.speed * Time.deltaTime;
+            float moveX = angleVec.x * stat.statValue.speed * Time.deltaTime;
+            float moveY = angleVec.y * stat.statValue.speed * Time.deltaTime;
             transform.Translate(new Vector3(moveX, moveY, 0), Space.World);
 
             //Rotation
@@ -165,9 +165,9 @@ public class PlayerMove : Character
             {
                 bowDir = _dir;
                 _curCharging += Time.deltaTime;
-                if (_curCharging >= stat.basicStatValue.coolTime) _curCharging = stat.basicStatValue.coolTime;
-                attackCoolImage.fillAmount = _curCharging / stat.basicStatValue.coolTime;
-                if(_curCharging>=stat.basicStatValue.coolTime)BowShoot();
+                if (_curCharging >= stat.statValue.coolTime) _curCharging = stat.statValue.coolTime;
+                attackCoolImage.fillAmount = _curCharging / stat.statValue.coolTime;
+                if(_curCharging>=stat.statValue.coolTime)BowShoot();
                
             }
 

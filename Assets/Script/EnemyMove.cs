@@ -96,8 +96,8 @@ public class EnemyMove : Character
     {
         finalDir =  finalDir.normalized;
         //이동
-        float moveX = finalDir.x * stat.basicStatValue.speed * Time.deltaTime;
-        float moveY = finalDir.y * stat.basicStatValue.speed * Time.deltaTime;
+        float moveX = finalDir.x * stat.statValue.speed * Time.deltaTime;
+        float moveY = finalDir.y * stat.statValue.speed * Time.deltaTime;
        
         transform.Translate(new Vector3(moveX,moveY,0),Space.World);
 

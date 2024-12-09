@@ -71,6 +71,7 @@ public class RelicSelectManager : MonoBehaviour
     public void Close()
     {
         OnClose?.Invoke();
+        DataManager.Inst.Save();
     
     }
     

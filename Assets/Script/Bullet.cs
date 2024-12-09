@@ -26,9 +26,9 @@ public class Bullet : Projectile
         rigid.linearVelocity = Vector2.zero;
         damage = Critical.CriticalChance(stat);
         bulletDir = dir;
-        bulletSpeed = stat.basicStatValue.bulletSpeed;
+        bulletSpeed = stat.statValue.bulletSpeed;
 
-        //rigid.AddForce(dir * stat.basicStatValue.bulletSpeed*100*Time.deltaTime, ForceMode2D.Impulse);
+        //rigid.AddForce(dir * stat.statValue.bulletSpeed*100*Time.deltaTime, ForceMode2D.Impulse);
     }
 
     private void Update()

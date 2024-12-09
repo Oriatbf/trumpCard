@@ -72,14 +72,11 @@ public class Character : MonoBehaviour
 
     public void Gambling() //갬블시 초기화 되는 내용 및 체인지
     {
-       // characterSO.ResetRelicInfor();
-      //  characterSO.debuffs.Clear();
-     //   characterSO.relicInfor.characterTrans = transform;
-      //  characterSO.relicInfor.characterHealth = health;
         gambleGauge._curGauge = 0;
         StartRelicSkill();
-        SetStat();
         SetWeapon(stat.cardNum);
+        SetStat();
+       
     }
 
     public void CardStatReset() //게임이 다끝나고 로비로 돌아가야할 때 실행
@@ -132,16 +129,18 @@ public class Character : MonoBehaviour
 
     public void SetStat()
     {
-        float hpRatio = health.curHp/health.maxHp;
-        stat.basicStatValue = CardDataManager.Inst.RandomCard().stat.basicStatValue;
-        var basicStat = stat.basicStatValue;
+        float hpRatio = health.curHp/health.maxHp; //hp 비율
+        stat.statValue = CardDataManager.Inst.RandomCard().stat.statValue;
+        Debug.Log(stat.statValue.hp);
+        stat.StatUpAction();
+        
+        var basicStat = stat.statValue;
         basicStat.speed = basicStat.speed <1?1:basicStat.speed;
         basicStat.coolTime= basicStat.coolTime < 0.1f?0.1f: basicStat.coolTime; //쿨타임 최소치
-        curCoolTime= basicStat.coolTime;
-        coolTime = basicStat.coolTime;
         basicStat.damage = basicStat.damage<1?1:basicStat.damage; // 데미지 최소치
         
-        
+        curCoolTime= basicStat.coolTime;
+        coolTime = basicStat.coolTime;
         health.ResetHp(basicStat.hp,(basicStat.hp * hpRatio)+10);
 
         shootInfor = new ShootInfor(this, stat);
@@ -168,7 +167,7 @@ public class Character : MonoBehaviour
     {
         if (curCoolTime > 0)
         {
-            attackCoolImage.fillAmount = curCoolTime / stat.basicStatValue.coolTime;
+            attackCoolImage.fillAmount = curCoolTime / stat.statValue.coolTime;
             curCoolTime -= Time.deltaTime;
         }
         else
@@ -207,7 +206,7 @@ public class Character : MonoBehaviour
         if ( curCoolTime <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
-            curCoolTime = stat.basicStatValue.coolTime;
+            curCoolTime = stat.statValue.coolTime;
             attackCoolImage.fillAmount = 1;
 
             if (!isSting)

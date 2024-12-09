@@ -9,13 +9,15 @@ public class RelicBase
 {
     
     public float value;
+    public float time;
     public List<RelicBase> extraRelic = new List<RelicBase>();
     
 
 
-    public virtual void Init(float _value)
+    public virtual void Init(float _value,float _time)
     {
         value = _value;
+        time = _time;
     }
 
     public virtual void Excute(Character character)
