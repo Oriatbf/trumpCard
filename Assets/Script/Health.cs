@@ -86,14 +86,21 @@ public class Health : MonoBehaviour
             if (curHp <= 0)
             {
                 character.opponent.GetComponent<Health>().isInv = true;
+                if (character.characterType == CharacterType.Player)
+                {
+                    StartCoroutine( GameManager.Inst.GameEnd(false, gameObject));
+                }
+                else if (character.characterType == CharacterType.Enemy)
+                {
+                    StartCoroutine(GameManager.Inst.GameEnd(true, gameObject));
+                }
+                
                 /*
                 if (!character.isPlayer)
                 {
                     if (enemyMove.enemyCharacter == EnemyMove.EnemyCharacter.Boss)
                         StartCoroutine(GameManager.Inst.DefectBoss(transform));
-                    else StartCoroutine( GameManager.Inst.GameEnd(true, gameObject));
-                }
-                else StartCoroutine(GameManager.Inst.GameEnd(false, gameObject));*/
+                }*/
             }
 
             OnDamage?.Invoke();

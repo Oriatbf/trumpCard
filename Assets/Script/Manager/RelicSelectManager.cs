@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using EasyTransition;
 using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
 using VInspector;
@@ -14,6 +15,8 @@ public class RelicSelectManager : MonoBehaviour
     [SerializeField] private Card cardPrefab;
     [SerializeField] private Transform content;
 
+    private Action OnClose;
+
     private void Awake()
     {
         if (Inst != null && Inst != this)
@@ -26,10 +29,14 @@ public class RelicSelectManager : MonoBehaviour
             Inst = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        OnClose +=()=> Hide();
     }
+    
+    
 
     [Button]
-    public void CardSelect()
+    public void CardSelect(string sceneName = null)
     {
         panel.SetPosition(PanelStates.Show,true);
         var randomRelics = RelicDataManager.Inst.RandomRelics(cardCount);
@@ -38,15 +45,33 @@ public class RelicSelectManager : MonoBehaviour
             Card card =  Instantiate(cardPrefab, content);
             card.Init(relicData);
         }
-    }
 
-    public void Close()
+        if (sceneName!= null)
+        {
+            OnClose += ()=>DemoLoadScene.Inst.LoadScene(sceneName);
+        }
+        else
+        {
+            OnClose = null;
+            OnClose +=()=> Hide();
+        }
+    }
+    
+    private void Hide()
     {
+        TimeManager.ChangeTimeSpeed(1f);
         panel.SetPosition(PanelStates.Hide,true);
         foreach (Transform child in content)
         {
             Destroy(child.gameObject);
         }
+       
+    }
+
+    public void Close()
+    {
+        OnClose?.Invoke();
+    
     }
     
     

@@ -5309,6 +5309,7 @@ MonoBehaviour:
   bossStage: 0
   playerDead: 0
   mapmanager: {fileID: 0}
+  zoomCam: {fileID: 1145953858}
 --- !u!4 &1635357019
 Transform:
   m_ObjectHideFlags: 0

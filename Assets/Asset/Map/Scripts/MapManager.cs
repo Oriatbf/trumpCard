@@ -37,7 +37,12 @@ namespace Map
             {
                 GenerateNewMap();
             }
-            GenerateNewMap();
+
+            if (DataManager.Inst.stage == 0)
+            {
+                GenerateNewMap();
+            }
+            
             
      
         }

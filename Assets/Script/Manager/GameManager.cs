@@ -19,10 +19,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool playerDead;
     private Character player, enemy;
     [SerializeField] MapManager mapmanager;
-    Camera zoomCam;
+    [SerializeField] private Camera zoomCam;
 
     public void Awake()
     {
+        Inst = this;
+        /*
         if (Inst != this && Inst != null)
         {
             Destroy(gameObject);
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
         {
             Inst = this;
             DontDestroyOnLoad(gameObject);
-        }
+        }*/
 
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
@@ -125,10 +127,11 @@ public class GameManager : MonoBehaviour
     IEnumerator CameraZoom(Transform deadCharacter)
     {
         zoomCam.gameObject.SetActive(true);
-        zoomCam.transform.DOMove(new Vector3(deadCharacter.position.x, deadCharacter.position.y), 0.35f);
-        DOTween.To(() => zoomCam.orthographicSize, size => zoomCam.orthographicSize = size, 3, 1f);
         TimeManager.ChangeTimeSpeed(0.3f);
-        yield return new WaitForSeconds(3f);
+        zoomCam.transform.DOMove(new Vector3(deadCharacter.position.x, deadCharacter.position.y,-10), 0.5f);
+        DOTween.To(() => zoomCam.orthographicSize, size => zoomCam.orthographicSize = size, 3, 1f);
+        
+        yield return new WaitForSecondsRealtime(3f);
     }
     
     public IEnumerator DefectBoss(Transform deadCharacter)
@@ -141,13 +144,14 @@ public class GameManager : MonoBehaviour
     [Button]
     public IEnumerator GameEnd(bool isPlayerWin,GameObject deadCharacter)
     {
+        
         yield return StartCoroutine(CameraZoom(deadCharacter.transform)); 
         TimeManager.ChangeTimeSpeed(1);
         if (isPlayerWin)
         {
-            //RelicManager.Inst.SetRelic();
-            RelicManager.Inst.playerRelic = player.GetComponent<RelicSkills>().relics; //렐릭 매니저에 플레이어 유물 저장
-            RelicSelectCanvas.SetActive(true);
+            DataManager.Inst.stage++;
+            TimeManager.ChangeTimeSpeed(0f);
+            RelicSelectManager.Inst.CardSelect("Map");
         }
         else
         {

@@ -77,14 +77,14 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
     {
         float size = 1.15f;
         Debug.Log("닿음");
-        rect.DOScale(new Vector3(size, size), 0.1f);
+        rect.DOScale(new Vector3(size, size), 0.1f).SetUpdate(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         float size = 1f;
         Debug.Log("끝");
-        rect.DOScale(new Vector3(size, size), 0.1f);
+        rect.DOScale(new Vector3(size, size), 0.1f).SetUpdate(true);
     }
     
 }
