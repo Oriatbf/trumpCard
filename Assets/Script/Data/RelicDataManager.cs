@@ -29,6 +29,7 @@ public class RelicDatas
     {
         this.relic = relic;
         this.extraRelicID = exrtaRelicID;
+        rarity = data.rarity;
         id = data.id;
         name = data.name;
         descriptionVariable.Add("time", data.time.ToString());
@@ -111,6 +112,8 @@ public class RelicDataManager : MonoBehaviour
     {
         HashSet<int> selectedID = new HashSet<int>();
         HashSet<RelicDatas> selectedRelic = new HashSet<RelicDatas>();
+        
+        
         
         for (int j = 0; j < count; j++)
         {

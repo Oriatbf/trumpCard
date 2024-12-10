@@ -6588,7 +6588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9662310c0ecc144915eb9c6ee165f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  str: HealRelic
 --- !u!4 &1214096086
 Transform:
   m_ObjectHideFlags: 0
