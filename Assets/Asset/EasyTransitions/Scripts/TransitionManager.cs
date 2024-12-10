@@ -11,7 +11,7 @@ namespace EasyTransition
     {        
         [SerializeField] private GameObject transitionTemplate;
 
-        private bool runningTransition;
+        public bool runningTransition;
 
         public UnityAction onTransitionBegin;
         public UnityAction onTransitionCutPointReached;
@@ -29,7 +29,7 @@ namespace EasyTransition
             else
             {
                 instance = this;
-                DontDestroyOnLoad(transform.parent);
+                DontDestroyOnLoad(transform.gameObject);
             }
         }
 
@@ -66,9 +66,15 @@ namespace EasyTransition
         /// <param name="startDelay">The delay before the transition starts.</param>
         public void Transition(string sceneName, TransitionSettings transition, float startDelay)
         {
-            if (transition == null || runningTransition)
+            if (transition == null)
             {
-                Debug.LogError("You have to assing a transition.");
+                Debug.LogError("Null transition");
+                return;
+            }
+
+            if ( runningTransition)
+            {
+                Debug.LogError("RunningTransition");
                 return;
             }
 
@@ -84,9 +90,15 @@ namespace EasyTransition
         /// <param name="startDelay">The delay before the transition starts.</param>
         public void Transition(int sceneIndex, TransitionSettings transition, float startDelay)
         {
-            if (transition == null || runningTransition)
+            if (transition == null)
             {
-                Debug.LogError("You have to assing a transition.");
+                Debug.LogError("Null transition");
+                return;
+            }
+
+            if ( runningTransition)
+            {
+                Debug.LogError("RunningTransition");
                 return;
             }
 
@@ -122,9 +134,9 @@ namespace EasyTransition
 
 
             SceneManager.LoadScene(sceneName);
-
+            
             yield return new WaitForSecondsRealtime(transitionSettings.destroyTime);
-
+            
             onTransitionEnd?.Invoke();
             runningTransition = false;
         

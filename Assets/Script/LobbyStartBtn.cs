@@ -5,7 +5,7 @@ public class LobbyStartBtn : LobbyInteraction
 {
     private void Update()
     {
-        DetectPlayer();
+        
     }
 
     protected override void InteractAction()

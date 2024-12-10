@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterRelicData : MonoBehaviour
@@ -35,6 +36,17 @@ public class CharacterRelicData : MonoBehaviour
     
     public void AddPlayerRelic(RelicDatas relicData)
     {
+        DataManager.Inst.Data.relicID.Add(relicData.id);
         playerRelicData.Add(relicData);
+    }
+
+    public void LoadPlayerRelic(List<int> relicIds)
+    {
+        playerRelicData.Clear();
+        foreach (var id in relicIds)
+        {
+            RelicDatas data = RelicDataManager.Inst.relicDatas.FirstOrDefault(r => r.id == id);
+            playerRelicData.Add(data);
+        }
     }
 }

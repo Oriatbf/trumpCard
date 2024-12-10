@@ -32,8 +32,38 @@ public class LobbyInteraction : MonoBehaviour
     }
 
 
-    public void DetectPlayer()
+    public void DetectNpc()
     {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 3f);
+        List<LobbyInteraction> npcs = new List<LobbyInteraction>();
+        foreach (var col in colliders)
+        {
+            if (col.TryGetComponent(out LobbyInteraction lobbyNpc) && lobbyNpc != this)
+            {
+                npcs.Add(lobbyNpc);
+            }
+        }
+
+        if (npcs.Count > 0)
+        {
+            float minDistance = Mathf.Infinity;
+            LobbyInteraction nearNpc = npcs[0];
+            foreach (var npc in npcs)
+            {
+                float _distance = Vector3.Distance(npc.transform.position, transform.position);
+                if (_distance < minDistance)
+                {
+                    minDistance = _distance;
+                    nearNpc = npc;
+                }
+                    
+            }
+            
+            if(Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Player)
+                nearNpc.InteractAction();
+        }
+        
+        
         if (Vector3.Distance(NpcManager.Inst.GetPlayerNpc().transform.position, transform.position) < detectRange)
         {
             inDetect = true;
@@ -43,7 +73,7 @@ public class LobbyInteraction : MonoBehaviour
         if(inDetect && Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Npc)
             interactAction?.Invoke();
     }
-
+    
     protected virtual void InteractAction(){}
 
     private void LateUpdate()

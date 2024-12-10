@@ -28,9 +28,9 @@ public class LobbyNpc : LobbyInteraction
         if(!TutorialManager.Inst.isTutorialing && npcType == NpcType.Player)
             Move();
 
-        if (npcType == NpcType.Npc)
+        if (npcType == NpcType.Player)
         {
-            DetectPlayer();
+            DetectNpc();
         }
         
     }
@@ -42,8 +42,12 @@ public class LobbyNpc : LobbyInteraction
     protected override void InteractAction()
     {
         Debug.Log(gameObject.name);
-        npcType = NpcType.Player;
-        DOVirtual.DelayedCall(0.01f, () => NpcManager.Inst.SetPlayerNpc());
+        
+        DOVirtual.DelayedCall(0.01f, () =>
+        {
+            npcType = NpcType.Player;
+            NpcManager.Inst.SetNpcPlayer();
+        });
     }
 
     [Button]

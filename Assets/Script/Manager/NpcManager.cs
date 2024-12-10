@@ -32,7 +32,7 @@ public class NpcManager : MonoBehaviour
 
     }
 
-    public void SetPlayerNpc()
+    public void SetNpcPlayer()
     {
         playerNpc.npcType = NpcType.Npc;
         var _playerNpc = lobbyNpcs.Where((npc => npc.npcType == NpcType.Player)).ToList();

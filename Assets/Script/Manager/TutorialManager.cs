@@ -14,14 +14,13 @@ public class TutorialManager : MonoBehaviour
     {
         if (Inst != this && Inst != null)
         {
-            Destroy(transform.gameObject);
-
+            Destroy(gameObject);
             return;
         }
         else
         {
             Inst = this;
-            DontDestroyOnLoad(transform.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
     }
 

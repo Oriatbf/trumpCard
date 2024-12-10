@@ -24,17 +24,7 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         Inst = this;
-        /*
-        if (Inst != this && Inst != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }*/
+      
 
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
@@ -90,14 +80,14 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
            // UIManager.Inst.GoldRelicReset();
-            Destroy(GameManager.Inst.gameObject);
+           // Destroy(GameManager.Inst.gameObject);
         }
 
         
         if (newScene.name == "LobbyScene")
         {
            // UIManager.Inst.GoldRelicReset();
-            Destroy(GameManager.Inst.gameObject);
+            //Destroy(GameManager.Inst.gameObject);
         }
 
 
@@ -142,9 +132,8 @@ public class GameManager : MonoBehaviour
     }
 
     [Button]
-    public IEnumerator GameEnd(bool isPlayerWin,GameObject deadCharacter)
+    public IEnumerator GameEnd(bool isPlayerWin,Character deadCharacter)
     {
-        
         yield return StartCoroutine(CameraZoom(deadCharacter.transform)); 
         if (isPlayerWin)
         {

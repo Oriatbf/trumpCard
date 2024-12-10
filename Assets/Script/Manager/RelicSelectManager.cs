@@ -30,7 +30,7 @@ public class RelicSelectManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        OnClose +=()=> Hide();
+       
     }
     
     
@@ -48,6 +48,8 @@ public class RelicSelectManager : MonoBehaviour
 
         if (sceneName!= null)
         {
+            OnClose = null;
+            OnClose +=()=> Hide();
             OnClose += ()=>DemoLoadScene.Inst.LoadScene(sceneName);
         }
         else

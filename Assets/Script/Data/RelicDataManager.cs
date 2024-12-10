@@ -32,8 +32,8 @@ public class RelicDatas
         rarity = data.rarity;
         id = data.id;
         name = data.name;
-        descriptionVariable.Add("time", data.time.ToString());
-        descriptionVariable.Add("value", data.value.ToString());
+        descriptionVariable.Add("time", Mathf.Abs(data.time).ToString());
+        descriptionVariable.Add("value", Mathf.Abs(data.value).ToString());
         description = data.description;
         foreach (var word in descriptionVariable)
         {
@@ -41,9 +41,6 @@ public class RelicDatas
         }
 
         Debug.Log(description);
-
-
-
     }
         
 }

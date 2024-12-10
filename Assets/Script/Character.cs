@@ -4,6 +4,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using OneLine.Examples;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -35,7 +36,7 @@ public class Character : MonoBehaviour
     public Vector3 _dir;
     protected float _angle;
     
-    public Transform opponent;
+    public Character opponent;
     public float curCoolTime,coolTime;
     [HideInInspector] public bool isDashing;
      public float _curCharging; 

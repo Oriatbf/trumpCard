@@ -85,14 +85,15 @@ public class Health : MonoBehaviour
 
             if (curHp <= 0)
             {
-                character.opponent.GetComponent<Health>().isInv = true;
+                isInv = true;
+                GameManager.Inst.GetOpponent(character).health.Inv(true);
                 if (character.characterType == CharacterType.Player)
                 {
-                    StartCoroutine( GameManager.Inst.GameEnd(false, gameObject));
+                    StartCoroutine( GameManager.Inst.GameEnd(false, character));
                 }
                 else if (character.characterType == CharacterType.Enemy)
                 {
-                    StartCoroutine(GameManager.Inst.GameEnd(true, gameObject));
+                    StartCoroutine(GameManager.Inst.GameEnd(true, character));
                 }
                 
                 /*
@@ -107,6 +108,11 @@ public class Health : MonoBehaviour
 
         }
        
+    }
+
+    public void Inv(bool isInv)
+    {
+        isInv = isInv;
     }
 
 

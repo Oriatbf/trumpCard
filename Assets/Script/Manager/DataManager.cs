@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -9,6 +11,7 @@ public class PlayerData
 {
     public int stage = 0;
     public int gold = 0;
+    public List<int> relicID = new List<int>();
 }
 public class DataManager : MonoBehaviour
 {
@@ -38,27 +41,38 @@ public class DataManager : MonoBehaviour
             var playerDataJson = File.ReadAllText(_DataFilePath);
             var playerData = JsonConvert.DeserializeObject<PlayerData>(playerDataJson);
             Data = playerData;
+            StartCoroutine(LoadPlayerRelic());
         }
         else
         {
             var playerData = new PlayerData();
             Data = playerData;
-            Save();
         }
+    }
+
+    IEnumerator LoadPlayerRelic()
+    {
+        yield return new WaitUntil(() => CharacterRelicData.Inst);
+        
+        CharacterRelicData.Inst.LoadPlayerRelic(Data.relicID);
     }
 
     public void Save()
     {
         if (Data == null) return;
+        
         var json = JsonConvert.SerializeObject(Data, Formatting.Indented,
             new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
         File.WriteAllText(_DataFilePath, json);
     }
 
+    [Button]
     public void ResetData()
     {
-        
+        Data = new PlayerData();
+        Save();
+        StartCoroutine(LoadPlayerRelic());
     }
 
     [Button]

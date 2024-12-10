@@ -84,29 +84,42 @@ public class EventManager : MonoBehaviour
         {
             case EventOption.AdditionType.Gold:
                 if (randomSuccess)
-                    ResourceManager.Inst.GetGold(-option.typeValue);
+                    TopUIController.Inst.GetGold(-option.typeValue);
                 break;
             case EventOption.AdditionType.Relic:
                 if (randomSuccess)
                 {
                     if(option.randomRelic)
                     {
-                        var randomRelics = RelicManager.Inst.GetRandomRelics(option.typeValue);
+                        var randomRelic = RelicDataManager.Inst.RandomRelics(option.typeValue);
+                        foreach (var relic in randomRelic)
+                        {
+                            DataManager.Inst.Data.relicID.Add(relic.id);
+                            CharacterRelicData.Inst.playerRelicData.Add(relic);
+                        }
+                        /*
                         for (int i = 0; i < option.typeValue; i++)
                         {
                            
                             RelicManager.Inst.playerRelic.Add(randomRelics[i]);
-                            ResourceManager.Inst.InstanceRelicIcon(randomRelics[i]);
-                        }
+                            TopUIController.Inst.InstanceRelicIcon(randomRelics[i]);
+                        }*/
                     }
                     else
                     {
+                        var randomRelic = RelicDataManager.Inst.RandomRelics(option.typeValue);
+                        foreach (var relic in randomRelic)
+                        {
+                            DataManager.Inst.Data.relicID.Add(relic.id);
+                            CharacterRelicData.Inst.playerRelicData.Add(relic);
+                        }
+                        /*
                         for (int i = 0; i < option.typeValue; i++)
                         {
                             RelicSO RanSO = option.Relics[Random.Range(0, option.Relics.Length)];
                             RelicManager.Inst.playerRelic.Add(RanSO);
-                            ResourceManager.Inst.InstanceRelicIcon(RanSO);
-                        }
+                            TopUIController.Inst.InstanceRelicIcon(RanSO);
+                        }*/
                     }
                 }
                 break;
@@ -137,7 +150,7 @@ public class EventManager : MonoBehaviour
         {
             case EventOption.AdditionType.Gold:
                 if(option.allGold_Remove)
-                    ResourceManager.Inst.GetGold(-99999); Debug.Log("다슴");
+                    TopUIController.Inst.GetGold(-99999); Debug.Log("다슴");
                 break;
             case EventOption.AdditionType.Relic:
                 break;

@@ -10,7 +10,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Transform relicLootsLayout;
     [SerializeField] private Animator shopAnim;
     [SerializeField] private Animator mapAnim;
-    public List<GameObject> relicLoots = new List<GameObject>();
+    public List<Card> relicLoots = new List<Card>();
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class ShopManager : MonoBehaviour
 
         for (int i = 0; i < relicLootsLayout.childCount; i++)
         {
-            relicLoots.Add(relicLootsLayout.GetChild(i).gameObject);
+            relicLoots.Add(relicLootsLayout.GetChild(i).GetComponent<Card>());
         }
 
         shopAnim = gameObject.GetComponent<Animator>();
@@ -34,20 +34,21 @@ public class ShopManager : MonoBehaviour
 
     void Refresh()
     {
-        /*
-        var randomRelics = RelicManager.Inst.GetRandomRelics(relicLoots.Count);
+        
+        var randomRelics = RelicDataManager.Inst.RandomRelics(relicLoots.Count);
+        
         for (int i = 0; i < relicLoots.Count; i++)
         {
-            relicLoots[i].GetComponent<Card>().SetCard(randomRelics[i]);
-            relicLoots[i].GetComponent<Card>().purchased = false;
-        }*/
+            relicLoots[i].Init(randomRelics[i]);
+            relicLoots[i].purchased = false;
+        }
     }
 
     public void RefreshBtn()
     {
-        if (ResourceManager.Inst.CurrentGold() >= 70)
+        if (TopUIController.Inst.CurrentGold() >= 70)
         {
-            ResourceManager.Inst.GetGold(-70);
+            TopUIController.Inst.GetGold(-70);
             Refresh();
         }
     }

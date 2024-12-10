@@ -32,8 +32,8 @@ public class EnemyMove : Character
             crown.enabled= true;
         }
         else crown.enabled= false;
-        opponent = GameObject.FindGameObjectWithTag("Player").transform;
-        _dir = (opponent.position - transform.position).normalized;
+        opponent = GameManager.Inst.GetOpponent(this);
+        _dir = (opponent.transform.position - transform.position).normalized;
         _camera = Camera.main;
        
         
@@ -61,7 +61,7 @@ public class EnemyMove : Character
         _angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
         handle.transform.parent.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
         handle.transform.localScale = new Vector3(_dir.x < 0 ? -1 : 1, 1);
-        _dir = (opponent.position - transform.position).normalized;
+        _dir = (opponent.transform.position - transform.position).normalized;
 
         if (!isDashing)
         {
@@ -83,7 +83,7 @@ public class EnemyMove : Character
 
             if (_dir.sqrMagnitude < (Gunrange - 3) * (Gunrange - 3) && !randomDir)
             {
-                _dir2 = (transform.position - opponent.position).normalized;
+                _dir2 = (transform.position - opponent.transform.position).normalized;
                 finalDir = _dir2;
             }
         }

@@ -6,12 +6,27 @@ using EasyTransition;
 
 public class OptionSettings : MonoBehaviour
 {
+    public static OptionSettings Inst;
     public Animator anim;
     public AudioMixer audioMixer;
     public Slider bgmSlider;
     public Slider sfxSlider;
 
     private bool fading;
+
+    private void Awake()
+    {
+        if (Inst != this && Inst != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            Inst = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Start()
     {

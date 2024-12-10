@@ -39,7 +39,7 @@ public class PlayerMove : Character
        
 
         base.Start();
-        opponent = GameObject.FindWithTag("Enemy").transform;
+        opponent = GameManager.Inst.GetOpponent(this);
         _camera = Camera.main;
         if(mobileVersion)
             dashBtnImage = dashBtn.GetComponent<Image>();
