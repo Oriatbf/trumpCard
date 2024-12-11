@@ -30,7 +30,7 @@ public class CharacterRelicData : MonoBehaviour
         yield return new WaitUntil(()=>RelicDataManager.Inst);
         for (int i = 0; i < 10; i++)
         {
-            enemyRelicData.Add(RelicDataManager.Inst.DupRandomRelics(i + 1));
+            enemyRelicData.Add(RelicDataManager.Inst.GetDupRandomRelics(i + 1));
         }
     }
     

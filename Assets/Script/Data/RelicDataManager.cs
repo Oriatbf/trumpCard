@@ -32,8 +32,8 @@ public class RelicDatas
         rarity = data.rarity;
         id = data.id;
         name = data.name;
-        descriptionVariable.Add("time", Mathf.Abs(data.time).ToString());
-        descriptionVariable.Add("value", Mathf.Abs(data.value).ToString());
+        descriptionVariable.Add("time", data.time.ToString());
+        descriptionVariable.Add("value", data.value.ToString());
         description = data.description;
         foreach (var word in descriptionVariable)
         {
@@ -105,7 +105,7 @@ public class RelicDataManager : MonoBehaviour
         }
     }
 
-    public List<RelicDatas> RandomRelics(int count)
+    public List<RelicDatas> GetRandomRelics(int count)
     {
         HashSet<int> selectedID = new HashSet<int>();
         HashSet<RelicDatas> selectedRelic = new HashSet<RelicDatas>();
@@ -125,8 +125,25 @@ public class RelicDataManager : MonoBehaviour
 
         return selectedRelic.ToList();
     }
-    
-    public List<RelicDatas> DupRandomRelics(int count)
+
+    public List<RelicDatas> GetIdRelics(string[] ids)
+    {
+        List<int> relicIds = new List<int>();
+        foreach (var id in ids)
+        {
+            relicIds.Add(int.Parse(id));
+        }
+       
+        List<RelicDatas> selectedRelic = new List<RelicDatas>();
+        foreach (var id in relicIds)
+        {
+            RelicDatas relic = relicDatas.FirstOrDefault(r => r.id == id);
+            selectedRelic.Add(relic);
+        }
+        return selectedRelic.ToList();
+    }
+     
+    public List<RelicDatas> GetDupRandomRelics(int count)
     {
         List<int> selectedID = new List<int>();
         List<RelicDatas> selectedRelic = new List<RelicDatas>();

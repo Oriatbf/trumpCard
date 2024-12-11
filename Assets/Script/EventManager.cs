@@ -91,7 +91,7 @@ public class EventManager : MonoBehaviour
                 {
                     if(option.randomRelic)
                     {
-                        var randomRelic = RelicDataManager.Inst.RandomRelics(option.typeValue);
+                        var randomRelic = RelicDataManager.Inst.GetRandomRelics(option.typeValue);
                         foreach (var relic in randomRelic)
                         {
                             DataManager.Inst.Data.relicID.Add(relic.id);
@@ -107,7 +107,7 @@ public class EventManager : MonoBehaviour
                     }
                     else
                     {
-                        var randomRelic = RelicDataManager.Inst.RandomRelics(option.typeValue);
+                        var randomRelic = RelicDataManager.Inst.GetRandomRelics(option.typeValue);
                         foreach (var relic in randomRelic)
                         {
                             DataManager.Inst.Data.relicID.Add(relic.id);

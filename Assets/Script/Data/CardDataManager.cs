@@ -16,8 +16,6 @@ public enum CardRole
 
 public class CardDataManager : MonoBehaviour
 {
-   
-   
    public static CardDataManager Inst;
    
    [Serializable]

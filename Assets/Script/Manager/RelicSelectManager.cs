@@ -30,7 +30,7 @@ public class RelicSelectManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-       
+        OnClose +=()=> Hide();
     }
     
     
@@ -39,7 +39,7 @@ public class RelicSelectManager : MonoBehaviour
     public void CardSelect(string sceneName = null)
     {
         panel.SetPosition(PanelStates.Show,true);
-        var randomRelics = RelicDataManager.Inst.RandomRelics(cardCount);
+        var randomRelics = RelicDataManager.Inst.GetRandomRelics(cardCount);
         foreach (var relicData in randomRelics)
         {
             Card card =  Instantiate(cardPrefab, content);
@@ -48,8 +48,6 @@ public class RelicSelectManager : MonoBehaviour
 
         if (sceneName!= null)
         {
-            OnClose = null;
-            OnClose +=()=> Hide();
             OnClose += ()=>DemoLoadScene.Inst.LoadScene(sceneName);
         }
         else

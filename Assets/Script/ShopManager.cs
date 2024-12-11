@@ -35,7 +35,7 @@ public class ShopManager : MonoBehaviour
     void Refresh()
     {
         
-        var randomRelics = RelicDataManager.Inst.RandomRelics(relicLoots.Count);
+        var randomRelics = RelicDataManager.Inst.GetRandomRelics(relicLoots.Count);
         
         for (int i = 0; i < relicLoots.Count; i++)
         {
