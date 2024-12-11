@@ -131,7 +131,8 @@ public class RelicDataManager : MonoBehaviour
         List<int> relicIds = new List<int>();
         foreach (var id in ids)
         {
-            relicIds.Add(int.Parse(id));
+            if(int.TryParse(id,out int relicId))
+                relicIds.Add(relicId);
         }
        
         List<RelicDatas> selectedRelic = new List<RelicDatas>();

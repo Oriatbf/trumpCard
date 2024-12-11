@@ -3,29 +3,39 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class EnemyMove : Character
 {
     //나중에 캐릭터들 역할 수정 필요
     public enum EnemyCharacter { defaultEnemy,Boss}
-    [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private CardStats card;
-    [SerializeField] private float Gunrange,dashRange;
+
+    public enum AttackType
+    {
+        Melee,Range
+    }
+
+    public enum State
+    {
+        CloseToOpponent,Inplace,FarToOpponent,Random
+    }
+
+    [SerializeField] private float Gunrange;
+    [SerializeField] private float bulletDetectRange;
     [SerializeField] private bool haveDash;
     [SerializeField] private float midDistanceMoveCool;
     [SerializeField] private Image crown;
   
     private Vector2 _dir2,finalDir;
     public EnemyCharacter enemyCharacter;
+    public State state;
 
-    bool randomDir;
-
-    private Camera _camera;
+    bool moveStop = false;
+    private float angleInRadians;
 
     public override void Start()
     {
-        base.Start();
         if (GameManager.Inst.bossStage)
         {
             enemyCharacter = EnemyCharacter.Boss;
@@ -34,24 +44,56 @@ public class EnemyMove : Character
         else crown.enabled= false;
         opponent = GameManager.Inst.GetOpponent(this);
         _dir = (opponent.transform.position - transform.position).normalized;
-        _camera = Camera.main;
-       
-        
-        SetStat();
-
-       
+        base.Start();
     }
 
     // Update is called once per frame
     public override void Update()
     {
         if (Input.GetKeyDown(KeyCode.F3)) health.GetDamage(1000);
+        _dir = (opponent.transform.position - transform.position).normalized;
   
-            base.Update();
-            Rotation();
-            Move();
+        base.Update();
+        Rotation();
+        StateChange();
         
-           
+    }
+
+    public void StateChange()
+    {
+        Vector3 _distance = (opponent.transform.position - transform.position);
+        
+        if (_distance.sqrMagnitude > Gunrange * Gunrange )
+        {
+            state = State.CloseToOpponent;
+        }
+        
+        if (_distance.sqrMagnitude < (Gunrange - 3) * (Gunrange - 3) )
+        {
+            state = State.FarToOpponent;
+        }
+        
+        if (_distance.sqrMagnitude < Gunrange * Gunrange && _distance.sqrMagnitude > (Gunrange - 3) * (Gunrange - 3))
+        {
+            state = State.Random;
+        }
+
+        switch (state)
+        {
+            case State.CloseToOpponent:
+                CloseToPlayer();
+
+                break;
+            case State.FarToOpponent:
+                FarToPlayer();
+                
+
+                break;
+            case State.Random:
+                RandomMove();
+                break;
+        }
+        
     }
    
     
@@ -61,64 +103,89 @@ public class EnemyMove : Character
         _angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
         handle.transform.parent.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
         handle.transform.localScale = new Vector3(_dir.x < 0 ? -1 : 1, 1);
-        _dir = (opponent.transform.position - transform.position).normalized;
+    }
 
-        if (!isDashing)
+    private void CircleMove()
+    {
+     
+        // 현재 객체와 opponent 사이의 거리 계산 (반지름)
+        Vector2 offset = transform.position - opponent.transform.position;
+        float radius = offset.magnitude;
+        float angleInDegress = Mathf.Atan2(transform.position.y, transform.position.x) * Mathf.Rad2Deg;
+        angleInDegress += 10 * Time.deltaTime;
+        
+
+
+        // 각도 업데이트 (speed에 따라 변화)
+        angleInRadians =angleInDegress*Mathf.Deg2Rad;
+
+        // 새로운 x, y 좌표 계산 (원의 중심 opponent 기준)
+        float newX = opponent.transform.position.x + Mathf.Cos(angleInRadians) * radius;
+        float newY = opponent.transform.position.y + Mathf.Sin(angleInRadians) * radius;
+
+        // 객체 위치 업데이트
+        transform.position = new Vector3(newX, newY, transform.position.z);
+
+    }
+
+    public void CloseToPlayer()
+    {
+        finalDir = _dir.normalized;
+        Debug.Log("플레이어한테 이동");
+        Move(finalDir);
+    }
+
+    public void RandomMove()
+    {
+        if (!moveStop)
         {
-            if (_dir.sqrMagnitude > Gunrange * Gunrange && !randomDir)
-            {
-
-                finalDir = _dir.normalized;
-
-            }
-
-            if (_dir.sqrMagnitude < Gunrange * Gunrange && _dir.sqrMagnitude > (Gunrange - 3) * (Gunrange - 3) && !randomDir)
-            {
-
-                finalDir = Random.insideUnitCircle.normalized;
-                randomDir = true;
-                DOVirtual.DelayedCall(midDistanceMoveCool, () => randomDir = false);
-            }
-
-
-            if (_dir.sqrMagnitude < (Gunrange - 3) * (Gunrange - 3) && !randomDir)
-            {
-                _dir2 = (transform.position - opponent.transform.position).normalized;
-                finalDir = _dir2;
-            }
+            moveStop = true;
+            finalDir = Random.insideUnitCircle.normalized;
+            DOVirtual.DelayedCall(1f, () => moveStop = false);
         }
-      
+        
+        Debug.Log("랜덤 이동");
+        Move(finalDir,1/stat.statValue.speed);
+    }
+
+    public void FarToPlayer()
+    {
+        _dir2 = (transform.position - opponent.transform.position).normalized;
+        Debug.Log("플레이어한테 멀어지기");
+        finalDir = _dir2;
+        Move(finalDir);
     }
    
 
 
-    private void Move()
+    private void Move(Vector2 finalDir,float time = 0)
     {
+        
         finalDir =  finalDir.normalized;
         //이동
         float moveX = finalDir.x * stat.statValue.speed * Time.deltaTime;
         float moveY = finalDir.y * stat.statValue.speed * Time.deltaTime;
        
         transform.Translate(new Vector3(moveX,moveY,0),Space.World);
-
-        if (haveDash)
+            
+        Collider2D[] projectTileCol = Physics2D.OverlapCircleAll(transform.position, bulletDetectRange);
+        Bullet approachBullet = null; //근접한 총알
+        foreach (Collider2D col in projectTileCol)
         {
-            /*
-            Collider2D projectTileCol = Physics2D.OverlapCircle(transform.position, dashRange);
-            if (projectTileCol.transform.CompareTag("ProjectTile"))
+            if(!col.transform.parent)return;
+            if (col.transform.parent.TryGetComponent(out Bullet bullet) && bullet.ownerCharacter != characterType)
             {
-                if (projectTileCol.GetComponentInParent<Projectile>().ownerCharacter != characterType)
-                {
-                    Vector2 dir = transform.position - projectTileCol.transform.position;
-                    if (curCharging > 0 && curDashCool <= 0)
-                    {
-                        DashMove(dir.normalized);
-                    }
-                }
-              
-                
+                approachBullet = bullet;
+                break;
             }
-            */
+        }
+
+        if (approachBullet)
+        {
+            Debug.Log("피하기");
+            Vector2 dir = transform.position - approachBullet.transform.position;
+           // DashMove(dir.normalized);
+ 
         }
 
     }
@@ -131,7 +198,7 @@ public class EnemyMove : Character
         Gizmos.DrawWireSphere(transform.position,Gunrange);
         Gizmos.DrawWireSphere(transform.position, Gunrange-3);
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, dashRange);
+        Gizmos.DrawWireSphere(transform.position, bulletDetectRange);
     }
 
 

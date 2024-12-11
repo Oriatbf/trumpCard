@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_Follow: {fileID: 491877135}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 5.5
+    OrthographicSize: 7.69
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1483,7 +1483,7 @@ Transform:
   m_GameObject: {fileID: 491877133}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1698,7 +1698,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.5
+  orthographic size: 7.69
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1723,7 +1723,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000023841858, y: 1.0000001, z: -10}
+  m_LocalPosition: {x: -0.00000023841858, y: 0.08000022, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6449,16 +6449,13 @@ MonoBehaviour:
       bulletSpeed: 0
       attackCount: 0
       extraHitCount: 0
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 0
-  card: {fileID: 11400000, guid: a25000686df4ec04d9948dcf330f8c3a, type: 2}
-  Gunrange: 3
-  dashRange: 1.06
+  Gunrange: 6
+  bulletDetectRange: 1.21
   haveDash: 1
   midDistanceMoveCool: 0.4
   crown: {fileID: 619490934}
   enemyCharacter: 0
+  state: 0
 --- !u!114 &1878583277
 MonoBehaviour:
   m_ObjectHideFlags: 0

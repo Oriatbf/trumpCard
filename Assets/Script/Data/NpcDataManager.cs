@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NpcDataManager : MonoBehaviour
 {
+    [Serializable]
     public class Data
     {
         public int id;
@@ -26,6 +27,7 @@ public class NpcDataManager : MonoBehaviour
     }
     
     public static NpcDataManager Inst;
+    public List<Data> npcDatas = new List<Data>();
     private void Awake()
     {
         if (Inst != null && Inst != this)
@@ -39,5 +41,13 @@ public class NpcDataManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         NpcData.Data.Load();
+    }
+
+    private void Start()
+    {
+        foreach (var data in NpcData.Data.DataList)
+        {
+            npcDatas.Add(new Data(data));
+        }
     }
 }
