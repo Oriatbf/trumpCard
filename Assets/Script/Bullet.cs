@@ -27,6 +27,7 @@ public class Bullet : Projectile
         damage = Critical.CriticalChance(stat);
         bulletDir = dir;
         bulletSpeed = stat.statValue.bulletSpeed;
+        transform.localScale = new Vector3(stat.statValue.bulletSize, stat.statValue.bulletSize);
 
         //rigid.AddForce(dir * stat.statValue.bulletSpeed*100*Time.deltaTime, ForceMode2D.Impulse);
     }

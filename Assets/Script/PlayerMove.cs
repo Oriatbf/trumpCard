@@ -36,8 +36,6 @@ public class PlayerMove : Character
 
     public override void Start()
     {
-       
-
         base.Start();
         opponent = GameManager.Inst.GetOpponent(this);
         _camera = Camera.main;

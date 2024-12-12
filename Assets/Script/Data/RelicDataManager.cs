@@ -42,6 +42,30 @@ public class RelicDatas
 
         Debug.Log(description);
     }
+    
+    public RelicDatas DeepCopy()
+    {
+        var copy = new RelicDatas(
+            new RelicData.Data
+            {
+                rarity = this.rarity,
+                id = this.id,
+                name = this.name,
+                description = this.description,
+                value = float.Parse(this.descriptionVariable["value"]),
+                time = float.Parse(this.descriptionVariable["time"]),
+            },
+            (RelicBase)Activator.CreateInstance(this.relic.GetType()), 
+            new List<int>(this.extraRelicID)
+        );
+
+        foreach (var kvp in this.descriptionVariable)
+        {
+            copy.descriptionVariable[kvp.Key] = kvp.Value;
+        }
+
+        return copy;
+    }
         
 }
 
@@ -120,7 +144,9 @@ public class RelicDataManager : MonoBehaviour
                 random = Random.Range(0, relicDatas.Count);
             } while (!selectedID.Add(random));
 
-            selectedRelic.Add(relicDatas.FirstOrDefault(r => r.id == random));
+            var originalRelic = relicDatas.FirstOrDefault(r => r.id == random);
+            var copyRelic = originalRelic.DeepCopy();
+            selectedRelic.Add(copyRelic);
         }
 
         return selectedRelic.ToList();
@@ -138,8 +164,10 @@ public class RelicDataManager : MonoBehaviour
         List<RelicDatas> selectedRelic = new List<RelicDatas>();
         foreach (var id in relicIds)
         {
-            RelicDatas relic = relicDatas.FirstOrDefault(r => r.id == id);
-            selectedRelic.Add(relic);
+            var originalRelic = relicDatas.FirstOrDefault(r => r.id == id);
+            var copyRelic = originalRelic.DeepCopy();
+            selectedRelic.Add(copyRelic);
+           
         }
         return selectedRelic.ToList();
     }
@@ -153,7 +181,9 @@ public class RelicDataManager : MonoBehaviour
         {
             int random = 0;
             random = Random.Range(0, relicDatas.Count);
-            selectedRelic.Add(relicDatas.FirstOrDefault(r => r.id == random));
+            var originalRelic = relicDatas.FirstOrDefault(r => r.id == random);
+            var copyRelic = originalRelic.DeepCopy();
+            selectedRelic.Add(copyRelic);
         }
 
         return selectedRelic.ToList();

@@ -1344,7 +1344,7 @@ Transform:
   m_GameObject: {fileID: 489386488}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.00000023841858, y: 1.0000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_Follow: {fileID: 491877135}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 7.69
+    OrthographicSize: 5.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1483,7 +1483,7 @@ Transform:
   m_GameObject: {fileID: 491877133}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.92, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1698,7 +1698,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7.69
+  orthographic size: 5.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1723,7 +1723,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000023841858, y: 0.08000022, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6492,15 +6492,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878583270}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6589ce0ea2e1914192f6774aedbf9ee, type: 3}
+  m_Script: {fileID: 11500000, guid: e87488b65cc3f8b44afccdf908711918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relics: []
-  characterType: 1
-  relicImagePrefab: {fileID: 0}
-  iconCanvas: {fileID: 0}
+  possessionRelics: []
 --- !u!1 &1884238069
 GameObject:
   m_ObjectHideFlags: 0
@@ -6617,7 +6614,6 @@ GameObject:
   - component: {fileID: 1892181559}
   - component: {fileID: 1892181558}
   - component: {fileID: 1892181557}
-  - component: {fileID: 1892181556}
   - component: {fileID: 1892181560}
   - component: {fileID: 1892181561}
   m_Layer: 6
@@ -6773,22 +6769,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1892181556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892181550}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6589ce0ea2e1914192f6774aedbf9ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  relics: []
-  characterType: 1
-  relicImagePrefab: {fileID: 0}
-  iconCanvas: {fileID: 0}
 --- !u!114 &1892181557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6925,7 +6905,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possessionRelics: []
-  relicids: 0200000003000000
 --- !u!1 &1917282587
 GameObject:
   m_ObjectHideFlags: 0

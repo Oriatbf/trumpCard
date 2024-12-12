@@ -29,4 +29,5 @@ public class Sandevistan : RelicBase
             DOVirtual.DelayedCall(coolTime, () => active = false);
         });
     }
+    
 }

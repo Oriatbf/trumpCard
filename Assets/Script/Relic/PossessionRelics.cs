@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class PossessionRelics : MonoBehaviour
 {
     Character character;
     public List<RelicBase> possessionRelics = new List<RelicBase>();
-    [FormerlySerializedAs("relicid")] public List<int> relicids = new List<int>();
     
     private void Awake()
     {
@@ -28,6 +28,14 @@ public class PossessionRelics : MonoBehaviour
         if (character.characterType == CharacterType.Player)
         {
             foreach (var relicData in CharacterRelicData.Inst.playerRelicData)
+            {
+                possessionRelics.Add(relicData.relic);
+            }
+        }
+        else if (character.characterType == CharacterType.Enemy)
+        {
+            int random = Random.Range(0, NpcDataManager.Inst.npcDatas.Count);
+            foreach (var relicData in  NpcDataManager.Inst.npcDatas[random].relicDatas)
             {
                 possessionRelics.Add(relicData.relic);
             }

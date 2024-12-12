@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class NpcDataManager : MonoBehaviour
         public string name;
         public int difficulty;
         public string description;
+        public string[] idString;
         public List<RelicDatas> relicDatas = new List<RelicDatas>();
 
         public Data(NpcData.Data data)
@@ -20,7 +22,7 @@ public class NpcDataManager : MonoBehaviour
             name = data.name;
             difficulty = data.difficulty;
             description = data.description;
-            string[] idString = data.relicId.Split(",");
+            idString = data.relicId.Split(",");
             relicDatas = RelicDataManager.Inst.GetIdRelics(idString);
         }
 
@@ -43,8 +45,9 @@ public class NpcDataManager : MonoBehaviour
         NpcData.Data.Load();
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitUntil(() => RelicDataManager.Inst);
         foreach (var data in NpcData.Data.DataList)
         {
             npcDatas.Add(new Data(data));
