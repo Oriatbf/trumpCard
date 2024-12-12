@@ -19,6 +19,12 @@ public class RelicBase
         value = _value;
         time = _time;
     }
+    
+    public virtual void Init(RelicBase relic)
+    {
+        value = relic.value;
+        time = relic.time;
+    }
 
     public virtual void Excute(Character character)
     {
@@ -35,5 +41,14 @@ public class RelicBase
     {
         yield return null;
     }
+    public virtual RelicBase Clone()
+    {
+        var clone = (RelicBase)Activator.CreateInstance(this.GetType());
+        clone.value = this.value;
+        clone.time = this.time;
+        clone.extraRelic = this.extraRelic.Select(r => r.Clone()).ToList(); // 깊은 복사
+        return clone;
+    }
+    
     
 }

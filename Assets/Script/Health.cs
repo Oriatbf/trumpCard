@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
     [SerializeField] SpriteRenderer spr;
     [HideInInspector] public bool autoHeal;
     [HideInInspector] public float autoHealSpeed;
-    [SerializeField]bool isInv = false;
+    public bool isInv = false;
 
     public Action OnDamage,OnHeal;
 
@@ -85,6 +85,7 @@ public class Health : MonoBehaviour
 
             if (curHp <= 0)
             {
+                isInv = true;
                 character.opponent.GetComponent<Health>().isInv = true;
                 if (character.characterType == CharacterType.Player)
                 {

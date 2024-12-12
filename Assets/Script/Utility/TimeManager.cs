@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class TimeManager 
+public static class TimeManager
 {
    public static void ChangeTimeSpeed(float timeScale)
    {
@@ -8,4 +8,5 @@ public static class TimeManager
       Time.timeScale = timeScale;
       Time.fixedDeltaTime = 1 / Time.timeScale * 0.02f;
    }
+   
 }

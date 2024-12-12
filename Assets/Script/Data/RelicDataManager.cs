@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using GoogleSheet.Core.Type;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.Serialization;
 using VHierarchy.Libs;
@@ -42,30 +43,18 @@ public class RelicDatas
 
         Debug.Log(description);
     }
-    
-    public RelicDatas DeepCopy()
+
+    public RelicDatas(RelicDatas originRelic,RelicBase relicClone)
     {
-        var copy = new RelicDatas(
-            new RelicData.Data
-            {
-                rarity = this.rarity,
-                id = this.id,
-                name = this.name,
-                description = this.description,
-                value = float.Parse(this.descriptionVariable["value"]),
-                time = float.Parse(this.descriptionVariable["time"]),
-            },
-            (RelicBase)Activator.CreateInstance(this.relic.GetType()), 
-            new List<int>(this.extraRelicID)
-        );
+        extraRelicID = originRelic.extraRelicID;
+        rarity = originRelic.rarity;
+        id = originRelic.id;
+        name = originRelic.name;
+        description = originRelic.description;
+        relic = relicClone;
 
-        foreach (var kvp in this.descriptionVariable)
-        {
-            copy.descriptionVariable[kvp.Key] = kvp.Value;
-        }
-
-        return copy;
     }
+    
         
 }
 
@@ -145,7 +134,7 @@ public class RelicDataManager : MonoBehaviour
             } while (!selectedID.Add(random));
 
             var originalRelic = relicDatas.FirstOrDefault(r => r.id == random);
-            var copyRelic = originalRelic.DeepCopy();
+            var copyRelic = new RelicDatas(originalRelic, originalRelic.relic.Clone());
             selectedRelic.Add(copyRelic);
         }
 
@@ -165,7 +154,20 @@ public class RelicDataManager : MonoBehaviour
         foreach (var id in relicIds)
         {
             var originalRelic = relicDatas.FirstOrDefault(r => r.id == id);
-            var copyRelic = originalRelic.DeepCopy();
+            var copyRelic = new RelicDatas(
+                new RelicData.Data
+                {
+                    id = originalRelic.id,
+                    name = originalRelic.name,
+                    description = originalRelic.description,
+                    rarity = originalRelic.rarity,
+                    time = float.Parse(originalRelic.descriptionVariable["time"]),
+                    value = float.Parse(originalRelic.descriptionVariable["value"]),
+                    extraRelicID = string.Join(",", originalRelic.extraRelicID),
+                },
+                originalRelic.relic.Clone(),
+                originalRelic.extraRelicID
+            );
             selectedRelic.Add(copyRelic);
            
         }
@@ -182,7 +184,7 @@ public class RelicDataManager : MonoBehaviour
             int random = 0;
             random = Random.Range(0, relicDatas.Count);
             var originalRelic = relicDatas.FirstOrDefault(r => r.id == random);
-            var copyRelic = originalRelic.DeepCopy();
+            var copyRelic = originalRelic;
             selectedRelic.Add(copyRelic);
         }
 

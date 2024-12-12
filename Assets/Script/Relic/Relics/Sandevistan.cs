@@ -30,4 +30,12 @@ public class Sandevistan : RelicBase
         });
     }
     
+    public override RelicBase Clone()
+    {
+        var clone = (Sandevistan)base.Clone();
+        clone.coolTime = this.coolTime;
+        clone.active = this.active;
+        return clone;
+    }
+    
 }

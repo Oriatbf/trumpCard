@@ -8,11 +8,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/UGS.Examples.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/awesome_sunny.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Data/NpcDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/NpcDataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/MuryangGongcheo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/MuryangGongcheo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/Sandevistan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/Sandevistan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Utility/TimeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Utility/TimeManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,6 +140,8 @@
       <workItem from="1733829529748" duration="7266000" />
       <workItem from="1733905652218" duration="2085000" />
       <workItem from="1733916306031" duration="9670000" />
+      <workItem from="1733989924152" duration="1360000" />
+      <workItem from="1733999828179" duration="7079000" />
     </task>
     <servers />
   </component>
