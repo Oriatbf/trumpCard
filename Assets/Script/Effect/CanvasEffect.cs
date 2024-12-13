@@ -10,7 +10,7 @@ public class CanvasEffect : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     void Start()
     {
-        TimeManager.ChangeTimeSpeed(0f);
+        TimeManager.Inst.ChangeTimeSpeed(0f);
         image.DOFillAmount(1, .3f).OnComplete(() =>
         {
             text.DOFade(1, .5f).SetUpdate(true);
@@ -22,7 +22,7 @@ public class CanvasEffect : MonoBehaviour
             {
                 image.DOFillAmount(0, .3f).SetUpdate(true).OnComplete(() =>
                 {
-                    TimeManager.ChangeTimeSpeed(1f);
+                    TimeManager.Inst.ChangeTimeSpeed(1f);
                     Destroy(gameObject);
                 });
 

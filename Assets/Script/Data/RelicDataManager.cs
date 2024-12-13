@@ -3,7 +3,6 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using GoogleSheet.Core.Type;
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.Serialization;
 using VHierarchy.Libs;

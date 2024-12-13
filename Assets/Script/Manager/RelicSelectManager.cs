@@ -59,7 +59,7 @@ public class RelicSelectManager : MonoBehaviour
     
     private void Hide()
     {
-        TimeManager.ChangeTimeSpeed(1f);
+        TimeManager.Inst.ChangeTimeSpeed(1f);
         panel.SetPosition(PanelStates.Hide,true);
         foreach (Transform child in content)
         {

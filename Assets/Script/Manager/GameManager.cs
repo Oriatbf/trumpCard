@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using VInspector;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst;
@@ -117,12 +118,12 @@ public class GameManager : MonoBehaviour
     IEnumerator CameraZoom(Transform deadCharacter)
     {
         zoomCam.gameObject.SetActive(true);
-        TimeManager.ChangeTimeSpeed(0.3f);
+        TimeManager.Inst.ChangeTimeSpeed(0.3f);
         zoomCam.transform.DOMove(new Vector3(deadCharacter.position.x, deadCharacter.position.y,-10), 0.5f);
         DOTween.To(() => zoomCam.orthographicSize, size => zoomCam.orthographicSize = size, 3, 1f);
         
         yield return new WaitForSecondsRealtime(3f);
-        TimeManager.ChangeTimeSpeed(1f);
+        TimeManager.Inst.ChangeTimeSpeed(1f);
     }
     
     public IEnumerator DefectBoss(Transform deadCharacter)
@@ -138,7 +139,7 @@ public class GameManager : MonoBehaviour
         if (isPlayerWin)
         {
             DataManager.Inst.Data.stage++;
-            TimeManager.ChangeTimeSpeed(0f);
+            TimeManager.Inst.ChangeTimeSpeed(0f);
             RelicSelectManager.Inst.CardSelect("Map");
         }
         else
