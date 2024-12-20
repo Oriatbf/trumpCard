@@ -5,12 +5,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VInspector;
+using VInspector.Libs;
+using Random = UnityEngine.Random;
 
 public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
 {
     [SerializeField] TextMeshProUGUI relicName,relicInfor;
     [SerializeField] Color[] rarityColor;
-    [SerializeField] Image rarityImage,relicIcon;
+    [SerializeField] Image rarityImage,relicIcon,cardImage;
 
     [SerializeField]private RectTransform rect;
 
@@ -20,72 +22,109 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
     [ShowIf("ShopCard")]
     [SerializeField] TextMeshProUGUI goldText;
 
+    private bool isSold = false;
+
     private RelicDatas relicData;
+    
 
     public bool purchased;
     private int gold;
+    private Vector2 originalScale;
 
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
+        originalScale = transform.localScale;
     }
-
+    
     public void Init(RelicDatas relicDatas)
     {
+        Init(relicDatas,originalScale);
+    }
+
+    public void Init(RelicDatas relicDatas, Vector2 scale,bool raycastTarget = true)
+    {
+        if(isSold) return;
+        transform.localScale = scale;
+        originalScale = scale;
         relicData = relicDatas;
         relicName.text = relicDatas.name;
         relicInfor.text = relicDatas.description; 
-        int rarityIndex = 0;
-
-        this.relicIcon.sprite = null;
+        int rarityIndex = relicDatas.rarity.ToInt();
+        
+        relicIcon.sprite = relicDatas.sprite;
+        
+        
         rarityImage.color= rarityColor[rarityIndex];
+        cardImage.raycastTarget = raycastTarget;
+    }
+    
+    
+
+    public void SetShop()
+    {
+        if(isSold) return;
+        cardImage.raycastTarget = false;
+        if (goldText == null || relicData == null)
+        {
+            Debug.LogError("텍스트 또는 유물 데이터가 없음");
+            return;
+        }
+        switch (relicData.rarity)
+        {
+            case Rarity.Common: gold = Random.Range(170, 200); break;
+            case Rarity.Rare: gold = Random.Range(210, 250); break;
+            case Rarity.Epic: gold = Random.Range(290, 350); break;
+        }
+        goldText.text = "<sprite=0> " + gold;
+        
     }
 
-    public void SetCard(RelicDatas relicDatas)
+    public void ResetShop()
     {
-       
-
-        /*
-        // Shop
-        if (ShopCard)
-        {
-            switch (relicSO.rarity)
-            {
-                case RelicSO.Rarity.Common: gold = Random.Range(170, 200); break;
-                case RelicSO.Rarity.Rare: gold = Random.Range(210, 250); break;
-                case RelicSO.Rarity.Epic: gold = Random.Range(290, 350); break;
-            }
-
-            goldText.text = "<sprite=0> " + gold;
-        }*/
+        isSold = false;
     }
     
 
     // Shop
     public void SelectRelic()
     {
-        CharacterRelicData.Inst.AddPlayerRelic(relicData);
+        if (ShopCard)
+        {
+            if(TopUIController.Inst.CurrentGold()<gold)return;
+            TopUIController.Inst.GetGold(-gold);
+            goldText.text = "Sold";
+            isSold = true;
+        }
+        TopUIController.Inst.InstanceRelicIcon(relicData,true);
+        
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("카드선택");
-        SelectRelic();
-        RelicSelectManager.Inst.Close();
+        if (!ShopCard)
+        {
+            SelectRelic();
+            RelicSelectManager.Inst.Close();
+        }
+     
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        float size = 1.15f;
-        Debug.Log("닿음");
-        rect.DOScale(new Vector3(size, size), 0.1f).SetUpdate(true);
+        if (!ShopCard)
+        {
+            rect.DOScale(originalScale * 1.05f, 0.15f).SetUpdate(true);
+        }
+       
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        float size = 1f;
-        Debug.Log("끝");
-        rect.DOScale(new Vector3(size, size), 0.1f).SetUpdate(true);
+        if (!ShopCard)
+        {
+            rect.DOScale(originalScale, 0.15f).SetUpdate(true);
+        }
     }
     
 }

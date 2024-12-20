@@ -102,7 +102,7 @@ public class EventManager : MonoBehaviour
                         {
                            
                             RelicManager.Inst.playerRelic.Add(randomRelics[i]);
-                            TopUIController.Inst.InstanceRelicIcon(randomRelics[i]);
+                            TopUIController.Inst.LoadRelicIcon(randomRelics[i]);
                         }*/
                     }
                     else
@@ -118,7 +118,7 @@ public class EventManager : MonoBehaviour
                         {
                             RelicSO RanSO = option.Relics[Random.Range(0, option.Relics.Length)];
                             RelicManager.Inst.playerRelic.Add(RanSO);
-                            TopUIController.Inst.InstanceRelicIcon(RanSO);
+                            TopUIController.Inst.LoadRelicIcon(RanSO);
                         }*/
                     }
                 }

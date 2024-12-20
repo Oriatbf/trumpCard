@@ -28,13 +28,12 @@ public class Character : MonoBehaviour
     [HideInInspector]public float curCharging,curDashCool;
     public GameObject[] weapons;
     public GameObject handle;
-    public RelicSkills relicSkills;
     public Transform shootPoint;
-    public float goldValue;
+    public int goldValue;
 
     [Tab("Debug")]
     public Vector3 _dir;
-    protected float _angle;
+    public float _angle;
     
     public Character opponent;
     public float curCoolTime,coolTime;
@@ -61,7 +60,6 @@ public class Character : MonoBehaviour
         animator = handle.GetComponent<Animator>();
         health= GetComponent<Health>();
         dashEffect = GetComponent<DashEffect>();
-        relicSkills = GetComponent<RelicSkills>();
         gambleGauge= GetComponent<GambleGauge>();
         curCharging = 1;
       //  characterSO.relicInfor.characterTrans = transform;
@@ -73,7 +71,6 @@ public class Character : MonoBehaviour
 
     public void Gambling() //갬블시 초기화 되는 내용 및 체인지
     {
-        gambleGauge._curGauge = 0;
         StartRelicSkill();
         SetWeapon(stat.cardNum);
         SetStat();
@@ -90,7 +87,7 @@ public class Character : MonoBehaviour
     {
         //relicSkills.StartSkill();
 
-       // if(characterType == CharacterType.Player) relicSkills.SetRelicIcon();
+       // if(characterType == CharacterType.Player) relicSkills.Init();
     }
 
     // Start is called before the first frame update
@@ -115,10 +112,7 @@ public class Character : MonoBehaviour
 
         }
 
-        if (gambleGauge._curGauge >= gambleGauge.maxGauge)
-        {
-            Gambling();
-        }
+      
         CoolTime();
         shootInfor.dir = _dir;
     }
@@ -131,7 +125,7 @@ public class Character : MonoBehaviour
     public void SetStat()
     {
         float hpRatio = health.curHp/health.maxHp; //hp 비율
-        stat.statValue = CardDataManager.Inst.RandomCard().stat.statValue;
+        stat = CardDataManager.Inst.RandomCard().stat;
         Debug.Log(stat.statValue.hp);
         stat.StatUpAction();
         
@@ -169,7 +163,7 @@ public class Character : MonoBehaviour
         if (curCoolTime > 0)
         {
             attackCoolImage.fillAmount = curCoolTime / stat.statValue.coolTime;
-            curCoolTime -= Time.deltaTime;
+            curCoolTime -= Time.unscaledDeltaTime;
         }
         else
         {

@@ -6,7 +6,7 @@ using UnityEngine;
 public  class TimeManager : MonoBehaviour
 {
    public static TimeManager Inst;
-   private bool timeChanging;
+   public bool timeChanging;
    private Coroutine cor;
 
    private void Awake()

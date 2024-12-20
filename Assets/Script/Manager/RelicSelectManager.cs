@@ -11,7 +11,12 @@ public class RelicSelectManager : MonoBehaviour
 {
     public static RelicSelectManager Inst;
     [SerializeField] private Panel panel;
+    [SerializeField]private int curRepeat = 1;
+
     [SerializeField] private int cardCount;
+
+    private int cardRepeat;
+  
     [SerializeField] private Card cardPrefab;
     [SerializeField] private Transform content;
 
@@ -29,8 +34,7 @@ public class RelicSelectManager : MonoBehaviour
             Inst = this;
             DontDestroyOnLoad(gameObject);
         }
-
-        OnClose +=()=> Hide();
+        
     }
     
     
@@ -38,22 +42,39 @@ public class RelicSelectManager : MonoBehaviour
     [Button]
     public void CardSelect(string sceneName = null)
     {
-        panel.SetPosition(PanelStates.Show,true);
-        var randomRelics = RelicDataManager.Inst.GetRandomRelics(cardCount);
-        foreach (var relicData in randomRelics)
+        cardCount = DataManager.Inst.Data.cardCount;
+        cardRepeat = DataManager.Inst.Data.cardRepeat;
+        if (cardCount > 4)
         {
-            Card card =  Instantiate(cardPrefab, content);
-            card.Init(relicData);
+            float size = 1 - (((cardCount-4)*0.1f)+0.1f);
+            content.localScale = new Vector3(size, size);
         }
-
-        if (sceneName!= null)
+        
+        if(curRepeat<= cardRepeat)
         {
-            OnClose += ()=>DemoLoadScene.Inst.LoadScene(sceneName);
+            DestroyChild();
+            panel.SetPosition(PanelStates.Show,true);
+            var randomRelics = RelicDataManager.Inst.GetRandomRelics(cardCount);
+            foreach (var relicData in randomRelics)
+            {
+                Card card =  Instantiate(cardPrefab, content);
+                card.Init(relicData);
+            }
+        
+            OnClose = null;
+            OnClose += ()=>CardSelect(sceneName);
+            ++curRepeat;
         }
         else
         {
             OnClose = null;
+            OnClose += ()=>curRepeat = 1;
+            if (sceneName!= null)
+            {
+                OnClose += ()=>DemoLoadScene.Inst.LoadScene(sceneName);
+            }
             OnClose +=()=> Hide();
+            OnClose?.Invoke();
         }
     }
     
@@ -61,18 +82,34 @@ public class RelicSelectManager : MonoBehaviour
     {
         TimeManager.Inst.ChangeTimeSpeed(1f);
         panel.SetPosition(PanelStates.Hide,true);
-        foreach (Transform child in content)
-        {
-            Destroy(child.gameObject);
-        }
+        DestroyChild();
+        
        
+    }
+
+    private void DestroyChild()
+    {
+        if (content.childCount > 0)
+        {
+            foreach (Transform child in content)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+      
     }
 
     public void Close()
     {
         OnClose?.Invoke();
         DataManager.Inst.Save();
+    }
     
+    public Card InstanceCard(RelicDatas relicData,Transform trans,Vector2 scale)
+    {
+        Card card =  Instantiate(cardPrefab, trans);
+        card.Init(relicData,scale,false);
+        return card;
     }
     
     

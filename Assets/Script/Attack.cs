@@ -72,6 +72,9 @@ public class Attack : MonoBehaviour
         if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
         float delay = 0;
         Vector2 finalDir = new Vector2(0,0);
+        float spreadAngle = 30;
+        float startAngle = -spreadAngle / 2f;
+        float angleStep = spreadAngle / (stat.extraHitCount - 1);
 
         for (var j = 0; j < stat.attackCount; j++)
         {
@@ -79,17 +82,17 @@ public class Attack : MonoBehaviour
             {
                 for (var i = 0; i < stat.extraHitCount; i++)
                 {
-                    float damage = stat.damage;
-                        
+                    Quaternion rotation = Quaternion.Euler(0, 0, shootInfor.character._angle);;
                     if (shootInfor.stat.cardRole == CardRole.ShotGun) // 샷건 해당
                     {
-                        float angle = 50 * ((float)i / (stat.extraHitCount) - 0.5f); // Spread bullets evenly within the spreadAngle
-                        finalDir = Quaternion.Euler(0, 0, angle) * shootInfor.dir; // Apply the angle to the direction vector
+                        float curAngle = startAngle + angleStep * i;
+                        rotation = Quaternion.Euler(0, 0, shootInfor.character._angle + curAngle);
+                        finalDir = rotation * Vector2.right;
                     }
                     else finalDir = shootInfor.dir;
 
                    
-                    ProjectTileSet(shootInfor);
+                    ProjectTileSet(shootInfor,rotation,finalDir);
                   
                 }
             });
@@ -97,25 +100,26 @@ public class Attack : MonoBehaviour
         }
     }
 
-    public void ProjectTileSet(ShootInfor shootInfor)
+    public void ProjectTileSet(ShootInfor shootInfor,Quaternion rot,Vector2 dir)
     {
         Bullet curBullet = pool.bulletPools[pool.bulletIndex];
         curBullet.gameObject.SetActive(true);
         // 총알 발사
-        curBullet.Init(shootInfor.stat,shootInfor.dir,shootInfor.characterType);
+        curBullet.Init(shootInfor.stat,dir,shootInfor.characterType);
         
 
         curBullet.transform.position = shootInfor.shootPoint.position;
-        curBullet.transform.rotation = shootInfor.curTrans.rotation;
+        curBullet.transform.rotation = rot;
 
         //총알 회전
+        /*
         Quaternion rotation = Quaternion.LookRotation(shootInfor.dir);
         curBullet.transform.localScale = 
             shootInfor.dir.x < 0 ? new Vector2(Mathf.Abs(curBullet.transform.localScale.x) * -1, curBullet.transform.localScale.y) 
                 : new Vector2(Mathf.Abs(curBullet.transform.localScale.x), curBullet.transform.localScale.y);
         rotation.x = 0;
         rotation.y = 0;
-        curBullet.transform.rotation = rotation;
+        curBullet.transform.rotation = rotation;*/
 
         pool.bulletIndex++;
         if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;

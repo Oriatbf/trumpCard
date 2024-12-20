@@ -144,6 +144,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            //플레이어가 졌을 때
+            DataManager.Inst.ResetData();            
             SceneTransition("LobbyScene");
         }
     }

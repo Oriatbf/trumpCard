@@ -3,76 +3,73 @@ using EasyTransition;
 using Febucci.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using PlayableCharacterData;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using VInspector;
 
-public class LobbyNpc : LobbyInteraction
+public class LobbyNpc : LobbyInteraction,IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
 {
     [TextArea][SerializeField] string[] npcText;
+    public int npcId;
     [SerializeField] private Canvas textCanvas;
+    private PlayableNpcManager playableNpcManager;
+    
  
     TypewriterByCharacter text;
     int textIndex;
     
+    public void SetNpcManager(PlayableNpcManager playableNpcManager)
+    {
+        this.playableNpcManager = playableNpcManager;
+    }
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        
         text = textCanvas.GetComponentInChildren<TypewriterByCharacter>();
         textCanvas.transform.localScale = Vector3.zero;
     }
 
     // Update is called once per frame
-    public  void Update()
+    public void Update()
     {
-        if(!TutorialManager.Inst.isTutorialing && npcType == NpcType.Player)
+        if (!TutorialManager.Inst.isTutorialing && npcType == NpcType.Player)
             Move();
 
         if (npcType == NpcType.Player)
         {
             DetectNpc();
         }
-        
+
     }
 
-   
-
-
-
-    protected override void InteractAction()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log(gameObject.name);
-        
-        DOVirtual.DelayedCall(0.01f, () =>
+        if (!playableNpcManager.characterSelected)
         {
-            npcType = NpcType.Player;
-            NpcManager.Inst.SetNpcPlayer();
-        });
+            Debug.Log($"{gameObject.name} 클릭됨!");
+            playableNpcManager.TurningNpc(npcId);
+        }
     }
 
-    [Button]
-    public void DialogeText()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if(npcType == NpcType.Player)
-            text.ShowText("<shake>" + npcText[textIndex]);
-        else text.ShowText( npcText[textIndex]);
-        textIndex++;
-        if(textIndex == npcText.Length) textIndex= 0;
-  
-    }
-
-    public void TutorialDialogue()
-    {
-        textCanvas.transform.DOScale(1, 0.5f).OnComplete(() => 
+        if (!playableNpcManager.characterSelected)
         {
-            text.ShowText(npcText[textIndex]);
-            textIndex++;
-            if (textIndex == npcText.Length) textIndex = 0;
-        });
-
-       // DOVirtual.DelayedCall(2f,)
-       
+            transform.DOScale(new Vector3(1.2f, 1.2f), 0.15f);
+        }
     }
 
-  
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!playableNpcManager.characterSelected)
+        {
+            transform.DOScale(new Vector3(1f, 1f),0.15f);
+        }
+    }
 }

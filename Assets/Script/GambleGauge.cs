@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,16 @@ using UnityEngine.UI;
 
 public class GambleGauge : MonoBehaviour
 {
+    private Character character;
     [SerializeField] private Image gambleImage;
     private float gaugePerSec=1;
     public float _curGauge, maxGauge;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        character = GetComponent<Character>();
+    }
+
     void Start()
     {
         gambleImage.fillAmount = _curGauge / maxGauge;
@@ -19,6 +26,12 @@ public class GambleGauge : MonoBehaviour
     {
         _curGauge += gaugePerSec * Time.deltaTime;
         gambleImage.fillAmount = _curGauge / maxGauge;
+
+        if (_curGauge >= maxGauge && !TimeManager.Inst.timeChanging)
+        {
+            character.Gambling();
+            _curGauge = 0;
+        }
     }
 
     public void IncreaseGambleGauge(float value)

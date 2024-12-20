@@ -81,6 +81,7 @@ public class Health : MonoBehaviour
             curHp -= damage;
             if(damage >=0)
                 UIManager.Inst.DamageUI(rectParent,transform,damage);
+            HpBarIncrease();
 
 
             if (curHp <= 0)
@@ -94,6 +95,7 @@ public class Health : MonoBehaviour
                 else if (character.characterType == CharacterType.Enemy)
                 {
                     StartCoroutine(GameManager.Inst.GameEnd(true, character));
+                     TopUIController.Inst.GetGold(character.goldValue); 
                 }
                 return;
             }

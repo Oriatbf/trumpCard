@@ -57,9 +57,10 @@ namespace RelicData
 /* Fields. */
 
 		public System.Int32 id;
-		public System.String sprite;
 		public Rarity rarity;
+		public ExcuteType excuteType;
 		public System.String name;
+		public System.String sprite;
 		public System.String component;
 		public System.String description;
 		public System.Single value;

@@ -84,7 +84,7 @@ namespace Map
                     
                     break;
                 case NodeType.Boss:
-                    GameManager.Inst.bossStage = true;
+                    //GameManager.Inst.bossStage = true;
                     DemoLoadScene.Inst.LoadScene("StageScene");
                     break;
                 case NodeType.Mystery:

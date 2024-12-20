@@ -12,14 +12,16 @@ public class PlayerData
     public int stage = 0;
     public int gold = 0;
     public List<int> relicID = new List<int>();
+    public int cardCount = 4;
+    public int cardRepeat = 1;
+    public int characterId = -1;
 }
 public class DataManager : MonoBehaviour
 {
-   
-    
     public static DataManager Inst;
     private string _DataFilePath;
     public PlayerData Data = new PlayerData();
+    [SerializeField] private PlayableNpcManager playableNpcManager;
 
 
     private void Awake()
@@ -52,9 +54,15 @@ public class DataManager : MonoBehaviour
 
     IEnumerator LoadPlayerRelic()
     {
-        yield return new WaitUntil(() => CharacterRelicData.Inst);
-        
+        yield return new WaitUntil(() => CharacterRelicData.Inst && TopUIController.Inst);
+        if (Data.characterId >= 0)
+        {
+            playableNpcManager.curNpcIndex = Data.characterId;
+            playableNpcManager.SetNpcPlayer(Data.characterId);
+        }
+       
         CharacterRelicData.Inst.LoadPlayerRelic(Data.relicID);
+        TopUIController.Inst.InstanceRelicIcon(Data.relicID,false);
     }
 
     public void Save()
@@ -71,7 +79,9 @@ public class DataManager : MonoBehaviour
     public void ResetData()
     {
         Data = new PlayerData();
+        TopUIController.Inst.Initialize();
         Save();
+        
         StartCoroutine(LoadPlayerRelic());
     }
 

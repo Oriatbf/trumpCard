@@ -40,6 +40,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < relicLoots.Count; i++)
         {
             relicLoots[i].Init(randomRelics[i]);
+            relicLoots[i].SetShop();
             relicLoots[i].purchased = false;
         }
     }
@@ -63,6 +64,10 @@ public class ShopManager : MonoBehaviour
 
     public void ShopClose()
     {
+        foreach (var shopCard in relicLoots)
+        {
+            shopCard.ResetShop();
+        }
         shopAnim.SetBool("ShopFade", false);
         mapAnim.SetBool("MapFade", false);
         MapPlayerTracker.Instance.Locked = false;

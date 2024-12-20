@@ -62,16 +62,6 @@ public class LobbyInteraction : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Player)
                 nearNpc.InteractAction();
         }
-        
-        
-        if (Vector3.Distance(NpcManager.Inst.GetPlayerNpc().transform.position, transform.position) < detectRange)
-        {
-            inDetect = true;
-        }
-        else inDetect = false;
-        
-        if(inDetect && Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Npc)
-            interactAction?.Invoke();
     }
     
     protected virtual void InteractAction(){}

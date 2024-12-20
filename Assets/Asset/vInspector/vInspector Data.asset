@@ -12,12 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7915df4cd4da490ab52fc8fa9ee9127, type: 3}
   m_Name: vInspector Data
   m_EditorClassIdentifier: 
-  items:
-  - globalId:
-      globalObjectIdString: GlobalObjectId_V1-3-c7bad4d6ddd9b9c4abda94701cf38dde-11400000-0
-    _typeString: BasicAbility, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    _obj: {fileID: 11400000, guid: c7bad4d6ddd9b9c4abda94701cf38dde, type: 2}
-    isSceneGameObject: 0
-    isAsset: 1
-    id: 1060561849
+  items: []

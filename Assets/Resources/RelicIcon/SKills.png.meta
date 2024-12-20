@@ -1,0 +1,1071 @@
+fileFormatVersion: 2
+guid: 9b0506567f12a834ea171dad8792125b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6821784906855184899
+    second: UI_Skills_S2_0
+  - first:
+      213: 3142118948287040454
+    second: UI_Skills_S2_1
+  - first:
+      213: -4091052766832507188
+    second: UI_Skills_S2_2
+  - first:
+      213: -2957148170047767745
+    second: UI_Skills_S2_3
+  - first:
+      213: -527394501461406458
+    second: UI_Skills_S2_4
+  - first:
+      213: -4442552574508620112
+    second: UI_Skills_S2_5
+  - first:
+      213: -3353193991270035966
+    second: UI_Skills_S2_6
+  - first:
+      213: -1306562441809689243
+    second: UI_Skills_S2_7
+  - first:
+      213: 4800327486373947698
+    second: UI_Skills_S2_8
+  - first:
+      213: -5464554820173554938
+    second: UI_Skills_S2_9
+  - first:
+      213: -850831432958292995
+    second: UI_Skills_S2_10
+  - first:
+      213: -6069159041347174938
+    second: UI_Skills_S2_11
+  - first:
+      213: -2170069014866149776
+    second: UI_Skills_S2_12
+  - first:
+      213: 5109337514973705252
+    second: UI_Skills_S2_13
+  - first:
+      213: -6239267027838576932
+    second: UI_Skills_S2_14
+  - first:
+      213: -8502788896982275234
+    second: UI_Skills_S2_15
+  - first:
+      213: 8734769583389004274
+    second: UI_Skills_S2_16
+  - first:
+      213: 854270984019090374
+    second: UI_Skills_S2_17
+  - first:
+      213: -4550988215143072650
+    second: UI_Skills_S2_18
+  - first:
+      213: 1451086507580214682
+    second: UI_Skills_S2_19
+  - first:
+      213: -6067231991862642084
+    second: UI_Skills_S2_20
+  - first:
+      213: 8612800443745017280
+    second: UI_Skills_S2_21
+  - first:
+      213: -6876492159102446397
+    second: UI_Skills_S2_22
+  - first:
+      213: -6147675584972738222
+    second: UI_Skills_S2_23
+  - first:
+      213: 5209526993681335978
+    second: UI_Skills_S2_24
+  - first:
+      213: 883380532685823719
+    second: UI_Skills_S2_25
+  - first:
+      213: 6169016759306975482
+    second: UI_Skills_S2_26
+  - first:
+      213: -4229916558391532155
+    second: UI_Skills_S2_27
+  - first:
+      213: -8259536529062852315
+    second: UI_Skills_S2_28
+  - first:
+      213: 8298293950871917618
+    second: UI_Skills_S2_29
+  - first:
+      213: -6872061364164315000
+    second: UI_Skills_S2_30
+  - first:
+      213: -1170730328896840909
+    second: UI_Skills_S2_31
+  - first:
+      213: 4851312179258007833
+    second: UI_Skills_S2_32
+  - first:
+      213: -47108077865683633
+    second: UI_Skills_S2_33
+  - first:
+      213: -7618553979425933662
+    second: UI_Skills_S2_34
+  - first:
+      213: -9033200842972299755
+    second: UI_Skills_S2_35
+  - first:
+      213: -2722358536467762836
+    second: UI_Skills_S2_36
+  - first:
+      213: 54103711218843853
+    second: UI_Skills_S2_37
+  - first:
+      213: -8134666612683993794
+    second: UI_Skills_S2_38
+  - first:
+      213: -3871264793331094111
+    second: UI_Skills_S2_39
+  - first:
+      213: 4547556909235150421
+    second: UI_Skills_S2_40
+  - first:
+      213: 176703647738055613
+    second: UI_Skills_S2_41
+  - first:
+      213: 3398722371582870043
+    second: UI_Skills_S2_42
+  - first:
+      213: -4281835110506721091
+    second: UI_Skills_S2_43
+  - first:
+      213: -7759600366287887099
+    second: UI_Skills_S2_44
+  - first:
+      213: -8130948840196480618
+    second: UI_Skills_S2_45
+  - first:
+      213: 1468092471263001222
+    second: UI_Skills_S2_46
+  - first:
+      213: -6933227496049816994
+    second: UI_Skills_S2_47
+  - first:
+      213: 5998319985618912911
+    second: UI_Skills_S2_48
+  - first:
+      213: -4942265909507466674
+    second: UI_Skills_S2_49
+  - first:
+      213: -3309595018660949536
+    second: UI_Skills_S2_50
+  - first:
+      213: -951499488059731270
+    second: UI_Skills_S2_51
+  - first:
+      213: 3195355030589902127
+    second: UI_Skills_S2_52
+  - first:
+      213: -1149886268655406593
+    second: UI_Skills_S2_53
+  - first:
+      213: 4168220295383893524
+    second: UI_Skills_S2_54
+  - first:
+      213: -2645657714301979933
+    second: UI_Skills_S2_55
+  - first:
+      213: -3930135267815266449
+    second: UI_Skills_S2_56
+  - first:
+      213: 7616558291512130732
+    second: UI_Skills_S2_57
+  - first:
+      213: -5607925310723488024
+    second: UI_Skills_S2_58
+  - first:
+      213: 9214938884472159294
+    second: UI_Skills_S2_59
+  - first:
+      213: 4381197428895770426
+    second: UI_Skills_S2_60
+  - first:
+      213: -8082636761868795841
+    second: UI_Skills_S2_61
+  - first:
+      213: -4011673518414792485
+    second: UI_Skills_S2_62
+  - first:
+      213: 5510821956597903748
+    second: UI_Skills_S2_63
+  - first:
+      213: 3241703892940478106
+    second: UI_Skills_S2_64
+  - first:
+      213: 7002837965877166949
+    second: UI_Skills_S2_65
+  - first:
+      213: 8253556757043940176
+    second: UI_Skills_S2_66
+  - first:
+      213: 73956930718090584
+    second: UI_Skills_S2_67
+  - first:
+      213: 6532023691986540145
+    second: UI_Skills_S2_68
+  - first:
+      213: -1516032501980143949
+    second: UI_Skills_S2_69
+  - first:
+      213: -7313547033732657721
+    second: UI_Skills_S2_70
+  - first:
+      213: 9202245887394590106
+    second: UI_Skills_S2_71
+  - first:
+      213: 7415408465726739657
+    second: UI_Skills_S2_72
+  - first:
+      213: 5702167206613130576
+    second: UI_Skills_S2_73
+  - first:
+      213: 66210106254286693
+    second: UI_Skills_S2_74
+  - first:
+      213: -5263291511152873749
+    second: UI_Skills_S2_75
+  - first:
+      213: -6966452349180174137
+    second: UI_Skills_S2_76
+  - first:
+      213: 1117676797363924185
+    second: UI_Skills_S2_77
+  - first:
+      213: -6342723769520059337
+    second: UI_Skills_S2_78
+  - first:
+      213: 3552182126292076624
+    second: UI_Skills_S2_79
+  - first:
+      213: -1770401780393946740
+    second: UI_Skills_S2_80
+  - first:
+      213: 7931498520941061088
+    second: UI_Skills_S2_81
+  - first:
+      213: 2223247904147085628
+    second: UI_Skills_S2_82
+  - first:
+      213: -1267231380881775121
+    second: UI_Skills_S2_83
+  - first:
+      213: -7698044974832907617
+    second: UI_Skills_S2_84
+  - first:
+      213: 3194249707726574315
+    second: UI_Skills_S2_85
+  - first:
+      213: 3974511616764828136
+    second: UI_Skills_S2_86
+  - first:
+      213: 2651561112982096293
+    second: UI_Skills_S2_87
+  - first:
+      213: 4631565045517870395
+    second: UI_Skills_S2_88
+  - first:
+      213: 5583369969368978094
+    second: UI_Skills_S2_89
+  - first:
+      213: -6286637384875982174
+    second: UI_Skills_S2_90
+  - first:
+      213: -2226599748123054205
+    second: UI_Skills_S2_91
+  - first:
+      213: 1974244442194648396
+    second: UI_Skills_S2_92
+  - first:
+      213: 2182879992335857253
+    second: UI_Skills_S2_93
+  - first:
+      213: -4142114954174796619
+    second: UI_Skills_S2_94
+  - first:
+      213: 2367393896293847189
+    second: UI_Skills_S2_95
+  - first:
+      213: -3591464094429830702
+    second: UI_Skills_S2_96
+  - first:
+      213: -6468412433953729012
+    second: UI_Skills_S2_97
+  - first:
+      213: 3881170855928896963
+    second: UI_Skills_S2_98
+  - first:
+      213: 2831258390424777958
+    second: UI_Skills_S2_99
+  - first:
+      213: -2534799238952170557
+    second: UI_Skills_S2_100
+  - first:
+      213: -7166338092869598945
+    second: UI_Skills_S2_101
+  - first:
+      213: -4161239966416464773
+    second: UI_Skills_S2_102
+  - first:
+      213: -486855751787412955
+    second: UI_Skills_S2_103
+  - first:
+      213: -8558321092180082709
+    second: UI_Skills_S2_104
+  - first:
+      213: 435776332421432116
+    second: UI_Skills_S2_105
+  - first:
+      213: 1457897689328112740
+    second: UI_Skills_S2_106
+  - first:
+      213: -4861238619651143839
+    second: UI_Skills_S2_107
+  - first:
+      213: -1804564038628587039
+    second: UI_Skills_S2_108
+  - first:
+      213: 1387050556988936181
+    second: UI_Skills_S2_109
+  - first:
+      213: -6627489536651779607
+    second: UI_Skills_S2_110
+  - first:
+      213: 1219972309367459109
+    second: UI_Skills_S2_111
+  - first:
+      213: 6840760291683076080
+    second: UI_Skills_S2_112
+  - first:
+      213: 4837975453492993324
+    second: UI_Skills_S2_113
+  - first:
+      213: -3030555535688630966
+    second: UI_Skills_S2_114
+  - first:
+      213: 2181431051853892710
+    second: UI_Skills_S2_115
+  - first:
+      213: 6435426612223206514
+    second: UI_Skills_S2_116
+  - first:
+      213: -3598865686312871565
+    second: UI_Skills_S2_117
+  - first:
+      213: -4473511697838413871
+    second: UI_Skills_S2_118
+  - first:
+      213: -8253091033172996039
+    second: UI_Skills_S2_119
+  - first:
+      213: 3538070785589824675
+    second: UI_Skills_S2_120
+  - first:
+      213: 7406153443551543940
+    second: UI_Skills_S2_121
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_Skills_S2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1194
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3be4040bfdcba72488a3c73e934f1a3e
+      internalID: -276707943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DamageUp
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 1194
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 262202606bc76d94d86ca997f413f38e
+      internalID: 1362306258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_2
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1194
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ef70929edaa2fd40a8cfd362b7e3c9f
+      internalID: -1987136045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoolTimeUp
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 1194
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c7ee93555dca842b332a080e5229d3
+      internalID: -1252645474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CriticalChanceUp
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 1194
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 300084ef537d47c43b49083b061d104b
+      internalID: -1220663067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_5
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 1194
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cae713d8b1e28f4bbde7b8e88e3ede1
+      internalID: 96137541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_6
+      rect:
+        serializedVersion: 2
+        x: 2358
+        y: 1194
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa95d2fc94a2068428f2fe9a3b41fe04
+      internalID: -1221544813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 796
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba7028d0ccf05c45969c19ebcb2d17b
+      internalID: 799304024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_8
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 796
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3db0ae1e83881c4d8210d16b94be594
+      internalID: 300482795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_9
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 796
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef955dc3e4680494b82702e17a09285d
+      internalID: 1999706624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_10
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 796
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a82c42b66d452f4a9f3e7b5b7daf049
+      internalID: -616314009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BulletSpeedUp
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 796
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aea42d30986d46740b98f62e1c1b443a
+      internalID: 1218013330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_12
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 796
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b16b688a6c7f10d4797f3d81d98824dc
+      internalID: -1556020041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpUp
+      rect:
+        serializedVersion: 2
+        x: 2358
+        y: 796
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2084ecdf34024ee45a89e43d8a8f4e6d
+      internalID: -1935868536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MuryangGongcheo
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 398
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34383786ae7b12f46925384489f732fa
+      internalID: -1817401173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sandevistan
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 398
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77dddff4572fd2e4997e9929169584cf
+      internalID: 2113664658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_16
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 398
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f111d3e063dec7247be9e15e38562d61
+      internalID: 343065437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BulletSizeUp
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 398
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7baa1e8709651d49b817b19f4ab5d0d
+      internalID: 689943857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DamageToHeal
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 398
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ae8ac8247b39c94aa30940acc7b7504
+      internalID: -1840468908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_19
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 398
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67d6402f68489454da0ce9efc7386fda
+      internalID: 18857677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlackFlash
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 798e176c75315cf468877f4f39d94405
+      internalID: -475113519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_21
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 0
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c0d71fd4a54184289a861e2429b865
+      internalID: -1661842142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Skills_S2_22
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 0
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b15d0f368a725147af781b3c482655c
+      internalID: 731060287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealPerTime
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 0
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640f69de9751c6a4eaf0efbc28d55fe8
+      internalID: 603087715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpeedUp
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 0
+        width: 393
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4de7fdd47c787554bade42b9e1791dce
+      internalID: 1015243138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 14b860714c1f7814ebc84b6ba089dc46
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BlackFlash: -475113519
+      BulletSizeUp: 689943857
+      BulletSpeedUp: 1218013330
+      CoolTimeUp: -1252645474
+      CriticalChanceUp: -1220663067
+      DamageToHeal: -1840468908
+      DamageUp: 1362306258
+      HealPerTime: 603087715
+      HpUp: -1935868536
+      MuryangGongcheo: -1817401173
+      Sandevistan: 2113664658
+      SpeedUp: 1015243138
+      UI_Skills_S2_0: -276707943
+      UI_Skills_S2_10: -616314009
+      UI_Skills_S2_12: -1556020041
+      UI_Skills_S2_16: 343065437
+      UI_Skills_S2_19: 18857677
+      UI_Skills_S2_2: -1987136045
+      UI_Skills_S2_21: -1661842142
+      UI_Skills_S2_22: 731060287
+      UI_Skills_S2_5: 96137541
+      UI_Skills_S2_6: -1221544813
+      UI_Skills_S2_7: 799304024
+      UI_Skills_S2_8: 300482795
+      UI_Skills_S2_9: 1999706624
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

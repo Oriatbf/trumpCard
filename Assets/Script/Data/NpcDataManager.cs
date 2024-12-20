@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class NpcDataManager : MonoBehaviour
 {
@@ -13,7 +15,6 @@ public class NpcDataManager : MonoBehaviour
         public string name;
         public int difficulty;
         public string description;
-        public string[] idString;
         public List<RelicDatas> relicDatas = new List<RelicDatas>();
 
         public Data(NpcData.Data data)
@@ -22,8 +23,7 @@ public class NpcDataManager : MonoBehaviour
             name = data.name;
             difficulty = data.difficulty;
             description = data.description;
-            idString = data.relicId.Split(",");
-            relicDatas = RelicDataManager.Inst.GetIdRelics(idString);
+            relicDatas = RelicDataManager.Inst.GetRelics(data.relicId);
         }
 
     }
@@ -52,5 +52,26 @@ public class NpcDataManager : MonoBehaviour
         {
             npcDatas.Add(new Data(data));
         }
+    }
+
+    public void RandomEnemy(int stage)
+    {
+        int _difficulty = 0;
+        switch (stage)
+        {
+            case <=3:
+                _difficulty = 1;
+                break;
+            case <=7:
+                _difficulty = 2;
+                break;
+            case <=12:
+                _difficulty = 3;
+                break;
+        }
+
+        List<Data> npcs = npcDatas.Where(n => n.difficulty == _difficulty).ToList();
+        int random = Random.Range(0, npcs.Count);
+        //리턴
     }
 }

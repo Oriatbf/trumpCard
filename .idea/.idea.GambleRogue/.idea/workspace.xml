@@ -6,15 +6,83 @@
   <component name="ChangeListManager">
     <list default="true" id="8980fbce-ce1f-40fc-ad40-6187e7f32ffb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Scripts/MapPlayerTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Scripts/MapPlayerTracker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Asset/vInspector/vInspector Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/vInspector/vInspector Data.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Galmuri11 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Galmuri11 SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/UGS.Examples.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/awesome_sunny.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/RelicCard.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/RelicCard.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Attack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Card.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Character.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Data/NpcDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/NpcDataManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EventManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/GambleGauge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/GambleGauge.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Health.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/MuryangGongcheo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/MuryangGongcheo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/LobbyInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/LobbyInteraction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/LobbyNpc.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/LobbyNpc.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/CharacterRelicData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/CharacterRelicData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/DataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/DataManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/NpcManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/PlayableNpcManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/NpcManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/PlayableNpcManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/RelicSelectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/RelicSelectManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/Sandevistan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/Sandevistan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ShopManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ShopManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/UI/TopUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/UI/TopUIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/UIManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/UIManager.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/Utility/TimeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Utility/TimeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/CarsinoBackground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/CarsinoBackground.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/EventBack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/EventBack.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/EventBack_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/EventBack_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/EventBack_Button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/EventBack_Button.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/MapCanvas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/MapCanvas.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/OptionCanvas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/OptionCanvas.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/Option_Button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/Option_Button.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/Option_Slider.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/Option_Slider.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/Option_Slider2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/Option_Slider2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopSign.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopSign.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_BackButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_BackButton.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_BackButton_Press.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_BackButton_Press.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_Button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_Button.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_Button_Press.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_Button_Press.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_RefreshButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_RefreshButton.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_RefreshButton_Press.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/ShopUI_RefreshButton_Press.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/UI_Bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/UI_Bar.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/UI_Pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/UI_Pause.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/UI_help.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprite/UI/UI_help.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/NpcData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/NpcData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/RelicData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/RelicData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/meta.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/meta.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/RelicData.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/RelicData.Data.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,6 +210,18 @@
       <workItem from="1733916306031" duration="9670000" />
       <workItem from="1733989924152" duration="1360000" />
       <workItem from="1733999828179" duration="7079000" />
+      <workItem from="1734071208080" duration="4308000" />
+      <workItem from="1734086617155" duration="3823000" />
+      <workItem from="1734339074792" duration="287000" />
+      <workItem from="1734345590512" duration="7557000" />
+      <workItem from="1734408872406" duration="12073000" />
+      <workItem from="1734431449579" duration="9811000" />
+      <workItem from="1734504040874" duration="5575000" />
+      <workItem from="1734521351437" duration="9158000" />
+      <workItem from="1734587915089" duration="5049000" />
+      <workItem from="1734604768769" duration="6259000" />
+      <workItem from="1734667874089" duration="10425000" />
+      <workItem from="1734700298361" duration="1638000" />
     </task>
     <servers />
   </component>

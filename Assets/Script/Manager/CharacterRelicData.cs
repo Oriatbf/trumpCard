@@ -28,16 +28,13 @@ public class CharacterRelicData : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitUntil(()=>RelicDataManager.Inst);
-        for (int i = 0; i < 10; i++)
-        {
-            enemyRelicData.Add(RelicDataManager.Inst.GetDupRandomRelics(i + 1));
-        }
     }
     
     public void AddPlayerRelic(RelicDatas relicData)
     {
         DataManager.Inst.Data.relicID.Add(relicData.id);
         playerRelicData.Add(relicData);
+        DataManager.Inst.Save();
     }
 
     public void LoadPlayerRelic(List<int> relicIds)
