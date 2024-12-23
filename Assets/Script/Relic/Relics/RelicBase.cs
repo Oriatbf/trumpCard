@@ -40,6 +40,7 @@ public class RelicBase
         {
             foreach (var _extraRelic in extraRelic)
             {
+                Debug.Log($"extraRelic 실행 {_extraRelic.value}");
                 _extraRelic.Excute(character);
             }
         }

@@ -24,6 +24,7 @@ public class CharacterRelicData : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    
 
     private IEnumerator Start()
     {

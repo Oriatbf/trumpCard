@@ -13,8 +13,10 @@ using Random = UnityEngine.Random;
 [UGS(typeof(Rarity))]
 public enum Rarity
 {
-    Common=0,Rare=1,Epic=2
+    Common=0,Rare=1,Epic=2,Nothing = -1
 }
+
+
 
 [Serializable]
 public class RelicDatas
@@ -69,6 +71,7 @@ public class RelicDataManager : MonoBehaviour
 {
     public static RelicDataManager Inst;
     public List<RelicDatas> relicDatas  = new List<RelicDatas>();
+    private List<RelicDatas> InActiveRelicDatas = new List<RelicDatas>();
    
     private void Awake()
     {
@@ -90,26 +93,32 @@ public class RelicDataManager : MonoBehaviour
     {
         foreach (var data in RelicData.Data.DataList)
         {
+            
+            RelicBase relic = null;
             Type type = Type.GetType(data.component);
             if (type != null)
             {
                 object relicInstance = Activator.CreateInstance(type);
-                RelicBase relic = relicInstance as RelicBase;
-                List<int> _extraRelicID = new List<int>();
-                
-                if (data.extraRelicID != "") //추가 유물 아이디 string -> int로 변환
-                {
-                    string[] extraRelics = data.extraRelicID.Split(",");
-                    foreach (var str in extraRelics)
-                    {
-                        _extraRelicID.Add(int.Parse(str));
-                    }
-                }
-                
-                relic.Init(data.value,data.time,data.excuteType);
-                
-                relicDatas.Add(new RelicDatas( data,relic,_extraRelicID));
+                relic = relicInstance as RelicBase;
             }
+
+            List<int> _extraRelicID = new List<int>();
+                
+            if (data.extraRelicID != "") //추가 유물 아이디 string -> int로 변환
+            {
+                string[] extraRelics = data.extraRelicID.Split(",");
+                foreach (var str in extraRelics)
+                {
+                    _extraRelicID.Add(int.Parse(str));
+                }
+            }
+            
+            relic?.Init(data.value,data.time,data.excuteType);
+            
+            InActiveRelicDatas.Add(new RelicDatas( data,relic,_extraRelicID));
+            if(data.active ==1) //1일때 active 0일 때 InActive
+                relicDatas.Add(new RelicDatas( data,relic,_extraRelicID));
+            
         }
 
         foreach (var data in relicDatas)
@@ -118,7 +127,7 @@ public class RelicDataManager : MonoBehaviour
             {
                 foreach (var relicIndex in data.extraRelicID)
                 {
-                    var extraRelic =  relicDatas.FirstOrDefault(r => r.id == relicIndex);
+                    var extraRelic =  InActiveRelicDatas.FirstOrDefault(r => r.id == relicIndex);
                     
                     data.relic.extraRelic.Add(extraRelic.relic);
                 }
@@ -167,6 +176,15 @@ public class RelicDataManager : MonoBehaviour
         {
             var originalRelic = relicDatas.FirstOrDefault(r => r.id == id);
             var copyRelic = new RelicDatas(originalRelic,originalRelic.relic.Clone());
+            if (copyRelic.extraRelicID.Count > 0)
+            {
+                foreach (var _extraId in copyRelic.extraRelicID)
+                {
+                    var _originalRelic = InActiveRelicDatas.FirstOrDefault(s => s.id == _extraId);
+                    var _copyRelic =  new RelicDatas(_originalRelic,_originalRelic.relic.Clone());
+                    copyRelic.relic.extraRelic.Add(_copyRelic.relic);
+                }
+            }
             _selectedRelic.Add(copyRelic);
            
         }
