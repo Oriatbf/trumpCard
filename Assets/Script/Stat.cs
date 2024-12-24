@@ -24,16 +24,22 @@ public class Stat
         public float attackCount, extraHitCount;
         
     }
-
-    public void StatUpAction()
-    {
-        statUpAction?.Invoke();
-        
-    }
-
+    
     public StatsValue statValue = new StatsValue();
-    
-    
+
+    public void Action()
+    {
+        if (statUpAction == null)
+        {
+            Debug.Log("No Action");
+        }
+        else
+        {
+            statUpAction?.Invoke();
+            Debug.Log("Have Action");
+        }
+       
+    }
 
 }
 

@@ -71,30 +71,17 @@ public class Character : MonoBehaviour
 
     public void Gambling() //갬블시 초기화 되는 내용 및 체인지
     {
-        StartRelicSkill();
         SetWeapon(stat.cardNum);
         SetStat();
        
     }
-
-    public void CardStatReset() //게임이 다끝나고 로비로 돌아가야할 때 실행
-    {
-        //characterSO.ResetRelicInfor();
-       // characterSO.ClearDebuffList();
-    }
-
-    public void StartRelicSkill()
-    {
-        //relicSkills.StartSkill();
-
-       // if(characterType == CharacterType.Player) relicSkills.Init();
-    }
+    
+    
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         Gambling();
-
     }
 
     // Update is called once per frame
@@ -127,7 +114,7 @@ public class Character : MonoBehaviour
         float hpRatio = health.curHp/health.maxHp; //hp 비율
         stat = CardDataManager.Inst.RandomCard().stat;
         Debug.Log(stat.statValue.hp);
-        stat.StatUpAction();
+        stat.Action();
         
         var basicStat = stat.statValue;
         basicStat.speed = basicStat.speed <1?1:basicStat.speed;
@@ -222,21 +209,6 @@ public class Character : MonoBehaviour
            // EffectManager.Inst.SpawnEffect(shootPoint.transform, 1, Quaternion.Euler(0, 0, _angle));
            // Attack.Inst.Slash(shootInfor);
         }
-           
-
-       // RaycastHit2D hit;
-      //  hit = Physics2D.Raycast(transform.position, _dir, 2f, opponentMask);
-      /*
-      if (hit.collider != null)
-      {
-          Health opponentHealth = hit.transform.GetComponent<Health>();
-          foreach (Debuff debuff in characterSO.debuffs)
-          {
-              debuff.Apply(opponentHealth);
-          }
-          opponentHealth.OnDamage(Critical(stat));
-
-      }*/
       
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _dir, 2f);
         foreach (var hit in hits)
