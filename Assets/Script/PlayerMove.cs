@@ -43,11 +43,6 @@ public class PlayerMove : Character
             dashBtnImage = dashBtn.GetComponent<Image>();
     }
     
-    [Button]
-    public void StatActionTest()
-    {
-        stat.Action();
-    }
 
     // Update is called once per frame
     public override void Update()

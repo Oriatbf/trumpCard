@@ -9,6 +9,7 @@ public class Stat
     public CardType cardType;
     public CardRole cardRole;
     public Action statUpAction;
+    public StatsValue statValue = new StatsValue();
     
     [Serializable]
     public struct StatsValue
@@ -25,7 +26,6 @@ public class Stat
         
     }
     
-    public StatsValue statValue = new StatsValue();
 
     public void Action()
     {

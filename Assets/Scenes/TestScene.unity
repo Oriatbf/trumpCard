@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1464598409}
   - component: {fileID: 1464598408}
-  - component: {fileID: 1464598407}
+  - component: {fileID: 1464598410}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -228,26 +228,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1464598407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464598406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f3ee3b1b135de4781578e904451d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2762529521800188215, guid: ef514ce742813714ea9502eb68d98710, type: 3}
-  firePoint: {fileID: 1832460666}
-  bulletCount: 5
-  spreadAngle: 30
-  bulletSpeed: 10
-  angleVec: {x: 0, y: 0, z: 0}
-  _camera: {fileID: 615031207}
-  handle: {fileID: 1832460664}
 --- !u!212 &1464598408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -319,6 +299,18 @@ Transform:
   - {fileID: 1832460666}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1464598410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464598406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643367d2352375349b26c4e73fe61395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1832460664
 GameObject:
   m_ObjectHideFlags: 0

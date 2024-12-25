@@ -20,7 +20,7 @@ public class Bullet : Projectile
     }
     
 
-    public void Init(Stat stat,Vector2 dir,CharacterType characterType)
+    public override void Init(Stat stat,Vector2 dir,CharacterType characterType)
     {
         ownerCharacter = characterType;
         rigid.linearVelocity = Vector2.zero;
@@ -28,6 +28,7 @@ public class Bullet : Projectile
         bulletDir = dir;
         bulletSpeed = stat.statValue.bulletSpeed;
         transform.localScale = new Vector3(stat.statValue.bulletSize, stat.statValue.bulletSize);
+        ActiveFalse(2f);
 
         //rigid.AddForce(dir * stat.statValue.bulletSpeed*100*Time.deltaTime, ForceMode2D.Impulse);
     }
@@ -47,7 +48,7 @@ public class Bullet : Projectile
                 character.health.GetDamage(damage);
                 character.GetForce(bulletDir,5,0.05f);
                 EffectManager.Inst.SpawnEffect(transform, 0);
-                gameObject.SetActive(isReturn);
+                ActiveFalse();
             }
         }
     }

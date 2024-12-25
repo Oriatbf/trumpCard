@@ -69,7 +69,6 @@ public class Attack : MonoBehaviour
     public void Shoot(ShootInfor shootInfor,bool isMaxCharging = false)
     {
         var stat = shootInfor.stat.statValue;
-        if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
         float delay = 0;
         Vector2 finalDir = new Vector2(0,0);
         float spreadAngle = 30;
@@ -102,7 +101,7 @@ public class Attack : MonoBehaviour
 
     public void ProjectTileSet(ShootInfor shootInfor,Quaternion rot,Vector2 dir)
     {
-        Bullet curBullet = pool.bulletPools[pool.bulletIndex];
+        Projectile curBullet = pool.GetObjectFromPool("Bullet");
         curBullet.gameObject.SetActive(true);
         // 총알 발사
         curBullet.Init(shootInfor.stat,dir,shootInfor.characterType);
@@ -110,19 +109,8 @@ public class Attack : MonoBehaviour
 
         curBullet.transform.position = shootInfor.shootPoint.position;
         curBullet.transform.rotation = rot;
-
-        //총알 회전
-        /*
-        Quaternion rotation = Quaternion.LookRotation(shootInfor.dir);
-        curBullet.transform.localScale = 
-            shootInfor.dir.x < 0 ? new Vector2(Mathf.Abs(curBullet.transform.localScale.x) * -1, curBullet.transform.localScale.y) 
-                : new Vector2(Mathf.Abs(curBullet.transform.localScale.x), curBullet.transform.localScale.y);
-        rotation.x = 0;
-        rotation.y = 0;
-        curBullet.transform.rotation = rotation;*/
-
-        pool.bulletIndex++;
-        if (pool.bulletIndex > pool.bulletPools.Length - 1) pool.bulletIndex = 0;
+        
+        
     }
 /*
     public void Slash(ShootInfor shootInfor)

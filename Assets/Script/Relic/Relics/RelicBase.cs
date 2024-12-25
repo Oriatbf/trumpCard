@@ -34,6 +34,7 @@ public class RelicBase
 
     public virtual void Excute(Character character)
     {
+        Debug.Log(excuteType);
         if (excuteFirst && excuteType == ExcuteType.Once) return;
         excuteFirst = true;
         if (extraRelic.Count>0)

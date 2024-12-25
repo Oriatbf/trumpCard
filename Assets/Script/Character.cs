@@ -55,6 +55,7 @@ public class Character : MonoBehaviour
 
     public virtual void Awake()
     {
+        stat.statUpAction = null;
         spr = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();
@@ -62,8 +63,6 @@ public class Character : MonoBehaviour
         dashEffect = GetComponent<DashEffect>();
         gambleGauge= GetComponent<GambleGauge>();
         curCharging = 1;
-      //  characterSO.relicInfor.characterTrans = transform;
-      //  characterSO.relicInfor.characterHealth= health;
 
         int randomGold = Random.Range(100, 151);
         goldValue= randomGold;
@@ -111,10 +110,19 @@ public class Character : MonoBehaviour
 
     public void SetStat()
     {
+       // Action action = stat.statUpAction;
         float hpRatio = health.curHp/health.maxHp; //hp 비율
-        stat = CardDataManager.Inst.RandomCard().stat;
-        Debug.Log(stat.statValue.hp);
+
+        var randomStat = CardDataManager.Inst.RandomCard().stat;
+        stat.statValue = randomStat.statValue;
+        stat.cardNum = randomStat.cardNum;
+        stat.cardRole = randomStat.cardRole;
+        stat.cardType = randomStat.cardType;
+       // stat.statUpAction +=()=> Debug.Log("pppaaa"); //버그 확인 action도 초기화돼서 오는 버그
+       // stat.statUpAction = action;
+       Debug.Log(stat.statValue.hp);
         stat.Action();
+      
         
         var basicStat = stat.statValue;
         basicStat.speed = basicStat.speed <1?1:basicStat.speed;

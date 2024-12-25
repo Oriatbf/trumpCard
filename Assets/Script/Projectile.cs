@@ -7,10 +7,17 @@ using DG.Tweening;
 public class Projectile : MonoBehaviour
 {
     public CharacterType ownerCharacter;
+    protected Tween disableTween;
    
-    public void ActiveFalse()
+    public void ActiveFalse(float delay = 0f)
     {
-        DOVirtual.DelayedCall(2f, () => gameObject.SetActive(false));
+        if (disableTween != null)
+            disableTween.Kill();
+        disableTween=DOVirtual.DelayedCall(delay, () =>
+        {
+            Debug.Log("총알 사라짐");
+            ObjectPoolingManager.Inst.ReturnObjectToPool(this);
+        });
     }
 
     public void Return(Rigidbody2D rigid)
@@ -19,7 +26,12 @@ public class Projectile : MonoBehaviour
         DOVirtual.DelayedCall(2f, () =>
         {
             rigid.linearVelocity = -rigid.linearVelocity;
-            ActiveFalse();
+            ActiveFalse(2f);
             });
+    }
+
+    public virtual void Init(Stat stat,Vector2 dir,CharacterType characterType)
+    {
+        
     }
 }
