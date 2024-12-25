@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ObjectPoolingManager : MonoBehaviour
 {
     public static ObjectPoolingManager Inst;
-    public GameObject magicBallP,flooringBullet;
-    public Bullet bulletP;
-    public GameObject[] magicBallPools,flooringPools;
-    public Bullet[] bulletPools;
+    
+    public Dictionary<Projectile, Queue<Projectile>> pools = new Dictionary<Projectile, Queue<Projectile>>();
+    
+    [SerializeField] private List<Projectile> prefabs;
+    [SerializeField] private int basicPoolCount = 10;
 
-    public int bulletIndex = 0,magicIndex = 0,f_bulletIndex = 0;
+    private Transform _parent;
 
     private void Awake()
     {
@@ -34,39 +36,52 @@ public class ObjectPoolingManager : MonoBehaviour
 
     private void GameStart()
     {
-        GameObject parentObj = new GameObject("PoolingParent");     //새로운 빈 오브젝트를 하나 만들어줌
-        parentObj.transform.position = Vector3.zero;                 //새로운 빈 오브젝트의 위치 설정
-        parentObj.transform.SetParent(transform, true);
-        bulletPools = new Bullet[200];
-        for (int i = 0; i < bulletPools.Length; i++)
+        _parent = new GameObject("PoolingParent").transform;     //새로운 빈 오브젝트를 하나 만들어줌
+        _parent.position = Vector3.zero;                 //새로운 빈 오브젝트의 위치 설정
+        _parent.SetParent(transform, true);
+        
+        for (int i = 0; i < prefabs.Count; i++)
         {
-            Bullet bullet = Instantiate(bulletP, parentObj.transform);
-            bulletPools[i] = bullet;
-            bullet.gameObject.SetActive(false);
+            Queue<Projectile> _queue = new Queue<Projectile>();
+            for (int j = 0; j < basicPoolCount; j++)
+            {
+                SpawnObj(prefabs[i],_queue);
+            }
+            pools.Add(prefabs[i],_queue);
+        }
+        
+    }
+
+    private void SpawnObj(Projectile prefab,Queue<Projectile> queue)
+    {
+        var _prefab = Instantiate(prefab,_parent);
+        _prefab.gameObject.SetActive(false);
+        queue.Enqueue(_prefab);
+    }
+    
+    public Projectile GetObjectFromPool(string prefabName)
+    {
+        var dict =pools.FirstOrDefault(p => p.Key.name == prefabName);
+        var _prefab = dict.Key;
+        var _queue = dict.Value;
+        Debug.Log(_queue.Count);
+        if (_queue.Count == 0)
+        {
+            // 풀에 오브젝트가 없으면 새로 생성
+            SpawnObj(_prefab,_queue);
         }
 
-        GameObject magicBallParent = new GameObject("MBPoolingParent");
-        magicBallParent.transform.position = Vector3.zero;
-        magicBallParent.transform.SetParent(transform, true);
-        magicBallPools = new GameObject[50];
-        for (int i = 0; i < magicBallPools.Length; i++)
-        {
-            GameObject magicBall = Instantiate(magicBallP, magicBallParent.transform);
-            magicBallPools[i] = magicBall;
-            magicBall.SetActive(false);
-        }
-
-        GameObject f_bulletParent = new GameObject("fb_PoolingParent");
-        f_bulletParent.transform.position = Vector3.zero;
-        f_bulletParent.transform.SetParent(transform, true);
-        flooringPools = new GameObject[100];
-        for (int i = 0; i < flooringPools.Length; i++)
-        {
-            GameObject f_bullet = Instantiate(flooringBullet, f_bulletParent.transform);
-            f_bullet.transform.position = Vector3.zero;
-            flooringPools[i] = f_bullet;
-            f_bullet.SetActive(false);
-        }
+        var obj = _queue.Dequeue();
+        obj.gameObject.SetActive(true); // 활성화
+        return obj;
+    }
+    
+    public void ReturnObjectToPool(Projectile obj)
+    {
+        var dict =pools.FirstOrDefault(p => p.Key.name == obj.GetType().Name);
+        var _queue = dict.Value;
+        obj.gameObject.SetActive(false); // 비활성화
+        _queue.Enqueue(obj); // 풀에 다시 추가
     }
 
    
