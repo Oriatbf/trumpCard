@@ -34,10 +34,11 @@ public class PlayableNpcManager : MonoBehaviour
         }
     }
 
-    void Start()
+    IEnumerator Start()
     {
-        
-       
+
+        yield return new WaitUntil(() => DataManager.Inst);
+        characterSelected = DataManager.Inst.Data.characterId >= 0;
         var _playerNpc = lobbyNpcs.FirstOrDefault(npc => npc.npcType == NpcType.Player);
         if(_playerNpc != null) playerNpc = _playerNpc;
         characterHead.gameObject.SetActive(playerNpc);

@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8980fbce-ce1f-40fc-ad40-6187e7f32ffb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/UGS.Examples.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uni-google-sheets-main/src/~Examples/awesome_sunny.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UGSettingObject.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Attack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ObjectPoolingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ObjectPoolingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/PlayerMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/PlayerMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Projectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/HpUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/HpUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Relic/Relics/RelicBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Stat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Stat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestCharacter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestCharacter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/PlayableNpcManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/PlayableNpcManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +150,7 @@
       <workItem from="1735117900907" duration="833000" />
       <workItem from="1735124157740" duration="365000" />
       <workItem from="1735137864207" duration="5212000" />
+      <workItem from="1735190194313" duration="419000" />
     </task>
     <servers />
   </component>
