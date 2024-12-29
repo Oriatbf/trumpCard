@@ -8,8 +8,9 @@ public class Stat
     public int cardNum;
     public CardType cardType;
     public CardRole cardRole;
-    public Action statUpAction;
-    public StatsValue statValue = new StatsValue();
+    public Action statUpAction; 
+    public StatsValue originStatValue = new StatsValue();
+    public StatsValue buffDebuffValue = new StatsValue();
     
     [Serializable]
     public struct StatsValue
@@ -24,6 +25,28 @@ public class Stat
         public float bulletSpeed; 
         public float attackCount, extraHitCount;
         
+        public static StatsValue operator +(StatsValue a, StatsValue b)
+        {
+            return new StatsValue
+            {
+                hp = a.hp + b.hp,
+                speed = a.speed + b.speed,
+                damage = a.damage + b.damage,
+                coolTime = a.coolTime + b.coolTime,
+                criticalChance = a.criticalChance + b.criticalChance,
+                criticalMultiplier = a.criticalMultiplier + b.criticalMultiplier,
+                bulletSize = a.bulletSize + b.bulletSize,
+                bulletSpeed = a.bulletSpeed + b.bulletSpeed,
+                attackCount = a.attackCount + b.attackCount,
+                extraHitCount = a.extraHitCount + b.extraHitCount
+            };
+        }
+    }
+
+    public StatsValue FinalValue()
+    {
+        StatsValue stat = originStatValue + buffDebuffValue;
+        return stat;
     }
     
 

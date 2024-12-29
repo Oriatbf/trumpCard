@@ -6,7 +6,7 @@ public class StartButton : MonoBehaviour
 {
     public Vector2 size,pos;
     public LayerMask playerLayer;
-    // Start is called before the first frame update
+    // OnGamble is called before the first frame update
     void Start()
     {
         

@@ -68,7 +68,7 @@ public class Attack : MonoBehaviour
     
     public void Shoot(ShootInfor shootInfor,bool isMaxCharging = false)
     {
-        var stat = shootInfor.stat.statValue;
+        var stat = shootInfor.stat.FinalValue();
         float delay = 0;
         Vector2 finalDir = new Vector2(0,0);
         float spreadAngle = 30;
@@ -143,11 +143,12 @@ public static class Critical
 {
     public static float CriticalChance(Stat stat)
     {
+        var _statValue = stat.FinalValue();
         int a = Random.Range(1, 101);
-        float damage = stat.statValue.damage;
-        if (stat.statValue.criticalChance >= a)
+        float damage = _statValue.damage;
+        if (_statValue.criticalChance >= a)
         {
-            return damage * stat.statValue.criticalMultiplier;
+            return damage * _statValue.criticalMultiplier;
         }
         else return damage;
     }

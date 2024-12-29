@@ -19,6 +19,6 @@ public class IceDebuff : Debuff
 {
     public override void Apply(Health health)
     {
-        health.IceAge(duration);
+       // health.IceAge(duration);
     }
 }

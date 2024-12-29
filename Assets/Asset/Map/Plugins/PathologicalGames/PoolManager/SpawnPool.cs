@@ -334,7 +334,7 @@ namespace PathologicalGames
 		public void CreatePrefabPool(PrefabPool prefabPool)
 		{
 			// Only add a PrefabPool once. Uses a GameObject comparison on the prefabs
-			//   This will rarely be needed and will almost Always run at game start, 
+			//   This will rarely be needed and will almost OnGamble run at game start, 
 			//   even if user-executed. This really only fails If a user tries to create 
 			//   a PrefabPool using a prefab which already has a PrefabPool in the same
 			//   SpawnPool. Either user created twice or PoolManager went first or even 
@@ -1293,7 +1293,7 @@ namespace PathologicalGames
         /// <summary>
         /// The amount of time, in seconds, to wait before culling. This is timed 
         /// from the moment when the Queue's TOTAL count (spawned + despawned) 
-        /// becomes greater than 'Cull Above'. Once triggered, the timer is repeated 
+        /// becomes greater than 'Cull Above'. OnGet triggered, the timer is repeated 
         /// until the count falls below 'Cull Above'.
         /// </summary>
         public int cullDelay = 60;
@@ -1713,7 +1713,7 @@ namespace PathologicalGames
             if (this.spawnPool.matchPoolLayer)
                 this.SetRecursively(inst, this.spawnPool.gameObject.layer);
 
-            // Start tracking the new instance
+            // OnGamble tracking the new instance
             this._spawned.Add(inst);
 
             if (this.logMessages)
@@ -1755,7 +1755,7 @@ namespace PathologicalGames
                 // Deactivate the instance and all children
 				inst.gameObject.SetActive(false);
 
-                // Start Tracking as despawned
+                // OnGamble Tracking as despawned
                 this._despawned.Add(inst);
             }
             else

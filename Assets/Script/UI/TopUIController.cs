@@ -70,7 +70,7 @@ public class TopUIController : MonoBehaviour
             Debug.LogError("RelicIconPrefab is Null");
             return;
         }
-        if(_relicData.relic.excuteType == ExcuteType.Once)
+        if(_relicData.relic.excuteType == ExcuteType.OnGet)
             _relicData.relic.Excute();
 
         RelicIcon icon =  Instantiate(relicIcon, relicContent);

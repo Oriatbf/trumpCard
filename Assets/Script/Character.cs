@@ -72,12 +72,9 @@ public class Character : MonoBehaviour
     {
         SetWeapon(stat.cardNum);
         SetStat();
-       
     }
     
     
-
-    // Start is called before the first frame update
     public virtual void Start()
     {
         Gambling();
@@ -86,8 +83,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-       
-
+        
         if (curDashCool > 0 && curCharging <1)
         {
             curDashCool -= Time.deltaTime;
@@ -107,40 +103,38 @@ public class Character : MonoBehaviour
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, -8, 8), Mathf.Clamp(transform.position.y, -4.2f, 3));
     }
 
+    protected virtual void Move()
+    {
+        
+    }
+
 
     public void SetStat()
     {
-       // Action action = stat.statUpAction;
         float hpRatio = health.curHp/health.maxHp; //hp 비율
 
         var randomStat = CardDataManager.Inst.RandomCard().stat;
-        stat.statValue = randomStat.statValue;
+        stat.originStatValue = randomStat.originStatValue;
         stat.cardNum = randomStat.cardNum;
         stat.cardRole = randomStat.cardRole;
         stat.cardType = randomStat.cardType;
-       // stat.statUpAction +=()=> Debug.Log("pppaaa"); //버그 확인 action도 초기화돼서 오는 버그
-       // stat.statUpAction = action;
-       Debug.Log(stat.statValue.hp);
+       Debug.Log(stat.originStatValue.hp);
         stat.Action();
       
         
-        var basicStat = stat.statValue;
+        var basicStat = stat.originStatValue;
         basicStat.speed = basicStat.speed <1?1:basicStat.speed;
         basicStat.coolTime= basicStat.coolTime < 0.1f?0.1f: basicStat.coolTime; //쿨타임 최소치
         basicStat.damage = basicStat.damage<1?1:basicStat.damage; // 데미지 최소치
         
         curCoolTime= basicStat.coolTime;
         coolTime = basicStat.coolTime;
-        health.ResetHp(basicStat.hp,(basicStat.hp * hpRatio)+10);
+        health.ResetHp(basicStat.hp,(basicStat.hp * hpRatio));
+        health.OnRecorvery(10);
 
         shootInfor = new ShootInfor(this, stat);
     }
     
-    
-    
-
-   
-
     public void SetWeapon(int index)
     {
         for (int i = 0; i < weapons.Length; i++)
@@ -153,11 +147,13 @@ public class Character : MonoBehaviour
         }
     }
 
+
+
     public void CoolTime()
     {
         if (curCoolTime > 0)
         {
-            attackCoolImage.fillAmount = curCoolTime / stat.statValue.coolTime;
+            attackCoolImage.fillAmount = curCoolTime / stat.originStatValue.coolTime;
             curCoolTime -= Time.unscaledDeltaTime;
         }
         else
@@ -196,7 +192,7 @@ public class Character : MonoBehaviour
         if ( curCoolTime <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
-            curCoolTime = stat.statValue.coolTime;
+            curCoolTime = stat.originStatValue.coolTime;
             attackCoolImage.fillAmount = 1;
 
             if (!isSting)
@@ -282,7 +278,7 @@ public class Character : MonoBehaviour
  
 
 
-    public virtual void BowAttack()
+    protected virtual void BowAttack()
     {
         _curCharging += Time.deltaTime;
         if (_curCharging >= coolTime) _curCharging = coolTime;
@@ -290,7 +286,7 @@ public class Character : MonoBehaviour
         if(_curCharging >= coolTime) BowShoot();
     }
 
-    public virtual void BowShoot()
+    protected virtual void BowShoot()
     {
         bool maxCharging = _curCharging >= coolTime;
         Attack.Inst.Shoot(shootInfor,maxCharging);
@@ -298,7 +294,7 @@ public class Character : MonoBehaviour
         _curCharging = 0;
     }
 
-    public virtual void BowShoot(Vector3 dir)
+    protected virtual void BowShoot(Vector3 dir)
     {
         bool maxCharging = _curCharging >= coolTime;
         Attack.Inst.Shoot(shootInfor, maxCharging);
@@ -306,7 +302,7 @@ public class Character : MonoBehaviour
         _curCharging = 0;
     }
     
-    public void DashMove(Vector2 dir)
+    protected void DashMove(Vector2 dir)
     {
         curCharging--;
         isDashing = true;

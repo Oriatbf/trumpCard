@@ -5,7 +5,7 @@ using UnityEngine;
 public class HitEvent : MonoBehaviour
 {
     Character character;
-    // Start is called before the first frame update
+    // OnGamble is called before the first frame update
     void Start()
     {
         character = GetComponentInParent<Character>();

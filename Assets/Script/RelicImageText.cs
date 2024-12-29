@@ -6,7 +6,7 @@ using UnityEngine;
 public class RelicImageText : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI relicExplainText;
-    // Start is called before the first frame update
+    // OnGamble is called before the first frame update
     void Start()
     {
         relicExplainText.gameObject.SetActive(false);

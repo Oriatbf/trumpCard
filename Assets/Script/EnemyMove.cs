@@ -145,7 +145,7 @@ public class EnemyMove : Character
         }
         
         Debug.Log("랜덤 이동");
-        Move(finalDir,1/stat.statValue.speed);
+        Move(finalDir,1/stat.originStatValue.speed);
     }
 
     public void FarToPlayer()
@@ -163,8 +163,8 @@ public class EnemyMove : Character
         
         finalDir =  finalDir.normalized;
         //이동
-        float moveX = finalDir.x * stat.statValue.speed * Time.deltaTime;
-        float moveY = finalDir.y * stat.statValue.speed * Time.deltaTime;
+        float moveX = finalDir.x * stat.originStatValue.speed * Time.deltaTime;
+        float moveY = finalDir.y * stat.originStatValue.speed * Time.deltaTime;
        
         transform.Translate(new Vector3(moveX,moveY,0),Space.World);
             

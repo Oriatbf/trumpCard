@@ -13,23 +13,19 @@ public class Health : MonoBehaviour
     //Hp Value
     public float curHp;
     public float maxHp;
-    [SerializeField] DamageNumber numberPrefab;
+    
     [SerializeField] private RectTransform rectParent;
     [SerializeField] Image hpBar;
     [SerializeField] Material whiteMaterial,defaultMaterial;
     [SerializeField] SpriteRenderer spr;
-    [HideInInspector] public bool autoHeal;
-    [HideInInspector] public float autoHealSpeed;
     public bool isInv = false;
 
-    public Action OnDamage,OnHeal;
+    public Action OnDamage,OnHeal,OnAttack;
 
     //GambleGauge Value
     GambleGauge gambleGauge;
-    private float hittedValue = 5f; //hitted : 맞았을 때 
+    private float hittedValue = 5f; 
     Character character;
-    EnemyMove enemyMove;
-    Coroutine freezeDebuff;
 
     private void Awake()
     {
@@ -42,18 +38,21 @@ public class Health : MonoBehaviour
         gambleGauge=GetComponent<GambleGauge>();
         character= GetComponent<Character>();
         hpBar.fillAmount = 1;
-        OnDamage += () => gambleGauge.IncreaseGambleGauge(hittedValue);
-        OnDamage += () => HpBarIncrease();
-        OnHeal += () => HpBarIncrease();
+       SetAction();
 
 
         //  if(!character.isPlayer)enemyMove=GetComponent<EnemyMove>();
     }
 
-    private void Update()
+    void SetAction()
     {
-        if(autoHeal)AutoHeal();
+        OnDamage += () => gambleGauge.IncreaseGambleGauge(hittedValue);
+        OnDamage += () => HpBarIncrease();
+        OnDamage += () => GameManager.Inst.GetOpponent(character).health.OnAttack?.Invoke();
+        OnHeal += () => HpBarIncrease();
     }
+
+
     public void ResetHp(float maxHp,float curHp)
     {
         this.maxHp = maxHp;
@@ -61,15 +60,6 @@ public class Health : MonoBehaviour
         if(this.curHp > this.maxHp)
             this.curHp = this.maxHp;
         HpBarIncrease();
-    }
-
-    public void AutoHeal()
-    {
-        if (curHp <= maxHp)
-        {
-            curHp += autoHealSpeed * Time.deltaTime;
-            HpBarIncrease();
-        }  
     }
 
     public void GetDamage(float damage)
@@ -81,7 +71,6 @@ public class Health : MonoBehaviour
             curHp -= damage;
             if(damage >=0)
                 UIManager.Inst.DamageUI(rectParent,transform,damage);
-            HpBarIncrease();
 
 
             if (curHp <= 0)
@@ -119,7 +108,7 @@ public class Health : MonoBehaviour
         OnHeal?.Invoke();;
     }
 
-    public void HpBarIncrease() => hpBar.fillAmount = curHp / maxHp;
+    private void HpBarIncrease() => hpBar.fillAmount = curHp / maxHp;
     public void InvTime(float time)
     {
         isInv = true;
@@ -129,26 +118,6 @@ public class Health : MonoBehaviour
     public void DotDamage(float time,float damage)
     {
         StartCoroutine( ApplyDotDamage(time, damage));
-    }
-    public void IceAge(float time)
-    {
-        if (freezeDebuff != null) StopCoroutine(freezeDebuff);
-
-        freezeDebuff =  StartCoroutine(ApplyIce(time));
-    }
-
-    IEnumerator ApplyIce(float iceDuration)
-    {
-        float elapsedTime = 0;
-       // character.moveBlock = true;
-        while (elapsedTime < iceDuration)
-        {           
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-      //  character.moveBlock = false;
-        freezeDebuff = null;
-        yield break;
     }
 
     IEnumerator ApplyDotDamage(float dotDuration,float damage)

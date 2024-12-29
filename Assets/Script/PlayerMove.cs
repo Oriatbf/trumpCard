@@ -49,8 +49,6 @@ public class PlayerMove : Character
     {
         if (Input.GetKeyDown(KeyCode.F4)) Gambling();
         if (Input.GetKeyDown(KeyCode.F2)) health.GetDamage(1000);
-        //if (Input.GetKeyDown(KeyCode.F9)) Debug.Log(characterSO.debuffs.Count);
-    
         
         base.Update();
 
@@ -74,28 +72,16 @@ public class PlayerMove : Character
                 dashBtn.enabled = false;
             }
         }
-        
-
-    
-       
-
     }
-
-
+    
     public void Dash()
     {
-     
-            if (curCharging > 0 && curDashCool <= 0)
-            {
-                DashMove(angleVec);
-            }
-        
-       
+        if (curCharging > 0 && curDashCool <= 0)
+        {
+            DashMove(angleVec);
+        }
     }
-
-  
-
-    private void Move()
+    protected override void Move()
     {
        
             float x;
@@ -114,8 +100,9 @@ public class PlayerMove : Character
 
             angleVec = new Vector3(x, y, 0).normalized;
 
-            float moveX = angleVec.x * stat.statValue.speed * Time.deltaTime;
-            float moveY = angleVec.y * stat.statValue.speed * Time.deltaTime;
+            var _statsValue = stat.FinalValue();
+            float moveX = angleVec.x * _statsValue.speed * Time.deltaTime;
+            float moveY = angleVec.y * _statsValue.speed * Time.deltaTime;
             transform.Translate(new Vector3(moveX, moveY, 0), Space.World);
 
             //Rotation
@@ -140,7 +127,7 @@ public class PlayerMove : Character
 
     
 
-    public override void BowAttack()
+    protected override void BowAttack()
     {
         if (!mobileVersion)
         {
@@ -164,9 +151,9 @@ public class PlayerMove : Character
             {
                 bowDir = _dir;
                 _curCharging += Time.deltaTime;
-                if (_curCharging >= stat.statValue.coolTime) _curCharging = stat.statValue.coolTime;
-                attackCoolImage.fillAmount = _curCharging / stat.statValue.coolTime;
-                if(_curCharging>=stat.statValue.coolTime)BowShoot();
+                if (_curCharging >= stat.originStatValue.coolTime) _curCharging = stat.originStatValue.coolTime;
+                attackCoolImage.fillAmount = _curCharging / stat.originStatValue.coolTime;
+                if(_curCharging>=stat.originStatValue.coolTime)BowShoot();
                
             }
 

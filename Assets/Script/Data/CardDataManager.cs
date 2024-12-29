@@ -29,7 +29,7 @@ public class CardDataManager : MonoBehaviour
          _stat.cardType = cardData.cardType;
          _stat.cardRole = cardData.cardRole;
          _stat.cardNum = cardData.cardNum;
-         ref var basicStat = ref stat.statValue;
+         ref var basicStat = ref stat.originStatValue;
          basicStat.bulletSize = 1;
          basicStat.hp = cardData.hp;
          basicStat.damage = cardData.damage;

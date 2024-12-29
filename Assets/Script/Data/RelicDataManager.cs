@@ -88,7 +88,7 @@ public class RelicDataManager : MonoBehaviour
         RelicData.Data.Load();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // OnGamble is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         foreach (var data in RelicData.Data.DataList)
@@ -113,7 +113,7 @@ public class RelicDataManager : MonoBehaviour
                 }
             }
             
-            relic?.Init(data.value,data.time,data.excuteType);
+            relic?.Init(data.value,data.time,data.duration,data.excuteType);
             
             InActiveRelicDatas.Add(new RelicDatas( data,relic,_extraRelicID));
             if(data.active ==1) //1일때 active 0일 때 InActive

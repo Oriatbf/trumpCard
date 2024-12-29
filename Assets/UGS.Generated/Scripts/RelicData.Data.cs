@@ -66,6 +66,7 @@ namespace RelicData
 		public System.String description;
 		public System.Single value;
 		public System.Single time;
+		public System.Single duration;
 		public System.String extraRelicID;
   
 

@@ -26,11 +26,12 @@ public class Bullet : Projectile
         rigid.linearVelocity = Vector2.zero;
         damage = Critical.CriticalChance(stat);
         bulletDir = dir;
-        bulletSpeed = stat.statValue.bulletSpeed;
-        transform.localScale = new Vector3(stat.statValue.bulletSize, stat.statValue.bulletSize);
+        var _statValue = stat.FinalValue();
+        bulletSpeed = _statValue.bulletSpeed;
+        transform.localScale = new Vector3(_statValue.bulletSize, _statValue.bulletSize);
         ActiveFalse(2f);
 
-        //rigid.AddForce(dir * stat.statValue.bulletSpeed*100*Time.deltaTime, ForceMode2D.Impulse);
+        //rigid.AddForce(dir * stat.originStatValue.bulletSpeed*100*Time.deltaTime, ForceMode2D.Impulse);
     }
 
     private void Update()

@@ -11,7 +11,7 @@ public class SlimeMove : MonoBehaviour
     [SerializeField] GameObject floor;
     bool isPlayer;
     SpriteRenderer spr;
-    // Start is called before the first frame update
+    // OnGamble is called before the first frame update
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();

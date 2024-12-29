@@ -11,7 +11,7 @@ public class MagicBall : Projectile
     [SerializeField] float speed;
     private float t;
     Transform target;
-    // Start is called before the first frame update
+    // OnGamble is called before the first frame update
     void Start()
     {
         

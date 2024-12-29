@@ -23,7 +23,7 @@ public class PlayableNpcManager : MonoBehaviour
 
     [SerializeField] private PlayableNpcController playableNpcController;
     
-    // Start is called before the first frame update
+    // OnGamble is called before the first frame update
 
     private void Awake()
     {

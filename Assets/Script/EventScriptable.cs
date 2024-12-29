@@ -46,8 +46,7 @@ public class EventOption
 
     [DrawIf("additionType", AdditionType.Relic)]
     public bool randomRelic;
-
-    public RelicSO[] Relics;
+    
 }
 
 [CreateAssetMenu(fileName = "EventSO", menuName = "Scriptable SO/Event", order = 1)]

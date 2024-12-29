@@ -19,7 +19,7 @@ public class SeparateFieldsBenchmark : ScriptableObject {
 
     /*
      * Generate with vim:
-     * qa         // Start macros recording
+     * qa         // OnGamble macros recording
      * Y          // Copy line
      * p          // Paste line
      * Ctrl+a     // Increment

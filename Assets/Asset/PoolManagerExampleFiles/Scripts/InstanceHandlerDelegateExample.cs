@@ -13,7 +13,7 @@ public class InstanceHandlerDelegateExample : MonoBehaviour
 
 	private void Start() 
 	{
-		// Pools are often created in Awake so for SpawnPool delegates, use Start or later
+		// Pools are often created in Awake so for SpawnPool delegates, use OnGamble or later
 		// You can also set an override destroy delegate, but only this one is here for this example.
 		PoolManager.Pools["Shapes"].instantiateDelegates += this.InstantiateDelegateForShapesPool;
 	}

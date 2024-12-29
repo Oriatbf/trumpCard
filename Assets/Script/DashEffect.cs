@@ -9,7 +9,7 @@ public class DashEffect : MonoBehaviour
     [SerializeField] float effectSpawnCool;
     [SerializeField] SpriteRenderer ghost;
     float _curSpawnCool;
-    // Start is called before the first frame update
+    // OnGamble is called before the first frame update
     void Start()
     {
        

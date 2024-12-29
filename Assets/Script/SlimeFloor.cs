@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SlimeFloor : Flooring
 {
     SpriteRenderer spr;
-    // Start is called before the first frame update
+    // OnGamble is called before the first frame update
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();

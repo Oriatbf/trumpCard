@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Sandevistan : RelicBase
 {
-    private float coolTime = 10f;
     private bool active;
     public override void Excute(Character character)
     {
@@ -17,22 +16,21 @@ public class Sandevistan : RelicBase
     {
         if (active) return;
         active = true;
-        TimeManager.Inst.ChangeTimeSpeedCor(0.3f,time);
-        VolumeManager.Inst.SandevistanEffect(time);
-        var defaultSpeed = character.stat.statValue.speed;
-        character.stat.statValue.speed = defaultSpeed/Time.timeScale;
-        character.dashEffect.ActiveDashEffect(time);
-        DOVirtual.DelayedCall(time, () =>
+        TimeManager.Inst.ChangeTimeSpeedCor(0.3f,duration);
+        VolumeManager.Inst.SandevistanEffect(duration);
+        var defaultSpeed = character.stat.originStatValue.speed;
+        character.stat.originStatValue.speed = defaultSpeed/Time.timeScale;
+        character.dashEffect.ActiveDashEffect(duration);
+        DOVirtual.DelayedCall(duration, () =>
         {
-            character.stat.statValue.speed = defaultSpeed;
-            DOVirtual.DelayedCall(coolTime, () => active = false);
+            character.stat.originStatValue.speed = defaultSpeed;
+            DOVirtual.DelayedCall(time, () => active = false);
         });
     }
     
     public override RelicBase Clone()
     {
         var clone = (Sandevistan)base.Clone();
-        clone.coolTime = this.coolTime;
         clone.active = this.active;
         return clone;
     }

@@ -129,7 +129,7 @@ If you just remove this ScriptableObject, your local settings stay changed.";
         private void DrawRemoveButton(Rect rect) {
             var rects = rect.CutFromRight(75);
 
-            EditorGUI.LabelField(rects[0], "Remove Settings File And Always Use Default Parameters");
+            EditorGUI.LabelField(rects[0], "Remove Settings File And OnGamble Use Default Parameters");
             if (GUI.Button(rects[1], "Remove")){
                 SettingsMenu.RemoveSettingsForever(target);
             }
