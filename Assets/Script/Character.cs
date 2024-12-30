@@ -36,7 +36,23 @@ public class Character : MonoBehaviour
     public float _angle;
     
     public Character opponent;
-    public float curCoolTime,coolTime;
+    public float curCoolTime;
+
+    public float coolTime
+    {
+        get
+        {
+            if (coolTime < 0.1f)
+                return 0.1f;
+            else return coolTime;
+        }
+
+        set
+        {
+            coolTime = stat.FinalValue().coolTime;
+        }
+    }
+    
     [HideInInspector] public bool isDashing;
      public float _curCharging; 
 
@@ -128,7 +144,6 @@ public class Character : MonoBehaviour
         basicStat.damage = basicStat.damage<1?1:basicStat.damage; // 데미지 최소치
         
         curCoolTime= basicStat.coolTime;
-        coolTime = basicStat.coolTime;
         health.ResetHp(basicStat.hp,(basicStat.hp * hpRatio));
         health.OnRecorvery(10);
 
@@ -192,7 +207,7 @@ public class Character : MonoBehaviour
         if ( curCoolTime <= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
-            curCoolTime = stat.originStatValue.coolTime;
+            curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
 
             if (!isSting)
@@ -281,8 +296,8 @@ public class Character : MonoBehaviour
     protected virtual void BowAttack()
     {
         _curCharging += Time.deltaTime;
-        if (_curCharging >= coolTime) _curCharging = coolTime;
-        attackCoolImage.fillAmount = _curCharging / coolTime;
+        if (_curCharging >= coolTime) _curCharging = stat.FinalValue().coolTime;
+        attackCoolImage.fillAmount = _curCharging / stat.FinalValue().coolTime;
         if(_curCharging >= coolTime) BowShoot();
     }
 

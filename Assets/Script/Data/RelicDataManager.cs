@@ -43,6 +43,7 @@ public class RelicDatas
         if (sprite == null) Debug.Log("스프라이트 없음");
         descriptionVariable.Add("time", data.time.ToString());
         descriptionVariable.Add("value", data.value.ToString());
+        descriptionVariable.Add("duration", data.duration.ToString());
         description = data.description;
         foreach (var word in descriptionVariable)
         {

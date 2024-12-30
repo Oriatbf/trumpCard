@@ -20,6 +20,7 @@ public class RelicBase
     public float duration;
     public ExcuteType excuteType;
     public List<RelicBase> extraRelic = new List<RelicBase>();
+    protected bool isActive = false;
 
     private bool excuteFirst = false; //최초실행
     
