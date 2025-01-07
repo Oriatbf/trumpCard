@@ -42,6 +42,7 @@ public class RelicSelectManager : MonoBehaviour
     [Button]
     public void CardSelect(string sceneName = null)
     {
+        
         cardCount = DataManager.Inst.Data.cardCount;
         cardRepeat = DataManager.Inst.Data.cardRepeat;
         if (cardCount > 4)

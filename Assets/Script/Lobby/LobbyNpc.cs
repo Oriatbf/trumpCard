@@ -45,6 +45,7 @@ public class LobbyNpc : LobbyInteraction,IPointerClickHandler,IPointerEnterHandl
         {
             DetectNpc();
         }
+        
 
     }
 

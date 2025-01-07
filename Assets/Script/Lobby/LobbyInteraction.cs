@@ -4,37 +4,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using VInspector;
 public enum NpcType {Npc,Player }
+
 public class LobbyInteraction : MonoBehaviour
 {
 
-    Animator animator;
+    private Animator animator;
     private SpriteRenderer spr;
     public float detectRange;
     public NpcType npcType;
     public bool inDetect = false;
     protected Action interactAction;
-    
-    [Tab("Debug")]
-    [SerializeField] Vector3 angleVec;
 
-    public float speed = 4f;
+    private Vector3 angleVec;
+
+    private bool isNear = false;
+
+    [SerializeField] private float speed = 4f;
 
 
-    [Tab("Mobile")]
-    [SerializeField] bool mobileVersion;
+    [Tab("Mobile")] [SerializeField] bool mobileVersion;
     [SerializeField] VariableJoystick moveJoyStick, dirJoyStick;
 
     private void Awake()
     {
-        animator= GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
         interactAction += () => InteractAction();
     }
 
+    public void DetectPlayer()
+    {
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectRange);
+        bool getPlayer = false;
+        foreach (var col in colliders)
+        {
+            if (col.TryGetComponent(out LobbyInteraction lobbyNpc) && lobbyNpc != this &&
+                lobbyNpc.npcType == NpcType.Player)
+            {
+                getPlayer = true;
+                if (!isNear)
+                {
+                    NearAction();
+                    isNear = true;
+                }
+
+            }
+        }
+
+        if (!getPlayer && isNear)
+        {
+            isNear = false;
+            DetectOutPlayer();
+        }
+
+    }
+
+    protected virtual void DetectOutPlayer(){}
 
     public void DetectNpc()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 3f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectRange);
         List<LobbyInteraction> npcs = new List<LobbyInteraction>();
         foreach (var col in colliders)
         {
@@ -59,12 +89,15 @@ public class LobbyInteraction : MonoBehaviour
                     
             }
             
+            
             if(Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Player)
                 nearNpc.InteractAction();
         }
     }
     
     protected virtual void InteractAction(){}
+
+    protected virtual void NearAction(){}
 
     private void LateUpdate()
     {
@@ -109,5 +142,14 @@ public class LobbyInteraction : MonoBehaviour
             transform.Translate(new Vector3(moveX, moveY, 0), Space.World);
         }
       
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (npcType == NpcType.Player)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position,detectRange);
+        }
     }
 }

@@ -6,7 +6,7 @@ public class Sandevistan : RelicBase
     private bool active;
     public override void Excute(Character character)
     {
-        character.health.OnDamage+=()=> TimeChange(character);
+        character.unitHealth.OnDamage+=()=> TimeChange(character);
        
         
         base.Excute(character);

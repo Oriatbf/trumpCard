@@ -15,12 +15,17 @@ public class PossessionRelics : MonoBehaviour
         character = GetComponent<Character>();
         SetRelic();
         
+       
+        
+    }
+
+    public void ExcuteRelic()
+    {
         foreach (var relic in possessionRelics)
         {
             relic.Excute(character);
             StartCoroutine(relic.ExcuteCor(character));
         }
-        
     }
 
     private void SetRelic()

@@ -2,23 +2,23 @@ public abstract class Debuff
 {
     public float duration;
 
-    public abstract void Apply(Health health);
+    public abstract void Apply(UnitHealth unitHealth);
 }
 
 public class FireDebuff : Debuff
 {
     public float dotDamage;
 
-    public override void Apply(Health health)
+    public override void Apply(UnitHealth unitHealth)
     {
-        health.DotDamage(duration,dotDamage);
+        unitHealth.DotDamage(duration,dotDamage);
     }
 }
 
 public class IceDebuff : Debuff
 {
-    public override void Apply(Health health)
+    public override void Apply(UnitHealth unitHealth)
     {
-       // health.IceAge(duration);
+       // unitHealth.IceAge(duration);
     }
 }

@@ -48,7 +48,7 @@ public class PlayerMove : Character
     public override void Update()
     {
         if (Input.GetKeyDown(KeyCode.F4)) Gambling();
-        if (Input.GetKeyDown(KeyCode.F2)) health.GetDamage(1000);
+        if (Input.GetKeyDown(KeyCode.F2)) unitHealth.GetDamage(1000);
         
         base.Update();
 

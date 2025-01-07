@@ -1,27 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class SlimeMove : MonoBehaviour
+public class SlimeMove : Creature
 {
-    [SerializeField] Transform opponent;
-    [SerializeField] float speed,floorDestoryTime;
+    private Character opponent;
+    [SerializeField] float floorDestoryTime;
     [SerializeField] GameObject floor;
     bool isPlayer;
-    SpriteRenderer spr;
-    // OnGamble is called before the first frame update
-    void Start()
-    {
-        spr = GetComponent<SpriteRenderer>();
-    }
 
-    public void SetInfor(bool isPlayer)
+
+
+    
+
+    public override void Init(Character character)
     {
-        this.isPlayer = isPlayer;
-        if (isPlayer) opponent = GameObject.FindGameObjectWithTag("Enemy").transform;
-        else opponent = GameObject.FindGameObjectWithTag("Player").transform;
+        base.Init(character);
+        opponent = GameManager.Inst.GetOpponent(character);
+        health.ResetHp(statsValue.hp,statsValue.hp);
     }
 
     // Update is called once per frame
@@ -29,34 +28,24 @@ public class SlimeMove : MonoBehaviour
     {
         if (opponent != null)
         {
-            if (opponent.position.x < transform.position.x) spr.flipX = false;
+            if (opponent.transform.position.x < transform.position.x) spr.flipX = false;
             else spr.flipX = true;
-            Vector3 dir = (opponent.position - transform.position).normalized;
+            Vector3 dir = (opponent.transform.position - transform.position).normalized;
             transform.eulerAngles = dir;
-            transform.Translate(dir * speed * Time.deltaTime);
+            transform.Translate(dir * statsValue.speed * Time.deltaTime);
         }
         
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isPlayer)
+        if (collision.TryGetComponent(out Character reachedChar))
         {
-            if (collision.CompareTag("Enemy"))
+            if (reachedChar.characterType != characterType)
             {
-                collision.GetComponent<Health>().GetDamage(5);
-                GameObject floorObj = Instantiate(floor, transform.position, Quaternion.identity);
-                Destroy(floorObj, floorDestoryTime);
-                Destroy(gameObject);
-            }
-        }
-        else
-        {
-            if (collision.CompareTag("Player"))
-            {
-                collision.GetComponent<Health>().GetDamage(5);
-                GameObject floorObj = Instantiate(floor, transform.position, Quaternion.identity);
-                Destroy(floorObj, floorDestoryTime);
+                reachedChar.unitHealth.GetDamage(statsValue.damage);
+                //GameObject floorObj = Instantiate(floor, transform.position, Quaternion.identity);
+               // Destroy(floorObj, floorDestoryTime);
                 Destroy(gameObject);
             }
         }

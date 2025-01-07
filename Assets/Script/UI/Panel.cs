@@ -19,7 +19,7 @@ public class Panel : MonoBehaviour
         public string stateName;
 
         public Vector2 offset;
-        public float alpha;
+        [Range(0,1)]public float alpha;
         public bool blockRay;
         
         public Position(PanelStates state)

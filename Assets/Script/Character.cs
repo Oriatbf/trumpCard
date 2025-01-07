@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using OneLine.Examples;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using VInspector;
 using Random = UnityEngine.Random;
@@ -15,12 +16,11 @@ public enum CharacterType
     Player,Enemy
 }
 
-public class Character : MonoBehaviour
+public class Character : Unit
 {
     
 
     [Tab("Input")] 
-    public CharacterType characterType;
     public Image attackCoolImage;
     private float dashCool = 5;
     private float dashMaxCharging = 1;
@@ -37,27 +37,25 @@ public class Character : MonoBehaviour
     
     public Character opponent;
     public float curCoolTime;
+    private float _coolTime;
 
     public float coolTime
     {
         get
         {
-            if (coolTime < 0.1f)
+            _coolTime = stat.FinalValue().coolTime;
+            if (_coolTime < 0.1f)
                 return 0.1f;
-            else return coolTime;
+            else return _coolTime;
         }
-
-        set
-        {
-            coolTime = stat.FinalValue().coolTime;
-        }
+        
     }
     
     [HideInInspector] public bool isDashing;
      public float _curCharging; 
 
     [HideInInspector] public Animator animator; 
-    [HideInInspector]public Health health;
+    [FormerlySerializedAs("health")] [HideInInspector]public UnitHealth unitHealth;
     [HideInInspector] public GambleGauge gambleGauge;
     [HideInInspector]public DashEffect dashEffect;
 
@@ -66,18 +64,27 @@ public class Character : MonoBehaviour
     private SpriteRenderer spr;
     public Stat stat;
     public ShootInfor shootInfor;
+    private PossessionRelics possessionRelics;
+    public CreatureCustody creatureCustody;
 
 
 
     public virtual void Awake()
     {
+        possessionRelics = GetComponent<PossessionRelics>();
+        creatureCustody = GetComponent<CreatureCustody>();
         stat.statUpAction = null;
         spr = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         animator = handle.GetComponent<Animator>();
-        health= GetComponent<Health>();
+        unitHealth= GetComponent<UnitHealth>();
         dashEffect = GetComponent<DashEffect>();
         gambleGauge= GetComponent<GambleGauge>();
+       
+        if (creatureCustody == null)
+        {
+            Debug.LogError("creatureCustody가 없음");
+        }
         curCharging = 1;
 
         int randomGold = Random.Range(100, 151);
@@ -93,6 +100,8 @@ public class Character : MonoBehaviour
     
     public virtual void Start()
     {
+        possessionRelics.ExcuteRelic();
+        stat.statUpAction += () => creatureCustody.summon();
         Gambling();
     }
 
@@ -127,7 +136,7 @@ public class Character : MonoBehaviour
 
     public void SetStat()
     {
-        float hpRatio = health.curHp/health.maxHp; //hp 비율
+        float hpRatio = unitHealth.curHp/unitHealth.maxHp; //hp 비율
 
         var randomStat = CardDataManager.Inst.RandomCard().stat;
         stat.originStatValue = randomStat.originStatValue;
@@ -144,8 +153,8 @@ public class Character : MonoBehaviour
         basicStat.damage = basicStat.damage<1?1:basicStat.damage; // 데미지 최소치
         
         curCoolTime= basicStat.coolTime;
-        health.ResetHp(basicStat.hp,(basicStat.hp * hpRatio));
-        health.OnRecorvery(10);
+        unitHealth.ResetHp(basicStat.hp,(basicStat.hp * hpRatio));
+        unitHealth.OnRecorvery(10);
 
         shootInfor = new ShootInfor(this, stat);
     }
@@ -236,7 +245,7 @@ public class Character : MonoBehaviour
             {
                 if (_character.characterType != characterType)
                 {
-                    _character.health.GetDamage(Critical.CriticalChance(stat));
+                    _character.unitHealth.GetDamage(Critical.CriticalChance(stat));
                 }
             }
         }
@@ -322,7 +331,7 @@ public class Character : MonoBehaviour
         curCharging--;
         isDashing = true;
         curDashCool = dashCool;
-        health.InvTime(dashInvTime);
+        unitHealth.InvTime(dashInvTime);
         dashEffect.ActiveDashEffect(0.2f);
         GetForce(dir,dashSpeed,0.2f,()=>isDashing = false);
     }

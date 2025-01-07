@@ -73,7 +73,8 @@ public class PlayableNpcManager : MonoBehaviour
 
     public void TurningNpc(int _index)
     {
-        playableNpcController.panel.SetPosition(PanelStates.Hide,true);
+        playableNpcController.txtPanel.SetPosition(PanelStates.Hide,true);
+        playableNpcController.infoPanel.SetPosition(PanelStates.Hide,true);
         
         curNpcIndex = _index;
         
@@ -94,7 +95,7 @@ public class PlayableNpcManager : MonoBehaviour
         characterSelected = true;
         SetNpcPlayer(curNpcIndex);
         lobbyCam.MoveToOrigin();
-        playableNpcController.panel.SetPosition(PanelStates.Hide,true);
+        playableNpcController.infoPanel.SetPosition(PanelStates.Hide,true);
         string ids = PlayableCharacterData.Data.DataList.FirstOrDefault(n => n.id == lobbyNpcs[curNpcIndex].npcId)?.relicIds;
         DataManager.Inst.Data.characterId = lobbyNpcs[curNpcIndex].npcId;
         TopUIController.Inst.InstanceRelicIcon(ids,true);

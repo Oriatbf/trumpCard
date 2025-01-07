@@ -19,10 +19,11 @@ public class RelicIcon : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,
     {
         relicData = _relicData;
         image.sprite = _relicData.sprite;
-        relicCard =RelicSelectManager.Inst.InstanceCard(relicData,transform.parent.parent,new Vector2(0.25f,0.25f));
+        relicCard =RelicSelectManager.Inst.InstanceCard(relicData,transform.parent.parent,new Vector2(0.8f,0.8f));
         _cardRect = relicCard.GetComponent<RectTransform>();
         relicCard.gameObject.SetActive(false);
     }
+    
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -45,7 +46,7 @@ public class RelicIcon : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,
             }
             else
             {
-                _cardRect.pivot = new Vector2(.5f, 1f);
+                _cardRect.pivot = new Vector2(0f, 1f);
             }
         }
     }

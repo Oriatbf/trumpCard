@@ -50,7 +50,7 @@ public class EnemyMove : Character
     // Update is called once per frame
     public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F3)) health.GetDamage(1000);
+        if (Input.GetKeyDown(KeyCode.F3)) unitHealth.GetDamage(1000);
         _dir = (opponent.transform.position - transform.position).normalized;
   
         base.Update();

@@ -41,6 +41,23 @@ public class Stat
                 extraHitCount = a.extraHitCount + b.extraHitCount
             };
         }
+        
+        public static StatsValue operator *(StatsValue a, float b)
+        {
+            return new StatsValue
+            {
+                hp = a.hp *b,
+                speed = a.speed * b,
+                damage = a.damage * b,
+                coolTime = a.coolTime * b,
+                criticalChance = a.criticalChance * b,
+                criticalMultiplier = a.criticalMultiplier * b,
+                bulletSize = a.bulletSize * b,
+                bulletSpeed = a.bulletSpeed * b,
+                attackCount = a.attackCount * b,
+                extraHitCount = a.extraHitCount * b
+            };
+        }
     }
 
     public StatsValue FinalValue()

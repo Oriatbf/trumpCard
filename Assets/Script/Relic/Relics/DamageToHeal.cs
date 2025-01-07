@@ -7,7 +7,7 @@ public class DamageToHeal : RelicBase
     
     public override void Excute(Character character)
     {
-        character.health.OnDamage +=()=>character.health.OnRecorvery(value);
+        character.unitHealth.OnDamage +=()=>character.unitHealth.OnRecorvery(value);
         base.Excute(character);
     }
 }

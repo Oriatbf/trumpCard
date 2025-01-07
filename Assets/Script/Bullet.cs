@@ -46,11 +46,22 @@ public class Bullet : Projectile
         {
             if (ownerCharacter != character.characterType)
             {
-                character.health.GetDamage(damage);
+                character.unitHealth.GetDamage(damage);
                 character.GetForce(bulletDir,5,0.05f);
                 EffectManager.Inst.SpawnEffect(transform, 0);
                 ActiveFalse();
             }
+        }
+        
+        if (collision.TryGetComponent(out Creature creature))
+        {
+           // if (ownerCharacter != creature.characterType)
+          //  {
+                creature.health.GetDamage(damage);
+               // creature.GetForce(bulletDir,5,0.05f);
+                EffectManager.Inst.SpawnEffect(transform, 0);
+                ActiveFalse();
+            //}
         }
     }
 

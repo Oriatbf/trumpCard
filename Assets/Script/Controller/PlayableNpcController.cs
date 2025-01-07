@@ -1,15 +1,21 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Image = UnityEngine.UI.Image;
+using Sequence = DG.Tweening.Sequence;
 
 public class PlayableNpcController : MonoBehaviour
 {
     [SerializeField] private List<TextMeshProUGUI> texts = new List<TextMeshProUGUI>();
-    public Panel panel;
+    public  Panel infoPanel,txtPanel;
     [SerializeField] private Transform relicContent;
     [SerializeField] private Image select;
+
+    [SerializeField] private TextMeshProUGUI selectCharacterTxt;
     private RelicIcon relicIcon;
     private PlayableNpcManager playableNpcManager;
 
@@ -18,9 +24,12 @@ public class PlayableNpcController : MonoBehaviour
         relicIcon = Resources.Load<RelicIcon>("UIPrefab/Icon");
     }
 
-    private void Update()
+
+
+    public void characterSelectTexting()
     {
-        
+        txtPanel.SetPosition(PanelStates.Show,true);
+        TextAlphaPingpong(selectCharacterTxt,0.5f);
     }
 
     public void SetSelectBtnPos(Transform _transform)
@@ -32,7 +41,7 @@ public class PlayableNpcController : MonoBehaviour
 
     public void SetNpcInfo(PlayableCharacterData.Data data)
     {
-        panel.SetPosition(PanelStates.Show,true);
+        infoPanel.SetPosition(PanelStates.Show,true);
         texts[0].text = $"이름 : {data.name}";
         texts[1].text = $"성별 : {data.gender}";
         texts[2].text = $"나이 : {data.age}";
@@ -55,5 +64,14 @@ public class PlayableNpcController : MonoBehaviour
             _icon.Init(relic);
         }
 
+    }
+
+    public void TextAlphaPingpong(TextMeshProUGUI _text,float _duration)
+    {
+        Sequence alphaPingpong = DOTween.Sequence()
+            .Append(DOTween.To(() => _text.alpha, x => _text.alpha = x, 0f, _duration).SetEase(Ease.InCubic))
+            .Append(DOTween.To(() => _text.alpha, x => _text.alpha = x, 1f, _duration).SetEase(Ease.InCubic))
+            .SetLoops(-1);
+        alphaPingpong.Play();
     }
 }

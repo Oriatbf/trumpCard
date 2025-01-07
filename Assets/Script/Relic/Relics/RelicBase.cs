@@ -76,13 +76,13 @@ public class RelicBase
                 character.stat.statUpAction += _action;
                 break;
             case ExcuteType.OnDamaged:
-                character.health.OnDamage += _action;
+                character.unitHealth.OnDamage += _action;
                 break;
             case ExcuteType.OnHealed:
-                character.health.OnHeal += _action;
+                character.unitHealth.OnHeal += _action;
                 break;
             case ExcuteType.OnAttack:
-                character.health.OnAttack += _action;
+                character.unitHealth.OnAttack += _action;
                 break;
 
                 

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public bool startChooseRelic = false;
     public bool bossStage;
     [HideInInspector] public bool playerDead;
-    private Character player, enemy;
+    [SerializeField]private Character player, enemy;
     [SerializeField] MapManager mapmanager;
     [SerializeField] private Camera zoomCam;
 
@@ -28,8 +28,11 @@ public class GameManager : MonoBehaviour
       
 
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Character>();
+        if(!player)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+        
+        if(!enemy)
+            enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Character>();
 
     }
 
@@ -38,6 +41,17 @@ public class GameManager : MonoBehaviour
         if (character.characterType == CharacterType.Player)
             return enemy;
         else if (character.characterType == CharacterType.Enemy)
+            return player;
+        else
+            return null;
+        
+    }
+    
+    public Character GetOpponent(CharacterType characterType)
+    {
+        if (characterType == CharacterType.Player)
+            return enemy;
+        else if (characterType == CharacterType.Enemy)
             return player;
         else
             return null;

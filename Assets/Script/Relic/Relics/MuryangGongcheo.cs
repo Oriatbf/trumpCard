@@ -9,11 +9,11 @@ public class MuryangGongcheo : RelicBase
         effect = Resources.Load<GameObject>("Effect/MuryangGongcheoEffect");
         
         Character opponent =  GameManager.Inst.GetOpponent(character);
-        while (!character.health.isInv)
+        while (!character.unitHealth.isInv)
         {
             yield return new WaitForSeconds(time);
             
-            opponent.health.GetDamage(opponent.health.curHp/2);
+            opponent.unitHealth.GetDamage(opponent.unitHealth.curHp/2);
             Object.Instantiate(effect);
         }
     }

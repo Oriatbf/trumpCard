@@ -47,7 +47,7 @@ public class MagicBall : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            collision.GetComponent<Health>().GetDamage(damage);
+            collision.GetComponent<UnitHealth>().GetDamage(damage);
             gameObject.SetActive(false);
         
     }

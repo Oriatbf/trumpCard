@@ -14,7 +14,7 @@ public class HealPerTime : RelicBase
         while (true)
         {
             yield return new WaitForSeconds(3f);
-            character.health.OnRecorvery(value);
+            character.unitHealth.OnRecorvery(value);
         }
     }
 

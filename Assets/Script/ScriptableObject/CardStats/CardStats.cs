@@ -50,7 +50,7 @@ public class CardStats : ScriptableObject
     public struct RelicInfor
     {
         public Transform characterTrans;
-        public Health characterHealth;
+        [FormerlySerializedAs("characterHealth")] public UnitHealth characterUnitHealth;
         public float remnantHealth;
         public float relicPlusHealth;
         public float size;
@@ -72,7 +72,7 @@ public class CardStats : ScriptableObject
     public void ResetRelicInfor()
     {
         relicInfor.characterTrans = null;
-        relicInfor.characterHealth = null;
+        relicInfor.characterUnitHealth = null;
         relicInfor.remnantHealth = 0;
         relicInfor.relicPlusHealth= 0;
         relicInfor.size = 1;

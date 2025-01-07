@@ -13,13 +13,13 @@ public class BlackFlash : RelicBase
     {
         effect = Resources.Load<GameObject>("Effect/BlackFlash");
         Character opponent =  GameManager.Inst.GetOpponent(character);
-        while (!character.health.isInv)
+        while (!character.unitHealth.isInv)
         {
             yield return new WaitForSeconds(time);
             Vector3 dir = opponent.transform.position - character.transform.position;
             Object.Instantiate(effect, opponent.transform);
             character.transform.position = opponent.transform.position + (dir.normalized);
-            opponent.health.GetDamage(value);
+            opponent.unitHealth.GetDamage(value);
         }
     }
 }
