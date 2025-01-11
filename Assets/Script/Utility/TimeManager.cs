@@ -3,24 +3,14 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public  class TimeManager : MonoBehaviour
+public  class TimeManager : SingletonDontDestroyOnLoad<TimeManager>
 {
-   public static TimeManager Inst;
    public bool timeChanging = false;
    private Coroutine cor;
 
-   private void Awake()
+   protected override void Awake()
    {
-      if (Inst != null && Inst != this)
-      {
-         Destroy(gameObject);
-         return;
-      }
-      else
-      {
-         Inst = this;
-         DontDestroyOnLoad(gameObject);
-      }
+      base.Awake();
    }
 
    public void ChangeTimeSpeed(float timeScale)

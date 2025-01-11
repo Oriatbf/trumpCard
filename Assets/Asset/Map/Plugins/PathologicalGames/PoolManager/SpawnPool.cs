@@ -743,7 +743,7 @@ namespace PathologicalGames
                             	 Vector3 pos, Quaternion rot,
                             	 Transform parent)
         {
-            // Instance using the standard method before doing audio stuff
+            // Inst using the standard method before doing audio stuff
             Transform inst = Spawn(prefab.transform, pos, rot, parent);
 
             // Can happen if limit was used
@@ -801,7 +801,7 @@ namespace PathologicalGames
                                     Vector3 pos, Quaternion rot,
                                     Transform parent)
         {
-            // Instance using the standard method before doing particle stuff
+            // Inst using the standard method before doing particle stuff
             Transform inst = this.Spawn(prefab.transform, pos, rot, parent);
 
             // Can happen if limit was used

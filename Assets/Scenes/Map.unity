@@ -769,7 +769,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &400623707
 RectTransform:
@@ -3708,7 +3708,7 @@ MonoBehaviour:
   - {fileID: 648888836}
   BackText: "\uB3CC\uC544\uAC00\uAE30"
   eventAnim: {fileID: 400623708}
-  playerRelic:
+  events:
   - {fileID: 11400000, guid: 6b45b3c991cdf804694ee203711023bf, type: 2}
   - {fileID: 11400000, guid: 49a1ecd55d2168e44a3ff82c21c4c38a, type: 2}
   - {fileID: 11400000, guid: fdc4594fc9a754c4f834589634598c7e, type: 2}

@@ -5,14 +5,9 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class TopUIController : MonoBehaviour
+public class TopUIController : SingletonDontDestroyOnLoad<TopUIController>
 {
-    private static TopUIController _inst;
 
-    public static TopUIController Inst
-    {
-        get { return _inst; }
-    }
     
     [SerializeField] private TextMeshProUGUI goldText;
     [SerializeField] private Transform relicContent;
@@ -20,26 +15,19 @@ public class TopUIController : MonoBehaviour
     private RelicIcon relicIcon;
     private int _gold = 0;
 
-    private void Awake()
+    protected void Awake()
     {
-        if (Inst != this && Inst != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            _inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        base.Awake();
         
         if(relicIcon ==null)
             relicIcon = Resources.Load<RelicIcon>("UIPrefab/Icon");
-        UpdateGold();
+      
     }
 
     private void Start()
     {
+        _gold = DataManager.Inst.Data.gold;
+        UpdateGold();
         Application.targetFrameRate = 60;  //모바일 최적화
     }
     

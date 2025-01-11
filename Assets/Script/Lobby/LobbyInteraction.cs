@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VInspector;
+using UnityEngine.UI;
 public enum NpcType {Npc,Player }
 
 public class LobbyInteraction : MonoBehaviour

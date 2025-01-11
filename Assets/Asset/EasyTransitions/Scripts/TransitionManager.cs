@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace EasyTransition
 {
 
-    public class TransitionManager : MonoBehaviour
+    public class TransitionManager : SingletonDontDestroyOnLoad<TransitionManager>
     {        
         [SerializeField] private GameObject transitionTemplate;
 
@@ -16,29 +16,19 @@ namespace EasyTransition
         public UnityAction onTransitionBegin;
         public UnityAction onTransitionCutPointReached;
         public UnityAction onTransitionEnd;
+        
 
-        private static TransitionManager instance;
-
-        private void Awake()
+        protected override void Awake()
         {
-            if (instance != this && instance != null)
-            {
-                Destroy(transform.gameObject);
-                return;
-            }
-            else
-            {
-                instance = this;
-                DontDestroyOnLoad(transform.gameObject);
-            }
+            base.Awake();
         }
 
         public static TransitionManager Instance()
         {
-            if (instance == null )
+            if (Inst == null )
                 Debug.LogError("You tried to access the instance before it exists.");
 
-            return instance;
+            return Inst;
         }
 
         /// <summary>

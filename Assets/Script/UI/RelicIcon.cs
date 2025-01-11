@@ -19,7 +19,7 @@ public class RelicIcon : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,
     {
         relicData = _relicData;
         image.sprite = _relicData.sprite;
-        relicCard =RelicSelectManager.Inst.InstanceCard(relicData,transform.parent.parent,new Vector2(0.8f,0.8f));
+        relicCard =RelicSelectController.Inst.InstanceCard(relicData,transform.parent.parent,new Vector2(0.8f,0.8f));
         _cardRect = relicCard.GetComponent<RectTransform>();
         relicCard.gameObject.SetActive(false);
     }

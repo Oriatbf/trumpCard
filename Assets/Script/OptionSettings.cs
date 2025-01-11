@@ -4,9 +4,8 @@ using UnityEngine.UI;
 using System;
 using EasyTransition;
 
-public class OptionSettings : MonoBehaviour
+public class OptionSettings : SingletonDontDestroyOnLoad<OptionSettings>
 {
-    public static OptionSettings Inst;
     public Animator anim;
     public AudioMixer audioMixer;
     public Slider bgmSlider;
@@ -14,18 +13,9 @@ public class OptionSettings : MonoBehaviour
 
     private bool fading;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Inst != this && Inst != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        base.Awake();
     }
 
     void Start()

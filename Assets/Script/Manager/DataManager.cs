@@ -10,32 +10,22 @@ using VInspector;
 public class PlayerData
 {
     public int stage = 0;
-    public int gold = 0;
+    public int gold = 100;
     public List<int> relicID = new List<int>();
     public int cardCount = 4;
     public int cardRepeat = 1;
     public int characterId = -1;
 }
-public class DataManager : MonoBehaviour
+public class DataManager : SingletonDontDestroyOnLoad<DataManager>
 {
-    public static DataManager Inst;
     private string _DataFilePath;
     public PlayerData Data = new PlayerData();
     [SerializeField] private PlayableNpcManager playableNpcManager;
 
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Inst != null && Inst != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        base.Awake();
 
         _DataFilePath = Path.Combine(Application.persistentDataPath, "data.json");
         if (File.Exists(_DataFilePath))
@@ -62,6 +52,8 @@ public class DataManager : MonoBehaviour
         }
        
         CharacterRelicData.Inst.LoadPlayerRelic(Data.relicID);
+        if(TopUIController.Inst == null)
+            Debug.Log("없음");
         TopUIController.Inst.InstanceRelicIcon(Data.relicID,false);
     }
 

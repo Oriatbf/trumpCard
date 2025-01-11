@@ -94,7 +94,7 @@ namespace Map
                     throw new ArgumentOutOfRangeException();
             }
 
-            GameManager.Inst.StageNext();
+          //  GameManager.Inst.StageNext();
         }
 
         private void PlayWarningThatNodeCannotBeAccessed()

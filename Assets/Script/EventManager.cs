@@ -5,11 +5,10 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
-public class EventManager : MonoBehaviour
+public class EventManager : Singleton<EventManager>
 {
-    public static EventManager Inst;
-
     public Image eventImage;
     public TextMeshProUGUI eventName;
     public TextMeshProUGUI eventText;
@@ -18,24 +17,15 @@ public class EventManager : MonoBehaviour
     public Animator eventAnim;
 
     private EventScriptable currentEvent;
+    
+    public EventScriptable[] events;
 
-    public EventScriptable[] playerRelic;
 
-    private void Awake()
-    {
-        if (Inst != this && Inst != null)
-        {
-            return;
-        }
-        else
-        {
-            Inst = this;
-        }
-    }
 
     public void StartEvent()
     {
-        currentEvent = playerRelic[Random.Range(0, playerRelic.Length)];
+        currentEvent = events[Random.Range(0, events.Length)];
+        
         eventImage.sprite = currentEvent.eventImage;
 
         eventName.GetComponent<TypewriterByCharacter>().ShowText(currentEvent.eventName);
@@ -79,53 +69,11 @@ public class EventManager : MonoBehaviour
     private void ApplyOptionEffects(EventOption option)
     {
         bool randomSuccess = RandomOption(option);
-
-        switch (option.additionType)
-        {
-            case EventOption.AdditionType.Gold:
-                if (randomSuccess)
-                    TopUIController.Inst.GetGold(-option.typeValue);
-                break;
-            case EventOption.AdditionType.Relic:
-                if (randomSuccess)
-                {
-                    if(option.randomRelic)
-                    {
-                        var randomRelic = RelicDataManager.Inst.GetRandomRelics(option.typeValue);
-                        foreach (var relic in randomRelic)
-                        {
-                            DataManager.Inst.Data.relicID.Add(relic.id);
-                            CharacterRelicData.Inst.playerRelicData.Add(relic);
-                        }
-                        /*
-                        for (int i = 0; i < option.typeValue; i++)
-                        {
-                           
-                            RelicManager.Inst.playerRelic.Add(randomRelics[i]);
-                            TopUIController.Inst.LoadRelicIcon(randomRelics[i]);
-                        }*/
-                    }
-                    else
-                    {
-                        var randomRelic = RelicDataManager.Inst.GetRandomRelics(option.typeValue);
-                        foreach (var relic in randomRelic)
-                        {
-                            DataManager.Inst.Data.relicID.Add(relic.id);
-                            CharacterRelicData.Inst.playerRelicData.Add(relic);
-                        }
-                        /*
-                        for (int i = 0; i < option.typeValue; i++)
-                        {
-                            RelicSO RanSO = option.Relics[Random.Range(0, option.Relics.Length)];
-                            RelicManager.Inst.playerRelic.Add(RanSO);
-                            TopUIController.Inst.LoadRelicIcon(RanSO);
-                        }*/
-                    }
-                }
-                break;
-            default:
-                break;
-        }
+        
+        if (randomSuccess)
+            Win(option);
+        else 
+            Lose(option);
 
         // Event Text Change
 
@@ -139,27 +87,45 @@ public class EventManager : MonoBehaviour
 
     }
 
-    private bool RandomOption(EventOption option)
+    private void Win(EventOption option)
     {
-        if (!option.random || Random.Range(1, 101) >= option.randomValue)
-        {
-            return true;
-        }
-
-        switch (option.randomAddType)
+        switch (option.winPrize)
         {
             case EventOption.AdditionType.Gold:
-                if(option.allGold_Remove)
-                    TopUIController.Inst.GetGold(-99999); Debug.Log("다슴");
+                TopUIController.Inst.GetGold(option.winValue);
+                break;
+            case EventOption.AdditionType.Relic:
+                var randomRelic = RelicDataManager.Inst.GetRandomRelics(option.winValue);
+                ShowRelicController.Inst.Show(randomRelic);
+                foreach (var relic in randomRelic)
+                {
+                    DataManager.Inst.Data.relicID.Add(relic.id);
+                    CharacterRelicData.Inst.playerRelicData.Add(relic);
+                }
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void Lose(EventOption option)
+    {
+        switch (option.losePrize)
+        {
+            case EventOption.AdditionType.Gold:
+                TopUIController.Inst.GetGold(-option.loseValue);
                 break;
             case EventOption.AdditionType.Relic:
                 break;
             default:
                 break;
         }
-
-        return false;
     }
+
+    private bool RandomOption(EventOption option) =>   
+        Probability.RandomProbability(option.randomPercent).probabilityState == ProbabilityState.Win;
+
 
     [ContextMenu("asf")]
     public void EventOpen()

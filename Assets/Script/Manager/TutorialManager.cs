@@ -4,26 +4,15 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : SingletonDontDestroyOnLoad<TutorialManager>
 {
-    public static TutorialManager Inst;
     public bool isTutorialing;
     public PlayableDirector[] playableDirectors;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Inst != this && Inst != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        base.Awake();
     }
-
 
 
     public void ClickTutorial()

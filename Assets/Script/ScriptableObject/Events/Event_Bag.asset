@@ -26,19 +26,27 @@ MonoBehaviour:
       \uADF8 \uB300\uAC00\uB85C \uC720\uBB3C 2\uAC1C\uC640 \uC8C4\uCC45\uAC10\uC744
       \uC190\uC5D0 \uB123\uC5C8\uB2E4. \uBB3C\uB860, \uD6C4\uD68C\uB294 \uB0A8\uC9C0
       \uC54A\uB294\uB2E4."
-    additionType: 2
-    typeValue: 2
-    ImsiRelic: 0
-    random: 1
-    randomValue: 40
-    randomAddType: 0
-    allGold_Remove: 1
+    winPrize: 2
+    losePrize: 1
+    winValue: 2
+    loseValue: 0
+    randomPercent:
+      percentage: 100
+      percents:
+      - probabilityState: 1
+        percent: 60
+        onEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - probabilityState: 2
+        percent: 40
+        onEvent:
+          m_PersistentCalls:
+            m_Calls: []
     randomAfterText: "\uAC00\uBC29\uC744 \uB4A4\uC9C0\uB358 \uB3C4\uC911, \uC606\uC5D0\uC11C
       \uC0B4\uAE30\uB97C \uB290\uAF08\uB2E4. \uB2E4\uD589\uD788\uB3C4, \uAC00\uBC29\uC758
       \uC8FC\uC778\uC5D0\uAC8C\uC11C \uBB34\uC0AC\uD788 \uB3C4\uB9DD\uCCE4\uB2E4.
       \uC6B4\uC774 \uB098\uC058\uC9C4 \uC54A\uC740 \uAC83 \uAC19\uB2E4."
-    randomRelic: 1
-    Relics: []
   - ChoiceText: "\uC8FC\uC778\uC5D0\uAC8C \uB3CC\uB824\uC900\uB2E4.\n100% \uD655\uB960\uB85C
       \uB79C\uB364\uC720\uBB3C 1\uAC1C \uD68D\uB4DD"
     AfterText: "\uB2F9\uC2E0\uC740 \uAC00\uBC29\uC744 \uC8FC\uC778\uC5D0\uAC8C \uB3CC\uB824\uC8FC\uC5C8\uB2E4.
@@ -46,27 +54,33 @@ MonoBehaviour:
       \uC0AC\uB78C\uC744 \uB9CC\uB098\uB294 \uAC74 \uCC98\uC74C\uC774\uB77C\uBA70,
       \uAC00\uBC29\uC758 \uC8FC\uC778\uC774 \uC720\uBB3C 1\uAC1C\uB97C \uBCF4\uC0C1\uC73C\uB85C
       \uC8FC\uC5C8\uB2E4."
-    additionType: 2
-    typeValue: 1
-    ImsiRelic: 0
-    random: 0
-    randomValue: 35
-    randomAddType: 2
-    allGold_Remove: 1
+    winPrize: 2
+    losePrize: 0
+    winValue: 1
+    loseValue: 0
+    randomPercent:
+      percentage: 100
+      percents:
+      - probabilityState: 1
+        percent: 100
+        onEvent:
+          m_PersistentCalls:
+            m_Calls: []
+      - probabilityState: 2
+        percent: 0
+        onEvent:
+          m_PersistentCalls:
+            m_Calls: []
     randomAfterText: "\uC2E4\uD328"
-    randomRelic: 1
-    Relics: []
   - ChoiceText: "\uBB34\uC2DC\uD55C\uB2E4.\n\uB5A0\uB098\uAE30"
     AfterText: "\uB2F9\uC2E0\uC740 \uAC00\uBC29\uC744 \uBB34\uC2DC\uD558\uACE0 \uC9C0\uB098\uAC14\uB2E4.
       \uC2A4\uC2A4\uB85C\uC758 \uD310\uB2E8\uC744 \uC874\uC911\uD558\uBA70, \uB2F9\uC2E0\uC740
       \uACB0\uC815\uC744 \uB0B4\uB838\uB2E4."
-    additionType: 0
-    typeValue: 0
-    ImsiRelic: 0
-    random: 0
-    randomValue: 40
-    randomAddType: 1
-    allGold_Remove: 0
+    winPrize: 0
+    losePrize: 0
+    winValue: 0
+    loseValue: 0
+    randomPercent:
+      percentage: 
+      percents: []
     randomAfterText: "\uC559 \uB098\uBE60\uB760"
-    randomRelic: 0
-    Relics: []

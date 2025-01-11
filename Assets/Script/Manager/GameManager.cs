@@ -9,9 +9,8 @@ using UnityEngine.SceneManagement;
 using VInspector;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Inst;
     [SerializeField] GameObject RelicSelectCanvas;
     public int stageNum;
     public CountDown countDown;
@@ -22,9 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] MapManager mapmanager;
     [SerializeField] private Camera zoomCam;
 
-    public void Awake()
+    protected void Awake()
     {
-        Inst = this;
       
 
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
@@ -154,7 +152,7 @@ public class GameManager : MonoBehaviour
         {
             DataManager.Inst.Data.stage++;
             TimeManager.Inst.ChangeTimeSpeed(0f);
-            RelicSelectManager.Inst.CardSelect("Map");
+            RelicSelectController.Inst.CardSelect("Map");
         }
         else
         {

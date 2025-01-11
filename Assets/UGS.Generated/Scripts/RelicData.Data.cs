@@ -108,7 +108,7 @@ namespace RelicData
                 }
     #endif
     #if !UNITY_EDITOR
-                     webInstance = UnityPlayerWebRequest.Instance as IHttpProtcol;
+                     webInstance = UnityPlayerWebRequest.Inst as IHttpProtcol;
     #endif
           
  
@@ -234,7 +234,7 @@ else
 #endif
 
 #if !UNITY_EDITOR
-   UnityPlayerWebRequest.Instance.WriteObject(new  WriteObjectReqModel(spreadSheetID, sheetID, datas[0], datas), OnError, onWriteCallback);
+   UnityPlayerWebRequest.Inst.WriteObject(new  WriteObjectReqModel(spreadSheetID, sheetID, datas[0], datas), OnError, onWriteCallback);
 
 #endif
         } 

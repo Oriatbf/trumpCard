@@ -14,10 +14,8 @@ public enum CardRole
    Range,Melee,MeleeSting,Magic,ShotGun,Bow
 }
 
-public class CardDataManager : MonoBehaviour
+public class CardDataManager : SingletonDontDestroyOnLoad<CardDataManager>
 {
-   public static CardDataManager Inst;
-   
    [Serializable]
    public class CardData
    {
@@ -45,18 +43,10 @@ public class CardDataManager : MonoBehaviour
 
    public List<CardData> cardDatas = new List<CardData>();
 
-   private void Awake()
+   protected override void Awake()
    {
-      if (Inst != null && Inst != this)
-      {
-         Destroy(gameObject);
-         return;
-      }
-      else
-      {
-         Inst = this;
-         DontDestroyOnLoad(gameObject);
-      }
+      base.Awake();
+
       CardUnitData.Data.Load();
      
    }

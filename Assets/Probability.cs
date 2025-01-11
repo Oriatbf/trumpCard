@@ -14,7 +14,7 @@ public enum ProbabilityState
 public class RandomPercent
 {
     [Tooltip("Float가 아닌 String형 100.00 이런 방식으로 작성할 것")]
-    public string percentage;
+    public string percentage = "100";
     public List<Percent> percents = new List<Percent>();
 
 }
@@ -22,8 +22,8 @@ public class RandomPercent
 [Serializable]
 public class Percent
 {
-    public ProbabilityState probabilityState;
-    public float percent;
+    public ProbabilityState probabilityState = ProbabilityState.Win;
+    public float percent = 100;
     public UnityEvent onEvent;
 
 }

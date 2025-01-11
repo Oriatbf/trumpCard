@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VInspector;
 
 [Serializable]
@@ -17,35 +18,25 @@ public class EventOption
         Gold,
         Relic,
     }
-
-    public AdditionType additionType;
+    public AdditionType winPrize;
+    public AdditionType losePrize;
 
     // Value -----------------------------------------------
-
-    public int typeValue;
-
-    [DrawIf("randomAddType", AdditionType.Gold)]
-    public bool ImsiRelic;
-
+    public int winValue; //승리했을때 얻는 값
+    public int loseValue; //졌을 때 잃는 값
+    
     // Random -----------------------------------------------
+    
+    
+    public RandomPercent randomPercent = new RandomPercent();
 
-    public bool random;
+    
 
-    [DrawIf("random", true)]
-    public int randomValue;
+    [DrawIf("random", true)] 
+    public string randomAfterText;
 
-    [DrawIf("random", true)]
-    public AdditionType randomAddType; // 1 ~ 100
 
-    [DrawIf("random", true)] [DrawIf("randomAddType", AdditionType.Gold)]
-    public bool allGold_Remove;
-
-    [DrawIf("random", true)] public string randomAfterText;
-
-    // Relic -----------------------------------------------
-
-    [DrawIf("additionType", AdditionType.Relic)]
-    public bool randomRelic;
+   
     
 }
 

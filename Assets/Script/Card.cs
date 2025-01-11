@@ -105,7 +105,7 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
         if (!ShopCard)
         {
             SelectRelic();
-            RelicSelectManager.Inst.Close();
+            RelicSelectController.Inst.Close();
         }
      
     }

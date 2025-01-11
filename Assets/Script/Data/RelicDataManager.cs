@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using GoogleSheet.Core.Type;
+using Map;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -68,24 +69,14 @@ public class RelicDatas
         
 }
 
-public class RelicDataManager : MonoBehaviour
+public class RelicDataManager : SingletonDontDestroyOnLoad<RelicDataManager>
 {
-    public static RelicDataManager Inst;
     public List<RelicDatas> relicDatas  = new List<RelicDatas>();
     private List<RelicDatas> InActiveRelicDatas = new List<RelicDatas>();
    
-    private void Awake()
+    protected void Awake()
     {
-        if (Inst != null && Inst != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        base.Awake();
         RelicData.Data.Load();
     }
 
