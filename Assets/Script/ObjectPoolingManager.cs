@@ -64,7 +64,6 @@ public class ObjectPoolingManager : MonoBehaviour
         var dict =pools.FirstOrDefault(p => p.Key.name == prefabName);
         var _prefab = dict.Key;
         var _queue = dict.Value;
-        Debug.Log(_queue.Count);
         if (_queue.Count == 0)
         {
             // 풀에 오브젝트가 없으면 새로 생성

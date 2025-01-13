@@ -11,10 +11,7 @@ public class EnemyMove : Character
     //나중에 캐릭터들 역할 수정 필요
     public enum EnemyCharacter { defaultEnemy,Boss}
 
-    public enum AttackType
-    {
-        Melee,Range
-    }
+
 
     public enum State
     {
@@ -37,6 +34,9 @@ public class EnemyMove : Character
     private PathFind pathfind;
     private List<Node> pathToPlayer = new List<Node>();
     private int currentPathIndex;
+    [SerializeField] private float pathfindingInterval = 0.5f;
+    private float _lastPathfindingTime;
+    
 
     public override void Awake()
     {
@@ -54,7 +54,8 @@ public class EnemyMove : Character
         else crown.enabled= false;
         opponent = GameManager.Inst.GetOpponent(this);
         _dir = (opponent.transform.position - transform.position).normalized;
-        
+
+        _lastPathfindingTime = Time.time;
         base.Start();
     }
 
@@ -66,6 +67,8 @@ public class EnemyMove : Character
   
         base.Update();
         Rotation();
+        
+     
         StateChange();
         
     }
@@ -73,41 +76,76 @@ public class EnemyMove : Character
     public void StateChange()
     {
         Vector3 _distance = (opponent.transform.position - transform.position);
+        if (PathfindInterval() || pathfind.targetPos == Vector2Int.RoundToInt(transform.position))
+        {
+            if (IsBlocked(Vector2Int.RoundToInt(transform.position)))
+            {
+                state = State.Escape;
+                Debug.Log("뒤가 막혔습니다. 탈출 경로를 찾습니다.");
+            }
+            else if (_distance.sqrMagnitude < Gunrange * Gunrange && _distance.sqrMagnitude > (Gunrange - 3) * (Gunrange - 3))
+            {
+                Debug.Log("플레이어와 중간거리");
+                switch (stat.cardType)
+                {
+                    case CardType.Melee:
+                        state = State.CloseToOpponent;
+                        break;
+                    case CardType.Range:
+                        state = State.Random;
+                        break;
+                }
+               
+            }
+            else if (_distance.sqrMagnitude < (Gunrange - 3) * (Gunrange - 3))
+            {
+                Debug.Log("플레이어와 가까움");
+                switch (stat.cardType)
+                {
+                    case CardType.Melee:
+                        state = State.Inplace;
+                        break;
+                    case CardType.Range:
+                        state = State.FarToOpponent;
+                        break;
+                }
+                
+            }
+            else if (_distance.sqrMagnitude > Gunrange * Gunrange)
+            {
+                Debug.Log("플레이어와 멀리 떨어짐");
+                switch (stat.cardType)
+                {
+                    case CardType.Melee:
+                        state = State.CloseToOpponent;
+                        break;
+                    case CardType.Range:
+                        state = State.CloseToOpponent;
+                        break;
+                }
+            }
+            else
+            {
+                Debug.Log("아무상태도아님");
+            }
+        }
         
-        if (IsBlocked(Vector2Int.RoundToInt(transform.position)))
-        {
-            state = State.Escape;
-            Debug.Log("뒤가 막혔습니다. 탈출 경로를 찾습니다.");
-        }
-        else if (_distance.sqrMagnitude < Gunrange * Gunrange && _distance.sqrMagnitude > (Gunrange - 3) * (Gunrange - 3))
-        {
-            state = State.Random;
-        }
-        else if (_distance.sqrMagnitude < (Gunrange - 3) * (Gunrange - 3))
-        {
-            state = State.FarToOpponent;
-        }
-        else if (_distance.sqrMagnitude > Gunrange * Gunrange)
-        {
-            state = State.CloseToOpponent;
-        }
 
         switch (state)
         {
             case State.CloseToOpponent:
-                PathfindFar();
-
+                PathfindClose();
                 break;
             case State.FarToOpponent:
                 PathfindFar();
                 break;
             case State.Random:
-                PathfindFar();
-                Debug.Log("랜덤이동");
-                //RandomMove();
+                PathfindRandom();
                 break;
             case State.Escape:
                 PathfindEscape();
+                break;
+            case State.Inplace:
                 break;
         }
         
@@ -122,28 +160,7 @@ public class EnemyMove : Character
         handle.transform.localScale = new Vector3(_dir.x < 0 ? -1 : 1, 1);
     }
 
-    private void CircleMove()
-    {
-     
-        // 현재 객체와 opponent 사이의 거리 계산 (반지름)
-        Vector2 offset = transform.position - opponent.transform.position;
-        float radius = offset.magnitude;
-        float angleInDegress = Mathf.Atan2(transform.position.y, transform.position.x) * Mathf.Rad2Deg;
-        angleInDegress += 10 * Time.deltaTime;
-        
 
-
-        // 각도 업데이트 (speed에 따라 변화)
-        angleInRadians =angleInDegress*Mathf.Deg2Rad;
-
-        // 새로운 x, y 좌표 계산 (원의 중심 opponent 기준)
-        float newX = opponent.transform.position.x + Mathf.Cos(angleInRadians) * radius;
-        float newY = opponent.transform.position.y + Mathf.Sin(angleInRadians) * radius;
-
-        // 객체 위치 업데이트
-        transform.position = new Vector3(newX, newY, transform.position.z);
-
-    }
 
     public void CloseToPlayer()
     {
@@ -176,21 +193,39 @@ public class EnemyMove : Character
 
     private void PathfindClose()
     {
-        Vector2Int newTargetPos = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(this).transform.position);
-        if (pathfind.targetPos != newTargetPos)
-        {
-            pathfind.startPos = Vector2Int.RoundToInt(transform.position);
-            pathfind.targetPos = newTargetPos;
-            pathfind.PathFinding();
-            pathToPlayer = pathfind.FinalNodeList;
-            currentPathIndex = 0; // 새로운 경로일 때만 초기화
-        }
         PathfindMove();
+
+        Vector2Int newTargetPos = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(this).transform.position);
+        
+        // 동일한 목표 위치라면 경로 탐색 생략
+        if (pathfind.targetPos == newTargetPos && currentPathIndex < pathToPlayer.Count)
+            return;
+
+        pathfind.startPos = Vector2Int.RoundToInt(transform.position);
+        pathfind.targetPos = newTargetPos;
+        pathfind.PathFinding();
+        pathToPlayer = pathfind.FinalNodeList;
+        currentPathIndex = 0; // 새로운 경로일 때만 초기화
+        
+       
       
+    }
+
+    private bool PathfindInterval()
+    {
+        if (Time.time - _lastPathfindingTime >= pathfindingInterval) //쿨타임이 지났다면
+        {
+            _lastPathfindingTime = Time.time;
+            Debug.Log("쿨타임끝");
+            return true;
+        }
+        else return false;
     }
 
     private void PathfindFar()
     {
+        PathfindMove();
+
         Vector2 opponentPos = GameManager.Inst.GetOpponent(this).transform.position;
         Vector2 curPos = transform.position;
 
@@ -203,40 +238,55 @@ public class EnemyMove : Character
         {
             pathfind.startPos = Vector2Int.RoundToInt(transform.position);
             pathfind.targetPos = newTargetPosInt;
-            Debug.Log(newTargetPosInt);
             pathfind.PathFinding();
             pathToPlayer = pathfind.FinalNodeList;
             currentPathIndex = 0; 
         }
-        PathfindMove();
-
-        
     }
     
     private void PathfindEscape()
     {
+        PathfindMove();
+
         Vector2Int opponentPosition = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(this).transform.position);
         Vector2Int currentPosition = Vector2Int.RoundToInt(transform.position);
         
         Vector2Int targetPosition  = Vector2Int.one;
-
-  
+        
         targetPosition = FindEscapeTarget(currentPosition, opponentPosition);
         
-
         if (pathfind.targetPos != targetPosition)
         {
             pathfind.startPos = currentPosition;
-            Debug.Log(targetPosition);
             pathfind.targetPos = targetPosition;
             pathfind.PathFinding();
 
             pathToPlayer = pathfind.FinalNodeList;
             currentPathIndex = 0;
         }
-      
-        
+    }
+    
+    private void PathfindRandom()
+    {
         PathfindMove();
+
+        Vector2Int opponentPosition = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(this).transform.position);
+        Vector2Int currentPosition = Vector2Int.RoundToInt(transform.position);
+        
+        Vector2Int targetPosition  = Vector2Int.one;
+        
+        targetPosition = PathfindRandomPos(currentPosition, opponentPosition);
+        
+        //이부분 문제있음
+        if (pathfind.targetPos == currentPosition)
+        {
+            pathfind.startPos = currentPosition;
+            pathfind.targetPos = targetPosition;
+            pathfind.PathFinding();
+
+            pathToPlayer = pathfind.FinalNodeList;
+            currentPathIndex = 0;
+        }
     }
 
     private void PathfindMove()
@@ -246,15 +296,14 @@ public class EnemyMove : Character
         {
             Node targetNode = pathToPlayer[currentPathIndex];
             Vector2 targetPosition = new Vector2(targetNode.x, targetNode.y);
-            Vector2 currentPosition = new Vector2(transform.position.x, transform.position.y);
+            Vector2 currentPosition = transform.position;
 
             // 목표 위치로 이동
             transform.position = Vector2.MoveTowards(currentPosition, targetPosition, 4 * Time.deltaTime);
             // 목표 위치에 도달했으면 다음 경로로 이동
-            if (Vector2.Distance(currentPosition, targetPosition) < 0.1f)
+            if ((targetPosition - currentPosition).sqrMagnitude < 0.01f)
             {
                 currentPathIndex++;
-                
             }
         }
     }
@@ -262,7 +311,7 @@ public class EnemyMove : Character
 
     
     // 탈출 경로 계산
-    private Vector2Int FindEscapeTarget(Vector2Int currentPosition, Vector2Int playerPosition)
+    private Vector2Int FindEscapeTarget(Vector2Int currentPosition, Vector2Int opponentPosition)
     {
         List<Vector2Int> possibleDirections = new List<Vector2Int>
         {
@@ -285,7 +334,7 @@ public class EnemyMove : Character
 
             if (!IsBlocked(newPosition))
             {
-                int distance = Mathf.Abs(newPosition.x - playerPosition.x) + Mathf.Abs(newPosition.y - playerPosition.y);
+                int distance = Mathf.Abs(newPosition.x - opponentPosition.x) + Mathf.Abs(newPosition.y - opponentPosition.y);
 
                 if (distance > maxDistance)
                 {
@@ -296,6 +345,45 @@ public class EnemyMove : Character
         }
 
         return bestPosition;
+    }
+
+    private Vector2Int PathfindRandomPos(Vector2Int currentPosition, Vector2Int opponentPosition)
+    {
+        List<Vector2Int> possibleDirections = new List<Vector2Int>
+        {
+            new Vector2Int(0, 1),  // 위
+            new Vector2Int(1, 0),  // 오른쪽
+            new Vector2Int(0, -1), // 아래
+            new Vector2Int(-1, 0), // 왼쪽
+            new Vector2Int(1, 1),  // ↗
+            new Vector2Int(-1, 1), // ↖
+            new Vector2Int(-1, -1),// ↙
+            new Vector2Int(1, -1)  // ↘
+        };
+
+        List<Vector2Int> validDirections = new List<Vector2Int>();
+
+        foreach (Vector2Int direction in possibleDirections)
+        {
+            Vector2Int newPosition = currentPosition + direction;
+            if (!IsBlocked(newPosition))
+            {
+                validDirections.Add(newPosition);
+            }
+        }
+
+        // 유효한 방향이 있을 때만 랜덤 선택
+        if (validDirections.Count > 0)
+        {
+            int randomIndex = Random.Range(0, validDirections.Count);
+            return validDirections[randomIndex];
+        }
+        else
+        {
+            Debug.Log("자신의 위치를 반환");
+            return currentPosition;  // 블록된 경우 현재 위치 반환
+        }
+        
     }
     
     // 이동 가능 여부 체크

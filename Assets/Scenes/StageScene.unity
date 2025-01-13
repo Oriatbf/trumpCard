@@ -1974,12 +1974,20 @@ PrefabInstance:
       propertyPath: crown
       value: 
       objectReference: {fileID: 1547696651}
+    - target: {fileID: 8888744121395138528, guid: d8324350db01cef499b486076f7df992, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888744121395138528, guid: d8324350db01cef499b486076f7df992, type: 3}
+      propertyPath: pathfindingInterval
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8527606893941620654, guid: d8324350db01cef499b486076f7df992, type: 3}
-      insertIndex: -1
+      insertIndex: 9
       addedObject: {fileID: 1547696654}
   m_SourcePrefab: {fileID: 100100000, guid: d8324350db01cef499b486076f7df992, type: 3}
 --- !u!114 &1547696651 stripped

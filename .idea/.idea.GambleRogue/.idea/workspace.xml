@@ -6,40 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8980fbce-ce1f-40fc-ad40-6187e7f32ffb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GambleRogue/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Scripts/TransitionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/EasyTransitions/Scripts/TransitionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/PathologicalGames/PoolManager/SpawnPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Plugins/PathologicalGames/PoolManager/SpawnPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Asset/Map/Scripts/MapPlayerTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Asset/Map/Scripts/MapPlayerTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Galmuri11 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Galmuri11 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Probability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Probability.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LobbyScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StageScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Card.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Data/CardDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/CardDataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Data/RelicDataManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EnemyMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EventManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/EventScriptable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/EventScriptable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Lobby/LobbyInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Lobby/LobbyInteraction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/DataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/DataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/RelicSelectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/RelicSelectController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/RelicSelectManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/RelicSelectController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Manager/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Manager/TutorialManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/OptionSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/OptionSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Events/Event_Bag.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Events/Event_Bag.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Events/Event_RanRelics.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Events/Event_RanRelics.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Events/Event_Roulette.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ScriptableObject/Events/Event_Roulette.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/UI/RelicIcon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/UI/RelicIcon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/UI/TopUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/UI/TopUIController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Utility/TimeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Utility/TimeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SlotMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SlotMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SlotMachine.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SlotMachine.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/CardUnitData.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/CardUnitData.Data.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/NpcData.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/NpcData.Data.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/PlayableCharacterData.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/PlayableCharacterData.Data.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/RelicData.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/RelicData.Data.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/ObjectPoolingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/ObjectPoolingManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,6 +183,9 @@
       <workItem from="1736509921599" duration="5972000" />
       <workItem from="1736570204636" duration="7746000" />
       <workItem from="1736595027564" duration="1540000" />
+      <workItem from="1736655634468" duration="5437000" />
+      <workItem from="1736675752790" duration="2691000" />
+      <workItem from="1736752785494" duration="1203000" />
     </task>
     <servers />
   </component>
