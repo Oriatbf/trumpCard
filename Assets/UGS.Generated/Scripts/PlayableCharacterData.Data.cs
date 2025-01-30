@@ -61,6 +61,7 @@ namespace PlayableCharacterData
 		public System.String gender;
 		public System.Int32 age;
 		public System.String info;
+		public System.String determin;
 		public System.String relicIds;
   
 
@@ -102,7 +103,7 @@ namespace PlayableCharacterData
                 }
     #endif
     #if !UNITY_EDITOR
-                     webInstance = UnityPlayerWebRequest.Inst as IHttpProtcol;
+                     webInstance = UnityPlayerWebRequest.Instance as IHttpProtcol;
     #endif
           
  
@@ -228,7 +229,7 @@ else
 #endif
 
 #if !UNITY_EDITOR
-   UnityPlayerWebRequest.Inst.WriteObject(new  WriteObjectReqModel(spreadSheetID, sheetID, datas[0], datas), OnError, onWriteCallback);
+   UnityPlayerWebRequest.Instance.WriteObject(new  WriteObjectReqModel(spreadSheetID, sheetID, datas[0], datas), OnError, onWriteCallback);
 
 #endif
         } 

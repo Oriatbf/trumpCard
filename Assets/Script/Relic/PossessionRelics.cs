@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,13 +9,28 @@ using Random = UnityEngine.Random;
 public class PossessionRelics : MonoBehaviour
 {
     Character character;
+    private Health health;
     public List<RelicBase> possessionRelics = new List<RelicBase>();
     
     private void Awake()
     {
+        health = GetComponent<Health>();
         character = GetComponent<Character>();
-        SetRelic();
-        
+        StartCoroutine(SetRelic());
+        if (health.characterType == CharacterType.Player)
+        {
+            foreach (var relicData in CharacterRelicData.Inst.playerRelicData)
+            {
+                possessionRelics.Add(relicData.relic);
+            }
+        }
+        else if (health.characterType == CharacterType.Enemy)
+        {
+            foreach (var relicData in  GameManager.Inst.enemyData.relicDatas)
+            {
+                possessionRelics.Add(relicData.relic);
+            }
+        }
        
         
     }
@@ -28,23 +44,10 @@ public class PossessionRelics : MonoBehaviour
         }
     }
 
-    private void SetRelic()
+    IEnumerator  SetRelic()
     {
-        if (character.characterType == CharacterType.Player)
-        {
-            foreach (var relicData in CharacterRelicData.Inst.playerRelicData)
-            {
-                possessionRelics.Add(relicData.relic);
-            }
-        }
-        else if (character.characterType == CharacterType.Enemy)
-        {
-            int random = Random.Range(0, NpcDataManager.Inst.npcDatas.Count);
-            foreach (var relicData in  NpcDataManager.Inst.npcDatas[random].relicDatas)
-            {
-                possessionRelics.Add(relicData.relic);
-            }
-        }
+        yield return new WaitUntil(() => GameManager.Inst);
+      
        
     }
 

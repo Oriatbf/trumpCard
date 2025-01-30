@@ -80,14 +80,15 @@ namespace Map
                 case NodeType.Treasure:
                     break;
                 case NodeType.Store:
+                    DataManager.Inst.Data.stage++;
                     ShopManager.Inst.ShopOpen();
                     
                     break;
                 case NodeType.Boss:
-                    //GameManager.Inst.bossStage = true;
                     DemoLoadScene.Inst.LoadScene("StageScene");
                     break;
                 case NodeType.Mystery:
+                    DataManager.Inst.Data.stage++;
                     EventManager.Inst.EventOpen();
                     break;
                 default:

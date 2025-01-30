@@ -65,13 +65,9 @@ public class OptionSettings : SingletonDontDestroyOnLoad<OptionSettings>
     public void GiveUp()
     {
         anim.SetBool("OptionFade", false);
-        GameManager.Inst.SceneTransition("LobbyScene");
+        DemoLoadScene.Inst.LoadScene("LobbyScene");
     }
-
-    private void SceneTransition(string v)
-    {
-        throw new NotImplementedException();
-    }
+    
 
     public void QuitGame()
     {

@@ -21,29 +21,25 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] MapManager mapmanager;
     [SerializeField] private Camera zoomCam;
 
-    protected void Awake()
-    {
-      
+    public bool gamePause = false;
 
-        SceneManager.activeSceneChanged += OnActiveSceneChanged;
+    public NpcDataManager.Data enemyData;
+
+    private void Awake()
+    {
         if(!player)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         
         if(!enemy)
             enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Character>();
 
-    }
-
-    public Character GetOpponent(Character character)
-    {
-        if (character.characterType == CharacterType.Player)
-            return enemy;
-        else if (character.characterType == CharacterType.Enemy)
-            return player;
-        else
-            return null;
+        enemyData = NpcDataManager.Inst.RandomEnemyForStage();
         
+
+
     }
+    public bool Pause() => GameManager.Inst.gamePause;
+
     
     public Character GetOpponent(CharacterType characterType)
     {
@@ -63,70 +59,6 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    public void FightStage()
-    {
-
-        
-        
-
-        if (stageNum != 1)
-        {
-            startChooseRelic = false;
-
-        }
-        else
-        {
-            startChooseRelic = true;
-        }
-        SceneTransition("StageScene");
-    }
-
-    public void StageNext()
-    {
-        stageNum++;
-    }
-
-
-    void OnActiveSceneChanged(Scene previousScene, Scene newScene)
-    {
-
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-           // UIManager.Inst.GoldRelicReset();
-           // Destroy(GameManager.Inst.gameObject);
-        }
-
-        
-        if (newScene.name == "LobbyScene")
-        {
-           // UIManager.Inst.GoldRelicReset();
-            //Destroy(GameManager.Inst.gameObject);
-        }
-
-
-        if(newScene.name == "EndScene")
-        {
-            //UIManager.Inst.EndingScene();
-        }
-
-        Debug.Log("Active scene changed from " + previousScene.name + " to " + newScene.name);
-        // 씬이 변경되었을 때 하고 싶은 작업을 여기서 처리
-    }
-
-
-    public void ResetStart()
-    {
-        Debug.Log("Restart");
-        zoomCam = GameObject.FindGameObjectWithTag("CinemaCam").GetComponent<Camera>();
-        zoomCam.gameObject.SetActive(false);
-
-    }
-
-    public void EnableRelicChoose(bool startRelic)
-    {
-        RelicSelectCanvas.gameObject.SetActive(startRelic);
-    }
-   
     IEnumerator CameraZoom(Transform deadCharacter)
     {
         zoomCam.gameObject.SetActive(true);
@@ -150,9 +82,15 @@ public class GameManager : Singleton<GameManager>
         yield return StartCoroutine(CameraZoom(deadCharacter.transform)); 
         if (isPlayerWin)
         {
-            DataManager.Inst.Data.stage++;
-            TimeManager.Inst.ChangeTimeSpeed(0f);
-            RelicSelectController.Inst.CardSelect("Map");
+            if(DataManager.Inst.Data.stage >= 11)
+                SceneTransition("EndScene");
+            else
+            {
+                DataManager.Inst.Data.stage++;
+                TimeManager.Inst.ChangeTimeSpeed(0f);
+                RelicSelectController.Inst.CardSelect("Map");
+            }
+            
         }
         else
         {

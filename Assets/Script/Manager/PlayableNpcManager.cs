@@ -27,6 +27,7 @@ public class PlayableNpcManager : MonoBehaviour
 
     private void Awake()
     {
+        characterHead.gameObject.SetActive(false);
         PlayableCharacterData.Data.Load();
         foreach (var npc in lobbyNpcs)
         {
@@ -38,10 +39,17 @@ public class PlayableNpcManager : MonoBehaviour
     {
 
         yield return new WaitUntil(() => DataManager.Inst);
+        Debug.Log("캐릭터 선택");
         characterSelected = DataManager.Inst.Data.characterId >= 0;
-        var _playerNpc = lobbyNpcs.FirstOrDefault(npc => npc.npcType == NpcType.Player);
-        if(_playerNpc != null) playerNpc = _playerNpc;
-        characterHead.gameObject.SetActive(playerNpc);
+        curNpcIndex = DataManager.Inst.Data.characterId;
+        if (characterSelected)
+        {
+            SetNpcPlayer(curNpcIndex);
+            var _playerNpc = lobbyNpcs.FirstOrDefault(npc => npc.npcType == NpcType.Player);
+            if(_playerNpc != null) playerNpc = _playerNpc;
+        }
+        characterHead.gameObject.SetActive(characterSelected);
+        
     }
 
     public void SetNpcPlayer(int id)
@@ -51,6 +59,7 @@ public class PlayableNpcManager : MonoBehaviour
         var _playerNpc = lobbyNpcs.FirstOrDefault(npc => npc.npcId == id);
         playerNpc  = _playerNpc;
         playerNpc.npcType = NpcType.Player;
+        characterSelected = true;
         characterHead.gameObject.SetActive(true);
     }
     

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,7 +14,11 @@ public class TopUIController : SingletonDontDestroyOnLoad<TopUIController>
     [SerializeField] private Transform relicContent;
     [SerializeField] private Canvas uiTopBar;
     private RelicIcon relicIcon;
-    private int _gold = 0;
+
+    private int _gold
+    {
+        get => DataManager.Inst.Data.gold;
+    }
 
     protected void Awake()
     {
@@ -26,7 +31,6 @@ public class TopUIController : SingletonDontDestroyOnLoad<TopUIController>
 
     private void Start()
     {
-        _gold = DataManager.Inst.Data.gold;
         UpdateGold();
         Application.targetFrameRate = 60;  //모바일 최적화
     }
@@ -39,8 +43,6 @@ public class TopUIController : SingletonDontDestroyOnLoad<TopUIController>
         {
             Destroy(child.gameObject);
         }
-        SetGold(DataManager.Inst.Data.gold);
-        
     }
     
     public void InstanceRelicIcon(object ids,bool dataSave) // DataManager에서 로드될때는 false
@@ -68,20 +70,32 @@ public class TopUIController : SingletonDontDestroyOnLoad<TopUIController>
     }
 
 
-    public void SetGold(int value)
-    {
-        _gold = value;
-        UpdateGold();
-    }
+
     public void GetGold(int value)
     {
-        _gold += value;
+        ReCountGold(_gold,value);
+    }
+    
+    
+    private void ReCountGold(int curGold,int value)
+    {
+        DOTween.To(() => curGold, x =>
+        {
+            if (x >= 0)
+            {
+                curGold = x;
+                goldText.text = $"<sprite=0> {x}";
+            }
+           
+        }, curGold + value, 0.5f);
+        DataManager.Inst.Data.gold+=value;
         UpdateGold();
     }
 
+
     private void UpdateGold()
     {
-        _gold = _gold < 0 ? 0 : _gold;
+        DataManager.Inst.Data.gold = DataManager.Inst.Data.gold < 0 ? 0 : DataManager.Inst.Data.gold;
         goldText.text = "<sprite=0> " + _gold.ToString();
     }
 

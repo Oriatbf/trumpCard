@@ -37,7 +37,7 @@ public class PlayerMove : Character
     public override void Start()
     {
         base.Start();
-        opponent = GameManager.Inst.GetOpponent(this);
+        opponent = GameManager.Inst.GetOpponent(unitHealth.characterType);
         _camera = Camera.main;
         if(mobileVersion)
             dashBtnImage = dashBtn.GetComponent<Image>();
@@ -47,6 +47,7 @@ public class PlayerMove : Character
     // Update is called once per frame
     public override void Update()
     {
+        if(GameManager.Inst.Pause()) return;
         if (Input.GetKeyDown(KeyCode.F4)) Gambling();
         if (Input.GetKeyDown(KeyCode.F2)) unitHealth.GetDamage(1000);
         

@@ -10,6 +10,7 @@ public class Bullet : Projectile
     public float damage;
     public bool isReturn;
     private float bulletSpeed;
+    private List<StatusEffect> debuffs;
     Vector2 bulletDir;
     
     
@@ -20,19 +21,28 @@ public class Bullet : Projectile
     }
     
 
-    public override void Init(Stat stat,Vector2 dir,CharacterType characterType)
+    public override void Init(Stat stat,Vector2 dir,CharacterType characterType,List<StatusEffect> _debuffs)
+    {
+        Set(stat,Critical.CriticalChance(stat),dir,characterType,_debuffs);
+    }
+    
+    public override void Init(Stat stat, float _damage, Vector2 dir, CharacterType characterType,List<StatusEffect> _debuffs)
+    {
+        Set(stat,Critical.CriticalChance(stat,_damage),dir,characterType,_debuffs);
+    }
+    void Set(Stat stat, float _damage, Vector2 dir, CharacterType characterType,List<StatusEffect> _debuffs)
     {
         ownerCharacter = characterType;
         rigid.linearVelocity = Vector2.zero;
-        damage = Critical.CriticalChance(stat);
+        debuffs = _debuffs;
+        damage = _damage;
         bulletDir = dir;
         var _statValue = stat.FinalValue();
         bulletSpeed = _statValue.bulletSpeed;
         transform.localScale = new Vector3(_statValue.bulletSize, _statValue.bulletSize);
         ActiveFalse(2f);
-
-        //rigid.AddForce(dir * stat.originStatValue.bulletSpeed*100*Time.deltaTime, ForceMode2D.Impulse);
     }
+    
 
     private void Update()
     {
@@ -42,26 +52,19 @@ public class Bullet : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Character character))
+        if (collision.TryGetComponent(out Health health))
         {
-            if (ownerCharacter != character.characterType)
+            if (ownerCharacter != health.characterType)
             {
-                character.unitHealth.GetDamage(damage);
-                character.GetForce(bulletDir,5,0.05f);
+                health.GetDamage(damage);
+                health.GetForce(bulletDir,5,0.05f);
+                foreach (var debuff in debuffs)
+                {
+                    debuff.ApplyEffect(health);
+                }
                 EffectManager.Inst.SpawnEffect(transform, 0);
                 ActiveFalse();
             }
-        }
-        
-        if (collision.TryGetComponent(out Creature creature))
-        {
-           // if (ownerCharacter != creature.characterType)
-          //  {
-                creature.health.GetDamage(damage);
-               // creature.GetForce(bulletDir,5,0.05f);
-                EffectManager.Inst.SpawnEffect(transform, 0);
-                ActiveFalse();
-            //}
         }
     }
 

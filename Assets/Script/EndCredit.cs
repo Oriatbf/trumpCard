@@ -1,24 +1,31 @@
+using System;
 using DG.Tweening;
+using EasyTransition;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EndCredit : MonoBehaviour
 {
+    [SerializeField] private Panel skipBtnPanel;
     public Button skipBtn;
     bool pressOn;
+
+    private void Start()
+    {
+        skipBtn.onClick.AddListener(() => Skip());
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && !pressOn)
         {
             pressOn = true;
-            skipBtn.GetComponent<Image>().DOFade(1f, 1f);
-
-            skipBtn.onClick.AddListener(() => Skip());
+            skipBtnPanel.SetPosition(PanelStates.Show,true);
         }
     }
 
-    void Skip()
+    public void Skip()
     {
-        GameManager.Inst.SceneTransition("LobbyScene");
+        DemoLoadScene.Inst.LoadScene("LobbyScene");
     }
 }

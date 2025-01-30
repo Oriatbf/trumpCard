@@ -68,6 +68,7 @@ namespace RelicData
 		public System.Single time;
 		public System.Single duration;
 		public System.String extraRelicID;
+		public System.String stringValue;
   
 
 #region fuctions
@@ -108,7 +109,7 @@ namespace RelicData
                 }
     #endif
     #if !UNITY_EDITOR
-                     webInstance = UnityPlayerWebRequest.Inst as IHttpProtcol;
+                     webInstance = UnityPlayerWebRequest.Instance as IHttpProtcol;
     #endif
           
  
@@ -234,7 +235,7 @@ else
 #endif
 
 #if !UNITY_EDITOR
-   UnityPlayerWebRequest.Inst.WriteObject(new  WriteObjectReqModel(spreadSheetID, sheetID, datas[0], datas), OnError, onWriteCallback);
+   UnityPlayerWebRequest.Instance.WriteObject(new  WriteObjectReqModel(spreadSheetID, sheetID, datas[0], datas), OnError, onWriteCallback);
 
 #endif
         } 

@@ -4,33 +4,23 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
-public class TutorialManager : SingletonDontDestroyOnLoad<TutorialManager>
+public class TutorialManager : MonoBehaviour
 {
-    public bool isTutorialing;
-    public PlayableDirector[] playableDirectors;
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
-
+    [SerializeField] private MapTutorial mapTutorial;
     public void ClickTutorial()
     {
 
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 0:
-                playableDirectors[0].Play(); break;
+               mapTutorial.Open();
+                break;
             case 1:
-                playableDirectors[1].Play(); break;
+               mapTutorial.Open();
+               break;
           
         }
-     isTutorialing= true;
     }
 
-    public void EndTutorial()
-    {
-        isTutorialing= false;
-    }
+
 }

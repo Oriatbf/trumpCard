@@ -19,7 +19,6 @@ public class CameraSetting : MonoBehaviour
     {
         virtualCamera = GameObject.Find("VCam").GetComponent<CinemachineVirtualCamera>();
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        CameraAnimation();
         
     }
     

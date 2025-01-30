@@ -38,7 +38,7 @@ public class LobbyNpc : LobbyInteraction,IPointerClickHandler,IPointerEnterHandl
     // Update is called once per frame
     public void Update()
     {
-        if (!TutorialManager.Inst.isTutorialing && npcType == NpcType.Player)
+        if ( npcType == NpcType.Player)
             Move();
 
         if (npcType == NpcType.Player)

@@ -16,10 +16,10 @@ public enum CharacterType
     Player,Enemy
 }
 
-public class Character : Unit
+public class Character : MonoBehaviour
 {
     
-
+    
     [Tab("Input")] 
     public Image attackCoolImage;
     private float dashCool = 5;
@@ -36,6 +36,7 @@ public class Character : Unit
     public float _angle;
     
     public Character opponent;
+    public List<StatusEffect> debuffs = new List<StatusEffect>();
     public float curCoolTime;
     private float _coolTime;
 
@@ -93,7 +94,6 @@ public class Character : Unit
 
     public void Gambling() //갬블시 초기화 되는 내용 및 체인지
     {
-        SetWeapon(stat.cardNum);
         SetStat();
     }
     
@@ -104,11 +104,11 @@ public class Character : Unit
         stat.statUpAction += () => creatureCustody.summon();
         Gambling();
     }
+    
 
     // Update is called once per frame
     public virtual void Update()
     {
-        
         if (curDashCool > 0 && curCharging <1)
         {
             curDashCool -= Time.deltaTime;
@@ -122,11 +122,14 @@ public class Character : Unit
       
         CoolTime();
         shootInfor.dir = _dir;
+        shootInfor.angle = _angle;
     }
     private void LateUpdate()
     {
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, -8, 8), Mathf.Clamp(transform.position.y, -4.2f, 3));
     }
+
+    
 
     protected virtual void Move()
     {
@@ -141,9 +144,11 @@ public class Character : Unit
         var randomStat = CardDataManager.Inst.RandomCard().stat;
         stat.originStatValue = randomStat.originStatValue;
         stat.cardNum = randomStat.cardNum;
+        SetWeapon(stat.cardNum);
         stat.cardRole = randomStat.cardRole;
         stat.cardType = randomStat.cardType;
-       Debug.Log(stat.originStatValue.hp);
+        string characterPath = unitHealth.characterType == CharacterType.Player ? "Card_Red_" : "Card_Blue_";
+        unitHealth.spr.sprite = Resources.Load<Sprite>("Sprite/Character/Cards/" +characterPath +randomStat.cardName);
         stat.Action();
       
         
@@ -222,7 +227,7 @@ public class Character : Unit
             if (!isSting)
             {
                 animator.SetTrigger(_dir.x < 0 ? "SwordFlipAttack" : "SwordAttack"); // 역방향 재생
-                //if(characterSO.relicInfor.isSlash) Attack.Inst.Slash(shootInfor);
+               Attack.Inst.Slash(shootInfor);
              
             }
             else animator.SetTrigger("StingAttack");
@@ -241,11 +246,11 @@ public class Character : Unit
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _dir, 2f);
         foreach (var hit in hits)
         {
-            if (hit.transform.TryGetComponent(out Character _character))
+            if (hit.transform.TryGetComponent(out Health _health))
             {
-                if (_character.characterType != characterType)
+                if (_health.characterType != unitHealth.characterType)
                 {
-                    _character.unitHealth.GetDamage(Critical.CriticalChance(stat));
+                    _health.GetDamage(Critical.CriticalChance(stat));
                 }
             }
         }

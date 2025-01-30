@@ -329,7 +329,7 @@ public static class PGEditorUtils
     /// Adds a fold-out list GUI from a generic list of any serialized object type
     /// </summary>
     /// <param name="list">A generic List</param>
-    /// <param name="expanded">A bool to determine the state of the primary fold-out</param>
+    /// <param name="expanded">A bool to determine the battleState of the primary fold-out</param>
     public static bool FoldOutTextList(string label, List<string> list, bool expanded)
     {
         // Store the previous indent and return the flow to it at the end
@@ -388,7 +388,7 @@ public static class PGEditorUtils
     /// Adds a fold-out list GUI from a generic list of any serialized object type
     /// </summary>
     /// <param name="list">A generic List</param>
-    /// <param name="expanded">A bool to determine the state of the primary fold-out</param>
+    /// <param name="expanded">A bool to determine the battleState of the primary fold-out</param>
     public static bool FoldOutObjList<T>(string label, List<T> list, bool expanded) where T : UnityEngine.Object
     {
         // Store the previous indent and return the flow to it at the end
@@ -483,9 +483,9 @@ public static class PGEditorUtils
     /// </summary>
     /// <param name="label"> The field label</param>
     /// <param name="list">A generic List</param>
-    /// <param name="expanded">A bool to determine the state of the primary fold-out</param>
+    /// <param name="expanded">A bool to determine the battleState of the primary fold-out</param>
     /// <param name="foldOutStates">Dictionary<object, bool> used to track list item states</param>
-    /// <returns>The new foldout state from user input. Just like Unity's foldout</returns>
+    /// <returns>The new foldout battleState from user input. Just like Unity's foldout</returns>
     public static bool FoldOutSerializedObjList<T>(string label, 
                                                    List<T> list, 
                                                    bool expanded,
@@ -505,12 +505,12 @@ public static class PGEditorUtils
     /// </summary>
     /// <param name="label"> The field label</param>
     /// <param name="list">A generic List</param>
-    /// <param name="expanded">A bool to determine the state of the primary fold-out</param>
+    /// <param name="expanded">A bool to determine the battleState of the primary fold-out</param>
     /// <param name="foldOutStates">Dictionary<object, bool> used to track list item states</param>
     /// <param name="collapseBools">
     /// If true, bools on list items will collapse fields which follow them
     /// </param>
-    /// <returns>The new foldout state from user input. Just like Unity's foldout</returns>
+    /// <returns>The new foldout battleState from user input. Just like Unity's foldout</returns>
     public static bool SerializedObjFoldOutList<T>(string label, 
                                                    List<T> list, 
                                                    bool expanded,
@@ -592,7 +592,7 @@ public static class PGEditorUtils
             if (itemLabel == "") itemLabel = string.Format("Element {0}", i);
 
 
-            // Get the foldout state. 
+            // Get the foldout battleState. 
             //   If this item is new, add it too (singleton)
             //   Singleton works better than multiple Add() calls because we can do 
             //   it all at once, and in one place.
@@ -613,7 +613,7 @@ public static class PGEditorUtils
             GUILayout.Space((indent+3)*6); // Matches the content indent
 
             EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
-            // Display foldout with current state
+            // Display foldout with current battleState
             foldOutState = Foldout(foldOutState, itemLabel);
             foldOutStates[item] = foldOutState;  // Used again below
 

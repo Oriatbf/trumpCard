@@ -15,6 +15,7 @@ public class NpcDataManager : MonoBehaviour
         public string name;
         public int difficulty;
         public string description;
+        public string determin;
         public List<RelicDatas> relicDatas = new List<RelicDatas>();
 
         public Data(NpcData.Data data)
@@ -23,6 +24,7 @@ public class NpcDataManager : MonoBehaviour
             name = data.name;
             difficulty = data.difficulty;
             description = data.description;
+            determin = data.determin;
             relicDatas = RelicDataManager.Inst.GetRelics(data.relicId);
         }
 
@@ -54,24 +56,27 @@ public class NpcDataManager : MonoBehaviour
         }
     }
 
-    public void RandomEnemy(int stage)
+    public Data RandomEnemyForStage()
     {
         int _difficulty = 0;
-        switch (stage)
+        switch (DataManager.Inst.Data.stage)
         {
-            case <=3:
+            case <=2:
                 _difficulty = 1;
                 break;
-            case <=7:
+            case <=5:
                 _difficulty = 2;
                 break;
-            case <=12:
+            case <=8:
                 _difficulty = 3;
+                break;
+            case <=12:
+                _difficulty = 4;
                 break;
         }
 
         List<Data> npcs = npcDatas.Where(n => n.difficulty == _difficulty).ToList();
         int random = Random.Range(0, npcs.Count);
-        //리턴
+        return npcs[random];
     }
 }

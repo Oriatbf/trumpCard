@@ -60,6 +60,7 @@ namespace NpcData
 		public System.String name;
 		public System.Int32 difficulty;
 		public System.String description;
+		public System.String determin;
 		public System.String relicId;
   
 
@@ -101,7 +102,7 @@ namespace NpcData
                 }
     #endif
     #if !UNITY_EDITOR
-                     webInstance = UnityPlayerWebRequest.Inst as IHttpProtcol;
+                     webInstance = UnityPlayerWebRequest.Instance as IHttpProtcol;
     #endif
           
  
@@ -227,7 +228,7 @@ else
 #endif
 
 #if !UNITY_EDITOR
-   UnityPlayerWebRequest.Inst.WriteObject(new  WriteObjectReqModel(spreadSheetID, sheetID, datas[0], datas), OnError, onWriteCallback);
+   UnityPlayerWebRequest.Instance.WriteObject(new  WriteObjectReqModel(spreadSheetID, sheetID, datas[0], datas), OnError, onWriteCallback);
 
 #endif
         } 

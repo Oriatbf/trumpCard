@@ -106,42 +106,41 @@ public class LobbyInteraction : MonoBehaviour
     }
     protected void Move()
     {
-        if (!TutorialText.Inst.disableAction)
+       
+        float x;
+        float y;
+        //Move
+        if (mobileVersion)
         {
-            float x;
-            float y;
-            //Move
-            if (mobileVersion)
-            {
-                x = moveJoyStick.Horizontal;
-                y = moveJoyStick.Vertical;
-            }
-            else
-            {
-                x = Input.GetAxisRaw("Horizontal");
-                y = Input.GetAxisRaw("Vertical");
-            }
-
-            if (animator)
-            {
-                if (x == 0 && y == 0) animator.SetBool("isWalk", false);
-                else animator.SetBool("isWalk", true);
-            }
-
-            if (spr)
-            {
-                if (x < 0) spr.flipX = true;
-                else if (x > 0) spr.flipX = false;
-            }
-            
-
-
-            angleVec = new Vector3(x, y, 0).normalized;
-
-            float moveX = angleVec.x * speed * Time.deltaTime;
-            float moveY = angleVec.y * speed * Time.deltaTime;
-            transform.Translate(new Vector3(moveX, moveY, 0), Space.World);
+            x = moveJoyStick.Horizontal;
+            y = moveJoyStick.Vertical;
         }
+        else
+        {
+            x = Input.GetAxisRaw("Horizontal");
+            y = Input.GetAxisRaw("Vertical");
+        }
+
+        if (animator)
+        {
+            if (x == 0 && y == 0) animator.SetBool("isWalk", false);
+            else animator.SetBool("isWalk", true);
+        }
+
+        if (spr)
+        {
+            if (x < 0) spr.flipX = true;
+            else if (x > 0) spr.flipX = false;
+        }
+        
+
+
+        angleVec = new Vector3(x, y, 0).normalized;
+
+        float moveX = angleVec.x * speed * Time.deltaTime;
+        float moveY = angleVec.y * speed * Time.deltaTime;
+        transform.Translate(new Vector3(moveX, moveY, 0), Space.World);
+        
       
     }
 

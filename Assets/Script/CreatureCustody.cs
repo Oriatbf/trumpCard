@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class CreatureCustody : MonoBehaviour
 {
@@ -16,7 +17,13 @@ public class CreatureCustody : MonoBehaviour
 
     public void Init(Creature _creature)
     {
+        Debug.Log("Init");
         creatures.Add(_creature);
+    }
+    
+    public void Init(float _multipier)
+    {
+        multipliers.Add(_multipier);
     }
 
     public void summon()
@@ -31,7 +38,8 @@ public class CreatureCustody : MonoBehaviour
                 }
             }
 
-            Creature c = Instantiate(_creature, transform);
+            Vector3 randomDir = Random.insideUnitCircle.normalized;
+            Creature c = Instantiate(_creature,transform.position + randomDir ,Quaternion.identity);
             c.Init(character);
             c.transform.SetParent(null);
         }

@@ -30,7 +30,12 @@ public class Projectile : MonoBehaviour
             });
     }
 
-    public virtual void Init(Stat stat,Vector2 dir,CharacterType characterType)
+    public virtual void Init(Stat stat,Vector2 dir,CharacterType characterType,List<StatusEffect> _debuffs)
+    {
+        
+    }
+    
+    public virtual void Init(Stat stat,float damage,Vector2 dir,CharacterType characterType,List<StatusEffect> _debuffs)
     {
         
     }

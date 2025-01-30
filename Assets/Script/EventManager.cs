@@ -100,7 +100,7 @@ public class EventManager : Singleton<EventManager>
                 foreach (var relic in randomRelic)
                 {
                     DataManager.Inst.Data.relicID.Add(relic.id);
-                    CharacterRelicData.Inst.playerRelicData.Add(relic);
+                    TopUIController.Inst.InstanceRelicIcon(relic,true);
                 }
 
                 break;

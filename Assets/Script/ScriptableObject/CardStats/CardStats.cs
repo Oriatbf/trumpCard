@@ -65,7 +65,7 @@ public class CardStats : ScriptableObject
 
     
     public List<int> bloodInchant,fireInchant,iceInchant = new List<int>();
-    public List<Debuff> debuffs = new List<Debuff>();
+  
 
     [ShowIfEnum("character", (int)Character.playerAble)] public RelicInfor relicInfor;
 
@@ -88,8 +88,7 @@ public class CardStats : ScriptableObject
     {
         bloodInchant.Clear();
         fireInchant.Clear();
-        iceInchant.Clear();
-        debuffs.Clear();
+   
     }
 
 }

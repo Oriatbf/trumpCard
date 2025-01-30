@@ -12,38 +12,38 @@ public class ShootInfor
     public Vector3 dir;
     public Transform curTrans;
     public Transform shootPoint;
-    public Character character;
+
+    public float angle;
+    //public Character character;
     public CharacterType characterType;
     public Stat stat;
+    public List<StatusEffect> debuffs;
 
     public ShootInfor(Character character,Stat stat)
     {
+        debuffs = character.debuffs;
         this.dir = character._dir;
         this.curTrans = character.transform;
         this.shootPoint = character.shootPoint;
-        this.character = character;
-        characterType = character.characterType;
+        angle = character._angle;
+        characterType = character.unitHealth.characterType;
+        this.stat = stat;
+    }
+    
+    public ShootInfor(Creature creature,Stat stat)
+    {
+        this.dir = creature._dir;
+        this.curTrans = creature.transform;
+        this.shootPoint = creature.shootPoint;
+        angle = creature._angle;
+        characterType = creature.health.characterType;
         this.stat = stat;
     }
 }
-public class Attack : MonoBehaviour
+public class Attack : Singleton<Attack>
 {
-   
-
-    public static Attack Inst;
     ObjectPoolingManager pool;
-
-    private void Awake()
-    {
-        if (Inst != this && Inst != null)
-        {
-            return;
-        }
-        else
-        {
-            Inst = this;
-        }
-    }
+    
     private void Start()
     {
         pool = ObjectPoolingManager.Inst;
@@ -81,11 +81,11 @@ public class Attack : MonoBehaviour
             {
                 for (var i = 0; i < stat.extraHitCount; i++)
                 {
-                    Quaternion rotation = Quaternion.Euler(0, 0, shootInfor.character._angle);;
+                    Quaternion rotation = Quaternion.Euler(0, 0, shootInfor.angle);;
                     if (shootInfor.stat.cardRole == CardRole.ShotGun) // 샷건 해당
                     {
                         float curAngle = startAngle + angleStep * i;
-                        rotation = Quaternion.Euler(0, 0, shootInfor.character._angle + curAngle);
+                        rotation = Quaternion.Euler(0, 0, shootInfor.angle + curAngle);
                         finalDir = rotation * Vector2.right;
                     }
                     else finalDir = shootInfor.dir;
@@ -99,12 +99,12 @@ public class Attack : MonoBehaviour
         }
     }
 
-    public void ProjectTileSet(ShootInfor shootInfor,Quaternion rot,Vector2 dir)
+    private void ProjectTileSet(ShootInfor shootInfor,Quaternion rot,Vector2 dir)
     {
         Projectile curBullet = pool.GetObjectFromPool("Bullet");
         curBullet.gameObject.SetActive(true);
         // 총알 발사
-        curBullet.Init(shootInfor.stat,dir,shootInfor.characterType);
+        curBullet.Init(shootInfor.stat,dir,shootInfor.characterType,shootInfor.debuffs);
         
 
         curBullet.transform.position = shootInfor.shootPoint.position;
@@ -112,14 +112,23 @@ public class Attack : MonoBehaviour
         
         
     }
-/*
+
     public void Slash(ShootInfor shootInfor)
     {
-        CardStats so = shootInfor.charSO;
-        Vector2 finalDir = shootInfor.dir;
-        BulletInfor bulletInfor = new(Critical(so, so.infor.damage*20/100), so.infor.projectileTurnback, finalDir, so.relicInfor.size, so.infor.bulletTypeIndex, shootInfor.isPlayer,so.debuffs);
-        ProjectTileSet(shootInfor,bulletInfor);
-    }*/
+        /*
+        Quaternion rot = Quaternion.Euler(0, 0, shootInfor.angle);;
+        Vector2 dir = shootInfor.dir;
+        
+        
+        Projectile curBullet = pool.GetObjectFromPool("Bullet");
+        curBullet.gameObject.SetActive(true);
+        // 총알 발사
+        curBullet.Init(shootInfor.stat,shootInfor.stat.FinalValue().damage/2,dir,shootInfor.characterType);
+        
+
+        curBullet.transform.position = shootInfor.shootPoint.position;
+        curBullet.transform.rotation = rot;*/
+    }
 
     /*
     void isFlooring(ShootInfor shootInfor, Transform curBullet)
@@ -143,13 +152,24 @@ public static class Critical
 {
     public static float CriticalChance(Stat stat)
     {
-        var _statValue = stat.FinalValue();
+        var finalValue = stat.FinalValue();
+        return Multiplier(finalValue, finalValue.damage);
+    }
+    
+    public static float CriticalChance(Stat stat,float _damage)
+    {
+        var finalValue = stat.FinalValue();
+        return Multiplier(finalValue, _damage);
+
+    }
+
+    static float Multiplier(Stat.StatsValue finalValue,float _damage)
+    {
         int a = Random.Range(1, 101);
-        float damage = _statValue.damage;
-        if (_statValue.criticalChance >= a)
+        if (finalValue.criticalChance >= a)
         {
-            return damage * _statValue.criticalMultiplier;
+            return _damage * finalValue.criticalMultiplier;
         }
-        else return damage;
+        else return _damage;
     }
 }

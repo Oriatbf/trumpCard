@@ -7,62 +7,38 @@ using UnityEngine.UI;
 using VInspector;
 using VInspector.Libs;
 
-public class UnitHealth : MonoBehaviour
+public class UnitHealth : Health
 {
-    [Tab("Hp")]
-    //Hp Value
-    public float curHp;
-    public float maxHp;
     
     [SerializeField] private RectTransform rectParent;
-    [SerializeField] Image hpBar;
-    [SerializeField] Material whiteMaterial,defaultMaterial;
-    [SerializeField] SpriteRenderer spr;
-    public bool isInv = false;
-
-    public Action OnDamage,OnHeal,OnAttack;
 
     //GambleGauge Value
     GambleGauge gambleGauge;
     private float hittedValue = 5f; 
     Character character;
 
-    private void Awake()
+    protected override void Awake()
     {
-        curHp = 100;
-        maxHp = 100;
+        base.Awake();
     }
 
-    private void Start()
+    protected override void Start()
     {
         gambleGauge=GetComponent<GambleGauge>();
         character= GetComponent<Character>();
-        hpBar.fillAmount = 1;
-       SetAction();
-
-
-        //  if(!character.isPlayer)enemyMove=GetComponent<EnemyMove>();
+        base.Start();
     }
 
-    void SetAction()
+    protected override void SetAction()
     {
+        base.SetAction();
         OnDamage += () => gambleGauge.IncreaseGambleGauge(hittedValue);
-        OnDamage += () => HpBarIncrease();
-        OnDamage += () => GameManager.Inst.GetOpponent(character).unitHealth.OnAttack?.Invoke();
-        OnHeal += () => HpBarIncrease();
+        OnDamage += () => GameManager.Inst.GetOpponent(characterType).unitHealth.OnAttack?.Invoke();
     }
 
+    
 
-    public void ResetHp(float maxHp,float curHp)
-    {
-        this.maxHp = maxHp;
-        this.curHp = curHp;
-        if(this.curHp > this.maxHp)
-            this.curHp = this.maxHp;
-        HpBarIncrease();
-    }
-
-    public void GetDamage(float damage)
+    public override void GetDamage(float damage)
     {
         if (!isInv )
         {
@@ -77,11 +53,11 @@ public class UnitHealth : MonoBehaviour
             {
                 isInv = true;
                 character.opponent.GetComponent<UnitHealth>().isInv = true;
-                if (character.characterType == CharacterType.Player)
+                if (characterType == CharacterType.Player)
                 {
                     StartCoroutine( GameManager.Inst.GameEnd(false, character));
                 }
-                else if (character.characterType == CharacterType.Enemy)
+                else if (characterType == CharacterType.Enemy)
                 {
                     StartCoroutine(GameManager.Inst.GameEnd(true, character));
                      TopUIController.Inst.GetGold(character.goldValue); 
@@ -96,24 +72,12 @@ public class UnitHealth : MonoBehaviour
     }
 
 
-
-
-
-    public void OnRecorvery(float healAmount)
+    public override void OnRecorvery(float healAmount)
     {
-        UIManager.Inst.RecorveryUI(rectParent,transform,healAmount);
-        curHp += healAmount;
-        if(curHp > maxHp)
-            curHp = maxHp;
-        OnHeal?.Invoke();;
+        base.OnRecorvery(healAmount);
     }
 
-    private void HpBarIncrease() => hpBar.fillAmount = curHp / maxHp;
-    public void InvTime(float time)
-    {
-        isInv = true;
-        DOVirtual.DelayedCall(time, () => isInv = false);
-    }
+    
 
     public void DotDamage(float time,float damage)
     {

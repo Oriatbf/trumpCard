@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 3210510465059951733}
   - component: {fileID: 235661882374343504}
   - component: {fileID: 1296224981155027101}
+  - component: {fileID: 3840873484543312934}
+  - component: {fileID: 1145799668571343790}
+  - component: {fileID: 1123115580548839908}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -171,13 +174,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809bdd9127f15ac46b2bf70e67bfa3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterType: 0
   curHp: 0
   maxHp: 0
   hpBar: {fileID: 317119495056703600}
   whiteMaterial: {fileID: 2100000, guid: 4087f86587b09e643a3a1b074e3b0c00, type: 2}
   defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   spr: {fileID: 0}
+  rigid: {fileID: 0}
   isInv: 0
+--- !u!114 &3840873484543312934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220063967682344414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f49b607abbf434faccbff6469e1ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1145799668571343790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220063967682344414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17565ab000874514a9f5b49b09f050f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottomLeft: {x: -9, y: -5}
+  topRight: {x: 9, y: 5}
+  startPos: {x: 0, y: 0}
+  targetPos: {x: 0, y: 0}
+  FinalNodeList: []
+  allowDiagonal: 1
+  dontCrossCorner: 1
+--- !u!50 &1123115580548839908
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220063967682344414}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &424107669306782427
 GameObject:
   m_ObjectHideFlags: 0

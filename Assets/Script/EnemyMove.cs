@@ -6,6 +6,10 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+public enum BattleState
+{
+    CloseToOpponent,Inplace,FarToOpponent,Random,Escape
+}
 public class EnemyMove : Character
 {
     //나중에 캐릭터들 역할 수정 필요
@@ -13,10 +17,7 @@ public class EnemyMove : Character
 
 
 
-    public enum State
-    {
-        CloseToOpponent,Inplace,FarToOpponent,Random,Escape
-    }
+ 
 
     [SerializeField] private float Gunrange;
     [SerializeField] private float bulletDetectRange;
@@ -25,8 +26,8 @@ public class EnemyMove : Character
     [SerializeField] private Image crown;
   
     private Vector2 _dir2,finalDir;
-    public EnemyCharacter enemyCharacter;
-    public State state;
+    public EnemyCharacter enemyCharacter; 
+    public BattleState battleState;
 
     bool moveStop = false;
     private float angleInRadians;
@@ -52,7 +53,7 @@ public class EnemyMove : Character
             crown.enabled= true;
         }
         else crown.enabled= false;
-        opponent = GameManager.Inst.GetOpponent(this);
+        opponent = GameManager.Inst.GetOpponent(unitHealth.characterType);
         _dir = (opponent.transform.position - transform.position).normalized;
 
         _lastPathfindingTime = Time.time;
@@ -62,10 +63,12 @@ public class EnemyMove : Character
     // Update is called once per frame
     public override void Update()
     {
+        if(GameManager.Inst.Pause()) return;
+        base.Update();
         if (Input.GetKeyDown(KeyCode.F3)) unitHealth.GetDamage(1000);
         _dir = (opponent.transform.position - transform.position).normalized;
   
-        base.Update();
+       
         Rotation();
         
      
@@ -80,7 +83,7 @@ public class EnemyMove : Character
         {
             if (IsBlocked(Vector2Int.RoundToInt(transform.position)))
             {
-                state = State.Escape;
+                battleState = BattleState.Escape;
                 Debug.Log("뒤가 막혔습니다. 탈출 경로를 찾습니다.");
             }
             else if (_distance.sqrMagnitude < Gunrange * Gunrange && _distance.sqrMagnitude > (Gunrange - 3) * (Gunrange - 3))
@@ -89,10 +92,10 @@ public class EnemyMove : Character
                 switch (stat.cardType)
                 {
                     case CardType.Melee:
-                        state = State.CloseToOpponent;
+                        battleState = BattleState.CloseToOpponent;
                         break;
                     case CardType.Range:
-                        state = State.Random;
+                        battleState = BattleState.Random;
                         break;
                 }
                
@@ -103,10 +106,10 @@ public class EnemyMove : Character
                 switch (stat.cardType)
                 {
                     case CardType.Melee:
-                        state = State.Inplace;
+                        battleState = BattleState.CloseToOpponent;
                         break;
                     case CardType.Range:
-                        state = State.FarToOpponent;
+                        battleState = BattleState.FarToOpponent;
                         break;
                 }
                 
@@ -117,10 +120,10 @@ public class EnemyMove : Character
                 switch (stat.cardType)
                 {
                     case CardType.Melee:
-                        state = State.CloseToOpponent;
+                        battleState = BattleState.CloseToOpponent;
                         break;
                     case CardType.Range:
-                        state = State.CloseToOpponent;
+                        battleState = BattleState.CloseToOpponent;
                         break;
                 }
             }
@@ -131,21 +134,21 @@ public class EnemyMove : Character
         }
         
 
-        switch (state)
+        switch (battleState)
         {
-            case State.CloseToOpponent:
+            case BattleState.CloseToOpponent:
                 PathfindClose();
                 break;
-            case State.FarToOpponent:
+            case BattleState.FarToOpponent:
                 PathfindFar();
                 break;
-            case State.Random:
+            case BattleState.Random:
                 PathfindRandom();
                 break;
-            case State.Escape:
+            case BattleState.Escape:
                 PathfindEscape();
                 break;
-            case State.Inplace:
+            case BattleState.Inplace:
                 break;
         }
         
@@ -159,43 +162,14 @@ public class EnemyMove : Character
         handle.transform.parent.rotation = Quaternion.Euler(0, 0, _dir.x < 0 ? _angle + 180 : _angle);
         handle.transform.localScale = new Vector3(_dir.x < 0 ? -1 : 1, 1);
     }
-
-
-
-    public void CloseToPlayer()
-    {
-        finalDir = _dir.normalized;
-        Debug.Log("플레이어한테 이동");
-        Move(finalDir);
-    }
-
-    public void RandomMove()
-    {
-        if (!moveStop)
-        {
-            moveStop = true;
-            finalDir = Random.insideUnitCircle.normalized;
-            DOVirtual.DelayedCall(1f, () => moveStop = false);
-        }
-        
-        Debug.Log("랜덤 이동");
-        Move(finalDir,1/stat.originStatValue.speed);
-    }
-
-    public void FarToPlayer()
-    {
-        _dir2 = (transform.position - opponent.transform.position).normalized;
-        Debug.Log("플레이어한테 멀어지기");
-        finalDir = _dir2;
-        Move(finalDir);
-    }
+    
 
 
     private void PathfindClose()
     {
         PathfindMove();
 
-        Vector2Int newTargetPos = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(this).transform.position);
+        Vector2Int newTargetPos = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(unitHealth.characterType).transform.position);
         
         // 동일한 목표 위치라면 경로 탐색 생략
         if (pathfind.targetPos == newTargetPos && currentPathIndex < pathToPlayer.Count)
@@ -226,7 +200,7 @@ public class EnemyMove : Character
     {
         PathfindMove();
 
-        Vector2 opponentPos = GameManager.Inst.GetOpponent(this).transform.position;
+        Vector2 opponentPos = GameManager.Inst.GetOpponent(unitHealth.characterType).transform.position;
         Vector2 curPos = transform.position;
 
         Vector2 direction = curPos - opponentPos;
@@ -248,7 +222,7 @@ public class EnemyMove : Character
     {
         PathfindMove();
 
-        Vector2Int opponentPosition = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(this).transform.position);
+        Vector2Int opponentPosition = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(unitHealth.characterType).transform.position);
         Vector2Int currentPosition = Vector2Int.RoundToInt(transform.position);
         
         Vector2Int targetPosition  = Vector2Int.one;
@@ -270,14 +244,14 @@ public class EnemyMove : Character
     {
         PathfindMove();
 
-        Vector2Int opponentPosition = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(this).transform.position);
+        Vector2Int opponentPosition = Vector2Int.RoundToInt(GameManager.Inst.GetOpponent(unitHealth.characterType).transform.position);
         Vector2Int currentPosition = Vector2Int.RoundToInt(transform.position);
         
         Vector2Int targetPosition  = Vector2Int.one;
         
         targetPosition = PathfindRandomPos(currentPosition, opponentPosition);
         
-        //이부분 문제있음
+     
         if (pathfind.targetPos == currentPosition)
         {
             pathfind.startPos = currentPosition;
@@ -419,7 +393,7 @@ public class EnemyMove : Character
         foreach (Collider2D col in projectTileCol)
         {
             if(!col.transform.parent)return;
-            if (col.transform.parent.TryGetComponent(out Bullet bullet) && bullet.ownerCharacter != characterType)
+            if (col.transform.parent.TryGetComponent(out Bullet bullet) && bullet.ownerCharacter != unitHealth.characterType)
             {
                 approachBullet = bullet;
                 break;

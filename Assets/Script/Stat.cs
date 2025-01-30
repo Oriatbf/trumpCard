@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 public class Stat
 {
     public int cardNum;
+    public string cardName;
     public CardType cardType;
     public CardRole cardRole;
     public Action statUpAction; 

@@ -126,7 +126,7 @@ namespace PathologicalGames
         /// </summary>
         public PrefabsDict prefabs = new PrefabsDict();
 
-        // Keeps the state of each individual foldout item during the editor session
+        // Keeps the battleState of each individual foldout item during the editor session
         public Dictionary<object, bool> _editorListItemStates = new Dictionary<object, bool>();
 
         /// <summary>
@@ -545,7 +545,7 @@ namespace PathologicalGames
                     //	 as a user-friendly feature which has been needed before.
                     this._spawned.Add(inst);
 					
-	                // Notify instance it was spawned so it can manage it's state
+	                // Notify instance it was spawned so it can manage it's battleState
 	                inst.gameObject.BroadcastMessage(
 						"OnSpawned",
 						this,
@@ -581,7 +581,7 @@ namespace PathologicalGames
             this._spawned.Add(inst);
             #endregion New PrefabPool
 
-            // Notify instance it was spawned so it can manage it's state
+            // Notify instance it was spawned so it can manage it's battleState
             inst.gameObject.BroadcastMessage(
 				"OnSpawned",
 				this,

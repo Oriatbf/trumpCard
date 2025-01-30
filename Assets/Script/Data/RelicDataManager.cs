@@ -105,7 +105,7 @@ public class RelicDataManager : SingletonDontDestroyOnLoad<RelicDataManager>
                 }
             }
             
-            relic?.Init(data.value,data.time,data.duration,data.excuteType);
+            relic?.Init(data);
             
             InActiveRelicDatas.Add(new RelicDatas( data,relic,_extraRelicID));
             if(data.active ==1) //1일때 active 0일 때 InActive
