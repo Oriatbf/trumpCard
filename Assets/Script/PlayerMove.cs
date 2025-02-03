@@ -22,7 +22,6 @@ public class PlayerMove : Character
 
 
     [Tab("Mobile")]
-    [SerializeField] bool mobileVersion;
     [SerializeField] VariableJoystick moveJoyStick,dirJoyStick;
     [SerializeField] Button dashBtn;
     Image dashBtnImage;
@@ -31,16 +30,21 @@ public class PlayerMove : Character
     public override void Awake()
     {
         base.Awake();
-       
+        moveJoyStick = JoyStickController.Inst.moveJoyStick;
+        dirJoyStick = JoyStickController.Inst.dirJoyStick;
     }
 
     public override void Start()
     {
         base.Start();
         opponent = GameManager.Inst.GetOpponent(unitHealth.characterType);
+        if (DataManager.Inst.Data.moblieVersion)
+        {
+            JoyStickController.Inst.interactionBtn.onClick.RemoveAllListeners();
+            JoyStickController.Inst.interactionBtn.onClick.AddListener(()=>Dash());
+        }
+           
         _camera = Camera.main;
-        if(mobileVersion)
-            dashBtnImage = dashBtn.GetComponent<Image>();
     }
     
 
@@ -58,19 +62,18 @@ public class PlayerMove : Character
             Dash();
         }
         Move();
-
-       // CoolTime(characterSO);
-        if (mobileVersion)
+        
+        if (DataManager.Inst.Data.moblieVersion)
         {
             if (curCharging > 0)
             {
-                dashBtn.image.enabled = true;
-                dashBtn.enabled = true;
+                //dashBtn.image.enabled = true;
+                //dashBtn.enabled = true;
             }
             else
             {
-                dashBtn.image.enabled = false;
-                dashBtn.enabled = false;
+                //dashBtn.image.enabled = false;
+               // dashBtn.enabled = false;
             }
         }
     }
@@ -88,7 +91,7 @@ public class PlayerMove : Character
             float x;
             float y;
             //Move
-            if (mobileVersion)
+            if (DataManager.Inst.Data.moblieVersion)
             {
                 x = moveJoyStick.Horizontal;
                 y = moveJoyStick.Vertical;
@@ -109,7 +112,7 @@ public class PlayerMove : Character
             //Rotation
             Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
-            if (mobileVersion)
+            if (DataManager.Inst.Data.moblieVersion)
             {
                 _dir = new Vector3(dirJoyStick.Horizontal, dirJoyStick.Vertical, 0).normalized;
             }
@@ -130,7 +133,7 @@ public class PlayerMove : Character
 
     protected override void BowAttack()
     {
-        if (!mobileVersion)
+        if (!DataManager.Inst.Data.moblieVersion)
         {
             if (Input.GetMouseButton(0))
             {
@@ -169,7 +172,7 @@ public class PlayerMove : Character
 
     public override void RangeAttack(bool isRevolver)
     {
-        if (mobileVersion)
+        if (DataManager.Inst.Data.moblieVersion)
         {
             if( dirJoyStick.Direction != Vector2.zero) 
             {
@@ -187,7 +190,7 @@ public class PlayerMove : Character
 
     public override void MeleeAttack(bool isSting)
     {
-        if (mobileVersion)
+        if (DataManager.Inst.Data.moblieVersion)
         {
             if ( dirJoyStick.Direction != Vector2.zero)
             {
@@ -206,7 +209,7 @@ public class PlayerMove : Character
     public override void MagicAttack()
     {
 
-        if (mobileVersion)
+        if (DataManager.Inst.Data.moblieVersion)
         {
             if (dirJoyStick.Direction != Vector2.zero)
             {

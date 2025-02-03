@@ -67,6 +67,7 @@ namespace CardUnitData
 		public System.Int32 attackCount;
 		public System.Int32 extraHitCount;
 		public System.Single bulletSpeed;
+		public System.Int32 bulletIndex;
   
 
 #region fuctions

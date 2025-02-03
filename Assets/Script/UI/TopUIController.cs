@@ -43,6 +43,7 @@ public class TopUIController : SingletonDontDestroyOnLoad<TopUIController>
         {
             Destroy(child.gameObject);
         }
+        UpdateGold();
     }
     
     public void InstanceRelicIcon(object ids,bool dataSave) // DataManager에서 로드될때는 false

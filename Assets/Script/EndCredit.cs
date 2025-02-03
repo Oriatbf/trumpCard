@@ -26,6 +26,12 @@ public class EndCredit : MonoBehaviour
 
     public void Skip()
     {
+        DataManager.Inst.ResetData();
         DemoLoadScene.Inst.LoadScene("LobbyScene");
+    }
+
+    public void SkipCoolTime()
+    {
+        DOVirtual.DelayedCall(3f, () => Skip());
     }
 }

@@ -25,6 +25,7 @@ public class CardDataManager : SingletonDontDestroyOnLoad<CardDataManager>
       {
          var _stat = this.stat;
          _stat.cardType = cardData.cardType;
+         _stat.bulletIndex = cardData.bulletIndex;
          _stat.cardRole = cardData.cardRole;
          _stat.cardNum = cardData.cardNum;
          _stat.cardName = cardData.cardname;

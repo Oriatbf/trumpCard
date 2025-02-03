@@ -32,6 +32,7 @@ public class ShootInfor
     
     public ShootInfor(Creature creature,Stat stat)
     {
+        debuffs = new List<StatusEffect>();
         this.dir = creature._dir;
         this.curTrans = creature.transform;
         this.shootPoint = creature.shootPoint;

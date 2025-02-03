@@ -12,7 +12,7 @@ public class PlayableNpcManager : MonoBehaviour
     
     [SerializeField] Image characterHead;
     [SerializeField] Vector3 offset;
-    [SerializeField] private LobbyNpc playerNpc;
+    public LobbyNpc playerNpc;
     
 
      [SerializeField] List<LobbyNpc> lobbyNpcs = new List<LobbyNpc>();
@@ -44,11 +44,19 @@ public class PlayableNpcManager : MonoBehaviour
         curNpcIndex = DataManager.Inst.Data.characterId;
         if (characterSelected)
         {
+            JoyStickController.Inst.Open();
             SetNpcPlayer(curNpcIndex);
             var _playerNpc = lobbyNpcs.FirstOrDefault(npc => npc.npcType == NpcType.Player);
             if(_playerNpc != null) playerNpc = _playerNpc;
         }
         characterHead.gameObject.SetActive(characterSelected);
+
+        if (DataManager.Inst.Data.moblieVersion)
+        {
+            JoyStickController.Inst.interactionBtn.onClick.RemoveAllListeners();
+            JoyStickController.Inst.interactionBtn.onClick.AddListener(()=>playerNpc.InteractNearNpc());
+        }
+           
         
     }
 
@@ -98,9 +106,8 @@ public class PlayableNpcManager : MonoBehaviour
        
     }
 
-    public void SetPlayer()
+    public void SetPlayer() //캐릭터 선택했을 때
     {
-       
         characterSelected = true;
         SetNpcPlayer(curNpcIndex);
         lobbyCam.MoveToOrigin();
@@ -108,7 +115,7 @@ public class PlayableNpcManager : MonoBehaviour
         string ids = PlayableCharacterData.Data.DataList.FirstOrDefault(n => n.id == lobbyNpcs[curNpcIndex].npcId)?.relicIds;
         DataManager.Inst.Data.characterId = lobbyNpcs[curNpcIndex].npcId;
         TopUIController.Inst.InstanceRelicIcon(ids,true);
-        
+        JoyStickController.Inst.Open();
     }
 
     [Button]

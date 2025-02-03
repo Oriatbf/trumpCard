@@ -82,7 +82,7 @@ public class GameManager : Singleton<GameManager>
         yield return StartCoroutine(CameraZoom(deadCharacter.transform)); 
         if (isPlayerWin)
         {
-            if(DataManager.Inst.Data.stage >= 11)
+            if(DataManager.Inst.bossStage)
                 SceneTransition("EndScene");
             else
             {

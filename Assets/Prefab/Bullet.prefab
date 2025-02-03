@@ -203,10 +203,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d30108a2b1d4045a59a637668d4397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerBullet: 0
+  ownerCharacter: 0
   rigid: {fileID: 0}
   damage: 0
   isReturn: 0
+  bulletType:
+  - {fileID: 7851798335587201675}
+  - {fileID: 7594480315464516935}
+  - {fileID: 1310166640737592956}
+  - {fileID: 7284590688739064241}
+  - {fileID: 5356588271704072702}
+  - {fileID: 7937968711439671428}
+  - {fileID: 8879783830095875925}
 --- !u!1 &5356588271704072702
 GameObject:
   m_ObjectHideFlags: 0

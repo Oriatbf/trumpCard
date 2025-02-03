@@ -15,7 +15,7 @@ public class Panel : MonoBehaviour
     public class Position
     {
         public PanelStates state;
-        [DrawIf("battleState", PanelStates.Custom)] 
+       // [DrawIf("battleState", PanelStates.Custom)] 
         public string stateName;
 
         public Vector2 offset;

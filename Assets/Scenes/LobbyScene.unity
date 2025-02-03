@@ -1407,7 +1407,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1565842107}
+    m_TransformParent: {fileID: 296791897}
     m_Modifications:
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_Pivot.x
@@ -1871,6 +1871,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295383092}
   m_CullTransparentMesh: 1
+--- !u!1 &296791896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296791897}
+  - component: {fileID: 296791898}
+  - component: {fileID: 296791899}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &296791897
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296791896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 216822584}
+  - {fileID: 1647101338}
+  - {fileID: 1752977878}
+  m_Father: {fileID: 1565842107}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &296791898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296791896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f98b1af7999544ea78bada5e30051a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionList:
+  - state: 1
+    stateName: 
+    offset: {x: 0, y: 0}
+    alpha: 0
+    blockRay: 0
+  - state: 0
+    stateName: 
+    offset: {x: 0, y: 0}
+    alpha: 1
+    blockRay: 1
+  CurrentPosition:
+    state: 0
+    stateName: 
+    offset: {x: 0, y: 0}
+    alpha: 0
+    blockRay: 0
+--- !u!225 &296791899
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296791896}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &298546723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,9 +2002,6 @@ MonoBehaviour:
   npcType: 0
   inDetect: 0
   speed: 4
-  mobileVersion: 0
-  moveJoyStick: {fileID: 0}
-  dirJoyStick: {fileID: 0}
   panel: {fileID: 1602989272}
   ui: {fileID: 2108910936}
   offsetY: 2
@@ -2693,9 +2771,6 @@ MonoBehaviour:
   npcType: 0
   inDetect: 0
   speed: 4
-  mobileVersion: 0
-  moveJoyStick: {fileID: 0}
-  dirJoyStick: {fileID: 0}
   npcText:
   - "\uBC18\uAC11\uB2E4"
   - "\uAEBC\uC838"
@@ -3100,9 +3175,6 @@ MonoBehaviour:
   npcType: 0
   inDetect: 0
   speed: 4
-  mobileVersion: 0
-  moveJoyStick: {fileID: 0}
-  dirJoyStick: {fileID: 0}
   panel: {fileID: 158467704}
   ui: {fileID: 3591850626409430646}
   offsetY: 2.5
@@ -4433,9 +4505,6 @@ MonoBehaviour:
   npcType: 0
   inDetect: 0
   speed: 4
-  mobileVersion: 0
-  moveJoyStick: {fileID: 0}
-  dirJoyStick: {fileID: 0}
   npcText:
   - "\uC624\uB298\uB3C4 \uAF5D\uC774\uAD70"
   - "\uBB58 \uBD10"
@@ -6110,6 +6179,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &802636416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802636417}
+  - component: {fileID: 802636418}
+  m_Layer: 0
+  m_Name: JoyStickController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &802636417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802636416}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1565842107}
+  m_Father: {fileID: 868279233}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802636418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802636416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6955d5bb96c7654089a09b691cfc349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveJoyStick: {fileID: 2118511320}
+  dirJoyStick: {fileID: 1647101339}
+  interactionBtn: {fileID: 1752977879}
+  playableNpcManager: {fileID: 15221680}
+  panel: {fileID: 296791898}
 --- !u!1 &805497011
 GameObject:
   m_ObjectHideFlags: 0
@@ -6914,6 +7033,7 @@ Transform:
   - {fileID: 1054822891}
   - {fileID: 1774631366}
   - {fileID: 1843714444}
+  - {fileID: 802636417}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871993436
@@ -7541,9 +7661,6 @@ MonoBehaviour:
   npcType: 0
   inDetect: 0
   speed: 4
-  mobileVersion: 0
-  moveJoyStick: {fileID: 0}
-  dirJoyStick: {fileID: 0}
   panel: {fileID: 212003935}
   ui: {fileID: 168595732}
   offsetY: 1
@@ -8156,7 +8273,8 @@ MonoBehaviour:
     cardCount: 3
     cardRepeat: 1
     characterId: -1
-  playableNpcManager: {fileID: 15221680}
+    moblieVersion: 0
+  bossStage: 0
 --- !u!4 &994607790
 Transform:
   m_ObjectHideFlags: 0
@@ -12610,7 +12728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1565842104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12686,10 +12804,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 216822584}
-  - {fileID: 1647101338}
-  - {fileID: 1752977878}
-  m_Father: {fileID: 0}
+  - {fileID: 296791897}
+  m_Father: {fileID: 802636417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13201,7 +13317,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1565842107}
+    m_TransformParent: {fileID: 296791897}
     m_Modifications:
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_Pivot.x
@@ -13349,6 +13465,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
   m_PrefabInstance: {fileID: 1647101337}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1647101339 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3881087803549984439, guid: ec536a7718376554185e4a856d5ae230, type: 3}
+  m_PrefabInstance: {fileID: 1647101337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1692197426
 GameObject:
   m_ObjectHideFlags: 0
@@ -13838,12 +13965,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752977877}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1565842107}
+  m_Father: {fileID: 296791897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14835,9 +14962,6 @@ MonoBehaviour:
   npcType: 0
   inDetect: 0
   speed: 4
-  mobileVersion: 0
-  moveJoyStick: {fileID: 0}
-  dirJoyStick: {fileID: 0}
   npcText:
   - "\uD558\uC774"
   npcId: 1
@@ -15055,12 +15179,13 @@ MonoBehaviour:
   speed: 2000
   resetPositionY: 345
   endPositionY: -345
+  price: -50
   panel: {fileID: 2132939026}
   randomPercent:
     percentage: 100
     percents:
     - probabilityState: 1
-      percent: 80
+      percent: 20
       onEvent:
         m_PersistentCalls:
           m_Calls:
@@ -15077,7 +15202,7 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
     - probabilityState: 2
-      percent: 20
+      percent: 80
       onEvent:
         m_PersistentCalls:
           m_Calls:
@@ -15269,9 +15394,6 @@ MonoBehaviour:
   npcType: 0
   inDetect: 0
   speed: 4
-  mobileVersion: 0
-  moveJoyStick: {fileID: 0}
-  dirJoyStick: {fileID: 0}
   npcText:
   - '!#@%$#'
   - '&#*$#*'
@@ -17294,6 +17416,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108910934}
   m_CullTransparentMesh: 1
+--- !u!114 &2118511320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3881087803549984439, guid: ec536a7718376554185e4a856d5ae230, type: 3}
+  m_PrefabInstance: {fileID: 216822583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2128333323
 GameObject:
   m_ObjectHideFlags: 0
@@ -18094,7 +18227,6 @@ SceneRoots:
   - {fileID: 786882197}
   - {fileID: 1211829402}
   - {fileID: 1214849688}
-  - {fileID: 1565842107}
   - {fileID: 746779156}
   - {fileID: 868279233}
   - {fileID: 1468115879}

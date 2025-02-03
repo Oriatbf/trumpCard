@@ -19,6 +19,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private float speed = 200f;   // 이동 속도
     [SerializeField] private float resetPositionY; // 리셋 위치 Y (화면 위)
     [SerializeField] private float endPositionY;  // 끝 위치 Y (화면 아래)
+    [SerializeField] private int price;
     
     private List<float> rowPosY = new List<float>();  
     private List<bool> rowSpins = new List<bool>();
@@ -65,7 +66,7 @@ public class SlotMachine : MonoBehaviour
       
         float downPosY = 240;
         if(gambling) return;
-        TopUIController.Inst.GetGold(-50);
+        TopUIController.Inst.GetGold(price);
         Sequence handleSequence =
             DOTween.Sequence().Append(handle.DOSizeDelta(new Vector2(handle.sizeDelta.x, downPosY), 0.5f))
                 .Join(handleOut.DOSizeDelta(new Vector2(handleOut.sizeDelta.x, downPosY), 0.5f))

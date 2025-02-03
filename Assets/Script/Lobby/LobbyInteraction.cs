@@ -19,12 +19,9 @@ public class LobbyInteraction : MonoBehaviour
     private Vector3 angleVec;
 
     private bool isNear = false;
+    private LobbyInteraction nearNpc;
 
     [SerializeField] private float speed = 4f;
-
-
-    [Tab("Mobile")] [SerializeField] bool mobileVersion;
-    [SerializeField] VariableJoystick moveJoyStick, dirJoyStick;
 
     private void Awake()
     {
@@ -77,8 +74,8 @@ public class LobbyInteraction : MonoBehaviour
 
         if (npcs.Count > 0)
         {
-            float minDistance = Mathf.Infinity;
-            LobbyInteraction nearNpc = npcs[0];
+            float minDistance = Mathf.Infinity; 
+            nearNpc = npcs[0];
             foreach (var npc in npcs)
             {
                 float _distance = Vector3.Distance(npc.transform.position, transform.position);
@@ -89,11 +86,17 @@ public class LobbyInteraction : MonoBehaviour
                 }
                     
             }
-            
-            
-            if(Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Player)
-                nearNpc.InteractAction();
+
+
+
+            if (Input.GetKeyDown(KeyCode.V) && npcType == NpcType.Player)
+                InteractNearNpc();
         }
+    }
+
+    public void InteractNearNpc()
+    {
+        nearNpc.InteractAction();
     }
     
     protected virtual void InteractAction(){}
@@ -110,10 +113,10 @@ public class LobbyInteraction : MonoBehaviour
         float x;
         float y;
         //Move
-        if (mobileVersion)
+        if (DataManager.Inst.Data.moblieVersion)
         {
-            x = moveJoyStick.Horizontal;
-            y = moveJoyStick.Vertical;
+            x = JoyStickController.Inst.moveJoyStick.Horizontal;
+            y = JoyStickController.Inst.moveJoyStick.Vertical;
         }
         else
         {

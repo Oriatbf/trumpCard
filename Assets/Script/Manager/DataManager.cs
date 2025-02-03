@@ -15,13 +15,14 @@ public class PlayerData
     public int cardCount = 4;
     public int cardRepeat = 1;
     public int characterId = -1;
-    
+    public bool moblieVersion = false;
+
 }
 public class DataManager : SingletonDontDestroyOnLoad<DataManager>
 {
     private string _DataFilePath;
     public PlayerData Data = new PlayerData();
-    [SerializeField] private PlayableNpcManager playableNpcManager;
+    public bool bossStage = false;
 
 
     protected override void Awake()
@@ -71,6 +72,7 @@ public class DataManager : SingletonDontDestroyOnLoad<DataManager>
     [Button]
     public void ResetData()
     {
+        bossStage = false;
         Data = new PlayerData();
         TopUIController.Inst.Initialize();
         Save();

@@ -1,24 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using OneLine.Examples;
 using UnityEngine;
 
 
 public class Bullet : Projectile
 {
-    public Rigidbody2D rigid;
     public float damage;
-    public bool isReturn;
     private float bulletSpeed;
     private List<StatusEffect> debuffs;
     Vector2 bulletDir;
+    [SerializeField]private List<GameObject> bulletType;
     
     
 
-    private void Awake()
-    {
-        rigid = GetComponent<Rigidbody2D>();
-    }
+
     
 
     public override void Init(Stat stat,Vector2 dir,CharacterType characterType,List<StatusEffect> _debuffs)
@@ -34,19 +31,29 @@ public class Bullet : Projectile
     {
         ownerCharacter = characterType;
         rigid.linearVelocity = Vector2.zero;
+        SetBulletType(stat.bulletIndex);
         debuffs = _debuffs;
         damage = _damage;
         bulletDir = dir;
         var _statValue = stat.FinalValue();
         bulletSpeed = _statValue.bulletSpeed;
         transform.localScale = new Vector3(_statValue.bulletSize, _statValue.bulletSize);
-        ActiveFalse(2f);
+        ActiveFalseTimer(2f,stat.cardNum == 4);
     }
-    
+
+    private void SetBulletType(int index)
+    {
+        foreach (var b in bulletType)
+        {
+            b.SetActive(false);
+        }
+        
+        bulletType[index].SetActive(true);
+    }
 
     private void Update()
     {
-        rigid.linearVelocity = bulletDir * bulletSpeed*70 * Time.deltaTime;
+        rigid.linearVelocity = bulletDir * bulletSpeed*70 * RigidVelocity() * Time.deltaTime;
     }
 
 
@@ -58,12 +65,16 @@ public class Bullet : Projectile
             {
                 health.GetDamage(damage);
                 health.GetForce(bulletDir,5,0.05f);
-                foreach (var debuff in debuffs)
+                if (debuffs.Count > 0 )
                 {
-                    debuff.ApplyEffect(health);
+                    foreach (var debuff in debuffs)
+                    {
+                        debuff.ApplyEffect(health);
+                    }
                 }
+                
                 EffectManager.Inst.SpawnEffect(transform, 0);
-                ActiveFalse();
+                ActiveFalseTimer(0f);
             }
         }
     }

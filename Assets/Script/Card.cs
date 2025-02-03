@@ -89,6 +89,7 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
     // Shop
     public void SelectRelic()
     {
+        if(isSold) return;
         if (ShopCard)
         {
             if(TopUIController.Inst.CurrentGold()<gold)return;

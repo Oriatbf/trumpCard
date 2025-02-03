@@ -31,7 +31,7 @@ public class MagicBall : Projectile
         target = transform;
  
        
-        ActiveFalse();
+        ActiveFalseTimer();
     }
 
     // Update is called once per frame

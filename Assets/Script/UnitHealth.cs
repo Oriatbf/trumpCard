@@ -33,6 +33,7 @@ public class UnitHealth : Health
     {
         base.SetAction();
         OnDamage += () => gambleGauge.IncreaseGambleGauge(hittedValue);
+        OnAttack += () => gambleGauge.IncreaseGambleGauge(hittedValue / 2);
         OnDamage += () => GameManager.Inst.GetOpponent(characterType).unitHealth.OnAttack?.Invoke();
     }
 
@@ -48,7 +49,7 @@ public class UnitHealth : Health
             if(damage >=0)
                 UIManager.Inst.DamageUI(rectParent,transform,damage);
 
-
+            OnDamage?.Invoke();
             if (curHp <= 0)
             {
                 isInv = true;
@@ -65,7 +66,7 @@ public class UnitHealth : Health
                 return;
             }
 
-            OnDamage?.Invoke();
+            
 
         }
        

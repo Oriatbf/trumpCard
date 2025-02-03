@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
     public Image attackCoolImage;
     private float dashCool = 5;
     private float dashMaxCharging = 1;
-    public float  dashSpeed,dashInvTime;
+    public float  dashSpeed = 2,dashInvTime;
     [HideInInspector]public float curCharging,curDashCool;
     public GameObject[] weapons;
     public GameObject handle;
@@ -147,6 +147,7 @@ public class Character : MonoBehaviour
         SetWeapon(stat.cardNum);
         stat.cardRole = randomStat.cardRole;
         stat.cardType = randomStat.cardType;
+        stat.bulletIndex = randomStat.bulletIndex;
         string characterPath = unitHealth.characterType == CharacterType.Player ? "Card_Red_" : "Card_Blue_";
         unitHealth.spr.sprite = Resources.Load<Sprite>("Sprite/Character/Cards/" +characterPath +randomStat.cardName);
         stat.Action();
@@ -338,7 +339,7 @@ public class Character : MonoBehaviour
         curDashCool = dashCool;
         unitHealth.InvTime(dashInvTime);
         dashEffect.ActiveDashEffect(0.2f);
-        GetForce(dir,dashSpeed,0.2f,()=>isDashing = false);
+        GetForce(dir,dashSpeed * stat.FinalValue().speed,0.2f,()=>isDashing = false);
     }
 
     public void GetForce(Vector2 dir,float forcePower,float time,Action action = null)

@@ -6,28 +6,46 @@ using DG.Tweening;
 
 public class Projectile : MonoBehaviour
 {
+    public Rigidbody2D rigid;
     public CharacterType ownerCharacter;
-    protected Tween disableTween;
+    protected Tween disableTween; 
+    private bool isReturn = false;
+    
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+  
+    }
+    
    
-    public void ActiveFalse(float delay = 0f)
+    public void ActiveFalseTimer(float delay = 2f,bool _return = false)
     {
         if (disableTween != null)
             disableTween.Kill();
         disableTween=DOVirtual.DelayedCall(delay, () =>
         {
-            Debug.Log("총알 사라짐");
-            ObjectPoolingManager.Inst.ReturnObjectToPool(this);
+            if(_return)
+                Return();
+            else
+            {
+                isReturn = false;
+                ActiveFalse();
+            }
+                
         });
     }
 
-    public void Return(Rigidbody2D rigid)
+    private void ActiveFalse()
     {
-        Debug.Log("true");
-        DOVirtual.DelayedCall(2f, () =>
-        {
-            rigid.linearVelocity = -rigid.linearVelocity;
-            ActiveFalse(2f);
-            });
+        ObjectPoolingManager.Inst.ReturnObjectToPool(this);
+    }
+
+    protected int RigidVelocity() => isReturn ? -1 : 1;
+
+    protected void Return()
+    {
+        isReturn = true;
+        ActiveFalseTimer(2f);
     }
 
     public virtual void Init(Stat stat,Vector2 dir,CharacterType characterType,List<StatusEffect> _debuffs)
