@@ -66,6 +66,7 @@ public class EnemyMove : Character
         if(GameManager.Inst.Pause()) return;
         base.Update();
         if (Input.GetKeyDown(KeyCode.F3)) unitHealth.GetDamage(1000);
+        if (Input.GetKeyDown(KeyCode.F5)) Gambling();
         _dir = (opponent.transform.position - transform.position).normalized;
   
        

@@ -27,7 +27,7 @@ MonoBehaviour:
       \uC190\uC5D0 \uB123\uC5C8\uB2E4. \uBB3C\uB860, \uD6C4\uD68C\uB294 \uB0A8\uC9C0
       \uC54A\uB294\uB2E4."
     winPrize: 2
-    losePrize: 1
+    losePrize: 0
     winValue: 2
     loseValue: 0
     randomPercent:

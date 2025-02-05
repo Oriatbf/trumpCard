@@ -221,7 +221,6 @@ public class Character : MonoBehaviour
     {
         if ( curCoolTime <= 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.position + _dir, 1.5f);
             curCoolTime = coolTime;
             attackCoolImage.fillAmount = 1;
 
@@ -236,7 +235,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void MeleeDamage()
+    public void MeleeDamage() //타격
     {
         if(stat.cardType == CardType.Melee)
         {
@@ -245,6 +244,7 @@ public class Character : MonoBehaviour
         }
       
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _dir, 2f);
+        
         foreach (var hit in hits)
         {
             if (hit.transform.TryGetComponent(out Health _health))
@@ -252,6 +252,7 @@ public class Character : MonoBehaviour
                 if (_health.characterType != unitHealth.characterType)
                 {
                     _health.GetDamage(Critical.CriticalChance(stat));
+                    break;
                 }
             }
         }

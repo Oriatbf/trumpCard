@@ -34,8 +34,22 @@ public class CharacterRelicData : MonoBehaviour
     public void AddPlayerRelic(RelicDatas relicData)
     {
         DataManager.Inst.Data.relicID.Add(relicData.id);
-        playerRelicData.Add(relicData);
+        RelicDuplication(relicData);
         DataManager.Inst.Save();
+    }
+
+    void RelicDuplication(RelicDatas relicData)
+    {
+        var relic =  playerRelicData.FirstOrDefault(d => d.id == relicData.id);
+        if (relic != null)
+        {
+            relic.relic.value += relicData.relic.value;
+            Debug.Log("똑같은거 얻음");
+        }
+        else
+        {
+            playerRelicData.Add(relicData);
+        }
     }
 
     public void LoadPlayerRelic(List<int> relicIds)
@@ -44,7 +58,7 @@ public class CharacterRelicData : MonoBehaviour
         foreach (var id in relicIds)
         {
             RelicDatas data = RelicDataManager.Inst.relicDatas.FirstOrDefault(r => r.id == id);
-            playerRelicData.Add(data);
+            RelicDuplication(data);
         }
     }
 }
